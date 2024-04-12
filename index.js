@@ -5,7 +5,6 @@ const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
 const yargs = require('yargs/yargs')
-const chalk = require('chalk')
 const FileType = require('file-type')
 const path = require('path')
 const _ = require('lodash')
@@ -628,7 +627,6 @@ let file = require.resolve(__filename);
 
 function reloadModule() {
     fs.unwatchFile(file);
-    console.log(chalk.redBright(`Update ${__filename}`));
     delete require.cache[file];
     require(file);
 }
