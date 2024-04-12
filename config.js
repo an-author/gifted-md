@@ -1,4 +1,6 @@
 const fs = require('fs');
+const chalk = require('chalk');
+
 
 // Other
 global.link = 'https://whatsapp.com/channel/0029VaWJMi3GehEE9e1YsI1S'
