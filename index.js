@@ -4,6 +4,7 @@ const { default: gssConnect, useMultiFileAuthState, DisconnectReason, fetchLates
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
+const chalk = require('chalk')
 const yargs = require('yargs/yargs')
 const FileType = require('file-type')
 const path = require('path')
