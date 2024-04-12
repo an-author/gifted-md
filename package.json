@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Ethix-MD whatsapp bot ",
   "main": "index.js",
+  "type": "commonjs",
   "directories": {
     "lib": "lib"
   },
