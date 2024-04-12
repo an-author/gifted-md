@@ -1,0 +1,31 @@
+{
+  "users": {
+    "917050906659@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": "Infinity"
+    }
+  },
+  "chats": {
+    "917050906659@s.whatsapp.net": {
+      "antiviewonce": true,
+      "antibot": true,
+      "mute": false,
+      "antilink": false
+    }
+  },
+  "database": {},
+  "game": {
+    "akinator": []
+  },
+  "settings": {
+    "923231371782@s.whatsapp.net": {
+      "anticall": false,
+      "status": 0,
+      "autobio": false
+    }
+  },
+  "others": {},
+  "sticker": {},
+  "anonymous": {}
+}
