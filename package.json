@@ -16,6 +16,7 @@
     "@whiskeysockets/baileys": "^6.6.0",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
+    "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "moment-timezone": "^0.5.45",
     "pino": "^8.20.0",
