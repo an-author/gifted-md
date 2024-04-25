@@ -2,7 +2,7 @@
  
 <p align="center">  
   <a href="https://youtu.be/WcA7GZuaN0A">
-   <img alt="botgsswa" height="300" src="https://github.com/gssbotwa.png">
+   <img alt="ETHIX-MD" height="300" src="https://github.com/gssbotwa.png">
     
 <p align="center">
 <a href="https://github.com/gssbotwa"><img title="Author" src="https://img.shields.io/badge/GSS-BOTWA-black?style=for-the-badge&logo=WhatsApp"></a>
@@ -41,7 +41,7 @@
 
 ---
 ### 1. FORK THIS REPO
-<a href='https://github.com/gssbotwa/Gssbotwa2/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=git&logoColor=white'/></a>
+<a href='https://github.com/gssbotwa/Ehix-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=git&logoColor=white'/></a>
 
 
 ### 2. GET SESSION VIA PAIR CODE
