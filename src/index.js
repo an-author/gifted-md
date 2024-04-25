@@ -7,7 +7,7 @@ import pino from 'pino';
 import fs from 'fs';
 import axios from 'axios';
 import moment from 'moment-timezone';
-import server from './server.js';
+import server from '../server.js';
 
 const logger = pino({ level: 'silent' });
 let useQR;
