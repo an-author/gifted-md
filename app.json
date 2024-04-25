@@ -1,50 +1,25 @@
-{ 
+{
   "name": "whatsapp-bot (GSS BOTWA V2.0)",
   "description": "Whatsapp bot.",
   "keywords": ["whatsapp bot"],
   "repository": "https://github.com/gssbotwa/Gssbotwa2",
   "stack": "container",
   "env": {
-    "AUTO_READ": {
-      "description": "Enable auto read feature",
-      "required": false,
-      "value": ""
-    },
-    "ALWAYS_ONLINE": {
-  "description": "Enable always online feature",
-  "required": false,
-  "value": ""
-},
-"AUTO_TYPING": {
-  "description": "Enable auto typing feature",
-  "required": false,
-  "value": ""
-},
-    "MONGO_DB": {
-      "description": "your mongodb database url",
-      "required": false,
-      "value": ""
-    },
     "SESSION_ID": {
-  "description": "choose menu type from 1 to 5",
-  "required": true,
-  "value": ""
-},
-"REJECT_CALL": {
-  "description": "True for bot work in only group otherwise false",
-  "required": false,
-  "value": "false"
-},
-"AUTO_STATUS_SEEN": {
-  "description": "True for bot work in only private chat otherwise false",
-  "required": false,
-  "value": "false"
-},
-"AUTO_BLOCK_ENABLED": {
-  "description": "Enable auto block feature",
-  "required": false,
-  "value": "true"
-}
+      "description": "paste your session id",
+      "required": true,
+      "value": ""
+    },
+    "REJECT_CALL": {
+      "description": "True for bot work in only group otherwise false",
+      "required": false,
+      "value": "false"
+    },
+    "AUTO_STATUS_SEEN": {
+      "description": "True for bot work in only private chat otherwise false",
+      "required": false,
+      "value": "false"
+    }
   },
   "buildpacks": [
     {
