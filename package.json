@@ -1,0 +1,25 @@
+{
+  "name": "Ethix-MD",
+  "version": "1.0.0",
+  "description": "Kuch v",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "moment-timezone": "^0.5.45",
+    "pino": "^8.20.0",
+    "yt-search": "^2.10.4",
+    "ytdl-core": "^4.11.5"
+  }
+}
