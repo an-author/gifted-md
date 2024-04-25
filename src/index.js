@@ -7,7 +7,10 @@ import pino from 'pino';
 import fs from 'fs';
 import axios from 'axios';
 import moment from 'moment-timezone';
-const port = process.env.PORT || 5000; 
+import express from 'express';
+
+const app = express()
+const port = 8000;
 
 const logger = pino({ level: 'silent' });
 let useQR;
@@ -89,6 +92,10 @@ async function start() {
 
 start();
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.get('/', (req, res) => { 
+   res.send('Server Running') 
+ }) 
+
+ app.listen(port, () => { 
+   console.log(`Example app listening on port ${port}`) 
+ }) 
