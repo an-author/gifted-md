@@ -1,17 +1,20 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState } from '@whiskeysockets/baileys';
+import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './event/index.js'
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
-import fs from 'fs';
+import path from 'path';
+import fs from 'fs/promises';
 import axios from 'axios';
 import moment from 'moment-timezone';
-import server from '../server.js';
 
-const logger = pino({ level: 'silent' });
+
 let useQR;
 let isSessionPutted;
+
+const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
+
 
 async function start() {
   if(!process.env.SESSION_ID) {
@@ -25,11 +28,22 @@ async function start() {
   //Baileys Device Configuration
   const { state, saveCreds } = await useMultiFileAuthState('./session');
   const sock = makeWASocket({
-    logger: logger,
+    logger: pino({ level: 'silent' }),
     printQRInTerminal: useQR,
     browser: ['Ethix-MD', 'Safari', '3.O'],
     auth: state,
-  });
+    getMessage: async (key) => {
+            if (store) {
+                const msg = await store.loadMessage(key.remoteJid, key.id)
+                return msg.message || undefined
+            }
+            return {
+                conversation: "Hai Im sock botwa"
+            }
+        }
+    })
+
+    store.bind(sock.ev)
 
  // Manage Device Loging
  if (!sock.authState.creds.registered && isSessionPutted) {
@@ -39,14 +53,15 @@ async function start() {
     const text = await response.text();
     if (typeof text === 'string') {
       fs.writeFileSync('./session/creds.json', text);
-      await start()
+      await start() 
     }
   }
   
-    // Handle Incomming Messages
+   // Handle Incomming Messages
   sock.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, sock));
   sock.ev.on("call", async (json) => await Callupdate(json, sock));
   sock.ev.on("group-participants.update", async (messag) => await GroupUpdate(sock, messag));
+  
   
   // Check Socket Connection
   sock.ev.on('connection.update', async (update) => {
@@ -85,6 +100,44 @@ async function start() {
       await sock.sendMessage(sock.user.id, { text: `> Ethix-MD connected` });
     }
   });
+  
+// response cmd pollMessage
+async function getMessage(key) {
+    if (store) {
+        const msg = await store.loadMessage(key.remoteJid, key.id);
+        return msg?.message;
+    }
+    return {
+        conversation: "Hai im sock botwa",
+    };
+}
+
+sock.ev.on('messages.update', async chatUpdate => {
+    for (const { key, update } of chatUpdate) {
+        if (update.pollUpdates && key.fromMe) {
+            const pollKey = update.pollUpdates.key; 
+            const pollCreation = await getMessage(key);
+            if (pollCreation) {
+                const pollUpdate = await getAggregateVotesInPollMessage({
+                    message: pollCreation,
+                    pollUpdates: update.pollUpdates,
+                });
+                const tocmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name;
+                if (!tocmd) return;
+                const prefixedPollName = `.${tocmd}`;
+
+                try {
+                    setTimeout(async () => {
+                        await sock.sendMessage(key.remoteJid, { delete: key });
+                    }, 10000);
+                } catch (error) {
+                    console.error("Error deleting message:", error);
+                }
+                sock.appenTextMessage(prefixedPollName, chatUpdate, { pollKey });
+            }
+        }
+    }
+});
 }
 
 start();
