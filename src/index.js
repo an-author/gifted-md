@@ -52,7 +52,13 @@ async function startsock() {
     const response = await fetch(pasteUrl);
     const text = await response.text();
     if (typeof text === 'string') {
-      fs.writeFileSync('./session/creds.json', text);
+      fs.writeFile('./session/creds.json', text, (err) => {
+  if (err) {
+    console.error('Error writing creds file:', err);
+  } else {
+    console.log('Creds file written successfully.');
+  }
+});
       await startsock() 
     }
   }
