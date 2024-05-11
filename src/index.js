@@ -8,7 +8,7 @@ import path from 'path';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
-import os fron 'os';
+import os from 'os';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import express from 'express';
