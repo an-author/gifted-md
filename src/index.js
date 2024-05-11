@@ -23,33 +23,23 @@ const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream
 
 
 async function startsock() {
-  if(!process.env.SESSION_ID) {
-    useQR = true;
-    isSessionPutted = false;
-  } else {
-    useQR = false;
-    isSessionPutted = true;
-  }
-  
-const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux';
+    const { state, saveCreds } = await useMultiFileAuthState(`./session`)
 
-  // Baileys Device Configuration
-  const { state, saveCreds } = await useMultiFileAuthState('./session');
-  const sock = makeWASocket({
-    logger: pino({ level: 'silent' }),
-    printQRInTerminal: useQR,
-    browser: [Device, 'Chrome', '20.0.04'],
-    auth: state,
-    getMessage: async (key) => {
-      if (store) {
-        const msg = await store.loadMessage(key.remoteJid, key.id);
-        return msg?.message;
-      }
-      return {
-        conversation: "Hai Im Ethix-MD"
-      };
-    }
-  });
+    const sock = makeWASocket({
+        logger: pino({ level: 'silent' }),
+        printQRInTerminal: true,
+        browser: ['Ethix-MD','Safari','1.0.0'],
+        auth: state,
+        getMessage: async (key) => {
+            if (store) {
+                const msg = await store.loadMessage(key.remoteJid, key.id)
+                return msg.message || undefined
+            }
+            return {
+                conversation: "Hai Im Ethix-MD"
+            }
+        }
+    })
 
     store.bind(sock.ev)
 
