@@ -1,13 +1,18 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate } from './event/index.js'
+import { Handler, Callupdate, GroupUpdate, AntiViewOnce } from './event/index.js'
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
 import path from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
 import axios from 'axios';
 import moment from 'moment-timezone';
+import express from 'express';
+const app = express() 
+const port = 8000
 
 
 let useQR;
@@ -62,6 +67,7 @@ async function startsock() {
       await startsock() 
     }
   }
+
   
    // Handle Incomming Messages
   sock.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, sock));
@@ -102,18 +108,29 @@ sock.ev.on('connection.update', async (update) => {
         } else {
             sock.end(`Unknown DisconnectReason: ${reason}|${connection}`);
         }
-    } else if (connection === "open") {
+    } 
+    if (connection === "open") {
         console.log('Connected...', update);
         sock.sendMessage(sock.user.id, {
             text: `> *_ΣƬΉIX-MD connected_*`
         });
-    }
+    }  else if (
+        connection === "close" &&
+        lastDisconnect &&
+        lastDisconnect.error &&
+        lastDisconnect.error.output.statusCode != 401
+        ) {
+          console.log('Server Restarting...')
+          startsock();
+      } else {
+      
+      }
 });
 
 
     sock.ev.on('creds.update', saveCreds)
   
-// response cmd pollMessage
+  // response cmd pollMessage
 async function getMessage(key) {
     if (store) {
         const msg = await store.loadMessage(key.remoteJid, key.id);
@@ -123,33 +140,14 @@ async function getMessage(key) {
         conversation: "Hai im sock botwa",
     };
 }
-
-sock.ev.on('messages.update', async chatUpdate => {
-    for (const { key, update } of chatUpdate) {
-        if (update.pollUpdates && key.fromMe) {
-            const pollKey = update.pollUpdates.key; 
-            const pollCreation = await getMessage(key);
-            if (pollCreation) {
-                const pollUpdate = await getAggregateVotesInPollMessage({
-                    message: pollCreation,
-                    pollUpdates: update.pollUpdates,
-                });
-                const tocmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name;
-                if (!tocmd) return;
-                const prefixedPollName = `.${tocmd}`;
-
-                try {
-                    setTimeout(async () => {
-                        await sock.sendMessage(key.remoteJid, { delete: key });
-                    }, 10000);
-                } catch (error) {
-                    console.error("Error deleting message:", error);
-                }
-                sock.appenTextMessage(prefixedPollName, chatUpdate, { pollKey });
-            }
-        }
-    }
-});
 }
 
 startsock();
+
+app.get('/', (req, res) => { 
+   res.send('Server Running') 
+}) 
+
+app.listen(port, () => { 
+   console.log(`Example app listening on port ${port}`) 
+})
