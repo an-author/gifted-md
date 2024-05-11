@@ -30,12 +30,14 @@ async function startsock() {
     isSessionPutted = true;
   }
   
+  const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux'
+  
   //Baileys Device Configuration
   const { state, saveCreds } = await useMultiFileAuthState('./session');
   const sock = makeWASocket({
     logger: pino({ level: 'silent' }),
     printQRInTerminal: useQR,
-    browser: ['Ethix-MD', 'Safari', '3.O'],
+    browser: [Device, 'Chrome', '20.0.04'],
     auth: state,
     getMessage: async (key) => {
             if (store) {
@@ -78,53 +80,24 @@ async function startsock() {
 sock.ev.on('connection.update', async (update) => {
     const { connection, lastDisconnect } = update;
 
-    if (connection === 'close') {
-        let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
-
-        if (reason === DisconnectReason.badSession) {
-            console.log(`Bad Session File, Please Delete Session and Scan Again`);
-            sock.logout();
-        } else if (reason === DisconnectReason.connectionClosed) {
-            console.log("Connection closed, reconnecting....");
-            startsock();
-        } else if (reason === DisconnectReason.connectionLost) {
-            console.log("Connection Lost from Server, reconnecting...");
-            startsock();
-        } else if (reason === DisconnectReason.connectionReplaced) {
-            console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-            sock.logout();
-        } else if (reason === DisconnectReason.loggedOut) {
-            console.log(`Device Logged Out, Please Scan Again And Run.`);
-            sock.logout();
-        } else if (reason === DisconnectReason.restartRequired) {
-            console.log("Restart Required, Restarting...");
-            startsock();
-        } else if (reason === DisconnectReason.timedOut) {
-            console.log("Connection TimedOut, Reconnecting...");
-            startsock();
-        } else if (reason === DisconnectReason.Multidevicemismatch) {
-            console.log("Multi device mismatch, please scan again");
-            sock.logout();
-        } else {
-            sock.end(`Unknown DisconnectReason: ${reason}|${connection}`);
-        }
-    } 
-    if (connection === "open") {
-        console.log('Connected...', update);
+if (connection === 'close') {
+	try {
+				console.log('Connection Closed, Reconnecting -')
+				startsock();
+			} catch (e) {
+				console.log('ERROR LOG:--')
+				console.log(e)
+			}
+		 else {
+			console.log(chalk.red('Bot Logout'))
+		}
+	} else if (connection == 'open') { 
+	console.log('Connected...', update);
         sock.sendMessage(sock.user.id, {
             text: `> *_ΣƬΉIX-MD connected_*`
         });
-    }  else if (
-        connection === "close" &&
-        lastDisconnect &&
-        lastDisconnect.error &&
-        lastDisconnect.error.output.statusCode != 401
-        ) {
-          console.log('Server Restarting...')
-          startsock();
-      } else {
-      
-      }
+	}
+	}
 });
 
 
