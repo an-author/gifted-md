@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './event/index.js'
-import pollHandler from './pollHandler.js'
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
 import path from 'path';
@@ -143,34 +142,6 @@ async function getMessage(key) {
         conversation: "Hai im sock botwa",
     };
 }
-
-
-
-// Handle poll updates
-  sock.ev.on('messages.update', async (chatUpdate) => {
-    for (const { key, update } of chatUpdate) {
-      if (update.pollUpdates && key.fromMe) {
-        const pollKey = update.pollUpdates.key;
-        const pollCreation = await getMessage(key);
-        console.log('Poll Creation:', pollCreation);
-
-        if (pollCreation) {
-          const pollUpdate = await getAggregateVotesInPollMessage({
-            message: pollCreation,
-            pollUpdates: update.pollUpdates,
-          });
-          console.log('Poll Update:', pollUpdate);
-
-          const tocmd = pollUpdate.filter((v) => v.voters.length !== 0)[0]?.name;
-          console.log('Tocmd:', tocmd);
-
-          if (!tocmd) return;
-          console.log('Poll Name:', `.${tocmd}`);
-          await pollHandler.handlePoll(tocmd, key, sock);
-        }
-      }
-    }
-  });
 }
 
 startsock();
