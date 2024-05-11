@@ -27,7 +27,7 @@
         transition: opacity 0.3s ease-in-out;
     }
     .drawer {
-        width: 250px;
+        width: 150px;
         height: 100%;
         background-color: #128C7E;
         padding: 10px;
@@ -86,7 +86,7 @@
         margin-left: 0;
     }
     .content.open {
-        margin-left: 270px; /* Increased margin for the drawer */
+        margin-left: 200px; /* Increased margin for the drawer */
     }
     h1 {
         color: #075e54;
@@ -115,27 +115,28 @@
         50% { border-color: #fff }
     }
 
-    /* Orange Box Style */
-    .orange-box {
-        width: 300px;
-        background-color: orange;
-        color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 20px auto;
-        text-align: center;
-        overflow-y: auto;
-        max-height: 200px;
+    /* Matrix effect animation */
+    .matrix-effect {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+        line-height: 1.5;
+        color: green;
+        position: relative;
+        overflow: hidden;
     }
-
-    /* Close button style */
-    .close-btn {
+    .matrix-effect::after {
+        content: attr(data-text);
         position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 20px;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        animation: animate 10s linear infinite;
+    }
+    @keyframes animate {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
     }
 </style>
 </head>
@@ -156,9 +157,11 @@
         <h1>About WhatsApp Bot</h1>
         <p>Your friendly WhatsApp bot!</p>
         <p><span class="typing-animation">Status: Connected</span></p>
-        <div class="orange-box">
-            <img src="path_to_your_image.jpg" alt="WhatsApp Bot Image" style="width: 100%; max-width: 150px; margin-bottom: 10px;">
-            <h3>A platform where convenience meets technology!</h3>
+        <h3 class="matrix-effect" data-text="Ethix-Xsid | Coding enthusiast | Tech lover"></h3>
+        <!-- Moved image and slogan to the end -->
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="https://telegra.ph/file/242e0700837a67d657ec0.jpg" alt="WhatsApp Bot Image" style="max-width: 100%;">
+            <p style="margin-top: 10px; font-size: 18px; font-weight: bold;">Your Companion in the Digital World!</p>
         </div>
         <h2>Links</h2>
         <ul>
@@ -178,16 +181,6 @@
             content.classList.toggle('open');
             menuToggle.classList.toggle('open');
         }
-
-        // Function to get device information for orange box
-        function getDeviceInfoOrange() {
-            var deviceInfo = navigator.userAgent;
-            var deviceInfoSpan = document.getElementById('deviceInfoOrange');
-            deviceInfoSpan.textContent = deviceInfo;
-        }
-
-        // Call the function to fetch and display device information for orange box
-        getDeviceInfoOrange();
     </script>
 </body>
 </html>
