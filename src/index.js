@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate, AntiViewOnce } from './event/index.js'
+import { Handler, Callupdate, GroupUpdate} from './event/index.js'
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
 import path from 'path';
