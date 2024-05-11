@@ -137,7 +137,7 @@ async function getMessage(key) {
         return msg?.message;
     }
     return {
-        conversation: "Hai im sock botwa",
+        conversation: "Hai im Ethix-MD",
     };
 }
 }
