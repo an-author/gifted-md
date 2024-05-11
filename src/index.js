@@ -1,12 +1,17 @@
-const dotenv = require('dotenv');
-const express = require('express');
-const pino = require('pino');
-const { makeWASocket, useMultiFileAuthState, DisconnectReason, makeInMemoryStore } = require('@whiskeysockets/baileys');
-const { Handler, Callupdate, GroupUpdate } = require('./event/index.js');
-const fs = require('fs');
-const axios = require('axios');
-
+import dotenv from 'dotenv';
 dotenv.config();
+import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
+import { Handler, Callupdate, GroupUpdate } from './event/index.js'
+import { Boom } from '@hapi/boom';
+import pino from 'pino';
+import path from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs/promises';
+import os from 'os';
+import axios from 'axios';
+import moment from 'moment-timezone';
+import express from 'express';
 const app = express();
 const port = 8000;
 
