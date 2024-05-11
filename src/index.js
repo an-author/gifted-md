@@ -46,8 +46,8 @@ async function start() {
   
     let { state, saveCreds } = await useMultiFileAuthState(sessionName);
     let { version, isLatest } = await fetchLatestBaileysVersion();
-    console.log(orange("CODED BY GOUTAM KUMAR\nEthix-Xsid"), 100);
-    console.log(lime(`using WA v${version.join(".")}, isLatest: ${isLatest}`), 100);
+    console.log(orange("CODED BY GOUTAM KUMAR\nEthix-Xsid"));
+    console.log(lime(`using WA v${version.join(".")}, isLatest: ${isLatest}`));
  
     const Matrix = makeWASocket({
         version,
@@ -97,7 +97,7 @@ async function start() {
     
      // Manage Device Loging
  if (!Matrix.authState.creds.registered && isSessionPutted) {
-    const sessionID = process.env.SESSION_ID;
+    const sessionID = process.env.SESSION_ID.split('Ethix-MD&')[1];
     const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
     const response = await fetch(pasteUrl);
     const text = await response.text();
