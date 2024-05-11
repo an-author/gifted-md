@@ -160,7 +160,8 @@ async function getMessage(key) {
 
 start();
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/server.html');
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  res.sendFile(path.join(__dirname, '/server.html'));
 });
 
 app.listen(3000, function () {
