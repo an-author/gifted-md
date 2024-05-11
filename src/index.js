@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, jidDecode, DisconnectReason, useMultiFileAuthState,getAggregateVotesInPollMessage, makeInMemoryStore } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate, AntiViewOnce } from './event/index.js'
+import { Handler, Callupdate, GroupUpdate } from './event/index.js'
 import pollHandler from './pollHandler.js'
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
@@ -75,7 +75,6 @@ const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'dar
    // Handle Incomming Messages
   sock.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, sock));
   sock.ev.on("call", async (json) => await Callupdate(json, sock));
-  sock.ev.on("antiViewOnce", async (messag) => await AntiViewOnce(sock, messag));
   sock.ev.on("group-participants.update", async (messag) => await GroupUpdate(sock, messag));
   
   
