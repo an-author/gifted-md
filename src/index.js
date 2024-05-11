@@ -160,23 +160,8 @@ async function getMessage(key) {
 
 start();
 app.get('/', function (req, res) {
-  res.send(`
-    <html>
-      <head>
-        <title>WhatsApp Bot</title>
-      </head>
-      <body>
-        <h1>Connected</h1>
-        <img src="https://telegra.ph/file/242e0700837a67d657ec0.jpg" alt="WhatsApp Logo" width="100px" height="100px">
-        <p>Ethix-MD World Best Multidevice Whatsapp Bot</p>
-        <p>WhatsApp Contact: wa.me/+919142294671</p>
-        <p>GitHub: <a href="https://github.com/gssbotwa">GitHub Profile</a></p>
-        <p>Instagram: <a href="https://instagram.com/ethix_xsid">Instagram Profile</a></p>
-      </body>
-    </html>
-  `);
-});
-
+  res.send('./server.js')
+})
 app.listen(3000, function () {
   console.log('Server started on port 3000');
 });
