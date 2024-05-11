@@ -161,7 +161,7 @@ async function getMessage(key) {
 start();
 app.get('/', function (req, res) {
   const __dirname = path.dirname(new URL(import.meta.url).pathname);
-  res.sendFile(path.join(__dirname, '/server.html'));
+  res.sendFile(path.join(__dirname, '../server.html'));
 });
 
 app.listen(3000, function () {
