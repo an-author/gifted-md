@@ -8,7 +8,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
 import moment from 'moment-timezone';
-import { exsc, execSync } from 'child_process';
+import execSync from 'child_process';
 import { makeWASocket, useMultiFileAuthState, DisconnectReason, makeInMemoryStore, fetchLatestBaileysVersion, makeCacheableSignalKeyStore } from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './event/index.js';
 import NodeCache from 'node-cache';
