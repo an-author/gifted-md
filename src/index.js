@@ -18,12 +18,16 @@ dotenv.config();
 const app = express();
 const port = 8000;
 
-var sessionFolderPath = path.join(__dirname, '/session');
-var sessionPath = path.join(sessionFolderPath, '/creds.json');
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
+const sessionFolderPath = path.join(__dirname, '/session');
+const sessionPath = path.join(sessionFolderPath, '/creds.json');
+
 console.log(process.env.SESSION_ID);
 Dec_Sess();
-var sessionFolderPath = path.join(__dirname, '/session');
-var sessionPath = path.join(sessionFolderPath, '/creds.json');
+
 console.log(process.env.SESSION_ID);
 Dec_Sess();
 
