@@ -46,7 +46,7 @@ async function start() {
   
     let { state, saveCreds } = await useMultiFileAuthState(sessionName);
     let { version, isLatest } = await fetchLatestBaileysVersion();
-    console.log(orange("CODED BY GOUTAM KUMAR"), 100);
+    console.log(orange("CODED BY GOUTAM KUMAR\nEthix-Xsid"), 100);
     console.log(lime(`using WA v${version.join(".")}, isLatest: ${isLatest}`), 100);
  
     const Matrix = makeWASocket({
@@ -118,26 +118,6 @@ async function getMessage(key) {
         conversation: "Hello World",
     };
 }
-
-
-  let selectedPoll;
-  Matrix.ev.on('messages.update', async (chatUpdate) => {
-   // Handle poll messages
-    for (const { key, update } of chatUpdate) {
-    const pollCreation = await getMessage(key);
-    //console.log('Poll Creation:', pollCreation);
-
-    if (pollCreation) {
-      const pollUpdate = await getAggregateVotesInPollMessage({
-        message: pollCreation,
-        pollUpdates: update.pollUpdates,
-      });
-      selectedPoll = pollUpdate.filter((v) => v.voters.length !== 0)[0]?.name;
-     // Matrix.appenTextMessage(selectedPoll, chatUpdate)
-      await handlePoll(chatUpdate, selectedPoll, key, Matrix)
-    }
-  }
-});
 
 
     // Handle Incomming Messages
