@@ -1,36 +1,31 @@
 import dotenv from 'dotenv';
+dotenv.config();
+import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
+import { Handler, Callupdate, GroupUpdate } from './event/index.js'
+import { Boom } from '@hapi/boom';
 import express from 'express';
 import pino from 'pino';
-import axios from 'axios';
-import { Boom } from '@hapi/boom';
-import path from 'path';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs/promises';
-import moment from 'moment-timezone';
-import execSync from 'child_process';
-import { makeWASocket, useMultiFileAuthState, DisconnectReason, makeInMemoryStore, fetchLatestBaileysVersion, makeCacheableSignalKeyStore } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate } from './event/index.js';
+import fs from 'fs';
 import NodeCache from 'node-cache';
-import readline from 'readline';
-import parsePhoneNumber from 'libphonenumber';
-
-dotenv.config();
+import path from 'path';
+import chalk from 'chalk';
+import { writeFile } from 'fs/promises'
+import moment from 'moment-timezone'
+import axios from 'axios';
+const sessionName = "session";
 const app = express();
-const port = 8000;
+const orange = chalk.bold.hex("#FFA500");
+const lime = chalk.bold.hex("#32CD32");
+let useQR;
+let isSessionPutted;
 
+const MAIN_LOGGER = pino({
+    timestamp: () => `,"time":"${new Date().toJSON()}"`
+});
+const logger = MAIN_LOGGER.child({});
+logger.level = "trace";
 
-const __filename = new URL(import.meta.url).pathname;
-const __dirname = path.dirname(__filename);
-
-const sessionFolderPath = path.join(__dirname, '/session');
-const sessionPath = path.join(sessionFolderPath, '/creds.json');
-
-console.log(process.env.SESSION_ID);
-Dec_Sess();
-
-console.log(process.env.SESSION_ID);
-Dec_Sess();
+const msgRetryCounterCache = new NodeCache();
 
 const store = makeInMemoryStore({
     logger: pino().child({
@@ -39,35 +34,26 @@ const store = makeInMemoryStore({
     })
 })
 
-async function Dec_Sess() {
-    execSync('rm -rf ' + sessionPath);
-    exec('rm -r ' + sessionPath);
-    exec('mkdir ' + sessionFolderPath)
-    let code = process.env.SESSION_ID.replace(/Ethix-MD/g, "");
-    let code2 = Buffer.from(code, "base64").toString("utf-8")
-    let id = code2.replace(/Ethix-MD/g, "");
-    let id2 = Buffer.from(id, "base64").toString("utf-8")
-    if (!fs.existsSync(sessionPath)) {
-        if (id2.length < 30) {
-            const axios = require('axios');
-            let { data } = await axios.get('https://paste.c-net.org/' + id2)
-            //   console.log(data)
-            await fs.writeFileSync(sessionPath, JSON.stringify(data))
-        }
-    }
-}
-
-async function startsock() {
-    await delay(3000);
-    await delay(2000);
-    //------------------------------------------------------
-    let { version, isLatest } = await fetchLatestBaileysVersion()
-    const { state, saveCreds } = await useMultiFileAuthState(`./session`)
-    const msgRetryCounterCache = new NodeCache() // for retry message, "waiting message"
-    const sock = makeWASocket({
-        logger: pino({ level: 'silent' }),
-        printQRInTerminal: true, // popping up QR in terminal log
-        browser: Browsers.ubuntu('Firefox'), // for this issues https://github.com/WhiskeySockets/Baileys/issues/328
+// Baileys Connection Option
+async function start() {
+  if(!process.env.SESSION_ID) {
+    useQR = true;
+    isSessionPutted = false;
+  } else {
+    useQR = false;
+    isSessionPutted = true;
+  }
+  
+    let { state, saveCreds } = await useMultiFileAuthState(sessionName);
+    let { version, isLatest } = await fetchLatestBaileysVersion();
+    console.log(orange("CODED BY GOUTAM KUMAR"), 100);
+    console.log(lime(`using WA v${version.join(".")}, isLatest: ${isLatest}`), 100);
+ 
+    const Matrix = makeWASocket({
+        version,
+        logger: pino({ level: 'silent' }), 
+        printQRInTerminal: useQR,
+        browser: ['Mac OS', 'chrome', '121.0.6167.159'],
         patchMessageBeforeSending: (message) => {
             const requiresPatch = !!(
                 message.buttonsMessage ||
@@ -89,62 +75,112 @@ async function startsock() {
             }
             return message;
         },
-        auth: state,
-        version
-    });
-
-    store.bind(sock.ev)
-
-    // Handle Incoming Messages
-    sock.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, sock));
-    sock.ev.on("call", async (json) => await Callupdate(json, sock));
-    sock.ev.on("group-participants.update", async (messag) => await GroupUpdate(sock, messag));
-
-    sock.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect } = update;
-
-        if (connection === 'close') {
-            let reason = new DisconnectReason(lastDisconnect?.error)?.output.statusCode;
-
-            if (reason === DisconnectReason.badSession) {
-                console.log("Bad Session File, Please Delete Session and Scan Again");
-                sock.logout();
-            } else if (reason === DisconnectReason.connectionClosed) {
-                console.log("Connection closed, reconnecting...");
-                startsock();
-            } else if (reason === DisconnectReason.connectionLost) {
-                console.log("Connection Lost from Server, reconnecting...");
-                startsock();
-            } else if (reason === DisconnectReason.connectionReplaced) {
-                console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-                sock.logout();
-            } else if (reason === DisconnectReason.loggedOut) {
-                console.log("Device Logged Out, Please Scan Again And Run.");
-                sock.logout();
-            } else if (reason === DisconnectReason.restartRequired) {
-                console.log("Restart Required, Restarting...");
-                startsock();
-            } else if (reason === DisconnectReason.timedOut) {
-                console.log("Connection TimedOut, Reconnecting...");
-                startsock();
-            } else if (reason === DisconnectReason.Multidevicemismatch) {
-                console.log("Multi device mismatch, please scan again");
-                sock.logout();
-            } else {
-                sock.end(`Unknown DisconnectReason: ${reason}|${connection}`);
+        auth: {
+            creds: state.creds,
+            keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+        },
+        getMessage: async (key) => {
+            if (store) {
+                const msg = await store.loadMessage(key.remoteJid, key.id)
+                return msg.message || undefined
             }
-        }
+            return {
+                conversation: "Hello World"
+            }
+        },
+        markOnlineOnConnect: true, // set false for offline
+        generateHighQualityLinkPreview: true, // make high preview link
+        defaultQueryTimeoutMs: undefined,
+        msgRetryCounterCache
     });
+    store?.bind(Matrix.ev);
+    
+     // Manage Device Loging
+ if (!Matrix.authState.creds.registered && isSessionPutted) {
+    const sessionID = process.env.SESSION_ID;
+    const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
+    const response = await fetch(pasteUrl);
+    const text = await response.text();
+    if (typeof text === 'string') {
+      fs.writeFileSync('./session/creds.json', text);
+      console.log('session file created')
+      await start()
+    }
+  }
 
-    sock.ev.on('creds.update', saveCreds);
+        // response cmd pollMessage
+async function getMessage(key) {
+    if (store) {
+        const msg = await store.loadMessage(key.remoteJid, key.id);
+        return msg?.message;
+    }
+    return {
+        conversation: "Hello World",
+    };
 }
 
-startsock();
 
-app.get('/', (req, res) => {
-    res.send('Server Running');
+  let selectedPoll;
+  Matrix.ev.on('messages.update', async (chatUpdate) => {
+   // Handle poll messages
+    for (const { key, update } of chatUpdate) {
+    const pollCreation = await getMessage(key);
+    //console.log('Poll Creation:', pollCreation);
+
+    if (pollCreation) {
+      const pollUpdate = await getAggregateVotesInPollMessage({
+        message: pollCreation,
+        pollUpdates: update.pollUpdates,
+      });
+      selectedPoll = pollUpdate.filter((v) => v.voters.length !== 0)[0]?.name;
+     // Matrix.appenTextMessage(selectedPoll, chatUpdate)
+      await handlePoll(chatUpdate, selectedPoll, key, Matrix)
+    }
+  }
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+
+    // Handle Incomming Messages
+    Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
+    Matrix.ev.on("call", async (json) => await Callupdate(json, Matrix));
+    Matrix.ev.on("group-participants.update", async (messag) => await GroupUpdate(Matrix, messag));
+
+    // Check baileys connections
+    Matrix.ev.on("connection.update", async update => {
+        const { connection, lastDisconnect } = update;
+        if (connection === "close") {
+            let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+            if (reason === DisconnectReason.connectionClosed) {
+                console.log(chalk.red("[😩] Connection closed, reconnecting."));
+                start();
+            } else if (reason === DisconnectReason.connectionLost) {
+                console.log(chalk.red("[🤕] Connection Lost from Server, reconnecting."));
+                start();
+            } else if (reason === DisconnectReason.loggedOut) {
+                console.log(chalk.red("[😭] Device Logged Out, Please Delete Session and Scan Again."));
+                process.exit();
+            } else if (reason === DisconnectReason.restartRequired) {
+                console.log(chalk.blue("[♻️] Server Restarting."));
+                start();
+            } else if (reason === DisconnectReason.timedOut) {
+                console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
+                start();
+            } else {
+                console.log(chalk.red("[🚫️]Something Went Wrong: Faild to Make Connection"));
+            }
+        }
+
+        if (connection === "open") {
+            console.log(lime("😃 Initigration Sucsessed️ ✅"));
+            Matrix.sendMessage(Matrix.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
+            await Matrix.sendPresenceUpdate('unavailable')
+        }
+    });
+}
+
+start();
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+app.listen(3000)
