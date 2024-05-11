@@ -43,7 +43,7 @@ async function startsock() {
                 return msg.message || undefined
             }
             return {
-                conversation: "Hai Im sock botwa"
+                conversation: "Hai Im Ethix-MD"
             }
         }
     })
