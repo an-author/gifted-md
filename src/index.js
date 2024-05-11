@@ -49,7 +49,7 @@ async function start() {
     console.log("CODED BY GOUTAM KUMAR & Ethix-Xsid");
     console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
  
-    const sock = makeWASocket({
+    const Matrix = makeWASocket({
         version,
         logger: pino({ level: 'silent' }), 
         printQRInTerminal: useQR,
@@ -93,10 +93,10 @@ async function start() {
         defaultQueryTimeoutMs: undefined,
         msgRetryCounterCache
     });
-    store?.bind(sock.ev);
+    store?.bind(Matrix.ev);
     
      // Manage Device Loging
- if (!sock.authState.creds.registered && isSessionPutted) {
+ if (!Matrix.authState.creds.registered && isSessionPutted) {
     const sessionID = process.env.SESSION_ID.split('Ethix-MD&')[1];
     const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
     const response = await fetch(pasteUrl);
@@ -121,12 +121,12 @@ async function getMessage(key) {
 
 
     // Handle Incomming Messages
-    sock.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, sock, logger));
-    sock.ev.on("call", async (json) => await Callupdate(json, sock));
-    sock.ev.on("group-participants.update", async (messag) => await GroupUpdate(sock, messag));
+    Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
+    Matrix.ev.on("call", async (json) => await Callupdate(json, Matrix));
+    Matrix.ev.on("group-participants.update", async (messag) => await GroupUpdate(Matrix, messag));
 
     // Check baileys connections
-    sock.ev.on("connection.update", async update => {
+    Matrix.ev.on("connection.update", async update => {
         const { connection, lastDisconnect } = update;
         if (connection === "close") {
             let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
@@ -152,8 +152,8 @@ async function getMessage(key) {
 
         if (connection === "open") {
             console.log(lime("😃 Initigration Sucsessed️ ✅"));
-            sock.sendMessage(sock.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
-            await sock.sendPresenceUpdate('unavailable')
+            Matrix.sendMessage(Matrix.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
+            await Matrix.sendPresenceUpdate('unavailable')
         }
     });
 }
