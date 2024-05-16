@@ -1,0 +1,42 @@
+{
+  "name": "Ethix-MD",
+  "description": "A brief description of your app",
+  "repository": "https://github.com/gssbotwa/Ethix-MD",
+  "env": {
+    "SESSION_ID": {
+      "description": "Your session ID",
+      "value": ""
+    },
+    "AUTO_REJECT_CALL": {
+      "description": "Whether to automatically reject calls",
+      "value": "true"
+    },
+    "AUTO_STATUS_VIEW": {
+      "description": "Whether to automatically view status",
+      "value": "true"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    },
+    {
+      "url": "https://github.com/mcollina/heroku-buildpack-imagemagick.git"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "npm start"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "Free"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
