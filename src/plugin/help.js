@@ -93,7 +93,6 @@ const test = async (m, Matrix) => {
 │📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
 │🛡 ᴍᴏᴅᴇ: *${mode}*
 │💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
-│🕐 ʀᴜɴ ᴛɪᴍᴇ: *${hours}h ${minutes}m ${seconds}s*
 ╰─────────────━┈⊷ `
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
@@ -643,7 +642,6 @@ await Matrix.sendMessage(m.from, {
 │➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━➥
-
 ╭━❮ 𝙵𝚄𝙽 ❯━╮
 ┃❐ 𝙳𝚎𝚕𝚝𝚝𝚝
 ┃❐ 𝚃𝚒𝚌𝚝𝚊𝚌𝚝𝚘𝚎
@@ -671,7 +669,6 @@ await Matrix.sendMessage(m.from, {
 │➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━➥
-
 ╭━❮ 𝚃𝙾𝙾𝙻 ❯━╮
 ┃❐ 𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
 ┃❐ 𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
@@ -703,7 +700,6 @@ await Matrix.sendMessage(m.from, {
 │➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━➥
-
 ╭━❮ 𝙰𝙸 ❯━╮
 ┃❐ 𝙰𝚒
 ┃❐ 𝚅𝚘𝚒𝚌𝚎𝚊𝚒
@@ -736,7 +732,6 @@ await Matrix.sendMessage(m.from, {
 │➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━➥
-
 ╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
 ┃❐ .𝙰𝚃𝚃𝙿
 ┃❐ .𝙰𝚃𝚃𝙿2
