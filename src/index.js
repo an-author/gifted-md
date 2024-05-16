@@ -12,6 +12,8 @@ import chalk from 'chalk';
 import { writeFile } from 'fs/promises'
 import moment from 'moment-timezone'
 import axios from 'axios';
+import * as os from 'os'
+
 const sessionName = "session";
 const app = express();
 const orange = chalk.bold.hex("#FFA500");
@@ -52,12 +54,13 @@ async function start() {
     let { version, isLatest } = await fetchLatestBaileysVersion();
     console.log("CODED BY GOUTAM KUMAR & Ethix-Xsid");
     console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
- 
+    
+ const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux'
     const Matrix = makeWASocket({
         version,
         logger: pino({ level: 'silent' }), 
         printQRInTerminal: useQR,
-        browser: ['Mac OS', 'chrome', '121.0.6167.159'],
+        browser: [Device, 'chrome', '121.0.6167.159'],
         patchMessageBeforeSending: (message) => {
             const requiresPatch = !!(
                 message.buttonsMessage ||
