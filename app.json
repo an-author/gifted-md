@@ -1,42 +1,46 @@
 {
-  "name": "Ethix-MD",
-  "description": "A brief description of your app",
+  "name": "whatsapp-bot (Ethix-MD)",
+  "description": " Whatsapp bot.",
+  "keywords": [
+    "whatsapp bot"
+  ],
   "repository": "https://github.com/gssbotwa/Ethix-MD",
-  "env": {
-    "SESSION_ID": {
-      "description": "Your session ID",
+  "stack": "container",
+  "env": { 
+      "SESSION_ID": {
+      "description": "your session id",
+      "required": true,
       "value": ""
     },
-    "AUTO_REJECT_CALL": {
-      "description": "Whether to automatically reject calls",
-      "value": "true"
+    "MODE": {
+      "description": "mode public or private",
+      "required": true,
+      "value": "public"
     },
-    "AUTO_STATUS_VIEW": {
-      "description": "Whether to automatically view status",
-      "value": "true"
+    "AUTO_STATUS_SEEN": {
+      "description": "make it true if you want bot to view status",
+      "required": false,
+      "value": ""
+    },
+    "REJECT_CALL": {
+      "description": "make it true if you want to reject call",
+      "required": false,
+      "value": ""
     }
-  },
-  "buildpacks": [
+    },
+    "buildpacks": [
     {
       "url": "heroku/nodejs"
     },
     {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
     },
     {
-      "url": "https://github.com/mcollina/heroku-buildpack-imagemagick.git"
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
     }
-  ],
-  "scripts": {
-    "postdeploy": "npm start"
-  },
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "Free"
-    }
-  },
-  "addons": [
-    "heroku-postgresql"
   ]
 }
+
