@@ -34,6 +34,8 @@ const store = makeInMemoryStore({
     })
 })
 
+
+
 // Baileys Connection Option
 async function start() {
   if(!process.env.SESSION_ID) {
@@ -124,6 +126,14 @@ async function getMessage(key) {
     Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
     Matrix.ev.on("call", async (json) => await Callupdate(json, Matrix));
     Matrix.ev.on("group-participants.update", async (messag) => await GroupUpdate(Matrix, messag));
+    
+     
+    if (process.env.MODE === 'public') {
+    Matrix.public = true;
+} else if (process.env.MODE === 'self') {
+    Matrix.public = false;
+}
+
 
     // Check baileys connections
     Matrix.ev.on("connection.update", async update => {
@@ -160,8 +170,7 @@ async function getMessage(key) {
 
 start();
 app.get('/', function (req, res) {
-  const __dirname = path.dirname(new URL(import.meta.url).pathname);
-  res.sendFile(path.join(__dirname, '../server.html'));
+  res.send(`server running`);
 });
 
 app.listen(3000, function () {
