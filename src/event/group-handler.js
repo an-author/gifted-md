@@ -29,7 +29,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: metadata.subject,
-                     sourceUrl: 'https://matrixcoder.vercel.app'
+                     sourceUrl: 'https://sid-bhai.vercel.app'
                   }
                }
             })
@@ -47,7 +47,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: profile,
-                     sourceUrl: 'https://matrixcoder.vercel.app'
+                     sourceUrl: 'https://sid-bhai.vercel.app'
                   }
                }
             })
