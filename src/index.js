@@ -52,8 +52,8 @@ async function start() {
   
     let { state, saveCreds } = await useMultiFileAuthState(sessionName);
     let { version, isLatest } = await fetchLatestBaileysVersion();
-    console.log("CODED BY GOUTAM KUMAR & Ethix-Xsid");
-    console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+    console.log(chalk.red("CODED BY GOUTAM KUMAR & Ethix-Xsid"));
+    console.log(chalk.green(`using WA v${version.join(".")}, isLatest: ${isLatest}`));
     
  const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux'
     const Matrix = makeWASocket({
