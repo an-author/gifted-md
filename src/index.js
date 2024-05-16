@@ -18,6 +18,8 @@ const orange = chalk.bold.hex("#FFA500");
 const lime = chalk.bold.hex("#32CD32");
 let useQR;
 let isSessionPutted;
+const PORT = process.env.PORT || 3000;
+
 
 const MAIN_LOGGER = pino({
     timestamp: () => `,"time":"${new Date().toJSON()}"`
@@ -169,10 +171,10 @@ async function getMessage(key) {
 }
 
 start();
-app.get('/', function (req, res) {
-  res.send(`server running`);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
-app.listen(3000, function () {
-  console.log('Server started on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
