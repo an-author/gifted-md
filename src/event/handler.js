@@ -1,4 +1,4 @@
-import { downloadMediaMessage, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { downloadMediaMessage, generateWAMessageFromContent, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
 import { serialize, decodeJid } from '../../lib/Serializer.js';
 import path from 'path';
 import fs from 'fs/promises';
@@ -20,7 +20,12 @@ const Handler = async (chatUpdate, sock, logger) => {
     ) {
       await sock.readMessages([m.key]);
     }
-
+    
+     if (!sock.public) {
+            if (!m.key.fromMe) return
+        }
+        
+    
     if (
       m.type === 'protocolMessage' ||
       m.type === 'senderKeyDistributionMessage' ||
@@ -31,7 +36,7 @@ const Handler = async (chatUpdate, sock, logger) => {
     }
 
     const { isGroup, type, sender, from, body } = m;
-  //  console.log(m);
+  console.log(m);
 
     const pluginFiles = await fs.readdir(path.join(__dirname, '..', 'plugin'));
 
@@ -39,7 +44,7 @@ const Handler = async (chatUpdate, sock, logger) => {
       if (file.endsWith('.js')) {
         const pluginModule = await import(path.join(__dirname, '..', 'plugin', file));
         const loadPlugins = pluginModule.default;
-        await loadPlugins(m, sock);
+       await loadPlugins(m, sock);
       }
     }
   } catch (e) {
