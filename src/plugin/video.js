@@ -4,6 +4,7 @@ import yts from 'yt-search'
 const video = async (m, Matrix) => {
 const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
         const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
+const text = m.body.substring(cmd.length).trim();
   if (cmd == 'video') {
   
     if (!text) return m.reply('give a YT URL or search query');	 
