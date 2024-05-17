@@ -86,10 +86,9 @@ const test = async (m, Matrix) => {
             body: proto.Message.InteractiveMessage.Body.create({
               text: `╭─────────────━┈⊷
 │🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 1.0
+│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
 │👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
 │👤 ɴᴜᴍʙᴇʀ: 919142294671
-│📡 ʜᴏsᴛ: *${os.hostname()}*
 │📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
 │🛡 ᴍᴏᴅᴇ: *${mode}*
 │💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
@@ -210,14 +209,12 @@ const test = async (m, Matrix) => {
         const str = `hey ${m.pushName} ${pushwish}
 ╭─────────────━┈⊷
 │🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 1.0
+│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
 │👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
 │👤 ɴᴜᴍʙᴇʀ: 919142294671
-│🌐 ʜᴏsᴛ: *${os.hostname()}*
 │💻 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
 │🛡 ᴍᴏᴅᴇ: *${mode}*
 │💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
-│🕐 ʀᴜɴ ᴛɪᴍᴇ: *${hours}h ${minutes}m ${seconds}s*
 ╰─────────────━┈⊷ 
 ╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
 ┃❐ .𝙰𝚃𝚃𝙿
