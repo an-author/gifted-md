@@ -2,9 +2,9 @@ import ytdl from 'ytdl-core'
 import yts from 'yt-search'
 
 const song = async (m, Matrix) => {
-const command = m.body.split(' ')[0].toLowerCase();
-const text = m.body.substring(command.length).trim();
-  if (command == '.song') {
+const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
+        const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
+  if (cmd == 'song') {
   
     if (!text) return m.reply('give a YT URL or search query');	 
  
