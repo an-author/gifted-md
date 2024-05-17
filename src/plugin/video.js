@@ -1,7 +1,7 @@
 import ytdl from 'ytdl-core';
 import yts from 'yt-search';
 
-const video = async (m, sock) => {
+const video = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -32,20 +32,8 @@ const video = async (m, sock) => {
             const finalVideoBuffer = Buffer.concat(videoBuffer);
 
             const videoInfo = await yts({ videoId: ytdl.getURLVideoID(text) });
-            const thumbnailMessage = {
-              image: { url: videoInfo.thumbnail },
-              caption: `
-╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
-│✑ *Title:* ${videoInfo.title}
-│✑ *Duration:* ${videoInfo.timestamp}
-│✑ *Uploaded:* ${videoInfo.ago}
-│✑ *Uploader:* ${videoInfo.author.name}
-╰────────────────❃ 
-`,
-            };
-            await sock.sendMessage(m.from, thumbnailMessage, { quoted: m });
-            await sock.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by sock Bot' });
+    
+            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Matrix Bot' });
             await m.React("✅");
           } catch (err) {
             console.error('Error sending video:', err);
@@ -76,20 +64,8 @@ const video = async (m, sock) => {
         videoStream.on('end', async () => {
           try {
             const finalVideoBuffer = Buffer.concat(videoBuffer);
-            const thumbnailMsg = {
-              image: { url: firstVideo.thumbnail },
-              caption: `
-╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
-│✑ *Title:* ${firstVideo.title}
-│✑ *Duration:* ${firstVideo.timestamp}
-│✑ *Uploaded:* ${firstVideo.ago}
-│✑ *Uploader:* ${firstVideo.author.name}
-╰────────────────❃ 
-`,
-            };
-            await sock.sendMessage(m.from, thumbnailMsg, { quoted: m });
-            await sock.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by sock Bot' });
+          
+            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Matrix Bot' });
             await m.React("✅");
           } catch (err) {
             console.error('Error sending video:', err);
