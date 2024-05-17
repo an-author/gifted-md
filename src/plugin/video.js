@@ -2,9 +2,9 @@ import ytdl from 'ytdl-core'
 import yts from 'yt-search'
 
 const video = async (m, Matrix) => {
-const command = m.body.split(' ')[0].toLowerCase();
-const text = m.body.substring(command.length).trim();
-  if (command == '.video') {
+const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
+        const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
+  if (command == 'video') {
   
     if (!text) return m.reply('give a YT URL or search query');	 
  
@@ -35,7 +35,6 @@ await m.React("⬇️");
   },
   caption: `
 ╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
 │✑ *Title:* ${videoInfo.title}
 │✑ *duration:* ${videoInfo.timestamp}
 │✑ *Uploaded* ${videoInfo.ago}
@@ -44,7 +43,7 @@ await m.React("⬇️");
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMessage, { quoted: m });
-          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Matrix Bot' });
+          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Ethix Bot' });
           await m.React("✅");
         } catch (err) {
           console.error('Error sending video:', err);
@@ -80,7 +79,6 @@ await m.React("⬇️");
   },
   caption: `
 ╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
 │✑ *Title:* ${firstVideo.title}
 │✑ *duration:* ${firstVideo.timestamp}
 │✑ *Uploaded* ${firstVideo.ago}
@@ -89,7 +87,7 @@ await m.React("⬇️");
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMsg, { quoted: m });
-          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded my Matrix Bot' });
+          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'Downloaded my Ethix Bot' });
           await m.React("✅");
         } catch (err) {
           console.error('Error sending video:', err);
