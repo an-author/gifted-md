@@ -162,13 +162,13 @@ async function getMessage(key) {
                 start();
             } else {
                 console.log(chalk.red("[🚫️]Something Went Wrong: Faild to Make Connection"));
+                start();
             }
         }
 
         if (connection === "open") {
             console.log(lime("😃 Initigration Sucsessed️ ✅"));
             Matrix.sendMessage(Matrix.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
-            await Matrix.sendPresenceUpdate('unavailable')
         }
     });
 }
