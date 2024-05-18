@@ -162,7 +162,6 @@ async function getMessage(key) {
                 start();
             } else {
                 console.log(chalk.red("[🚫️]Something Went Wrong: Faild to Make Connection"));
-                start();
             }
         }
 
