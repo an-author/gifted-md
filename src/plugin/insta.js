@@ -23,7 +23,7 @@ const instaDownload = async (m, Matrix) => {
       if (result.status && result.data.length > 0) {
         const mediaType = result.data[0].type;
         const mediaUrl = result.data[0].url;
-        const caption = result.data[0].info;
+        const caption = "> © Powered By Ethix-Xsid";
         
         if (mediaType === 'image') {
           const sendImage = {
