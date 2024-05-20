@@ -65,7 +65,7 @@ const test = async (m, Matrix) => {
     if (paramsJson) {
       const params = JSON.parse(paramsJson);
       selectedListId = params.id;
-      console.log(selectedListId);
+     // console.log(selectedListId);
     }
   }
   const selectedId = selectedListId || selectedButtonId;
