@@ -32,7 +32,12 @@ const instaDownload = async (m, Matrix) => {
           };
           await Matrix.sendMessage(m.from, sendImage, { quoted: m });
         } else if (mediaType === 'video') {
-          await Matrix.sendMessage(m.from, { video: { url: mediaUrl, mimetype: 'video/mp4', caption: caption } }, { quoted: m });
+          const sendVideo = {
+            video: { url: mediaUrl },
+            caption: caption,
+          };
+          await Matrix.sendMessage(m.from,
+          sendVideo, { quoted: m });
         } else {
           throw new Error('Unsupported media type.');
         }
