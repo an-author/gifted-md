@@ -31,7 +31,7 @@ const tourl = async (m, gss) => {
 
       const message = {
         image: { url: imageUrl },
-        caption: `hey ${m.pushName} Here Is Your Image Url: ${imageUrl}`,
+        caption: `*hey ${m.pushName} Here Is Your Image*\n_Url:_ ${imageUrl}`,
       };
 
       await gss.sendMessage(m.from, message, { quoted:m }); // Send the image with the URL as the caption
