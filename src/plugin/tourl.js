@@ -42,7 +42,7 @@ const tourl = async (m, gss) => {
 
       const message = {
         [mediaType]: { url: mediaUrl },
-        caption: `*Hey ${m.pushName} Here Is Your Media\n*url:*${mediaUrl}`,
+        caption: `*Hey ${m.pushName} Here Is Your Media*\n*url:* ${mediaUrl}`,
       };
 
       await gss.sendMessage(m.from, message, { quoted: m }); // Send the media with the URL as the caption
