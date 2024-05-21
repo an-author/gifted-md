@@ -3,6 +3,7 @@ dotenv.config();
 import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './event/index.js'
 import { Boom } from '@hapi/boom';
+import { generateEmojis } from 'generate-random-emoji';
 import express from 'express';
 import pino from 'pino';
 import fs from 'fs';
@@ -170,6 +171,34 @@ async function getMessage(key) {
             Matrix.sendMessage(Matrix.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
         }
     });
+    const doReact = async (emoji, mek, Matrix) => {
+  try {
+    const react = {
+      react: {
+        text: emoji.image,
+        key: mek.key,
+      },
+    };
+
+    await Matrix.sendMessage(mek.key.remoteJid, react);
+  } catch (error) {
+    console.error('Error sending auto reaction:', error);
+  }
+};
+
+Matrix.ev.on('messages.upsert', async chatUpdate => {
+  try {
+    const mek = chatUpdate.messages[0];
+    if (process.env.AUTO_REACT === 'true' && mek.message ) {
+      const randomEmojis = generateEmojis(1);
+      if (randomEmojis.length > 0) {
+        await doReact(randomEmojis[0], mek, Matrix);
+      }
+    }
+  } catch (err) {
+    console.error('Error during auto reaction:', err);
+  }
+});
 }
 
 start();
