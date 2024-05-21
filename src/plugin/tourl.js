@@ -8,7 +8,7 @@ const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const validCommands = ['tourl','url'];
+  const validCommands = ['tourl'];
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || !['imageMessage', 'videoMessage', 'audioMessage'].includes(m.quoted.mtype)) {
@@ -44,7 +44,7 @@ const tourl = async (m, gss) => {
         caption: `${imageUrl}`,
       };
 
-      await m.reply(util.format(message)); // Send the media with the URL as the caption
+      await gss.sendMessage(m.from, message, { quoted: m }); // Send the media with the URL as the caption
       await unlink(filePath); // Delete the downloaded media file
     } catch (error) {
       console.error('Error processing media:', error);
