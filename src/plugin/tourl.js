@@ -8,7 +8,7 @@ const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const validCommands = ['tourl', 'url'];
+  const validCommands = ['tourl'];
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || !['imageMessage', 'videoMessage', 'audioMessage'].includes(m.quoted.mtype)) {
@@ -37,11 +37,12 @@ const tourl = async (m, gss) => {
         response = await UploadFileUgu(filePath); // Pass the file path to UploadFileUgu
       }
 
-      const imageUrl = response.url || response; // Extract the URL from the response
+      const mediaType = getMediaType(m.quoted.mtype);
+      const mediaUrl = response.url || response; // Extract the URL from the response
 
       const message = {
-        [m.quoted.mtype === 'imageMessage' ? 'image' : 'document']: { url: imageUrl },
-        caption: `${imageUrl}`,
+        [mediaType]: { url: mediaUrl },
+        caption: `*Hey ${m.pushName} Here Is Your Media\n*url:*${mediaUrl}`,
       };
 
       await gss.sendMessage(m.from, message, { quoted: m }); // Send the media with the URL as the caption
@@ -62,6 +63,20 @@ const getFileExtension = (mtype) => {
       return 'mp4';
     case 'audioMessage':
       return 'mp3';
+    default:
+      return null;
+  }
+};
+
+// Function to get the media type for messaging
+const getMediaType = (mtype) => {
+  switch (mtype) {
+    case 'imageMessage':
+      return 'image';
+    case 'videoMessage':
+      return 'video';
+    case 'audioMessage':
+      return 'audio';
     default:
       return null;
   }
