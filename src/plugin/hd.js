@@ -2,7 +2,7 @@ import { TelegraPh } from '../uploader.js'; // Ensure this import statement is c
 import { writeFile, unlink } from 'fs/promises';
 import { remini } from 'betabotz-tools';
 
-const remini = async (m, gss) => {
+const reminiHD = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -58,4 +58,4 @@ const remini = async (m, gss) => {
   }
 };
 
-export default remini;
+export default reminiHD;
