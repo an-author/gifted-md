@@ -10,7 +10,7 @@ const tourl = async (m, gss) => {
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
-      return m.reply(`Send/Reply with an image to set your profile picture ${prefix + cmd}`);
+      return m.reply(`Send/Reply with an image to Enhance your image ${prefix + cmd}`);
     }
 
     try {
