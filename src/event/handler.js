@@ -2,7 +2,7 @@ import { downloadMediaMessage, generateWAMessageFromContent, getAggregateVotesIn
 import { serialize, decodeJid } from '../../lib/Serializer.js';
 import path from 'path';
 import fs from 'fs/promises';
-import config from '../config.cjs';
+import config from '../../config.cjs';
 
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
