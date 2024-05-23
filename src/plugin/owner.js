@@ -1,5 +1,5 @@
 import setEnvCommand from '../setvar.js';
-
+import config from '.././config.cjs'
 const ownerContact = async (m, gss) => {
     const ownernumber = config.OWNER_NUMBER;
     const prefixMatch = m.body.match(/^[\\/!#.]/);
