@@ -14,7 +14,7 @@ export default async function GroupParticipants(sock, { id, participants, action
          }
 
          // action
-         if (action == "add" && process.env.WELCOME === 'true') {
+         if (action == "add" && config.WELCOME === 'true') {
            const userName = jid.split("@")[0];
                     const joinTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
                     const joinDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
