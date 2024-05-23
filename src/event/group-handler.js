@@ -15,7 +15,7 @@ export default async function GroupParticipants(sock, { id, participants, action
          }
 
          // action
-         if (action == "add" && config.WELCOME ) {
+         if (action == "add" && config.WELCOME === 'true') {
            const userName = jid.split("@")[0];
                     const joinTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
                     const joinDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
@@ -34,7 +34,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                   }
                }
             })
-         } else if (action == "remove" && config.WELCOME ) {
+         } else if (action == "remove" && config.WELCOME === 'true') {
            const userName = jid.split('@')[0];
                     const leaveTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
                     const leaveDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
