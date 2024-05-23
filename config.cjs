@@ -8,8 +8,7 @@ const config = {
   REJECT_CALL: process.env.REJECT_CALL === 'false',
   MODE: process.env.MODE || "public",
   OWNER_NAME: process.env.OWNER_NAME || "Sid bhai",
-  OWNER_NUMBER: process.env.OWNER_NUMBER || "919142294571",
-  AUTO_REACT: process.env.AUTO_REACT === 'false',
+  OWNER_NUMBER: process.env.OWNER_NUMBER || "919142294671",
   WELCOME: process.env.WELCOME === 'false'
 };
 
