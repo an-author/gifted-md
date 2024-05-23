@@ -4,16 +4,6 @@ const handleGreeting = async (m, gss) => {
   try {
     const textLower = m.body.toLowerCase();
 
-    // Handle basic greetings
-    if (textLower === 'hi') {
-      m.reply('Hello');
-    } else if (textLower === 'hello') {
-      m.reply('Ka bat he');
-    } else if (textLower === 'how are you') {
-      m.reply('I am Fine');
-    }
-
-    // Check if the message matches the specified conditions
     const triggerWords = [
       'send', 'statusdown', 'take', 'sent', 'giv', 'gib', 'upload',
       'send me', 'sent me', 'znt', 'snt', 'ayak', 'do', 'mee'
