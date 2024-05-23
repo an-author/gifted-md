@@ -33,7 +33,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                   }
                }
             })
-         } else if (action == "remove" && process.env.WELCOME === 'true') {
+         } else if (action == "remove" && config.WELCOME === 'true') {
            const userName = jid.split('@')[0];
                     const leaveTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
                     const leaveDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
