@@ -13,6 +13,4 @@ const config = {
   WELCOME: process.env.WELCOME === 'false'
 };
 
-console.log("Loaded Configuration:", config);
-
 module.exports = config;
