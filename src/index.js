@@ -1,19 +1,21 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate } from './event/index.js'
-import { Boom } from '@hapi/boom';
+import { Handler, Callupdate, GroupUpdate } from './event/index.js';
 import { generateEmojis } from 'generate-random-emoji';
+import { Boom } from '@hapi/boom';
 import express from 'express';
 import pino from 'pino';
 import fs from 'fs';
 import NodeCache from 'node-cache';
 import path from 'path';
 import chalk from 'chalk';
-import { writeFile } from 'fs/promises'
-import moment from 'moment-timezone'
+import { writeFile } from 'fs/promises';
+import moment from 'moment-timezone';
 import axios from 'axios';
-import * as os from 'os'
+import fetch from 'node-fetch';
+import * as os from 'os';
+import config from '../config.cjs';  // Import the configuration
 
 const sessionName = "session";
 const app = express();
@@ -22,7 +24,6 @@ const lime = chalk.bold.hex("#32CD32");
 let useQR;
 let isSessionPutted;
 const PORT = process.env.PORT || 3000;
-
 
 const MAIN_LOGGER = pino({
     timestamp: () => `,"time":"${new Date().toJSON()}"`
@@ -37,29 +38,27 @@ const store = makeInMemoryStore({
         level: 'silent',
         stream: 'store'
     })
-})
-
-
+});
 
 // Baileys Connection Option
 async function start() {
-  if(!process.env.SESSION_ID) {
-    useQR = true;
-    isSessionPutted = false;
-  } else {
-    useQR = false;
-    isSessionPutted = true;
-  }
-  
+    if (!config.SESSION_ID) {
+        useQR = true;
+        isSessionPutted = false;
+    } else {
+        useQR = false;
+        isSessionPutted = true;
+    }
+
     let { state, saveCreds } = await useMultiFileAuthState(sessionName);
     let { version, isLatest } = await fetchLatestBaileysVersion();
     console.log(chalk.red("CODED BY GOUTAM KUMAR & Ethix-Xsid"));
     console.log(chalk.green(`using WA v${version.join(".")}, isLatest: ${isLatest}`));
-    
- const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux'
+
+    const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux';
     const Matrix = makeWASocket({
         version,
-        logger: pino({ level: 'silent' }), 
+        logger: pino({ level: 'silent' }),
         printQRInTerminal: useQR,
         browser: [Device, 'chrome', '121.0.6167.159'],
         patchMessageBeforeSending: (message) => {
@@ -89,59 +88,57 @@ async function start() {
         },
         getMessage: async (key) => {
             if (store) {
-                const msg = await store.loadMessage(key.remoteJid, key.id)
-                return msg.message || undefined
+                const msg = await store.loadMessage(key.remoteJid, key.id);
+                return msg.message || undefined;
             }
             return {
                 conversation: "Hello World"
-            }
+            };
         },
-        markOnlineOnConnect: true, // set false for offline
-        generateHighQualityLinkPreview: true, // make high preview link
+        markOnlineOnConnect: true,
+        generateHighQualityLinkPreview: true,
         defaultQueryTimeoutMs: undefined,
         msgRetryCounterCache
     });
     store?.bind(Matrix.ev);
-    
-     // Manage Device Loging
- if (!Matrix.authState.creds.registered && isSessionPutted) {
-    const sessionID = process.env.SESSION_ID.split('Ethix-MD&')[1];
-    const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
-    const response = await fetch(pasteUrl);
-    const text = await response.text();
-    if (typeof text === 'string') {
-      fs.writeFileSync('./session/creds.json', text);
-      console.log('session file created')
-      await start()
-    }
-  }
 
-        // response cmd pollMessage
-async function getMessage(key) {
-    if (store) {
-        const msg = await store.loadMessage(key.remoteJid, key.id);
-        return msg?.message;
+    // Manage Device Logging
+    if (!Matrix.authState.creds.registered && isSessionPutted) {
+        const sessionID = config.SESSION_ID.split('Ethix-MD&')[1];
+        const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
+        const response = await fetch(pasteUrl);
+        const text = await response.text();
+        if (typeof text === 'string') {
+            fs.writeFileSync('./session/creds.json', text);
+            console.log('session file created');
+            await start();
+        }
     }
-    return {
-        conversation: "Hello World",
-    };
-}
 
+    // Response cmd pollMessage
+    async function getMessage(key) {
+        if (store) {
+            const msg = await store.loadMessage(key.remoteJid, key.id);
+            return msg?.message;
+        }
+        return {
+            conversation: "Hello World",
+        };
+    }
 
     // Handle Incomming Messages
     Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
     Matrix.ev.on("call", async (json) => await Callupdate(json, Matrix));
     Matrix.ev.on("group-participants.update", async (messag) => await GroupUpdate(Matrix, messag));
-    
-     
-    if (process.env.MODE === 'public') {
-    Matrix.public = true;
-} else if (process.env.MODE === 'self') {
-    Matrix.public = false;
-}
 
+    // Setting public or self mode based on config
+    if (config.MODE === 'public') {
+        Matrix.public = true;
+    } else if (config.MODE === 'self') {
+        Matrix.public = false;
+    }
 
-    // Check baileys connections
+    // Check Baileys connections
     Matrix.ev.on("connection.update", async update => {
         const { connection, lastDisconnect } = update;
         if (connection === "close") {
@@ -162,50 +159,51 @@ async function getMessage(key) {
                 console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
                 start();
             } else {
-                console.log(chalk.red("[🚫️]Something Went Wrong: Faild to Make Connection"));
+                console.log(chalk.red("[🚫️]Something Went Wrong: Failed to Make Connection"));
             }
         }
 
         if (connection === "open") {
-            console.log(lime("😃 Initigration Sucsessed️ ✅"));
-            Matrix.sendMessage(Matrix.user.id, { text: `😃 Initigration Sucsessed️ ✅` });
+            console.log(lime("😃 Integration Successful️ ✅"));
+            Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
         }
     });
+
     const doReact = async (emoji, mek, Matrix) => {
-  try {
-    const react = {
-      react: {
-        text: emoji.image,
-        key: mek.key,
-      },
+        try {
+            const react = {
+                react: {
+                    text: emoji.image,
+                    key: mek.key,
+                },
+            };
+
+            await Matrix.sendMessage(mek.key.remoteJid, react);
+        } catch (error) {
+            console.error('Error sending auto reaction:', error);
+        }
     };
 
-    await Matrix.sendMessage(mek.key.remoteJid, react);
-  } catch (error) {
-    console.error('Error sending auto reaction:', error);
-  }
-};
-
-Matrix.ev.on('messages.upsert', async chatUpdate => {
-  try {
-    const mek = chatUpdate.messages[0];
-    if (process.env.AUTO_REACT === 'true' && mek.message ) {
-      const randomEmojis = generateEmojis(1);
-      if (randomEmojis.length > 0) {
-        await doReact(randomEmojis[0], mek, Matrix);
-      }
-    }
-  } catch (err) {
-    console.error('Error during auto reaction:', err);
-  }
-});
+    Matrix.ev.on('messages.upsert', async chatUpdate => {
+        try {
+            const mek = chatUpdate.messages[0];
+            if (config.AUTO_REACT && mek.message) {
+                const randomEmojis = generateEmojis(1);
+                if (randomEmojis.length > 0) {
+                    await doReact(randomEmojis[0], mek, Matrix);
+                }
+            }
+        } catch (err) {
+            console.error('Error during auto reaction:', err);
+        }
+    });
 }
 
 start();
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.send('Hello World!');
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
