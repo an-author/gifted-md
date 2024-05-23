@@ -1,7 +1,7 @@
 import setEnvCommand from '../setvar.js';
 
 const ownerContact = async (m, gss) => {
-    const ownernumber = process.env.OWNER_NUMBER;
+    const ownernumber = config.OWNER_NUMBER;
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
