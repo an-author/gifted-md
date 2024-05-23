@@ -17,7 +17,7 @@ const Handler = async (chatUpdate, sock, logger) => {
     if (
       m.key &&
       m.key.remoteJid === 'status@broadcast' &&
-      config.AUTO_STATUS_SEEN === 'true'
+      config.AUTO_STATUS_SEEN
     ) {
       await sock.readMessages([m.key]);
     }
