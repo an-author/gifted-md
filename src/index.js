@@ -168,35 +168,6 @@ async function start() {
             Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
         }
     });
-
-    const doReact = async (emoji, mek, Matrix) => {
-        try {
-            const react = {
-                react: {
-                    text: emoji.image,
-                    key: mek.key,
-                },
-            };
-
-            await Matrix.sendMessage(mek.key.remoteJid, react);
-        } catch (error) {
-            console.error('Error sending auto reaction:', error);
-        }
-    };
-
-    Matrix.ev.on('messages.upsert', async chatUpdate => {
-        try {
-            const mek = chatUpdate.messages[0];
-            if (config.AUTO_REACT && mek.message) {
-                const randomEmojis = generateEmojis(1);
-                if (randomEmojis.length > 0) {
-                    await doReact(randomEmojis[0], mek, Matrix);
-                }
-            }
-        } catch (err) {
-            console.error('Error during auto reaction:', err);
-        }
-    });
 }
 
 start();
