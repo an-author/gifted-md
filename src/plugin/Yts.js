@@ -69,9 +69,10 @@ const song = async (m, Matrix) => {
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
-                title: `` true,
-                subtitle: "",
-                hasMediaAttachment: false
+                title: ``,
+                  gifPlayback: true,
+                  subtitle: "",
+                  hasMediaAttachment: false 
               }),
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
