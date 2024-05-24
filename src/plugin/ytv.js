@@ -39,16 +39,16 @@ const videoInfo = async (m, Matrix) => {
         const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
 
         const { videoDetails } = info;
-        const { tittle, author, lengthSeconds, publishDate, viewCount, thumbnails } = videoDetails;
+        const { title, author, lengthSeconds, publishDate, viewCount, thumbnails } = videoDetails;
         const thumbnailUrl = thumbnails[thumbnails.length - 1].url;
 
         const media = await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer });
 
         const buttons = formats.map((format, index) => ({
-          "header": "",
-          "title": `Quality: ${format.qualityLabel}, Type: ${format.container}`,
-          "description": "",
-          "id": `download ${format.url}` // Command to trigger download
+          header: "",
+          title: `Quality: ${format.qualityLabel}, Type: ${format.container}`,
+          description: "",
+          id: `download ${format.url}` // Command to trigger download
         }));
 
         const messageContent = {
@@ -60,17 +60,17 @@ const videoInfo = async (m, Matrix) => {
               },
               interactiveMessage: proto.Message.InteractiveMessage.create({
                 body: proto.Message.InteractiveMessage.Body.create({
-                  text: `Ethix-MD Video Downloader\n\n🔍 **${tittle}**\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
+                  text: `Ethix-MD Video Downloader\n\n🔍 **${title}**\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
                   text: "© Powered By Ethix-MD"
                 }),
                 header: proto.Message.InteractiveMessage.Header.create({
-  ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
-  title: ``,
-  gifPlayback: true,
-  subtitle: "",
-  hasMediaAttachment: false 
+                  ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
+                  title: ``,
+                  gifPlayback: true,
+                  subtitle: "",
+                  hasMediaAttachment: false 
                 }),
                 nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                   buttons: [
