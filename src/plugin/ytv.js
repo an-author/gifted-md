@@ -71,7 +71,7 @@ const videoInfo = async (m, Matrix) => {
               },
               interactiveMessage: proto.Message.InteractiveMessage.create({
                 body: proto.Message.InteractiveMessage.Body.create({
-                  text: `Ethix-MD Video Downloader\n\n🔍 **${title}**\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
+                  text: `Ethix-MD Video Downloader\n\n🔍 *${title}*\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
                   text: "© Powered By Ethix-MD"
