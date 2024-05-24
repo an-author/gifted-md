@@ -49,7 +49,7 @@ const song = async (m, Matrix) => {
       const buttons = topVideos.map((video, index) => ({
         "header": "",
         "title": video.title,
-        "description": `${video.timestamp}`,
+        "description": ``,
         "id": index.toString() // Use index as ID
       }));
 
@@ -62,14 +62,14 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Youtube Downloader`
+                text: `Ethix-MD Video Downloader\n\n🔍 Search and download your favorite YouTube videos easily.\n\n🎵 Download audio or video with a single click.\n\n📌 Simply select a video from the list below to get started.`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image : { url: `https://uploadimage.org/i/Untitled69-2.jpg`}}, { upload: Matrix.waUploadToServer})),
-                title: ``,
+                ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: `Ethix-MD Video Downloader`,
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false
@@ -125,6 +125,7 @@ const song = async (m, Matrix) => {
       const duration = videoInfo.videoDetails.lengthSeconds;
       const uploadDate = videoInfo.videoDetails.uploadDate;
       const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.videoId}`;
+      const thumbnailUrl = selectedVideo.thumbnail; // Get the thumbnail URL from search results
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -141,7 +142,7 @@ const song = async (m, Matrix) => {
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image : { url: `${videoUrl}`}}, { upload: Matrix.waUploadToServer})),
+                ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
                 title: `Video Information`,
                 subtitle: `Video by ${author}`,
                 hasMediaAttachment: false
@@ -149,14 +150,14 @@ const song = async (m, Matrix) => {
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
                   {
-                "name": "quick_reply",
-                "buttonParamsJson": `{\"display_text\":\"Download Audio\",\"id\":\".song ${videoUrl}\"}`
-              },
-              {
-                "name": "quick_reply",
-                "buttonParamsJson": `{\"display_text\":\"Download Video\",\"id\":\".video ${videoUrl}\"}`
-              }
-                  ],
+                    name: "quick_reply",
+                    buttonParamsJson: `{\"display_text\":\"Download Audio\",\"id\":\".song ${videoUrl}\"}`
+                  },
+                  {
+                    name: "quick_reply",
+                    buttonParamsJson: `{\"display_text\":\"Download Video\",\"id\":\".video ${videoUrl}\"}`
+                  }
+                ],
               }),
               contextInfo: {
                 mentionedJid: [m.sender],
