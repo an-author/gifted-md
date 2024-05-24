@@ -67,7 +67,7 @@ const videoInfo = async (m, Matrix) => {
                 }),
                 header: proto.Message.InteractiveMessage.Header.create({
                   ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer }))
-                  title: `` true,
+                  title: ``,
                 subtitle: "",
                 hasMediaAttachment: false
                 }),
