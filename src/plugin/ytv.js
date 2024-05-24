@@ -2,6 +2,8 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
+let formats; // Define formats globally
+
 const videoInfo = async (m, Matrix) => {
   try {
     let selectedListId;
@@ -35,8 +37,17 @@ const videoInfo = async (m, Matrix) => {
           return m.reply('Please provide a valid YouTube URL.');
         }
 
-        const info = await ytdl.getInfo(text);
-        const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
+        const info = await ytdl.getInfo(text, {
+          quality: 'highestvideo', // Fetch highest available quality
+          lang: 'en', // Language preference
+          requestOptions: {
+            headers: {
+              referer: 'https://www.youtube.com/', // Referer header for YouTube
+              'accept-language': 'en-US,en;q=0.9', // Accept-Language header
+            },
+          },
+        });
+        formats = ytdl.filterFormats(info.formats, 'videoandaudio');
 
         const { videoDetails } = info;
         const { title, author, lengthSeconds, publishDate, viewCount, thumbnails } = videoDetails;
