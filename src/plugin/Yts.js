@@ -27,8 +27,10 @@ const song = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
+  
+  const validCommands = ['yts', 'ytsearch', 'play', 'play2'];
 
-  if (cmd === 'test') {
+  if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a YouTube URL or search query');
 
     try {
