@@ -69,8 +69,7 @@ const song = async (m, Matrix) => {
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
-                title: `Ethix-MD Video Downloader`,
-                gifPlayback: true,
+                title: `` true,
                 subtitle: "",
                 hasMediaAttachment: false
               }),
