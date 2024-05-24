@@ -62,20 +62,13 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `╭─────────────━┈⊷
-│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
-│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
-│👤 ɴᴜᴍʙᴇʀ: 919142294671
-│📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
-│💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
-╰─────────────━┈⊷ `
+                text: `Ethix-MD Youtube Downloader`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: fs.readFileSync('./src/ethix.jpg') }, { upload: Matrix.waUploadToServer })),
+                ...(await prepareWAMessageMedia({ image : { url: `https://uploadimage.org/i/Untitled69-2.jpg`}}, { upload: Matrix.waUploadToServer})),
                 title: ``,
                 gifPlayback: true,
                 subtitle: "",
@@ -142,13 +135,13 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                ...(await prepareWAMessageMedia({ image : { url: `${videoUrl}`}}, { upload: Matrix.waUploadToServer})),
                 text: `Title: ${title}\nAuthor: ${author}\nDuration: ${duration} seconds\nUpload Date: ${uploadDate}`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
+                ...(await prepareWAMessageMedia({ image : { url: `${videoUrl}`}}, { upload: Matrix.waUploadToServer})),
                 title: `Video Information`,
                 subtitle: `Video by ${author}`,
                 hasMediaAttachment: false
