@@ -51,15 +51,15 @@ const videoInfo = async (m, Matrix) => {
           "id": `download ${format.url}` // Command to trigger download
         }));
 
-        const messageContent = {
-          viewOnceMessage: {
-            message: {
-              messageContextInfo: {
-                deviceListMetadata: {},
-                deviceListMetadataVersion: 2
-              },
-              interactiveMessage: proto.Message.InteractiveMessage.create({
-                body: proto.Message.InteractiveMessage.Body.create({
+        const messageContent = generateWAMessageFromContent(m.from, {
+        viewOnceMessage: {
+          message: {
+            messageContextInfo: {
+              deviceListMetadata: {},
+              deviceListMetadataVersion: 2
+            },
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
                   text: `Ethix-MD Video Downloader\n\n🔍 **${tittle}**\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
