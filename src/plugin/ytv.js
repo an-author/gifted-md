@@ -60,7 +60,7 @@ const videoInfo = async (m, Matrix) => {
               },
               interactiveMessage: proto.Message.InteractiveMessage.create({
                 body: proto.Message.InteractiveMessage.Body.create({
-                  text: `Ethix-MD Video Downloader\n\n🔍 *${title}*\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
+                  text: `Ethix-MD Video Downloader\n\n🔍 **${title}**\n👤 Author: ${author.name}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
                   text: "© Powered By Ethix-MD"
@@ -108,8 +108,8 @@ const videoInfo = async (m, Matrix) => {
     }
 
     if (selectedId && selectedId.startsWith('download')) {
-      const url = selectedId.split(' ')[1];
-      if (!url) {
+      const selectedFormatUrl = selectedId.split(' ')[1];
+      if (!selectedFormatUrl) {
         await m.React("❌");
         return m.reply('Invalid download URL.');
       }
@@ -117,7 +117,7 @@ const videoInfo = async (m, Matrix) => {
       try {
         await m.React("🕘");
 
-        const res = await fetch(url);
+        const res = await fetch(selectedFormatUrl);
         if (!res.ok) {
           await m.React("❌");
           throw `Failed to fetch video. Status: ${res.status} ${res.statusText}`;
@@ -135,8 +135,9 @@ const videoInfo = async (m, Matrix) => {
         }
 
         const videoBuffer = Buffer.from(await res.arrayBuffer());
+        const selectedFormat = formats.find(format => `download ${format.url}` === selectedId);
 
-        await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: '> © Powered by Ethix-MD' });
+        await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: `Quality: ${selectedFormat.qualityLabel}, Type: ${selectedFormat.container}\n> © Powered by Ethix-MD` });
         await m.React("✅");
       } catch (error) {
         console.error("Error processing download command:", error);
