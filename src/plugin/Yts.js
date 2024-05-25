@@ -50,7 +50,7 @@ const song = async (m, Matrix) => {
         "header": "",
         "title": video.title,
         "description": ``,
-        "id": index.toString() // Use index as ID
+        "id": video.title, // Use index as ID
       }));
 
       const msg = generateWAMessageFromContent(m.from, {
