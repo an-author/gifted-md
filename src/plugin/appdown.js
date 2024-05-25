@@ -171,11 +171,9 @@ const appSearch = async (m, Matrix) => {
           messageId: msg.key.id
         });
       } else {
-        m.reply('Selected app not found.');
       }
     } catch (error) {
       console.error("Error processing the selected app:", error);
-      m.reply('Error processing the selected app.');
     }
   }
 };
