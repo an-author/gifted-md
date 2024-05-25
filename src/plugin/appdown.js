@@ -1,4 +1,4 @@
-import aptoid from 'aptoid-scraper';
+import aptoid from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
