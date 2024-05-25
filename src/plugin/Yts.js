@@ -5,9 +5,8 @@ const { generateWAMessageFromContent, proto } = pkg;
 import fs from 'fs';
 import os from 'os';
 
-// Use a global variable to store the topVideos and a global counter for unique IDs
+// Use a global variable to store the topVideos
 let topVideos = [];
-let youtubeUniqueIdCounter = 0;
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -47,15 +46,12 @@ const song = async (m, Matrix) => {
         return;
       }
 
-      const buttons = topVideos.map((video) => {
-        const id = `youtube-${youtubeUniqueIdCounter++}`; // Generate unique ID with prefix
-        return {
-          "header": "",
-          "title": video.title,
-          "description": ``,
-          "id": id // Use unique ID
-        };
-      });
+      const buttons = topVideos.map((video, index) => ({
+        "header": "",
+        "title": video.title,
+        "description": ``,
+        "id": index.toString() // Use index as ID
+      }));
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -120,7 +116,7 @@ const song = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = topVideos.find(video => video.id === selectedId);
+    const selectedVideo = topVideos[parseInt(selectedId)];
 
     if (selectedVideo) {
       const videoInfo = await ytdl.getBasicInfo(selectedVideo.videoId);
@@ -182,7 +178,6 @@ const song = async (m, Matrix) => {
         messageId: msg.key.id
       });
     } else {
-      m.reply('The selected video could not be found.');
     }
   }
 };
