@@ -2,8 +2,6 @@ import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-import fs from 'fs';
-import os from 'os';
 
 // Variables to keep track of button and option indexes, and store search results
 let currentButtonIndex = 0;
@@ -168,16 +166,16 @@ const song = async (m, Matrix) => {
                   isForwarded: true,
                   forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363222395675670@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
+                    newsletterName: "Ethix-MD",
+                    serverMessageId: 143
+                  }
                 }
-              }
-            })
+              })
+            }
           }
-        }
-      }, {});
+        }, {});
 
-      await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+        await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
         messageId: msg.key.id
       });
     }
