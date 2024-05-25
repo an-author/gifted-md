@@ -50,7 +50,7 @@ const song = async (m, Matrix) => {
         "header": "",
         "title": video.title,
         "description": ``,
-        "id": video.title, // Use index as ID
+        "id": video.title // Use video title as ID
       }));
 
       const msg = generateWAMessageFromContent(m.from, {
@@ -116,7 +116,7 @@ const song = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = topVideos[parseInt(selectedId)];
+    const selectedVideo = topVideos.find(video => video.title === selectedId); // Find video by title
 
     if (selectedVideo) {
       const videoInfo = await ytdl.getBasicInfo(selectedVideo.videoId);
@@ -177,7 +177,6 @@ const song = async (m, Matrix) => {
       await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
         messageId: msg.key.id
       });
-    } else {
     }
   }
 };
