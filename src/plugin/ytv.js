@@ -153,13 +153,11 @@ const videoInfo = async (m, Matrix) => {
       } catch (error) {
         console.error("Error processing download command:", error);
         await m.React("❌");
-        m.reply('An error occurred while processing your request.');
       }
     }
   } catch (error) {
     console.error("Unhandled error:", error);
     await m.React("❌");
-    m.reply('An unexpected error occurred.');
   }
 };
 
