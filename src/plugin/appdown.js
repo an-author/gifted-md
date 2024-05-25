@@ -1,4 +1,4 @@
-import aptoid from 'aptoide-scraper';
+import aptoid from 'aptoid-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
@@ -172,6 +172,7 @@ const appSearch = async (m, Matrix) => {
         });
       } catch (error) {
         console.error("Error getting app details:", error);
+        m.reply('Error getting app details.');
       }
     }
   }
