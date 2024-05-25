@@ -4,7 +4,7 @@ const { generateWAMessageFromContent, proto } = pkg;
 
 // Use a global variable to store the topApps and a global counter for unique IDs
 let topApps = [];
-let uniqueIdCounter = 0;
+let aptoideUniqueIdCounter = 0;
 
 const appSearch = async (m, Matrix) => {
   let selectedListId;
@@ -45,7 +45,7 @@ const appSearch = async (m, Matrix) => {
       }
 
       const buttons = topApps.map((app) => {
-        const id = (uniqueIdCounter++).toString(); // Generate unique ID
+        const id = `aptoide-${aptoideUniqueIdCounter++}`; // Generate unique ID with prefix
         return {
           "header": "",
           "title": app.name,
@@ -117,67 +117,64 @@ const appSearch = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    try {
-      const selectedApp = topApps.find(app => app.id === selectedId);
+    const selectedApp = topApps.find(app => app.id === selectedId);
 
-      if (selectedApp) {
-        const title = selectedApp.name;
-        const store = selectedApp.store;
-        const downloads = selectedApp.downloads;
-        const version = selectedApp.version;
-        const appUrl = selectedApp.url;
-        const thumbnailUrl = selectedApp.icon;
+    if (selectedApp) {
+      const title = selectedApp.name;
+      const store = selectedApp.store;
+      const downloads = selectedApp.downloads;
+      const version = selectedApp.version;
+      const appUrl = selectedApp.url;
+      const thumbnailUrl = selectedApp.icon;
 
-        const msg = generateWAMessageFromContent(m.from, {
-          viewOnceMessage: {
-            message: {
-              messageContextInfo: {
-                deviceListMetadata: {},
-                deviceListMetadataVersion: 2
-              },
-              interactiveMessage: proto.Message.InteractiveMessage.create({
-                body: proto.Message.InteractiveMessage.Body.create({
-                  text: `Name: ${title}\nStore: ${store}\nDownloads: ${downloads}\nVersion: ${version}`
-                }),
-                footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: "© Powered By Ethix-MD"
-                }),
-                header: proto.Message.InteractiveMessage.Header.create({
-                  ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
-                  title: `App Information`,
-                  subtitle: `App by ${store}`,
-                  hasMediaAttachment: false
-                }),
-                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                  buttons: [
-                    {
-                      name: "quick_reply",
-                      buttonParamsJson: `{\"display_text\":\"Download App\",\"id\":\".download ${appUrl}\"}`
-                    }
-                  ],
-                }),
-                contextInfo: {
-                  mentionedJid: [m.sender],
-                  forwardingScore: 9999,
-                  isForwarded: true,
-                  forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363222395675670@newsletter',
-                    newsletterName: "Ethix-MD",
-                    serverMessageId: 143
+      const msg = generateWAMessageFromContent(m.from, {
+        viewOnceMessage: {
+          message: {
+            messageContextInfo: {
+              deviceListMetadata: {},
+              deviceListMetadataVersion: 2
+            },
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: `Name: ${title}\nStore: ${store}\nDownloads: ${downloads}\nVersion: ${version}`
+              }),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: "© Powered By Ethix-MD"
+              }),
+              header: proto.Message.InteractiveMessage.Header.create({
+                ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
+                title: `App Information`,
+                subtitle: `App by ${store}`,
+                hasMediaAttachment: false
+              }),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [
+                  {
+                    name: "quick_reply",
+                    buttonParamsJson: `{\"display_text\":\"Download App\",\"id\":\".download ${appUrl}\"}`
                   }
+                ],
+              }),
+              contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 9999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363222395675670@newsletter',
+                  newsletterName: "Ethix-MD",
+                  serverMessageId: 143
                 }
-              })
-            }
+              }
+            })
           }
-        }, {});
+        }
+      }, {});
 
-        await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-          messageId: msg.key.id
-        });
-      } else {
-      }
-    } catch (error) {
-      console.error("Error processing the selected app:", error);
+      await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+        messageId: msg.key.id
+      });
+    } else {
+      m.reply('The selected app could not be found.');
     }
   }
 };
