@@ -2,8 +2,9 @@ import { search } from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Use a global variable to store the topApps
+// Use a global variable to store the topApps and a global counter for unique IDs
 let topApps = [];
+let uniqueIdCounter = 0;
 
 const appSearch = async (m, Matrix) => {
   let selectedListId;
@@ -43,12 +44,15 @@ const appSearch = async (m, Matrix) => {
         return;
       }
 
-      const buttons = topApps.map((app, index) => ({
-        "header": "",
-        "title": app.name,
-        "description": app.store,
-        "id": index.toString() // Use index as ID
-      }));
+      const buttons = topApps.map((app) => {
+        const id = (uniqueIdCounter++).toString(); // Generate unique ID
+        return {
+          "header": "",
+          "title": app.name,
+          "description": app.store,
+          "id": id // Use unique ID
+        };
+      });
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -114,7 +118,7 @@ const appSearch = async (m, Matrix) => {
     }
   } else if (selectedId) { // Check if selectedId exists
     try {
-      const selectedApp = topApps[parseInt(selectedId)];
+      const selectedApp = topApps.find(app => app.id === selectedId);
 
       if (selectedApp) {
         const title = selectedApp.name;
