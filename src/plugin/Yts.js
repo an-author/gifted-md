@@ -8,6 +8,9 @@ import os from 'os';
 // Use a global variable to store the topVideos
 let topVideos = [];
 
+// Function to generate a unique ID for each button
+const generateButtonId = (index, cmd) => `${cmd}_${index}`;
+
 const song = async (m, Matrix) => {
   let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
@@ -50,7 +53,7 @@ const song = async (m, Matrix) => {
         "header": "",
         "title": video.title,
         "description": ``,
-        "id": video.title // Use video title as ID
+        "id": generateButtonId(index, cmd) // Generate unique button ID
       }));
 
       const msg = generateWAMessageFromContent(m.from, {
@@ -116,7 +119,8 @@ const song = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = topVideos.find(video => video.title === selectedId); // Find video by title
+    const selectedVideoIndex = parseInt(selectedId.split('_')[1]); // Extract index from button ID
+    const selectedVideo = topVideos[selectedVideoIndex];
 
     if (selectedVideo) {
       const videoInfo = await ytdl.getBasicInfo(selectedVideo.videoId);
