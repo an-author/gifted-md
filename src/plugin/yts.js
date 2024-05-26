@@ -2,9 +2,6 @@ import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-import fs from 'fs';
-import os from 'os';
-
 
 // Use a global variable to store the topVideos and video index
 const videoMap = new Map();
@@ -48,9 +45,20 @@ const song = async (m, Matrix) => {
         return;
       }
 
-      const buttons = topVideos.map((video, index) => {
+      const videoButtons = topVideos.map((video, index) => {
         const uniqueId = videoIndex + index;
-        videoMap.set(uniqueId, video);
+        videoMap.set(uniqueId, { ...video, isAudio: false });
+        return {
+          "header": "",
+          "title": video.title,
+          "description": ``,
+          "id": `${uniqueId}` // Unique key format: index
+        };
+      });
+
+      const audioButtons = topVideos.map((video, index) => {
+        const uniqueId = videoIndex + index + topVideos.length; // Ensure unique IDs for audio buttons
+        videoMap.set(uniqueId, { ...video, isAudio: true });
         return {
           "header": "",
           "title": video.title,
@@ -88,9 +96,14 @@ const song = async (m, Matrix) => {
                       title: "🔖 Select a video",
                       sections: [
                         {
-                          title: "😎 Top 10 YouTube Results",
+                          title: "😎 Top 10 YouTube Results - Videos",
                           highlight_label: "🤩 Top 10",
-                          rows: buttons
+                          rows: videoButtons
+                        },
+                        {
+                          title: "🎧 Select an audio",
+                          highlight_label: "🎵 Top 10",
+                          rows: audioButtons
                         }
                       ]
                     })
@@ -118,7 +131,7 @@ const song = async (m, Matrix) => {
       await m.React("✅");
 
       // Increment the global video index for the next set of videos
-      videoIndex += topVideos.length;
+      videoIndex += topVideos.length * 2; // Adjust for both video and audio buttons
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
@@ -137,56 +150,19 @@ const song = async (m, Matrix) => {
         const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.videoId}`;
         const thumbnailUrl = selectedVideo.thumbnail; // Get the thumbnail URL from search results
 
-        const msg = generateWAMessageFromContent(m.from, {
-          viewOnceMessage: {
-            message: {
-              messageContextInfo: {
-                deviceListMetadata: {},
-                deviceListMetadataVersion: 2
-              },
-              interactiveMessage: proto.Message.InteractiveMessage.create({
-                body: proto.Message.InteractiveMessage.Body.create({
-                  text: `Title: ${title}\nAuthor: ${author}\nDuration: ${duration} seconds\nUpload Date: ${uploadDate}`
-                }),
-                footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: "© Powered By Ethix-MD"
-                }),
-                header: proto.Message.InteractiveMessage.Header.create({
-                  ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
-                  title: `Video Information`,
-                  subtitle: `Video by ${author}`,
-                  hasMediaAttachment: false
-                }),
-                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                  buttons: [
-                    {
-                      name: "quick_reply",
-                      buttonParamsJson: `{\"display_text\":\"Download Audio\",\"id\":\".song ${videoUrl}\"}`
-                    },
-                    {
-                      name: "quick_reply",
-                      buttonParamsJson: `{\"display_text\":\"Download Video\",\"id\":\".video ${videoUrl}\"}`
-                    }
-                  ],
-                }),
-                contextInfo: {
-                  mentionedJid: [m.sender],
-                  forwardingScore: 9999,
-                  isForwarded: true,
-                  forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363222395675670@newsletter',
-                    newsletterName: "Ethix-MD",
-                    serverMessageId: 143
-                  }
-                }
-              })
-            }
-          }
-        }, {});
+        if (selectedVideo.isAudio) {
+          // Download audio
+          const audioStream = ytdl(videoUrl, { filter: 'audioonly', quality: 'highestaudio' });
+          const finalAudioBuffer = await streamToBuffer(audioStream);
 
-        await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-          messageId: msg.key.id
-        });
+          await Matrix.sendMessage(m.from, { audio: finalAudioBuffer, mimetype: 'audio/mpeg', caption: '> © Powered by Ethix-MD' }, { quoted: m });
+        } else {
+          // Download video
+          const videoStream = ytdl(videoUrl, { filter: 'audioandvideo', quality: 'highest' });
+          const finalVideoBuffer = await streamToBuffer(videoStream);
+
+          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: '> © Powered by Ethix-MD' }, { quoted: m });
+        }
       } catch (error) {
         console.error("Error fetching video details:", error);
         
@@ -195,6 +171,15 @@ const song = async (m, Matrix) => {
       
     }
   }
+};
+
+const streamToBuffer = async (stream) => {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    stream.on('data', chunk => chunks.push(chunk));
+    stream.on('end', () => resolve(Buffer.concat(chunks)));
+    stream.on('error', reject);
+  });
 };
 
 export default song;
