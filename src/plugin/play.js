@@ -25,7 +25,7 @@ const play = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'ytv') {
+  if (cmd === 'yt') {
     if (!text) return m.reply('Please provide a YouTube link');
 
     try {
