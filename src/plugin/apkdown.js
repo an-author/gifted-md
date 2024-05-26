@@ -1,9 +1,7 @@
 import aptoideScraper from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-import fs from 'fs';
 import axios from 'axios';
-import path from 'path';
 
 // Use a global variable to store the APKs and index
 const apkMap = new Map();
@@ -12,6 +10,17 @@ let apkIndex = 1; // Global index for APKs
 const searchAPK = async (m, Matrix) => {
   let selectedApkId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
+  const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
+
+  if (interactiveResponseMessage) {
+    const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
+    if (paramsJson) {
+      const params = JSON.parse(paramsJson);
+      selectedListId = params.id;
+    }
+  }
+
+  const selectedId = selectedListId || selectedButtonId;
 
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
@@ -37,13 +46,13 @@ const searchAPK = async (m, Matrix) => {
       }
 
       const apkButtons = topAPKs.map((apk, index) => {
-        const uniqueId = apkIndex + index;
+        const uniqueId = `apk${apkIndex + index}`;
         apkMap.set(uniqueId, apk);
         return {
           "header": "",
           "title": apk.name, // Use the name of the APK
-          "description": null,
-          "id": `${uniqueId}` // Unique key format: index
+          "description": `Version: ${apk.version}\nSize: ${apk.size}`,
+          "id": uniqueId // Unique key format: apk{index}
         };
       });
 
@@ -91,7 +100,7 @@ const searchAPK = async (m, Matrix) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                   newsletterJid: '120363222395675670@newsletter',
-                  newsletterName: "Aptoide",
+                  newsletterName: "Ethix-MD",
                   serverMessageId: 143
                 }
               }
@@ -113,29 +122,26 @@ const searchAPK = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedButtonId) { // Check if selectedButtonId exists
-    const selectedAPK = apkMap.get(parseInt(selectedButtonId)); // Find APK by unique key
+    const selectedAPK = apkMap.get(selectedButtonId); // Find APK by unique key
 
     if (selectedAPK) {
       try {
-        // Download APK
-        const response = await axios.get(selectedAPK.dllink, { responseType: 'arraybuffer' });
-        const filePath = path.join(os.tmpdir(), `${selectedAPK.name}.apk`);
-        fs.writeFileSync(filePath, response.data);
-
+        // Send APK directly from URL
         const apkMessage = {
-          document: fs.readFileSync(filePath),
+          document: { url: selectedAPK.dllink },
           mimetype: 'application/vnd.android.package-archive',
           fileName: `${selectedAPK.name}.apk`
         };
+        
+        await m.reply(apkMessage);
 
         await Matrix.sendMessage(m.from, apkMessage, { quoted: m });
-        fs.unlinkSync(filePath); // Clean up the file after sending
       } catch (error) {
-        console.error("Error downloading APK:", error);
+        console.error("Error sending APK:", error);
         
       }
     } else {
-
+      
     }
   }
 };
