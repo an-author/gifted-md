@@ -7,9 +7,8 @@ import os from 'os';
 
 
 // Use a global variable to store the topVideos and video index
-let topVideos = [];
-let videoIndex = 1; // Global index for video links
 const videoMap = new Map();
+let videoIndex = 1; // Global index for video links
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -41,7 +40,7 @@ const song = async (m, Matrix) => {
 
       // Search YouTube for the provided query
       const searchResult = await yts(text);
-      topVideos = searchResult.videos.slice(0, 10);
+      const topVideos = searchResult.videos.slice(0, 10);
 
       if (topVideos.length === 0) {
         m.reply('No results found.');
@@ -190,10 +189,10 @@ const song = async (m, Matrix) => {
         });
       } catch (error) {
         console.error("Error fetching video details:", error);
-        
+        m.reply('Error fetching video details.');
       }
     } else {
-      
+      m.reply('Invalid selection.');
     }
   }
 };
