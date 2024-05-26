@@ -2,10 +2,12 @@ import aptoideScraper from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import fs from 'fs';
+import axios from 'axios';
+import path from 'path';
 
-
+// Use a global variable to store the APKs and index
 const apkMap = new Map();
-let apkIndex = 1;
+let apkIndex = 1; // Global index for APKs
 
 const searchAPK = async (m, Matrix) => {
   let selectedApkId;
@@ -15,7 +17,7 @@ const searchAPK = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
-  
+
   const validCommands = ['apksearch', 'searchapk'];
 
   if (validCommands.includes(cmd)) {
@@ -39,7 +41,7 @@ const searchAPK = async (m, Matrix) => {
         apkMap.set(uniqueId, apk);
         return {
           "header": "",
-          "title": apk.title,
+          "title": apk.name, // Use the name of the APK
           "description": `Version: ${apk.version}\nSize: ${apk.size}`,
           "id": `${uniqueId}` // Unique key format: index
         };
@@ -103,31 +105,37 @@ const searchAPK = async (m, Matrix) => {
       });
       await m.React("✅");
 
+      // Increment the global APK index for the next set of APKs
       apkIndex += topAPKs.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedApkId) { // Check if selectedApkId exists
-    const selectedAPK = apkMap.get(parseInt(selectedApkId)); // Find APK by unique key
+  } else if (selectedButtonId) { // Check if selectedButtonId exists
+    const selectedAPK = apkMap.get(parseInt(selectedButtonId)); // Find APK by unique key
 
     if (selectedAPK) {
       try {
         // Download APK
+        const response = await axios.get(selectedAPK.downloadLink, { responseType: 'arraybuffer' });
+        const filePath = path.join(os.tmpdir(), `${selectedAPK.name}.apk`);
+        fs.writeFileSync(filePath, response.data);
+
         const apkMessage = {
-          document: fs.readFileSync(selectedAPK.filePath),
+          document: fs.readFileSync(filePath),
           mimetype: 'application/vnd.android.package-archive',
           fileName: `${selectedAPK.name}.apk`
         };
 
         await Matrix.sendMessage(m.from, apkMessage, { quoted: m });
+        fs.unlinkSync(filePath); // Clean up the file after sending
       } catch (error) {
         console.error("Error downloading APK:", error);
-        
+        m.reply('Error downloading APK.');
       }
     } else {
-      
+      m.reply('APK not found.');
     }
   }
 };
