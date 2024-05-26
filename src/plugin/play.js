@@ -6,7 +6,7 @@ const { generateWAMessageFromContent, proto } = pkg;
 const videoMap = new Map();
 let videoIndex = 1;
 
-const ytvPlay = async (m, Matrix) => {
+const play = async (m, Matrix) => {
   let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
   const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
@@ -25,7 +25,7 @@ const ytvPlay = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'ytv') {
+  if (cmd === 'yt') {
     if (!text) return m.reply('Please provide a YouTube link');
 
     try {
@@ -125,10 +125,9 @@ const ytvPlay = async (m, Matrix) => {
         await Matrix.sendMessage(m.from, videoMessage, { quoted: m });
       } catch (error) {
         console.error("Error sending video:", error);
-        m.reply('Error sending video.');
       }
     }
   }
 };
 
-export default ytvPlay;
+export default play;
