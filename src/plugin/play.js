@@ -2,6 +2,7 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
+// Global variable to store video quality options and index
 const videoMap = new Map();
 let videoIndex = 1;
 
@@ -24,7 +25,7 @@ const play = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'yt') {
+  if (cmd === 'ytv') {
     if (!text) return m.reply('Please provide a YouTube link');
 
     try {
@@ -40,7 +41,6 @@ const play = async (m, Matrix) => {
       const videoFormats = ytdl.filterFormats(videoInfo.formats, 'videoandaudio').filter(format => format.container === 'mp4');
 
       if (videoFormats.length === 0) {
-        m.reply('No MP4 video formats found.');
         return;
       }
 
@@ -68,7 +68,7 @@ const play = async (m, Matrix) => {
                 text: "> © Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                ...(await prepareWAMessageMedia({ image: { url: videoInfo.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
                 title: ``,
                 gifPlayback: true,
                 subtitle: "",
@@ -106,12 +106,9 @@ const play = async (m, Matrix) => {
       }, {});
 
       await Matrix.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
-      
       videoIndex += videoFormats.length;
     } catch (error) {
       console.error("Error processing your request:", error);
-      m.reply('Error processing your request.');
-      await Matrix.sendMessage(m.from, { text: "❌ Error processing your request" }, { quoted: m });
     }
   } else if (selectedId) { // Handle selected video quality
     const selectedVideo = videoMap.get(selectedId);
@@ -131,7 +128,7 @@ const play = async (m, Matrix) => {
 
         const caption = `Title: ${videoDetails.title}\nAuthor: ${videoDetails.author.name}\nQuality: ${format.qualityLabel}\nViews: ${videoDetails.viewCount}\nSize: ${(format.contentLength / (1024 * 1024)).toFixed(2)} MB`;
 
-        await Matrix.sendMessage(m.from, { document: videoMessage, caption }, { quoted: m });
+        await Matrix.sendMessage(m.from,  videoMessage, caption: caption, { quoted: m });
       } catch (error) {
         console.error("Error sending video:", error);
       }
