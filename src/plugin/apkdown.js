@@ -1,4 +1,4 @@
-import aptoideScraper from 'aptoide-scraper';
+import { search, download } from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
@@ -26,7 +26,7 @@ const searchAPK = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['apk', 'searchapk'];
+  const validCommands = ['apk', 'searchapk', 'apkdl', 'app'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a search query for APKs');
@@ -35,7 +35,7 @@ const searchAPK = async (m, Matrix) => {
       await m.React("🕘");
 
       // Search Aptoide for the provided query
-      const searchResult = await aptoideScraper.search(text);
+      let searchResult = await search(text);
       const topAPKs = searchResult.slice(0, 10);
 
       if (topAPKs.length === 0) {
@@ -44,16 +44,20 @@ const searchAPK = async (m, Matrix) => {
         return;
       }
 
-      const apkButtons = topAPKs.map((apk, index) => {
-        const uniqueId = `apk${apkIndex + index}`;
-        apkMap.set(uniqueId, apk);
+      const apkButtons = await Promise.all(topAPKs.map(async (apk, index) => {
+        const uniqueId = `apk_${apkIndex + index}`;
+        const apkDetails = await download(apk.id); // Fetching the APK details including size
+        apkMap.set(uniqueId, {
+          ...apk,
+          size: apkDetails.size // Adding the size to the APK details
+        });
         return {
           "header": "",
           "title": apk.name, // Use the name of the APK
-          "description": `Version: ${apk.version}\nSize: ${apk.size}`,
-          "id": uniqueId // Unique key format: apk{index}
+          "description": `Size: ${apkDetails.size}`,
+          "id": uniqueId // Unique key format: apk_{index}
         };
-      });
+      }));
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -125,13 +129,16 @@ const searchAPK = async (m, Matrix) => {
 
     if (selectedAPK) {
       try {
-        // Send a confirmation message with APK name and URL
-        const confirmationMessage = `You selected this APK:\n\nName: ${selectedAPK.name}\nURL: ${selectedAPK.dllink}`;
-        await m.reply(confirmationMessage);
+        const apkDetails = await download(selectedAPK.id); // Fetching the APK details
+        const url = apkDetails.dllink;
+        const iconUrl = apkDetails.icon;
+        const size = apkDetails.size;
+
+        await Matrix.sendMessage(m.from, { image: { url: iconUrl }, caption: `You selected this APK:\n\nName: ${selectedAPK.name}\nsize: ${size}` }, { quoted: m });
 
         // Send APK directly from URL
         const apkMessage = {
-          document: { url: selectedAPK.dllink },
+          document: { url },
           mimetype: 'application/vnd.android.package-archive',
           fileName: `${selectedAPK.name}.apk`
         };
