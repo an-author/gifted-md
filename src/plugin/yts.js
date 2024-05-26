@@ -190,10 +190,10 @@ const song = async (m, Matrix) => {
         });
       } catch (error) {
         console.error("Error fetching video details:", error);
-        m.reply('Error fetching video details.');
+        
       }
     } else {
-      m.reply('Invalid selection.');
+   
     }
   }
 };
