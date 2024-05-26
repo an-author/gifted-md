@@ -23,6 +23,7 @@ const orange = chalk.bold.hex("#FFA500");
 const lime = chalk.bold.hex("#32CD32");
 let useQR;
 let isSessionPutted;
+let initialConnection = true;
 const PORT = process.env.PORT || 3000;
 
 const MAIN_LOGGER = pino({
@@ -138,36 +139,43 @@ async function start() {
         Matrix.public = false;
     }
 
-    // Check Baileys connections
-    Matrix.ev.on("connection.update", async update => {
-        const { connection, lastDisconnect } = update;
-        if (connection === "close") {
-            let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
-            if (reason === DisconnectReason.connectionClosed) {
-                console.log(chalk.red("[😩] Connection closed, reconnecting."));
-                start();
-            } else if (reason === DisconnectReason.connectionLost) {
-                console.log(chalk.red("[🤕] Connection Lost from Server, reconnecting."));
-                start();
-            } else if (reason === DisconnectReason.loggedOut) {
-                console.log(chalk.red("[😭] Device Logged Out, Please Delete Session and Scan Again."));
-                process.exit();
-            } else if (reason === DisconnectReason.restartRequired) {
-                console.log(chalk.blue("[♻️] Server Restarting."));
-                start();
-            } else if (reason === DisconnectReason.timedOut) {
-                console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
-                start();
-            } else {
-                console.log(chalk.red("[🚫️]Something Went Wrong: Failed to Make Connection"));
-            }
-        }
 
-        if (connection === "open") {
-            console.log(lime("😃 Integration Successful️ ✅"));
-            Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
+    // Check Baileys connections
+Matrix.ev.on("connection.update", async update => {
+    const { connection, lastDisconnect } = update;
+
+    if (connection === "close") {
+        let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+        if (reason === DisconnectReason.connectionClosed) {
+            console.log(chalk.red("[😩] Connection closed, reconnecting."));
+            start();
+        } else if (reason === DisconnectReason.connectionLost) {
+            console.log(chalk.red("[🤕] Connection Lost from Server, reconnecting."));
+            start();
+        } else if (reason === DisconnectReason.loggedOut) {
+            console.log(chalk.red("[😭] Device Logged Out, Please Delete Session and Scan Again."));
+            process.exit();
+        } else if (reason === DisconnectReason.restartRequired) {
+            console.log(chalk.blue("[♻️] Server Restarting."));
+            start();
+        } else if (reason === DisconnectReason.timedOut) {
+            console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
+            start();
+        } else {
+            console.log(chalk.red("[🚫️] Something Went Wrong: Failed to Make Connection"));
         }
-    });
+    }
+
+    if (connection === "open") {
+        if (initialConnection) {
+            console.log(chalk.green("😃 Integration Successful️ ✅"));
+            Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
+            initialConnection = false;
+        } else {
+            console.log(chalk.blue("♻️ Connection reestablished after restart."));
+        }
+    }
+});
 }
 
 start();
