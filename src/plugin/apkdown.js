@@ -149,7 +149,6 @@ const searchAPK = async (m, Matrix) => {
         m.reply('Error sending APK.');
       }
     } else {
-      m.reply('Selected APK not found.');
     }
   }
 };
