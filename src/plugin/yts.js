@@ -6,6 +6,7 @@ const { generateWAMessageFromContent, proto } = pkg;
 // Use a global variable to store the topVideos and video index
 const videoMap = new Map();
 let videoIndex = 1; // Global index for video links
+let audioIndex = 1001; // Separate index for audio links to ensure unique IDs
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -52,18 +53,18 @@ const song = async (m, Matrix) => {
           "header": "",
           "title": video.title,
           "description": ``,
-          "id": `${uniqueId}` // Unique key format: index
+          "id": `video_${uniqueId}` // Unique key format for video buttons
         };
       });
 
       const audioButtons = topVideos.map((video, index) => {
-        const uniqueId = videoIndex + index + topVideos.length; // Ensure unique IDs for audio buttons
+        const uniqueId = audioIndex + index;
         videoMap.set(uniqueId, { ...video, isAudio: true });
         return {
           "header": "",
           "title": video.title,
           "description": ``,
-          "id": `${uniqueId}` // Unique key format: index
+          "id": `audio_${uniqueId}` // Unique key format for audio buttons
         };
       });
 
@@ -100,11 +101,19 @@ const song = async (m, Matrix) => {
                           highlight_label: "🤩 Top 10",
                           rows: videoButtons
                         },
+                      ]
+                    })
+                  },
+                  {
+                    name: "single_select",
+                    buttonParamsJson: JSON.stringify({
+                      title: "🎧 Select an audio",
+                      sections: [
                         {
-                          title: "🎧 Select an audio",
-                          highlight_label: "🎵 Top 10",
+                          title: "🎶 Top 10 YouTube Results - Audios",
+                          highlight_label: "🤩 Top 10",
                           rows: audioButtons
-                        }
+                        },
                       ]
                     })
                   },
@@ -130,15 +139,18 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      // Increment the global video index for the next set of videos
-      videoIndex += topVideos.length * 2; // Adjust for both video and audio buttons
+      // Increment the global video and audio indices for the next set of videos
+      videoIndex += topVideos.length;
+      audioIndex += topVideos.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = videoMap.get(parseInt(selectedId)); // Find video by unique key
+    const isAudio = selectedId.startsWith('audio_');
+    const key = parseInt(selectedId.replace(isAudio ? 'audio_' : 'video_', ''));
+    const selectedVideo = videoMap.get(key); // Find video by unique key
 
     if (selectedVideo) {
       try {
@@ -154,14 +166,16 @@ const song = async (m, Matrix) => {
           // Download audio
           const audioStream = ytdl(videoUrl, { filter: 'audioonly', quality: 'highestaudio' });
           const finalAudioBuffer = await streamToBuffer(audioStream);
+          
+          await Matrix.sendMessage(m.from, { image: { url: thumbnailUrl }, caption: `Title: ${title}\nAuther: ${author}\nDuration: ${duration}\n> © Powered by Ethix-MD`}, { quoted: m });
 
-          await Matrix.sendMessage(m.from, { audio: finalAudioBuffer, mimetype: 'audio/mpeg', caption: '> © Powered by Ethix-MD' }, { quoted: m });
+          await Matrix.sendMessage(m.from, { audio: finalAudioBuffer, mimetype: 'audio/mpeg' }, { quoted: m });
         } else {
           // Download video
           const videoStream = ytdl(videoUrl, { filter: 'audioandvideo', quality: 'highest' });
           const finalVideoBuffer = await streamToBuffer(videoStream);
 
-          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: '> © Powered by Ethix-MD' }, { quoted: m });
+          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Title: ${title}\nAuther: ${author}\nDuration: ${duration}\n> Powered by Ethix-MD` }, { quoted: m });
         }
       } catch (error) {
         console.error("Error fetching video details:", error);
