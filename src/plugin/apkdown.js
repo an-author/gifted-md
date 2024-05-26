@@ -68,7 +68,7 @@ const searchAPK = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD APK Downloader\n\n🔍 Search and download your favorite APKs easily.\n\n📌 Simply select an APK from the list below to get started.`
+                text: `Ethix-MD APK Downloader\n\n🔍 Search and download your favorite APKs easily.\n\n📌 Simply select an APK from the list below to get started.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "> © Powered By Ethix-MD"
@@ -134,7 +134,7 @@ const searchAPK = async (m, Matrix) => {
         const iconUrl = apkDetails.icon;
         const size = apkDetails.size;
 
-        await Matrix.sendMessage(m.from, { image: { url: iconUrl }, caption: `You selected this APK:\n\nName: ${selectedAPK.name}\nsize: ${size}` }, { quoted: m });
+        await Matrix.sendMessage(m.from, { image: { url: iconUrl }, caption: `You selected this APK:\n\nName: ${selectedAPK.name}\nsize: ${size}\n\n> © Powered by Ethix-MD` }, { quoted: m });
 
         // Send APK directly from URL
         const apkMessage = {
