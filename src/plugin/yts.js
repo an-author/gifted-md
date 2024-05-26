@@ -6,9 +6,10 @@ import fs from 'fs';
 import os from 'os';
 
 
-// Use a global variable to store the topVideos
+// Use a global variable to store the topVideos and video index
 let topVideos = [];
-let commandCounter = 1;
+let videoIndex = 1; // Global index for video links
+const videoMap = new Map();
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -48,12 +49,16 @@ const song = async (m, Matrix) => {
         return;
       }
 
-      const buttons = topVideos.map((video, index) => ({
-        "header": "",
-        "title": video.title,
-        "description": ``,
-        "id": `${commandCounter}.${index + 1}` // Unique key format: commandCounter.index
-      }));
+      const buttons = topVideos.map((video, index) => {
+        const uniqueId = videoIndex + index;
+        videoMap.set(uniqueId, video);
+        return {
+          "header": "",
+          "title": video.title,
+          "description": ``,
+          "id": `${uniqueId}` // Unique key format: index
+        };
+      });
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -113,15 +118,15 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      // Increment the command counter for the next command
-      commandCounter++;
+      // Increment the global video index for the next set of videos
+      videoIndex += topVideos.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = topVideos[parseInt(selectedId.split('.')[1]) - 1]; // Find video by unique key
+    const selectedVideo = videoMap.get(parseInt(selectedId)); // Find video by unique key
 
     if (selectedVideo) {
       try {
@@ -185,10 +190,10 @@ const song = async (m, Matrix) => {
         });
       } catch (error) {
         console.error("Error fetching video details:", error);
-        
+        m.reply('Error fetching video details.');
       }
     } else {
-      
+      m.reply('Invalid selection.');
     }
   }
 };
