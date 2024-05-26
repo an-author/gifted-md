@@ -8,7 +8,7 @@ const apkMap = new Map();
 let apkIndex = 1; // Global index for APKs
 
 const searchAPK = async (m, Matrix) => {
-  let selectedApkId;
+  let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
   const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
 
@@ -121,8 +121,8 @@ const searchAPK = async (m, Matrix) => {
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedButtonId) { // Check if selectedButtonId exists
-    const selectedAPK = apkMap.get(selectedButtonId); // Find APK by unique key
+  } else if (selectedId) { // Check if selectedId exists
+    const selectedAPK = apkMap.get(selectedId); // Find APK by unique key
 
     if (selectedAPK) {
       try {
@@ -132,8 +132,6 @@ const searchAPK = async (m, Matrix) => {
           mimetype: 'application/vnd.android.package-archive',
           fileName: `${selectedAPK.name}.apk`
         };
-        
-        await m.reply(apkMessage);
 
         await Matrix.sendMessage(m.from, apkMessage, { quoted: m });
       } catch (error) {
