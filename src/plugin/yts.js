@@ -112,73 +112,83 @@ const song = async (m, Matrix) => {
         messageId: msg.key.id
       });
       await m.React("✅");
+
+      // Increment the command counter for the next command
+      commandCounter++;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    const selectedVideo = topVideos.find(video => video.title === selectedId); // Find video by title
+    const selectedVideo = topVideos[parseInt(selectedId.split('.')[1]) - 1]; // Find video by unique key
 
     if (selectedVideo) {
-      const videoInfo = await ytdl.getBasicInfo(selectedVideo.videoId);
-      const title = videoInfo.videoDetails.title;
-      const author = videoInfo.videoDetails.author.name;
-      const duration = videoInfo.videoDetails.lengthSeconds;
-      const uploadDate = videoInfo.videoDetails.uploadDate;
-      const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.videoId}`;
-      const thumbnailUrl = selectedVideo.thumbnail; // Get the thumbnail URL from search results
+      try {
+        const videoInfo = await ytdl.getBasicInfo(selectedVideo.videoId);
+        const title = videoInfo.videoDetails.title;
+        const author = videoInfo.videoDetails.author.name;
+        const duration = videoInfo.videoDetails.lengthSeconds;
+        const uploadDate = videoInfo.videoDetails.uploadDate;
+        const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.videoId}`;
+        const thumbnailUrl = selectedVideo.thumbnail; // Get the thumbnail URL from search results
 
-      const msg = generateWAMessageFromContent(m.from, {
-        viewOnceMessage: {
-          message: {
-            messageContextInfo: {
-              deviceListMetadata: {},
-              deviceListMetadataVersion: 2
-            },
-            interactiveMessage: proto.Message.InteractiveMessage.create({
-              body: proto.Message.InteractiveMessage.Body.create({
-                text: `Title: ${title}\nAuthor: ${author}\nDuration: ${duration} seconds\nUpload Date: ${uploadDate}`
-              }),
-              footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By Ethix-MD"
-              }),
-              header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
-                title: `Video Information`,
-                subtitle: `Video by ${author}`,
-                hasMediaAttachment: false
-              }),
-              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                buttons: [
-                  {
-                    name: "quick_reply",
-                    buttonParamsJson: `{\"display_text\":\"Download Audio\",\"id\":\".song ${videoUrl}\"}`
-                  },
-                  {
-                    name: "quick_reply",
-                    buttonParamsJson: `{\"display_text\":\"Download Video\",\"id\":\".video ${videoUrl}\"}`
+        const msg = generateWAMessageFromContent(m.from, {
+          viewOnceMessage: {
+            message: {
+              messageContextInfo: {
+                deviceListMetadata: {},
+                deviceListMetadataVersion: 2
+              },
+              interactiveMessage: proto.Message.InteractiveMessage.create({
+                body: proto.Message.InteractiveMessage.Body.create({
+                  text: `Title: ${title}\nAuthor: ${author}\nDuration: ${duration} seconds\nUpload Date: ${uploadDate}`
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.create({
+                  text: "© Powered By Ethix-MD"
+                }),
+                header: proto.Message.InteractiveMessage.Header.create({
+                  ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
+                  title: `Video Information`,
+                  subtitle: `Video by ${author}`,
+                  hasMediaAttachment: false
+                }),
+                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                  buttons: [
+                    {
+                      name: "quick_reply",
+                      buttonParamsJson: `{\"display_text\":\"Download Audio\",\"id\":\".song ${videoUrl}\"}`
+                    },
+                    {
+                      name: "quick_reply",
+                      buttonParamsJson: `{\"display_text\":\"Download Video\",\"id\":\".video ${videoUrl}\"}`
+                    }
+                  ],
+                }),
+                contextInfo: {
+                  mentionedJid: [m.sender],
+                  forwardingScore: 9999,
+                  isForwarded: true,
+                  forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363222395675670@newsletter',
+                    newsletterName: "Ethix-MD",
+                    serverMessageId: 143
                   }
-                ],
-              }),
-              contextInfo: {
-                mentionedJid: [m.sender],
-                forwardingScore: 9999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363222395675670@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
                 }
-              }
-            })
+              })
+            }
           }
-        }
-      }, {});
+        }, {});
 
-      await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-        messageId: msg.key.id
-      });
+        await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+          messageId: msg.key.id
+        });
+      } catch (error) {
+        console.error("Error fetching video details:", error);
+        
+      }
+    } else {
+      
     }
   }
 };
