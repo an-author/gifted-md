@@ -77,7 +77,7 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Video Downloader\n\n🔍 Search and download your favorite YouTube videos easily.\n\n🎵 Download audio or video with a single click.\n\n📌 Simply select a video from the list below to get started.`
+                text: `Ethix-MD Video Downloader\n\n🔍 Search and download your favorite YouTube videos easily.\n\n🎵 Download audio or video with a single click.\n\n📌 Simply select a video from the list below to get started.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
@@ -175,7 +175,7 @@ const song = async (m, Matrix) => {
           const videoStream = ytdl(videoUrl, { filter: 'audioandvideo', quality: 'highest' });
           const finalVideoBuffer = await streamToBuffer(videoStream);
 
-          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Title: ${title}\nAuther: ${author}\nDuration: ${duration}\n> Powered by Ethix-MD` }, { quoted: m });
+          await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Title: ${title}\nAuther: ${author}\nDuration: ${duration}\n\n> Powered by Ethix-MD` }, { quoted: m });
         }
       } catch (error) {
         console.error("Error fetching video details:", error);
