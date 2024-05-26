@@ -96,10 +96,8 @@ const searchAPK = async (m, Matrix) => {
         await Matrix.sendMessage(m.from, apkMessage, { quoted: m });
       } catch (error) {
         console.error("Error sending APK:", error);
-        m.reply('Error sending APK.');
       }
     } else {
-      m.reply('APK not found.');
     }
   }
 };
