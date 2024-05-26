@@ -2,11 +2,10 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Global variable to store video quality options and index
 const videoMap = new Map();
 let videoIndex = 1;
 
-const play = async (m, Matrix) => {
+const ytvPlay = async (m, Matrix) => {
   let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
   const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
@@ -25,21 +24,25 @@ const play = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'yt') {
+  if (cmd === 'ytv') {
     if (!text) return m.reply('Please provide a YouTube link');
 
     try {
-      await m.React("🕘");
+      await Matrix.sendMessage(m.from, { text: "🕘 Searching for video..." }, { quoted: m });
 
       const videoUrl = text;
       if (!ytdl.validateURL(videoUrl)) {
         m.reply('Invalid YouTube URL');
-        await m.React("❌");
         return;
       }
 
       const videoInfo = await ytdl.getInfo(videoUrl);
-      const videoFormats = ytdl.filterFormats(videoInfo.formats, 'videoonly');
+      const videoFormats = ytdl.filterFormats(videoInfo.formats, 'videoandaudio').filter(format => format.container === 'mp4');
+
+      if (videoFormats.length === 0) {
+        m.reply('No MP4 video formats found.');
+        return;
+      }
 
       const qualityButtons = videoFormats.map((format, index) => {
         const uniqueId = `video_${videoIndex + index}`;
@@ -49,7 +52,7 @@ const play = async (m, Matrix) => {
         });
         return {
           title: `${format.qualityLabel} (${format.container})`,
-          description: `Bitrate: ${format.bitrate}`,
+          description: `Size: ${(format.contentLength / (1024 * 1024)).toFixed(2)} MB`,
           id: uniqueId
         };
       });
@@ -65,9 +68,11 @@ const play = async (m, Matrix) => {
                 text: "> © Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: videoInfo.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
-                title: videoInfo.videoDetails.title,
-                gifPlayback: true
+                ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: ``,
+                gifPlayback: true,
+                subtitle: "",
+                hasMediaAttachment: false 
               }),
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
@@ -101,14 +106,12 @@ const play = async (m, Matrix) => {
       }, {});
 
       await Matrix.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
-      await m.React("✅");
-
-      // Increment the global video index for the next set of video formats
+      
       videoIndex += videoFormats.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
-      await m.React("❌");
+      await Matrix.sendMessage(m.from, { text: "❌ Error processing your request" }, { quoted: m });
     }
   } else if (selectedId) { // Handle selected video quality
     const selectedVideo = videoMap.get(selectedId);
@@ -116,13 +119,19 @@ const play = async (m, Matrix) => {
     if (selectedVideo) {
       try {
         const videoStream = ytdl(selectedVideo.url, { format: selectedVideo.format });
+        const videoInfo = await ytdl.getInfo(selectedVideo.url);
+        const videoDetails = videoInfo.videoDetails;
+        const format = selectedVideo.format;
+        
         const videoMessage = {
-          document: { stream: videoStream, filename: `${selectedVideo.format.qualityLabel}.mp4` },
+          document: { stream: videoStream, filename: `${videoDetails.title}.mp4` },
           mimetype: 'video/mp4',
-          fileName: `${selectedVideo.format.qualityLabel}.mp4`
+          fileName: `${videoDetails.title}.mp4`
         };
 
-        await Matrix.sendMessage(m.from, videoMessage, { quoted: m });
+        const caption = `Title: ${videoDetails.title}\nAuthor: ${videoDetails.author.name}\nQuality: ${format.qualityLabel}\nViews: ${videoDetails.viewCount}\nSize: ${(format.contentLength / (1024 * 1024)).toFixed(2)} MB`;
+
+        await Matrix.sendMessage(m.from, { document: videoMessage, caption }, { quoted: m });
       } catch (error) {
         console.error("Error sending video:", error);
       }
@@ -130,4 +139,4 @@ const play = async (m, Matrix) => {
   }
 };
 
-export default play;
+export default ytvPlay;
