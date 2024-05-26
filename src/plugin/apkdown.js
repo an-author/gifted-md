@@ -1,7 +1,6 @@
 import aptoideScraper from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-import axios from 'axios';
 
 // Use a global variable to store the APKs and index
 const apkMap = new Map();
@@ -126,6 +125,10 @@ const searchAPK = async (m, Matrix) => {
 
     if (selectedAPK) {
       try {
+        // Send a confirmation message with APK name and URL
+        const confirmationMessage = `You selected this APK:\n\nName: ${selectedAPK.name}\nURL: ${selectedAPK.dllink}`;
+        await m.reply(confirmationMessage);
+
         // Send APK directly from URL
         const apkMessage = {
           document: { url: selectedAPK.dllink },
@@ -136,10 +139,10 @@ const searchAPK = async (m, Matrix) => {
         await Matrix.sendMessage(m.from, apkMessage, { quoted: m });
       } catch (error) {
         console.error("Error sending APK:", error);
-        
+        m.reply('Error sending APK.');
       }
     } else {
-      
+      m.reply('Selected APK not found.');
     }
   }
 };
