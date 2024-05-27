@@ -74,7 +74,7 @@ const play = async (m, Matrix) => {
       const publishDate = new Date(videoDetails.publishDate).toLocaleDateString();
       const viewCount = videoDetails.viewCount;
       const lengthSeconds = videoDetails.lengthSeconds;
-      const thumbnailUrl = thumbnails[thumbnails.length - 1].url;
+      const thumbnailUrl = videoDetails.[thumbnails.length - 1].url;
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
