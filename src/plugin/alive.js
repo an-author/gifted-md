@@ -89,7 +89,7 @@ const serverStatusCommand = async (m, Matrix) => {
             },
           },
         }, {});
-      }, 200);
+      }, 500);
 
 
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -97,7 +97,7 @@ const serverStatusCommand = async (m, Matrix) => {
       clearInterval(loadingInterval);
 
       // Create the status message
-      const statusMessage = `Ethix-MD Status\n\n📅 Uptime: ${uptime}\n🖥 Platform: ${platform}\n\n> © Powered by Ethix-MD`;
+      const statusMessage = `_Ethix-MD Status_\n\n📅 Uptime: ${uptime}\n🖥 Platform: ${platform}\n\n> © Powered by Ethix-MD`;
 
       await typeWriterEffect(m, Matrix, key, statusMessage);
     } catch (error) {
