@@ -2,8 +2,6 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-let formats; // Define formats globally
-
 const videoInfo = async (m, Matrix) => {
   try {
     let selectedListId;
@@ -47,19 +45,20 @@ const videoInfo = async (m, Matrix) => {
             },
           },
         });
-        formats = ytdl.filterFormats(info.formats, 'videoandaudio');
+        const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
 
         const { videoDetails } = info;
-        const { title, author, lengthSeconds, publishDate, viewCount, thumbnails } = videoDetails;
+        const { title, author, lengthSeconds, publishDate, viewCount, thumbnails, size } = videoDetails;
         const thumbnailUrl = thumbnails[thumbnails.length - 1].url;
 
         const media = await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer });
 
-        const buttons = formats.map((format, index) => ({
+        const qualityOptions = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p'];
+        const buttons = qualityOptions.map(quality => ({
           header: "",
-          title: `Quality: ${format.qualityLabel}, Type: ${format.container}`,
-          description: "",
-          id: `download ${format.url}` // Command to trigger download
+          title: `Quality: ${quality}`,
+          description: `${size}`,
+          id: `ydownload_${quality}` // Command to trigger download
         }));
 
         const messageContent = {
@@ -119,36 +118,37 @@ const videoInfo = async (m, Matrix) => {
     }
 
     if (selectedId && selectedId.startsWith('download')) {
-      const selectedFormatUrl = selectedId.split(' ')[1];
-      if (!selectedFormatUrl) {
+      const selectedQuality = selectedId.split(' ')[1];
+      if (!selectedQuality || !qualityOptions.includes(selectedQuality)) {
         await m.React("❌");
-        return m.reply('Invalid download URL.');
+        return m.reply('Invalid quality selection.');
+      }
+
+      const selectedFormat = formats.find(format => format.qualityLabel.toLowerCase() === selectedQuality);
+      if (!selectedFormat) {
+        await m.React("❌");
+        return m.reply(`Quality ${selectedQuality} not found.`);
       }
 
       try {
         await m.React("🕘");
 
-        const res = await fetch(selectedFormatUrl);
-        if (!res.ok) {
-          await m.React("❌");
-          throw `Failed to fetch video. Status: ${res.status} ${res.statusText}`;
+        const videoStream = ytdl(selectedId, { format: selectedFormat });
+        const videoBuffer = await streamToBuffer(videoStream);
+
+        const caption = `Quality: ${selectedFormat.qualityLabel}\nType: ${selectedFormat.container}\n\n> © Powered by Ethix-MD`;
+
+        const maxSizeMB = 300;
+        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+
+        if (videoBuffer.length <= maxSizeBytes) {
+          // Send as video if size is within limit
+          await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: caption });
+        } else {
+          // Send as document if size exceeds the limit
+          await Matrix.sendMessage(m.from, { document: videoBuffer, mimetype: 'video/mp4', fileName: `${title}.mp4`, caption: caption });
         }
 
-        const contentLength = parseInt(res.headers.get('content-length'), 10);
-        if (contentLength > 100 * 1024 * 1024) {
-          await m.React("❌");
-          throw `Content-Length exceeds the limit: ${contentLength}`;
-        }
-
-        if (!/video\//.test(res.headers.get('content-type'))) {
-          await m.React("❌");
-          throw 'The URL does not point to a video.';
-        }
-
-        const videoBuffer = Buffer.from(await res.arrayBuffer());
-        const selectedFormat = formats.find(format => `download ${format.url}` === selectedId);
-
-        await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: `Quality: ${selectedFormat.qualityLabel}, Type: ${selectedFormat.container}\n> © Powered by Ethix-MD` });
         await m.React("✅");
       } catch (error) {
         console.error("Error processing download command:", error);
@@ -159,6 +159,15 @@ const videoInfo = async (m, Matrix) => {
     console.error("Unhandled error:", error);
     await m.React("❌");
   }
+};
+
+const streamToBuffer = (stream) => {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    stream.on('data', chunk => chunks.push(chunk));
+    stream.on('end', () => resolve(Buffer.concat(chunks)));
+    stream.on('error', reject);
+  });
 };
 
 export default videoInfo;
