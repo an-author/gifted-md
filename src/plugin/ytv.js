@@ -51,21 +51,21 @@ const song = async (m, Matrix) => {
         author: info.videoDetails.author.name,
         views: info.videoDetails.viewCount,
         likes: info.videoDetails.likes,
-        uploadDate: info.videoDetails.uploadDate,
-        duration: info.videoDetails.lengthSeconds
+        uploadDate: formatDate(info.videoDetails.uploadDate),
+        duration: formatDuration(info.videoDetails.lengthSeconds)
       };
 
-      const qualityButtons = formats.map((format, index) => {
+      const qualityButtons = await Promise.all(formats.map(async (format, index) => {
         const uniqueId = videoIndex + index;
-        const size = format.contentLength ? format.contentLength / (1024 * 1024) : 'Unknown size'; // in MB
+        const size = format.contentLength ? await getSizeInMB(format) : 'Unknown size'; // in MB
         videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails, size });
         return {
           "header": "",
-          "title": `${format.qualityLabel} (${format.container})`,
-          "description": `Size: ${size}`,
+          "title": `${format.qualityLabel} (${format.container}) - ${size}`,
+          "description": ``,
           "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
-      });
+      }));
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -76,7 +76,7 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\nTitle: ${videoDetails.title}\nAuthor: ${videoDetails.author}\nViews: ${videoDetails.views}\nLikes: ${videoDetails.likes}\nUpload Date: ${videoDetails.uploadDate}\nDuration: ${formatDuration(videoDetails.duration)}\n\n`
+                text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\nTitle: ${videoDetails.title}\nAuthor: ${videoDetails.author}\nViews: ${videoDetails.views}\nLikes: ${videoDetails.likes}\nUpload Date: ${videoDetails.uploadDate}\nDuration: ${videoDetails.duration}\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
@@ -96,7 +96,7 @@ const song = async (m, Matrix) => {
                       title: "🎬 Select a video quality",
                       sections: [
                         {
-                          title: "📥 Available Qualities",
+                          title: "Available Qualities",
                           highlight_label: "💡 Choose Quality",
                           rows: qualityButtons
                         },
@@ -142,11 +142,11 @@ const song = async (m, Matrix) => {
         const videoStream = ytdl(videoUrl, { format: selectedFormat });
         const finalVideoBuffer = await streamToBuffer(videoStream);
 
-        const duration = formatDuration(selectedFormat.duration);
+        const duration = selectedFormat.duration;
         const size = formatSize(selectedFormat.size);
 
         await Matrix.sendMessage(m.from, {
-          video: finalVideoBuffer,
+          image: finalVideoBuffer,
           caption: `Title: ${selectedFormat.title}\nAuthor: ${selectedFormat.author}\nViews: ${selectedFormat.views}\nLikes: ${selectedFormat.likes}\nUpload Date: ${selectedFormat.uploadDate}\nDuration: ${duration}\nSize: ${size}\n\n> Powered by Ethix-MD`
         }, { quoted: m });
       } catch (error) {
@@ -170,6 +170,19 @@ const formatSize = (size) => {
   if (size < 1024) return `${size.toFixed(2)} KB`;
   if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} MB`;
   return `${(size / (1024 * 1024)).toFixed(2)} GB`;
+};
+
+const formatDate = (date) => {
+  const d = new Date(date);
+  const day = d.getDate().toString().padStart(2, '0');
+  const month = (d.getMonth() + 1).toString().padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}-${month}-${year}`;
+};
+
+const getSizeInMB = async (format) => {
+  const { contentLength } = await ytdl.getInfo(format.url);
+  return contentLength ? (contentLength / (1024 * 1024)).toFixed(2) + ' MB' : 'Unknown size';
 };
 
 const streamToBuffer = async (stream) => {
