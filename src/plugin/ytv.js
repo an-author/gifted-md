@@ -62,7 +62,7 @@ const song = async (m, Matrix) => {
         return {
           "header": "",
           "title": `${format.qualityLabel} (${format.container}) - ${size}`,
-          "description": ``,
+          "description": `Bitrate: ${format.bitrate}`,
           "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
       }));
@@ -155,6 +155,7 @@ const song = async (m, Matrix) => {
         m.reply('Error fetching video details.');
       }
     } else {
+      m.reply('Selected format not found.');
     }
   }
 };
