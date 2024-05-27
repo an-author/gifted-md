@@ -62,7 +62,7 @@ const song = async (m, Matrix) => {
         return {
           "header": "",
           "title": `${format.qualityLabel} ${format.container}`,
-          "description": `size: ${size.toFixed(2)} MB`,
+          "description": `size: ${size} MB`,
           "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
       });
