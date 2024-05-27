@@ -1,55 +1,110 @@
-const alive = async (m, sock) => {
-  const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
-        const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
-  if (cmd === "alive") {
-    const text = `𝐇𝐞𝐲 👋 𝐈 𝐚𝐦 𝐀𝐥𝐢𝐯𝐞 𝐧𝐨𝐰`;
-    const audtxt = `Hey ${m.pushName} don't worry i am Alive now`
-    const speechURL = `https://matrix-anime-api-production.up.railway.app/speech?text=${encodeURIComponent(audtxt)}`;
-    const img = 'https://i.imgur.com/eHhCPbU.jpg'
-    await m.React('👋');
-    let doc = {
-        audio: {
-          url: speechURL
+import fs from 'fs';
+
+// Function to get the uptime in a human-readable format
+const getUptime = () => {
+  const uptimeSeconds = process.uptime();
+  const days = Math.floor(uptimeSeconds / (24 * 3600));
+  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+  const seconds = Math.floor(uptimeSeconds % 60);
+
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+};
+
+// Helper function to get the platform name
+const getPlatformName = () => {
+  const platform = process.platform;
+  if (platform === 'darwin') return 'macOS';
+  if (platform === 'win32') return 'Windows';
+  if (platform === 'linux') {
+    // Check for specific Linux distros
+    if (fs.existsSync('/etc/heroku-release')) return 'Heroku';
+    if (fs.existsSync('/etc/koyeb-release')) return 'Koyeb';
+    if (fs.existsSync('/etc/render-release')) return 'Render';
+    return 'Linux';
+  }
+  return 'Unknown';
+};
+
+
+// Letter-by-letter typewriter effect function
+const typeWriterEffect = async (m, Matrix, key, message) => {
+  const typingSpeed = 100; // Speed in milliseconds
+  let i = 0;
+
+  const typewriterInterval = setInterval(async () => {
+    if (i < message.length) {
+      const typedText = message.slice(0, i + 1);
+      await Matrix.relayMessage(m.from, {
+        protocolMessage: {
+          key: key,
+          type: 14,
+          editedMessage: {
+            conversation: typedText,
+          },
         },
-        mimetype: 'audio/mpeg',
-        ptt: true,
-        waveform:  [100, 0, 100, 0, 100, 0, 100],
-        fileName: "Matrix",
+      }, {});
+      i++;
+    } else {
+      clearInterval(typewriterInterval);
+    }
+  }, typingSpeed);
+};
 
-        contextInfo: {
-          mentionedJid: [m.sender],
-          externalAdReply: {
-          title: text,
-          body: "Ethix-MD",
-          thumbnailUrl: img,
-          sourceUrl: 'https://matrixcoder.tech',
-          mediaType: 1,
-          renderLargerThumbnail: true
-          }}
-      };
-    let fgg = {
-            key: {
-                fromMe: false,
-                participant: `0@s.whatsapp.net`,
-                remoteJid: "status@broadcast"
+// Main command function
+const serverStatusCommand = async (m, Matrix) => {
+  const prefixMatch = m.body.match(/^[\\/!#.]/);
+  const prefix = prefixMatch ? prefixMatch[0] : '/';
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+
+  if (['alive', 'uptime', 'runtime'].includes(cmd)) {
+    const uptime = getUptime();
+    const platform = getPlatformName();
+
+    try {
+      const loadingMessages = [
+        "*「▰▰▰▱▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▰」*",
+      ];
+
+      const loadingMessageCount = loadingMessages.length;
+      let currentMessageIndex = 0;
+
+      const { key } = await Matrix.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m });
+
+      const loadingInterval = setInterval(() => {
+        currentMessageIndex = (currentMessageIndex + 1) % loadingMessageCount;
+        Matrix.relayMessage(m.from, {
+          protocolMessage: {
+            key: key,
+            type: 14,
+            editedMessage: {
+              conversation: loadingMessages[currentMessageIndex],
             },
-            message: {
-                contactMessage: {
-                    displayName: `Ethix-MD`,
-                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
-                        m.sender.split("@")[0]
-                    }:${
-                        m.sender.split("@")[0]
-                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-                }
-            }
-    };
+          },
+        }, {});
+      }, 200);
 
-    await sock.sendMessage(m.from, doc, { quoted: fgg })
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      clearInterval(loadingInterval);
+
+      // Create the status message
+      const statusMessage = `Ethix-MD Status\n\n📅 Uptime: ${uptime}\n🖥 Platform: ${platform}\n\n> © Powered by Ethix-MD`;
+
+      await typeWriterEffect(m, Matrix, key, statusMessage);
+    } catch (error) {
+      console.error("Error processing your request:", error);
+      await Matrix.sendMessage(m.from, { text: 'Error processing your request.' }, { quoted: m });
+    }
   }
 };
 
-alive.type = "main";
-alive.desc = "*_This Command Is For Check Bot Online or Not_*"
-
-export default alive;
+export default serverStatusCommand;
