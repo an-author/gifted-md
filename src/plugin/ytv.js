@@ -1,37 +1,59 @@
-import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
+// Global map to store video details
+const videoMap = new Map();
+let videoIndex = 1; // Global index for video links
+
 const song = async (m, Matrix) => {
-  const text = m.body.trim();
-  
+  let selectedListId;
+  const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
+  const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
+
+  if (interactiveResponseMessage) {
+    const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
+    if (paramsJson) {
+      const params = JSON.parse(paramsJson);
+      selectedListId = params.id;
+    }
+  }
+
+  const selectedId = selectedListId || selectedButtonId;
+
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const query = m.body.slice(prefix.length + cmd.length).trim();
+  const text = m.body.slice(prefix.length + cmd.length).trim();
+  
+  const validCommands = ['ytv'];
 
-  const selectedId = cmd === 'quality' ? query : null;
+  if (validCommands.includes(cmd)) {
+    if (!text || !ytdl.validateURL(text)) {
+      return m.reply('Please provide a valid YouTube URL.');
+    }
 
-  try {
-    if (cmd === 'play' && !selectedId) {
-      const searchResult = await yts(query);
-      const video = searchResult.videos[0];
+    try {
+      await m.React("🕘");
 
-      if (!video) {
-        await m.reply('No video found.');
+      // Get video info
+      const info = await ytdl.getInfo(text);
+      const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
+
+      if (formats.length === 0) {
+        m.reply('No downloadable formats found.');
+        await m.React("❌");
         return;
       }
 
-      const videoFormats = await ytdl.getInfo(video.videoId);
-      const availableQualities = videoFormats.formats.map(format => format.qualityLabel);
-      
-      const qualityButtons = availableQualities.map((quality, index) => {
+      const qualityButtons = formats.map((format, index) => {
+        const uniqueId = videoIndex + index;
+        videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId });
         return {
           "header": "",
-          "title": quality,
+          "title": `${format.qualityLabel} (${format.container})`,
           "description": ``,
-          "id": `quality_${index}` // Unique key format for quality buttons
+          "id": `quality_${uniqueId}` 
         };
       });
 
@@ -44,13 +66,14 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Select video quality:\n\n`
+                text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "*© Powered By Ethix-MD©"
+                text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: ``,
+                ...(await prepareWAMessageMedia({ image: { url: info.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
+                title: info.videoDetails.title,
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -60,16 +83,16 @@ const song = async (m, Matrix) => {
                   {
                     name: "single_select",
                     buttonParamsJson: JSON.stringify({
-                      title: "Quality Selection",
+                      title: "🎬 Select a video quality",
                       sections: [
                         {
                           title: "Available Qualities",
-                          highlight_label: "Select",
+                          highlight_label: "💡 Choose Quality",
                           rows: qualityButtons
                         },
                       ]
                     })
-                  }
+                  },
                 ],
               }),
               contextInfo: {
@@ -85,25 +108,31 @@ const song = async (m, Matrix) => {
       await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
         messageId: msg.key.id
       });
+      await m.React("✅");
 
-    } else if (cmd === 'quality' && selectedId) {
-      const videoFormats = await ytdl.getInfo(query);
-      const selectedFormat = videoFormats.formats.find(format => format.qualityLabel === selectedId);
-
-      if (!selectedFormat) {
-        await m.reply('Selected quality not available.');
-        return;
-      }
-
-      const videoStream = ytdl(query, { quality: selectedFormat.itag });
-      const finalVideoBuffer = await streamToBuffer(videoStream);
-
-      // Send the video
-      await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Downloaded video with quality: ${selectedId}` }, { quoted: m });
+      videoIndex += formats.length;
+    } catch (error) {
+      console.error("Error processing your request:", error);
+      m.reply('Error processing your request.');
+      await m.React("❌");
     }
+  } else if (selectedId) { 
+    const key = parseInt(selectedId.replace('quality_', ''));
+    const selectedFormat = videoMap.get(key); 
 
-  } catch (error) {
-    console.error("Error processing your request:", error);
+    if (selectedFormat) {
+      try {
+        const videoUrl = `https://www.youtube.com/watch?v=${selectedFormat.videoId}`;
+        const videoStream = ytdl(videoUrl, { format: selectedFormat });
+        const finalVideoBuffer = await streamToBuffer(videoStream);
+
+        await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Title: ${selectedFormat.title}\nQuality: ${selectedFormat.qualityLabel}\n\n> Powered by Ethix-MD` }, { quoted: m });
+      } catch (error) {
+        console.error("Error fetching video details:", error);
+        m.reply('Error fetching video details.');
+      }
+    } else {
+    }
   }
 };
 
