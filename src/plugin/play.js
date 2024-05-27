@@ -2,7 +2,6 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Global variable to store video quality options and index
 const videoMap = new Map();
 let videoIndex = 1;
 
@@ -11,6 +10,7 @@ const play = async (m, Matrix) => {
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
   const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
 
+  // Extract selected list ID from the interactive response message
   if (interactiveResponseMessage) {
     const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
     if (paramsJson) {
@@ -25,16 +25,16 @@ const play = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'yt') {
+  // Handle YouTube video download command
+  if (cmd === 'ytv') {
     if (!text) return m.reply('Please provide a YouTube link');
 
     try {
-      await Matrix.sendMessage(m.from, { text: "🕘 Searching for video..." }, { quoted: m });
+      await Matrix.sendMessage(m.from, { text: "Searching for video..." }, { quoted: m });
 
       const videoUrl = text;
       if (!ytdl.validateURL(videoUrl)) {
         m.reply('Invalid YouTube URL');
-        await Matrix.sendMessage(m.from, { text: "❌ Invalid YouTube URL" }, { quoted: m });
         return;
       }
 
@@ -43,53 +43,42 @@ const play = async (m, Matrix) => {
 
       if (videoFormats.length === 0) {
         m.reply('No video formats found.');
-        await Matrix.sendMessage(m.from, { text: "❌ No video formats found" }, { quoted: m });
         return;
       }
 
-
-      const uniqueFormats = {};
-      videoFormats.forEach(format => {
-        if (!uniqueFormats[format.qualityLabel] || (uniqueFormats[format.qualityLabel].container !== 'mp4' && format.container === 'mp4')) {
-          uniqueFormats[format.qualityLabel] = format;
-        }
-      });
-
-      const qualityButtons = Object.values(uniqueFormats).map((format, index) => {
-        const uniqueId = `dlvideo_${videoIndex + index}`;
+      // Prepare quality buttons for interactive message
+      const qualityButtons = videoFormats.map((format, index) => {
+        const uniqueId = `video_${videoIndex + index}`;
         videoMap.set(uniqueId, {
           url: videoUrl,
           format: format
         });
         return {
           title: `${format.qualityLabel} (${format.container})`,
-          description: `Size: ${format.size}`,
+          description: `size: ${format.contentLength ? (format.contentLength / (1024 * 1024)).toFixed(2) : 'N/A'} MB`,
           id: uniqueId
         };
       });
 
-      const videoDetails = videoInfo.videoDetails;
-      const title = videoDetails.title;
-      const author = videoDetails.author.name;
-      const publishDate = new Date(videoDetails.publishDate).toLocaleDateString();
-      const viewCount = videoDetails.viewCount;
-      const lengthSeconds = videoDetails.lengthSeconds;
-      const thumbnailUrl = videoDetails.thumbnails[0].url;
+      const thumbnailUrl = videoInfo.videoDetails.thumbnails.pop().url; // Get the thumbnail URL
 
+      // Create interactive message with video quality options
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
           message: {
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD YouTube Downloader\n\n🔍 *${title}*\n👤 Author: ${author}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Select the quality of the video you want to download.`
+                text: `Ethix-MD YouTube Downloader\n\n🎥 Select the quality of the video you want to download.`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "> © Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
-                title: videoInfo.videoDetails.title,
-                gifPlayback: true
+                title: ``,
+                gifPlayback: true,
+                subtitle: "",
+                hasMediaAttachment: false 
               }),
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
@@ -123,14 +112,12 @@ const play = async (m, Matrix) => {
       }, {});
 
       await Matrix.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
-      
       videoIndex += videoFormats.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
-      await Matrix.sendMessage(m.from, { text: "❌ Error processing your request" }, { quoted: m });
     }
-  } else if (selectedId) { 
+  } else if (selectedId) { // Handle selected video quality
     const selectedVideo = videoMap.get(selectedId);
 
     if (selectedVideo) {
@@ -152,18 +139,20 @@ const play = async (m, Matrix) => {
         const maxSizeBytes = maxSizeMB * 1024 * 1024;
 
         if (videoBuffer.length <= maxSizeBytes) {
-
+          // Send as video if size is within limit
           await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: caption }, { quoted: m });
         } else {
           await Matrix.sendMessage(m.from, { document: videoBuffer, mimetype: 'video/mp4', fileName: `${title}.mp4`, caption: caption }, { quoted: m });
         }
       } catch (error) {
         console.error("Error sending video:", error);
+        m.reply('Error sending video.');
       }
     }
   }
 };
 
+// Helper function to convert stream to buffer
 const streamToBuffer = (stream) => {
   return new Promise((resolve, reject) => {
     const chunks = [];
