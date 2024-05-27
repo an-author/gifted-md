@@ -4,9 +4,8 @@ const { generateWAMessageFromContent, proto } = pkg;
 
 const API_URL = 'https://teraboxvideodownloader.nepcoderdevs.workers.dev/?url=';
 
-// Global map to store search results and current index
 const searchResultsMap = new Map();
-let searchIndex = 1; // Global index for search results
+let searchIndex = 1; 
 
 const playcommand = async (m, Matrix) => {
   let selectedListId;
@@ -37,8 +36,7 @@ const playcommand = async (m, Matrix) => {
 
     try {
       await m.React("🕘");
-
-      // Fetch video links from Terabox API
+      
       const response = await fetch(API_URL + encodeURIComponent(text));
       const data = await response.json();
       const resolutions = data?.response[0]?.resolutions;
@@ -48,8 +46,6 @@ const playcommand = async (m, Matrix) => {
         await m.React("❌");
         return;
       }
-
-      // Create buttons for fast download and HD video
       const buttons = [
         {
           "name": "quick_reply",
@@ -105,13 +101,13 @@ const playcommand = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      searchIndex += 1; // Increment the global search index for the next set of results
+      searchIndex += 1; 
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) { 
     const parts = selectedId.split('_');
     const type = parts[1];
     const key = parseInt(parts[2]);
@@ -122,10 +118,6 @@ const playcommand = async (m, Matrix) => {
 
       const currentResult = searchResultsMap.get(key);
       const selectedLink = currentResult?.resolutions[selectedResolution];
-
-      if (!selectedLink) {
-        return m.reply('Selected resolution not found.');
-      }
 
       try {
         const response = await fetch(selectedLink);
