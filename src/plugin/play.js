@@ -4,7 +4,6 @@ import { Readable } from 'stream';
 
 const { generateWAMessageFromContent, proto } = pkg;
 
-
 const videoMap = new Map();
 let videoIndex = 1;
 
@@ -49,7 +48,9 @@ const play = async (m, Matrix) => {
 
       const uniqueFormats = {};
       videoFormats.forEach(format => {
-        if (!uniqueFormats[format.qualityLabel] || format.container === 'mp4') {
+        if (!uniqueFormats[format.qualityLabel]) {
+          uniqueFormats[format.qualityLabel] = format;
+        } else if (uniqueFormats[format.qualityLabel].container !== 'mp4' && format.container === 'mp4') {
           uniqueFormats[format.qualityLabel] = format;
         }
       });
@@ -67,18 +68,26 @@ const play = async (m, Matrix) => {
         };
       });
 
+      const videoDetails = videoInfo.videoDetails;
+      const title = videoDetails.title;
+      const author = videoDetails.author.name;
+      const publishDate = new Date(videoDetails.publishDate).toLocaleDateString();
+      const viewCount = videoDetails.viewCount;
+      const lengthSeconds = videoDetails.lengthSeconds;
+      const thumbnailUrl = videoDetails.thumbnails[0].url;
+
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
           message: {
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD YouTube Downloader\n\n🎥 Select the quality of the video you want to download.\n\n`
+                text: `Ethix-MD Video Downloader\n\n🔍 *${title}*\n👤 Author: ${author}\n📅 Upload Date: ${publishDate}\n👁️ Views: ${viewCount}\n⏳ Duration: ${Math.floor(lengthSeconds / 60)}:${lengthSeconds % 60}\n\n🎵 Download audio or video with a single click.\n📌 Simply select a video from the list below to get started.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "*© Powered By Ethix-MD*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: videoInfo.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
+                ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
                 title: ``,
                 gifPlayback: true,
                 subtitle: "",
@@ -89,7 +98,7 @@ const play = async (m, Matrix) => {
                   {
                     name: "single_select",
                     buttonParamsJson: JSON.stringify({
-                      title: "🔖 Select Video Quality",
+                      title: "📹 Select Video Quality",
                       sections: [
                         {
                           title: "📽️ Available Qualities",
