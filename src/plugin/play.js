@@ -40,13 +40,13 @@ const play = async (m, Matrix) => {
 
       const videoInfo = await ytdl.getInfo(videoUrl);
       const videoDetails = videoInfo.videoDetails;
-      const videoFormats = ytdl.filterFormats(videoInfo.formats, 'videoandaudio');
+      const videoFormats = ytdl.filterFormats(videoInfo.formats, (format) => format.container === 'mp4' && (format.hasAudio && format.hasVideo));
 
       // Remove duplicate quality options
-      const uniqueFormats = Array.from(new Map(videoFormats.map(format => [format.qualityLabel, format])).values());
+      const uniqueFormats = Array.from(new Map(videoFormats.map(format => [`${format.qualityLabel}_${format.hasAudio}_${format.hasVideo}`, format])).values());
 
       const qualityButtons = uniqueFormats.map((format, index) => {
-        const uniqueId = `qvideo_${videoIndex + index}`;
+        const uniqueId = `video_${videoIndex + index}`;
         videoMap.set(uniqueId, {
           url: videoUrl,
           format: format
@@ -101,6 +101,11 @@ const play = async (m, Matrix) => {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
                 isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363222395675670@newsletter',
+                  newsletterName: "Ethix-MD",
+                  serverMessageId: 143
+                }
               }
             }),
           },
@@ -130,7 +135,7 @@ const play = async (m, Matrix) => {
           videoStream.on('error', reject);
         });
 
-        const caption = `Title: ${videoDetails.title}\nAuthor: ${videoDetails.author.name}\nDuration: ${Math.floor(videoDetails.lengthSeconds / 60)}:${videoDetails.lengthSeconds % 60}\nQuality: ${selectedVideo.format.qualityLabel}\nViews: ${videoDetails.viewCount}\nSize: ${(selectedVideo.format.contentLength / (1024 * 1024)).toFixed(2)} MB\n\n> Powered by Ethix-MD`;
+        const caption = `Title: ${selectedVideo.format.title}\nAuthor: ${videoDetails.author.name}\nDuration: ${Math.floor(videoDetails.lengthSeconds / 60)}:${videoDetails.lengthSeconds % 60}\nQuality: ${selectedVideo.format.qualityLabel}\nViews: ${videoDetails.viewCount}\nSize: ${(selectedVideo.format.contentLength / (1024 * 1024)).toFixed(2)} MB\n\n> Powered by Ethix-MD`;
 
         const maxSizeMB = 300;
         const maxSizeBytes = maxSizeMB * 1024 * 1024;
@@ -139,7 +144,7 @@ const play = async (m, Matrix) => {
           // Send as video if size is within limit
           await Matrix.sendMessage(m.from, { video: videoBuffer, mimetype: 'video/mp4', caption: caption }, { quoted: m });
         } else {
-          await Matrix.sendMessage(m.from, { document: videoBuffer, mimetype: 'video/mp4', fileName: `${videoDetails.title}.mp4`, caption: caption }, { quoted: m });
+          await Matrix.sendMessage(m.from, { document: videoBuffer, mimetype: 'video/mp4', fileName: `${selectedVideo.format.title}.mp4`, caption: caption }, { quoted: m });
         }
       } catch (error) {
         console.error("Error sending video:", error);
