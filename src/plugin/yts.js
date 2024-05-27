@@ -28,7 +28,7 @@ const song = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
   
-  const validCommands = ['yts', 'ytsearch', 'play', 'play2'];
+  const validCommands = ['yts', 'ytsearch'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a YouTube URL or search query');
