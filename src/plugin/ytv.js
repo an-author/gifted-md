@@ -61,8 +61,8 @@ const song = async (m, Matrix) => {
         videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails, size });
         return {
           "header": "",
-          "title": `${format.qualityLabel} ${format.container}`,
-          "description": `size: ${size} MB`,
+          "title": `${format.qualityLabel} (${format.container}) - ${size.toFixed(2)} MB`,
+          "description": ``,
           "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
       });
@@ -76,14 +76,14 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\n`
+                text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\nTitle: ${videoDetails.title}\nAuthor: ${videoDetails.author}\nViews: ${videoDetails.views}\nLikes: ${videoDetails.likes}\nUpload Date: ${videoDetails.uploadDate}\nDuration: ${formatDuration(videoDetails.duration)}\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "*© Powered By Ethix-MD*"
+                text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: info.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
-                title: "",
+                title: info.videoDetails.title,
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -109,6 +109,11 @@ const song = async (m, Matrix) => {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
                 isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363222395675670@newsletter',
+                  newsletterName: "Ethix-MD",
+                  serverMessageId: 143
+                }
               }
             }),
           },
@@ -142,7 +147,6 @@ const song = async (m, Matrix) => {
 
         await Matrix.sendMessage(m.from, {
           video: finalVideoBuffer,
-          mimetype: 'video/mp4',
           caption: `Title: ${selectedFormat.title}\nAuthor: ${selectedFormat.author}\nViews: ${selectedFormat.views}\nLikes: ${selectedFormat.likes}\nUpload Date: ${selectedFormat.uploadDate}\nDuration: ${duration}\nSize: ${size}\n\n> Powered by Ethix-MD`
         }, { quoted: m });
       } catch (error) {
