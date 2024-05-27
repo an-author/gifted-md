@@ -61,8 +61,8 @@ const song = async (m, Matrix) => {
         videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails, size });
         return {
           "header": "",
-          "title": `${format.qualityLabel} (${format.container}) - ${size.toFixed(2)} MB`,
-          "description": ``,
+          "title": `${format.qualityLabel} (${format.container})`,
+          "description": `Size: ${size}`,
           "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
       });
