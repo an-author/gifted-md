@@ -48,17 +48,17 @@ const videoInfo = async (m, Matrix) => {
         const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
 
         const { videoDetails } = info;
-        const { title, author, lengthSeconds, publishDate, viewCount, thumbnails, size } = videoDetails;
+        const { title, author, lengthSeconds, publishDate, viewCount, thumbnails } = videoDetails;
         const thumbnailUrl = thumbnails[thumbnails.length - 1].url;
 
         const media = await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer });
 
         const qualityOptions = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p'];
-        const buttons = qualityOptions.map(quality => ({
+        const buttons = qualityOptions.map((quality, index) => ({
           header: "",
           title: `Quality: ${quality}`,
-          description: `${size}`,
-          id: `ydownload_${quality}` // Command to trigger download
+          description: "",
+          id: `quality_${quality}` // Unique key mapped to quality option
         }));
 
         const messageContent = {
@@ -117,21 +117,21 @@ const videoInfo = async (m, Matrix) => {
       }
     }
 
-    if (selectedId && selectedId.startsWith('download')) {
-      const selectedQuality = selectedId.split(' ')[1];
-      if (!selectedQuality || !qualityOptions.includes(selectedQuality)) {
+    if (selectedId && selectedId.startsWith('quality_')) { // Check if selectedId starts with 'quality_'
+      const selectedQuality = selectedId.split('_')[1]; // Extract quality label from selectedId
+      if (!selectedQuality) {
         await m.React("❌");
         return m.reply('Invalid quality selection.');
       }
 
-      const selectedFormat = formats.find(format => format.qualityLabel.toLowerCase() === selectedQuality);
-      if (!selectedFormat) {
-        await m.React("❌");
-        return m.reply(`Quality ${selectedQuality} not found.`);
-      }
-
       try {
         await m.React("🕘");
+
+        const selectedFormat = formats.find(format => format.qualityLabel.toLowerCase() === selectedQuality);
+        if (!selectedFormat) {
+          await m.React("❌");
+          return m.reply(`Quality ${selectedQuality} not found.`);
+        }
 
         const videoStream = ytdl(selectedId, { format: selectedFormat });
         const videoBuffer = await streamToBuffer(videoStream);
