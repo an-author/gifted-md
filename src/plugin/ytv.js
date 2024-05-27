@@ -46,14 +46,24 @@ const song = async (m, Matrix) => {
         return;
       }
 
+      const videoDetails = {
+        title: info.videoDetails.title,
+        author: info.videoDetails.author.name,
+        views: info.videoDetails.viewCount,
+        likes: info.videoDetails.likes,
+        uploadDate: info.videoDetails.uploadDate,
+        duration: info.videoDetails.lengthSeconds
+      };
+
       const qualityButtons = formats.map((format, index) => {
         const uniqueId = videoIndex + index;
-        videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId });
+        const size = format.contentLength ? format.contentLength / (1024 * 1024) : 'Unknown size'; // in MB
+        videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails, size });
         return {
           "header": "",
-          "title": `${format.qualityLabel} (${format.container})`,
-          "description": ``,
-          "id": `quality_${uniqueId}` 
+          "title": `${format.qualityLabel} ${format.container}`,
+          "description": `size: ${size.toFixed(2)} MB`,
+          "id": `quality_${uniqueId}` // Unique key format for quality buttons
         };
       });
 
@@ -69,11 +79,11 @@ const song = async (m, Matrix) => {
                 text: `Ethix-MD Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By Ethix-MD"
+                text: "*© Powered By Ethix-MD*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: info.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
-                title: info.videoDetails.title,
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -86,7 +96,7 @@ const song = async (m, Matrix) => {
                       title: "🎬 Select a video quality",
                       sections: [
                         {
-                          title: "Available Qualities",
+                          title: "📥 Available Qualities",
                           highlight_label: "💡 Choose Quality",
                           rows: qualityButtons
                         },
@@ -110,15 +120,16 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
+      // Increment the global video index for the next set of videos
       videoIndex += formats.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { 
+  } else if (selectedId) { // Check if selectedId exists
     const key = parseInt(selectedId.replace('quality_', ''));
-    const selectedFormat = videoMap.get(key); 
+    const selectedFormat = videoMap.get(key); // Find video format by unique key
 
     if (selectedFormat) {
       try {
@@ -126,14 +137,35 @@ const song = async (m, Matrix) => {
         const videoStream = ytdl(videoUrl, { format: selectedFormat });
         const finalVideoBuffer = await streamToBuffer(videoStream);
 
-        await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: `Title: ${selectedFormat.title}\nQuality: ${selectedFormat.qualityLabel}\n\n> Powered by Ethix-MD` }, { quoted: m });
+        const duration = formatDuration(selectedFormat.duration);
+        const size = formatSize(selectedFormat.size);
+
+        await Matrix.sendMessage(m.from, {
+          video: finalVideoBuffer,
+          mimetype: 'video/mp4',
+          caption: `Title: ${selectedFormat.title}\nAuthor: ${selectedFormat.author}\nViews: ${selectedFormat.views}\nLikes: ${selectedFormat.likes}\nUpload Date: ${selectedFormat.uploadDate}\nDuration: ${duration}\nSize: ${size}\n\n> Powered by Ethix-MD`
+        }, { quoted: m });
       } catch (error) {
         console.error("Error fetching video details:", error);
         m.reply('Error fetching video details.');
       }
     } else {
+      m.reply('Selected format not found.');
     }
   }
+};
+
+const formatDuration = (seconds) => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  return `${h}h ${m}m ${s}s`;
+};
+
+const formatSize = (size) => {
+  if (size < 1024) return `${size.toFixed(2)} KB`;
+  if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} MB`;
+  return `${(size / (1024 * 1024)).toFixed(2)} GB`;
 };
 
 const streamToBuffer = async (stream) => {
