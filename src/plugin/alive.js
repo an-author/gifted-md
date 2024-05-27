@@ -92,7 +92,7 @@ const serverStatusCommand = async (m, Matrix) => {
       }, 500);
 
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 4000));
 
       clearInterval(loadingInterval);
 
