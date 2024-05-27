@@ -155,7 +155,6 @@ const song = async (m, Matrix) => {
         m.reply('Error fetching video details.');
       }
     } else {
-      m.reply('Selected format not found.');
     }
   }
 };
