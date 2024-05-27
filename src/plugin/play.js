@@ -242,9 +242,11 @@ const playcommand = async (m, Matrix) => {
             mimeType = 'video/mp4';
           }
 
-          if (type === 'audio') {
-            content = { audio: finalMediaBuffer, mimetype: 'audio/mp3', caption: 'Downloaded by Ethix-MD' };
-          } else if (type === 'video') {
+          const fileSizeInMB = finalMediaBuffer.length / (1024 * 1024);
+
+          if (type === 'audio' && fileSizeInMB <= 300) {
+            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: 'Downloaded by Ethix-MD' };
+          } else if (type === 'video' && fileSizeInMB <= 300) {
             content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Ethix-MD' };
           } else if (type === 'audiodoc') {
             content = { document: finalMediaBuffer, mimetype: 'audio/mp3', fileName: `${selectedMedia.title}.mp3` };
@@ -254,22 +256,21 @@ const playcommand = async (m, Matrix) => {
 
           await Matrix.sendMessage(m.from, content, { quoted: m });
         } catch (error) {
-          console.error("Error fetching media details:", error);
-          m.reply('Error fetching media details.');
+          console.error("Error processing your request:", error);
+          m.reply('Error processing your request.');
+          await m.React("❌");
         }
-      } else {
       }
     }
   }
 };
 
-// Helper function to get stream buffer
-const getStreamBuffer = (stream) => {
+const getStreamBuffer = async (stream) => {
+  const chunks = [];
   return new Promise((resolve, reject) => {
-    const chunks = [];
-    stream.on('data', (chunk) => chunks.push(chunk));
+    stream.on('data', chunk => chunks.push(chunk));
     stream.on('end', () => resolve(Buffer.concat(chunks)));
-    stream.on('error', reject);
+    stream.on('error', err => reject(err));
   });
 };
 
