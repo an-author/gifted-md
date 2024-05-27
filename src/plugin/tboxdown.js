@@ -1,7 +1,7 @@
 import pkg from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-const teraboxDownloader = async (m, Matrix) => {
+const teraboxdownloader = async (m, Matrix) => {
   const teraboxUrl = "https://teraboxvideodownloader.nepcoderdevs.workers.dev/?url=";
   const videoUrl = m.body.slice(teraboxUrl.length).trim();
 
@@ -87,4 +87,4 @@ const teraboxDownloader = async (m, Matrix) => {
   }
 };
 
-export default teraboxDownloader;
+export default teraboxdownloader;
