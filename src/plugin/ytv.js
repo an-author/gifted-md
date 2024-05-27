@@ -57,7 +57,7 @@ const song = async (m, Matrix) => {
 
       const qualityButtons = await Promise.all(formats.map(async (format, index) => {
         const uniqueId = videoIndex + index;
-        const size = format.contentLength ? await getSizeInMB(format) : 'Unknown size'; // in MB
+        const size = format.contentLength ? formatSize(format.contentLength) : 'Unknown size';
         videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails, size });
         return {
           "header": "",
@@ -143,10 +143,11 @@ const song = async (m, Matrix) => {
         const finalVideoBuffer = await streamToBuffer(videoStream);
 
         const duration = selectedFormat.duration;
-        const size = formatSize(selectedFormat.size);
+        const size = selectedFormat.size;
 
         await Matrix.sendMessage(m.from, {
-          image: finalVideoBuffer,
+          video: finalVideoBuffer,
+          mimetype: 'video/mp4',
           caption: `Title: ${selectedFormat.title}\nAuthor: ${selectedFormat.author}\nViews: ${selectedFormat.views}\nLikes: ${selectedFormat.likes}\nUpload Date: ${selectedFormat.uploadDate}\nDuration: ${duration}\nSize: ${size}\n\n> Powered by Ethix-MD`
         }, { quoted: m });
       } catch (error) {
@@ -167,9 +168,10 @@ const formatDuration = (seconds) => {
 };
 
 const formatSize = (size) => {
-  if (size < 1024) return `${size.toFixed(2)} KB`;
-  if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} MB`;
-  return `${(size / (1024 * 1024)).toFixed(2)} GB`;
+  if (size < 1024) return `${size.toFixed(2)} B`;
+  if (size < 1024 * KB) return `${(size / 1024).toFixed(2)} KB`;
+  if (size < 1024 * 1024) return `${(size / 1024 / 1024).toFixed(2)} MB`;
+  return `${(size / 1024 / 1024 / 1024).toFixed(2)} GB`;
 };
 
 const formatDate = (date) => {
@@ -178,11 +180,6 @@ const formatDate = (date) => {
   const month = (d.getMonth() + 1).toString().padStart(2, '0');
   const year = d.getFullYear();
   return `${day}-${month}-${year}`;
-};
-
-const getSizeInMB = async (format) => {
-  const { contentLength } = await ytdl.getInfo(format.url);
-  return contentLength ? (contentLength / (1024 * 1024)).toFixed(2) + ' MB' : 'Unknown size';
 };
 
 const streamToBuffer = async (stream) => {
