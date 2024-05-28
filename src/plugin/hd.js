@@ -16,7 +16,7 @@ const tourl = async (m, gss) => {
   const validCommands = ['hdr', 'hd', 'remini', 'enhance', 'upscale'];
 
   if (validCommands.includes(cmd)) {
-    if (!m.quoted ? m.quoted : m || m.quoted.mtype !== 'imageMessage') {
+    if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
       return m.reply(`*Send/Reply with an Image to Enhance Your Picture Quality ${prefix + cmd}*`);
     }
     
