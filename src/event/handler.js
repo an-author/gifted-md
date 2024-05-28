@@ -50,13 +50,22 @@ const Handler = async (chatUpdate, sock, logger) => {
                 return;
             }
         }
+        
+        const prefixMatch = m.body.match(/^[\\/!#.]/);
+    const prefix = prefixMatch ? prefixMatch[0] : '/';
+    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+    const text = m.body.slice(prefix.length + cmd.length).trim();
+
+    if (!m.body.startsWith(prefix)) {
+        return;
+    }
 
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
-        const commandLimit = 10; // Daily command limit
+        const commandLimit = 1; // Daily command limit
         const oneDayInMs = 24 * 60 * 60 * 1000; // Milliseconds in a day
 
-        if (config.NOT_ALLOW) {
+        if (!m.isSelf && onrNumber !==config.OWNER_NUMBER && config.NOT_ALLOW) {
             const groupMetadata = await sock.groupMetadata(groupChatId);
             const participants = groupMetadata.participants;
             const participantIndex = participants.map(participant => participant.id);
