@@ -13,12 +13,37 @@
       "value": ""
     },
     "MODE": {
-      "description": "mode public or private",
+      "description": "mode public or self",
       "required": true,
       "value": "public"
     },
     "AUTO_STATUS_SEEN": {
       "description": "make it true if you want bot to view status",
+      "required": false,
+      "value": ""
+    },
+    "AUTO_READ": {
+      "description": "make it true if you want bot to read message",
+      "required": false,
+      "value": ""
+    },
+    "AUTO_TYPING": {
+      "description": "make it true if you want bot to show typing",
+      "required": false,
+      "value": ""
+    },
+    "AUTO_RECORDING": {
+      "description": "make it true if you want bot to show recording audio",
+      "required": false,
+      "value": ""
+    },
+    "ALWAYS_ONLINE": {
+      "description": "make it true if you want bot to show always online",
+      "required": false,
+      "value": ""
+    },
+    "AUTO_BLOCK": {
+      "description": "make it true if you want bot to auto block only 212 numbers",
       "required": false,
       "value": ""
     },
