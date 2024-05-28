@@ -1,6 +1,5 @@
 import { UploadFileUgu, TelegraPh } from '../uploader.js';
 import { writeFile, unlink } from 'fs/promises';
-import util from 'util';
 
 const MAX_FILE_SIZE_MB = 60; // Maximum file size in megabytes
 
@@ -16,11 +15,41 @@ const tourl = async (m, gss) => {
     }
 
     try {
+      const loadingMessages = [
+        "*「▰▰▰▱▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▰」*",
+      ];
+
+      const loadingMessageCount = loadingMessages.length;
+      let currentMessageIndex = 0;
+
+      const { key } = await gss.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m });
+
+      const loadingInterval = setInterval(() => {
+        currentMessageIndex = (currentMessageIndex + 1) % loadingMessageCount;
+        gss.relayMessage(m.from, {
+          protocolMessage: {
+            key: key,
+            type: 14,
+            editedMessage: {
+              conversation: loadingMessages[currentMessageIndex],
+            },
+          },
+        }, {});
+      }, 500);
+
       const media = await m.quoted.download(); // Download the media from the quoted message
       if (!media) throw new Error('Failed to download media.');
 
       const fileSizeMB = media.length / (1024 * 1024); // Calculate file size in megabytes
       if (fileSizeMB > MAX_FILE_SIZE_MB) {
+        clearInterval(loadingInterval);
         return m.reply(`File size exceeds the limit of ${MAX_FILE_SIZE_MB}MB.`);
       }
 
@@ -36,6 +65,10 @@ const tourl = async (m, gss) => {
       } else {
         response = await UploadFileUgu(filePath); // Pass the file path to UploadFileUgu
       }
+
+      clearInterval(loadingInterval);
+
+      await gss.sendMessage(m.from, { text: '✅ Loading complete. Generating URL...', quoted: m });
 
       const mediaType = getMediaType(m.quoted.mtype);
       const mediaUrl = response.url || response; // Extract the URL from the response
