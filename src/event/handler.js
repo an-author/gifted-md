@@ -1,6 +1,4 @@
 import { downloadMediaMessage, generateWAMessageFromContent, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-const { proto } = pkg;
 import { serialize, decodeJid } from '../../lib/Serializer.js';
 import path from 'path';
 import fs from 'fs/promises';
