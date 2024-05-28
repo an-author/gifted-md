@@ -68,7 +68,16 @@ const tourl = async (m, gss) => {
 
       clearInterval(loadingInterval);
 
-      await gss.sendMessage(m.from, { text: '✅ Loading complete. Generating URL...', quoted: m });
+      // Replace loading animation with "Loading complete" message
+      await gss.relayMessage(m.from, {
+        protocolMessage: {
+          key: key,
+          type: 14,
+          editedMessage: {
+            conversation: '✅ Loading complete.',
+          },
+        },
+      }, {});
 
       const mediaType = getMediaType(m.quoted.mtype);
       const mediaUrl = response.url || response; // Extract the URL from the response
