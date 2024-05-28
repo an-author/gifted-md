@@ -17,7 +17,7 @@ const config = {
   ANTI_VIEW_ONCE: process.env.ANTI_VIEW_ONCE !==
   undefined ? process.env.ANTI_VIEW_ONCE === 'true': true,
   NOT_ALLOW: process.env.ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
-  MODE: process.env.MODE || 'self',
+  MODE: process.env.MODE || 'public',
   OWNER_NAME: process.env.OWNER_NAME || "Sid bhai",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "919142294671",
   WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : false, 
