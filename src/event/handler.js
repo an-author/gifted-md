@@ -53,7 +53,7 @@ const Handler = async (chatUpdate, sock, logger) => {
 
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
-        const commandLimit = 1; // Daily command limit
+        const commandLimit = 10; // Daily command limit
         const oneDayInMs = 24 * 60 * 60 * 1000; // Milliseconds in a day
 
         if (config.NOT_ALLOW) {
