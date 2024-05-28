@@ -16,7 +16,7 @@ const config = {
   REJECT_CALL: process.env.REJECT_CALL !== undefined ? process.env.REJECT_CALL === 'true' : false, 
   ANTI_VIEW_ONCE: process.env.ANTI_VIEW_ONCE !==
   undefined ? process.env.ANTI_VIEW_ONCE === 'true': true,
-  NOT_ALLOW: process.env.ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
+  NOT_ALLOW: process.env.ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : false,
   MODE: process.env.MODE || 'public',
   OWNER_NAME: process.env.OWNER_NAME || "Sid bhai",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "919142294671",
