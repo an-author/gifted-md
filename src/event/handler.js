@@ -1,4 +1,6 @@
 import { downloadMediaMessage, generateWAMessageFromContent, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { proto } = pkg;
 import { serialize, decodeJid } from '../../lib/Serializer.js';
 import path from 'path';
 import fs from 'fs/promises';
@@ -49,14 +51,6 @@ const Handler = async (chatUpdate, sock, logger) => {
             }
         }
         
-        const prefixMatch = m.body.match(/^[\\/!#.]/);
-    const prefix = prefixMatch ? prefixMatch[0] : '/';
-    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-    const text = m.body.slice(prefix.length + cmd.length).trim();
-
-    if (!m.body.startsWith(prefix)) {
-        return;
-    }
 
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
