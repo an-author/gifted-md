@@ -30,10 +30,10 @@ const setProfilePicture = async (m, gss) => {
     const validCommands = ['setppfullgc', 'setfullprofilepicgc', 'fullppgc', 'setppgc' ];
 
     if (validCommands.includes(cmd)) {
-        if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
         if (!m.isGroup) return m.reply("*📛 THIS IS ONLY FOR GROUP*");
         if (!isBotAdmins) return m.reply("*📛 BOT MUST BE AN ADMIN*");
         if (!isAdmins) return m.reply("*📛 THIS IS AN ADMIN COMMAND*");
+        if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
         if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
             return m.reply(`Send/Reply with an image to set your profile picture ${prefix + cmd}`);
         }
