@@ -46,13 +46,14 @@ const Handler = async (chatUpdate, sock, logger) => {
         }
 
         const onrNumber = m.from.match(/\d+/)[0];
+        const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
+        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
 
         if (!sock.public) {
-            if (!m.isSelf && onrNumber !== config.OWNER_NUMBER) {
+            if (!isCreator) {
                 return;
             }
         }
-        
 /*
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
