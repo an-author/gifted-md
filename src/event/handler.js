@@ -30,7 +30,7 @@ const Handler = async (chatUpdate, sock, logger) => {
 
         const m = serialize(JSON.parse(JSON.stringify(chatUpdate.messages[0])), sock, logger);
         if (!m.message) return;
-        const onrNumber = m.from.match(/\d+/)[0];
+        
         const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
         const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
 
