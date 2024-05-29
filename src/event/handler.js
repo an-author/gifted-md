@@ -22,6 +22,31 @@ export const getGroupAdmins = (participants) => {
     return admins || [];
 };
 
+const deleteUpdate = async (message, sock) => {
+    try {
+
+        const { fromMe, id, participant } = message;
+        if (fromMe) return;
+        
+        let msg = serialize(await sock.loadMessage(id), sock); // Make sure to serialize the loaded message
+        if (!msg) return;
+
+        await sock.sendMessage(msg.from, {
+            text: `
+≡ deleted a message 
+┌─⊷ 𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
+▢ *Number :* @${participant.split`@`[0]} 
+└─────────────
+            `.trim(),
+            mentions: [participant]
+        }, { quoted: msg });
+        
+        await sock.copyNForward(msg.from, msg, false).catch(e => console.log(e, msg));
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 const Handler = async (chatUpdate, sock, logger) => {
     try {
         if (chatUpdate.type !== 'notify') return;
