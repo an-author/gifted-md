@@ -32,7 +32,7 @@ const Handler = async (chatUpdate, sock, logger) => {
         if (!m.message) return;
         
         const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
-        const onrNumber = text.match(/(\d+)/);
+        const onrNumber = m.from.match(/(\d+)/);
         const isCreator = [botNumber, onrNumber !== config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
 
         const participants = m.isGroup ? await sock.groupMetadata(m.from).then(metadata => metadata.participants) : [];
