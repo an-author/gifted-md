@@ -44,7 +44,7 @@ const Handler = async (chatUpdate, sock, logger) => {
         ) {
             await sock.readMessages([m.key]);
         }
-
+/*
         const onrNumber = m.from.match(/\d+/)[0];
 
         if (!sock.public) {
