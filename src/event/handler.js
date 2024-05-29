@@ -30,7 +30,9 @@ const Handler = async (chatUpdate, sock, logger) => {
 
         const m = serialize(JSON.parse(JSON.stringify(chatUpdate.messages[0])), sock, logger);
         if (!m.message) return;
-        const botNumber = await sock.decodeJid(sock.user.id)
+        const onrNumber = m.from.match(/\d+/)[0];
+        const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
+        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
 
         const participants = m.isGroup ? await sock.groupMetadata(m.from).then(metadata => metadata.participants) : [];
         const groupAdmins = m.isGroup ? getGroupAdmins(participants) : [];
@@ -45,9 +47,7 @@ const Handler = async (chatUpdate, sock, logger) => {
             await sock.readMessages([m.key]);
         }
 
-        const onrNumber = m.from.match(/\d+/)[0];
-        const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
-        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+        
 
         if (!sock.public) {
             if (!isCreator) {
