@@ -51,7 +51,7 @@ const Handler = async (chatUpdate, sock, logger) => {
             }
         }
         
-
+/*
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
         const commandLimit = 10; // Daily command limit
@@ -95,6 +95,7 @@ const Handler = async (chatUpdate, sock, logger) => {
                 }
             }
         }
+        */
 
         if (
             m.type === 'protocolMessage' ||
