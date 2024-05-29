@@ -1,16 +1,19 @@
 import generateProfilePicture from '../generateProfilePicture.js'; // Import the generateProfilePicture function
 import { writeFile, unlink } from 'fs/promises';
+import config from '../../config.cjs';
 
 const setProfilePicture = async (m, gss) => {
   const botNumber = await gss.decodeJid(gss.user.id);
+  const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['setppfull', 'setfullprofilepic', 'fullpp', 'setavatar'];
+  const validCommands = ['setppfull', 'setfullprofilepic', 'fullpp'];
 
   if (validCommands.includes(cmd)) {
+    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
       return m.reply(`Send/Reply with an image to set your profile picture ${prefix + cmd}`);
     }
