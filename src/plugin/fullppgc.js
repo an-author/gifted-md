@@ -2,16 +2,6 @@ import generateProfilePicture from '../generateProfilePicture.js'; // Import the
 import { writeFile, unlink } from 'fs/promises';
 import config from '../../config.cjs';
 
-// Function to get group admins
-export const getGroupAdmins = (participants) => {
-    let admins = [];
-    for (let i of participants) {
-        if (i.admin === "superadmin" || i.admin === "admin") {
-            admins.push(i.id);
-        }
-    }
-    return admins || [];
-};
 
 // Function to set profile picture
 const setProfilePicture = async (m, gss) => {
