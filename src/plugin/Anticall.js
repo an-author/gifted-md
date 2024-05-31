@@ -1,7 +1,7 @@
 import config from '../../config.cjs';
 
 // Main command function
-const anticallCommand = async (m, Matrix) => {
+const anticallcommand = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -29,4 +29,4 @@ const anticallCommand = async (m, Matrix) => {
   }
 };
 
-export default anticallCommand;
+export default anticallcommand;
