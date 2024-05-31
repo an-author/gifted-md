@@ -1,5 +1,6 @@
-// Import the necessary modules
 import translate from '@vitalets/google-translate-api';
+
+
 const translateCommand = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
