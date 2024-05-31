@@ -1,4 +1,4 @@
-import translate from '@vitalets/google-translate-api';
+import translate from 'translate-google-api';
 
 
 const translateCommand = async (m, Matrix) => {
@@ -6,8 +6,10 @@ const translateCommand = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const args = m.body.slice(prefix.length + cmd.length).trim().split(' ');
+  
+  const validCommands = ['translate', 'trt'];
 
-  if (cmd === 'translate') {
+   if (validCommands.includes(cmd)) {
     const targetLang = args[0];
     const text = args.slice(1).join(' ');
 
@@ -19,7 +21,7 @@ const translateCommand = async (m, Matrix) => {
 
     try {
       const result = await translate(text, { to: targetLang });
-      const translatedText = result.text;
+      const translatedText = result[0];
 
       const responseMessage = `Translated to ${targetLang}:\n\n${translatedText}`;
       await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m });
