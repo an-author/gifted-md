@@ -86,15 +86,23 @@ const Handler = async (chatUpdate, sock, logger, store) => {
             await sock.readMessages([m.key]);
         }
 
-        const onrNumber = m.from.match(/\d+/)[0];
-        const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
-        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+        const onrNumberMatch = m.from && m.from.match(/\d+/);
+if (!onrNumberMatch) {
+  console.error("Error: 'm.from' is undefined or does not contain any numbers.");
+  return; // Handle the error or provide a fallback
+}
 
-        if (!sock.public) {
-            if (!isCreator) {
-                return;
-            }
-        }
+const onrNumber = onrNumberMatch[0];
+
+const botNumber = await sock.user.id.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
+const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+
+if (!sock.public) {
+  if (!isCreator) {
+    return;
+  }
+}
+
 /* // ANTIBOT TEMPERERY OFF //
         if (m.isGroup && m.key && m.key.id.startsWith("BAE5") && m.key.id.length === 16) {
             if (!isBotAdmins) return m.reply(`Eh, the bot is not an admin`);
