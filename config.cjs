@@ -18,8 +18,6 @@ const config = {
   MODE: process.env.MODE || 'public',
   OWNER_NAME: process.env.OWNER_NAME || "Sid bhai",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "919142294671",
-  PACKNAME: process.env.PACKNAME || "(¯´•._.• 𝐄𝐭𝐡𝐢𝐱-𝐌𝐃 •._.•´¯)",
-  AUTHOR: process.env.AUTHOR || "",
   WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : false, 
 };
 
