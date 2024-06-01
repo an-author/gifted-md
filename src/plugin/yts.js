@@ -123,11 +123,6 @@ const song = async (m, Matrix) => {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
                 isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363222395675670@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
               }
             }),
           },
