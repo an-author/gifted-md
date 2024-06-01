@@ -374,11 +374,6 @@ const test = async (m, Matrix) => {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: fgg
@@ -415,11 +410,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -466,11 +456,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -502,11 +487,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -550,11 +530,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -586,11 +561,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -619,11 +589,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -646,11 +611,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -677,11 +637,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -709,11 +664,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
@@ -741,11 +691,6 @@ await Matrix.sendMessage(m.from, {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
     isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363222395675670@newsletter',
-      newsletterName: "Ethix-MD",
-      serverMessageId: 143
-    }
   }
 }, {
   quoted: m
