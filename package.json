@@ -27,6 +27,7 @@
     "express": "^4.19.2",
     "ffmpeg": "^0.0.4",
     "file-type": "^19.0.0",
+    "fluent-ffmpeg": "^2.1.3",
     "fs": "^0.0.1-security",
     "generate-random-emoji": "^1.0.2",
     "human-readable": "^0.2.1",
