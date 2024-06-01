@@ -25,14 +25,11 @@ const stickerCommand = async (m, gss, config) => {
 
       if (quoted.mtype === 'imageMessage') {
         const stickerBuffer = await fs.readFile(filePath); // Read the saved image from the file system
-        await gss.sendImageAsSticker(m.from, stickerBuffer, m, {
-          packname: config.PACK_NAME,
-          author: config.AUTHOR
-        });
+        await gss.sendImageAsSticker(m.chat, media, m, { packname: config.PACK_NAME, author: config.AUTHOR });
       } else if (quoted.mtype === 'videoMessage') {
         await gss.sendVideoAsSticker(m.from, filePath, m, {
-          packname: "gssbotwa",
-          author: "test"
+          packname: config.PACK_NAME,
+          author: config.AUTHOR
         });
       }
     } catch (error) {
