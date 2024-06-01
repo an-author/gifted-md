@@ -33,7 +33,7 @@ const translateCommand = async (m, sock, config) => {
           const result = await translate(extractedText, { to: targetLang });
           const translatedText = result[0];
 
-          const responseMessage = `Extracted and Translated Text to ${targetLang}:\n\n${translatedText}`;
+          const responseMessage = `${targetLang}:\n\n${translatedText}`;
           await sock.sendMessage(m.from, { text: responseMessage }, { quoted: m }); // Send the extracted and translated text back to the user
         } catch (error) {
           console.error("Error extracting and translating text from image:", error);
@@ -45,7 +45,7 @@ const translateCommand = async (m, sock, config) => {
           const result = await translate(quotedText, { to: targetLang });
           const translatedText = result[0];
 
-          const responseMessage = `Translated Text to ${targetLang}:\n\n${translatedText}`;
+          const responseMessage = `${targetLang}:\n\n${translatedText}`;
           await sock.sendMessage(m.from, { text: responseMessage }, { quoted: m }); // Send the translated text back to the user
         } catch (error) {
           console.error("Error translating quoted text:", error);
@@ -57,7 +57,7 @@ const translateCommand = async (m, sock, config) => {
         const result = await translate(text, { to: targetLang });
         const translatedText = result[0];
 
-        const responseMessage = `Translated to ${targetLang}:\n\n${translatedText}`;
+        const responseMessage = `${targetLang}:\n\n${translatedText}`;
         await sock.sendMessage(m.from, { text: responseMessage }, { quoted: m });
       } catch (error) {
         console.error("Error translating text:", error);
