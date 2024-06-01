@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import config from '../../config.cjs'
 
 const stickerCommand = async (m, gss, config) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -25,8 +26,8 @@ const stickerCommand = async (m, gss, config) => {
       if (quoted.mtype === 'imageMessage') {
         const stickerBuffer = await fs.readFile(filePath); // Read the saved image from the file system
         await gss.sendImageAsSticker(m.from, stickerBuffer, m, {
-          packname: "gssbotwa",
-          author: "test"
+          packname: config.PACK_NAME,
+          author: config.AUTHOR
         });
       } else if (quoted.mtype === 'videoMessage') {
         await gss.sendVideoAsSticker(m.from, filePath, m, {
