@@ -5,7 +5,7 @@ const stickerCommand = async (m, gss, config) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const packname = config.PACK_NAME;
+  const packname = config.PACKNAME;
   const author = config.AUTHOR;
 
   const validCommands = ['sticker', 's'];
