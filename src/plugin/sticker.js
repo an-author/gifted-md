@@ -1,16 +1,17 @@
 import fs from 'fs/promises';
-import config from '../../config.cjs'
+import config from '../../config.cjs';
 
-const stickerCommand = async (m, gss, config) => {
+const stickerCommand = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const packname = config.PACKNAME;
-  const author = config.AUTHOR;
+
+  const packname = "(¯´•._.• 𝐄𝐭𝐡𝐢𝐱-𝐌𝐃 •._.•´¯)";
+  const author = "𝐄𝐭𝐡𝐢𝐱-𝐌𝐃";
 
   const validCommands = ['sticker', 's'];
 
-   if (validCommands.includes(cmd)) {
+  if (validCommands.includes(cmd)) {
     const quoted = m.quoted || {}; // Check if there's a quoted message
 
     // Check if the quoted message is an image or a video
@@ -27,12 +28,9 @@ const stickerCommand = async (m, gss, config) => {
 
       if (quoted.mtype === 'imageMessage') {
         const stickerBuffer = await fs.readFile(filePath); // Read the saved image from the file system
-        await gss.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author });
+        await gss.sendImageAsSticker(m.from, stickerBuffer, m, { packname: packname, author: author });
       } else if (quoted.mtype === 'videoMessage') {
-        await gss.sendVideoAsSticker(m.from, filePath, m, {
-          packname: packname,
-          author: author
-        });
+        await gss.sendVideoAsSticker(m.from, filePath, m, { packname: packname, author: author });
       }
     } catch (error) {
       console.error("Error sending sticker:", error);
