@@ -5,6 +5,8 @@ const stickerCommand = async (m, gss, config) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const packname = config.PACK_NAME;
+  const author = config.AUTHOR;
 
   const validCommands = ['sticker', 's'];
 
@@ -25,11 +27,11 @@ const stickerCommand = async (m, gss, config) => {
 
       if (quoted.mtype === 'imageMessage') {
         const stickerBuffer = await fs.readFile(filePath); // Read the saved image from the file system
-        await gss.sendImageAsSticker(m.chat, media, m, { packname: config.PACK_NAME, author: config.AUTHOR });
+        await gss.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author });
       } else if (quoted.mtype === 'videoMessage') {
         await gss.sendVideoAsSticker(m.from, filePath, m, {
-          packname: config.PACK_NAME,
-          author: config.AUTHOR
+          packname: packname,
+          author: author
         });
       }
     } catch (error) {
