@@ -5,7 +5,9 @@ const stickerCommand = async (m, gss, config) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  if (cmd === 'sticker') {
+  const validCommands = ['sticker', 's'];
+
+   if (validCommands.includes(cmd)) {
     const quoted = m.quoted || {}; // Check if there's a quoted message
 
     // Check if the quoted message is an image or a video
