@@ -180,10 +180,10 @@ Matrix.ev.on("connection.update", async update => {
 
 Matrix.ev.on('messages.upsert', async chatUpdate => {
   try {
-    if (!m.isSelf && config.AUTO_REACT) {
-      const mek = chatUpdate.messages[0];
+    const mek = chatUpdate.messages[0];
+    if (!mek.key.fromMe && config.AUTO_REACT) {
       console.log(mek);
-      if (mek.message && !mek.key.fromMe) {
+      if (mek.message) {
         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
         await doReact(randomEmoji, mek, Matrix);
       }
