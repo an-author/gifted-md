@@ -14,7 +14,9 @@ import moment from 'moment-timezone';
 import axios from 'axios';
 import fetch from 'node-fetch';
 import * as os from 'os';
-import config from '../config.cjs';  // Import the configuration
+import config from '../config.cjs';  
+import pkg from '../lib/autoreact.cjs';
+const { emojis, doReact } = pkg;
 
 const sessionName = "session";
 const app = express();
