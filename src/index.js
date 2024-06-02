@@ -180,7 +180,7 @@ Matrix.ev.on("connection.update", async update => {
 
 Matrix.ev.on('messages.upsert', async chatUpdate => {
   try {
-    if (config.AUTO_REACT) {
+    if (!m.isSelf && config.AUTO_REACT) {
       const mek = chatUpdate.messages[0];
       console.log(mek);
       if (mek.message && !mek.key.fromMe) {
