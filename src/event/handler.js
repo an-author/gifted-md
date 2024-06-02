@@ -90,7 +90,7 @@ const Handler = async (chatUpdate, sock, logger, store) => {
 
         const onrNumber = m.from.match(/\d+/)[0];
 
-if (!gss.public) {
+if (!sock.public) {
         if (!m.isSelf && onrNumber !== config.OWNER_NUMBER) {
             return;
         }
