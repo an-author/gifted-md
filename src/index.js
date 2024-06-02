@@ -175,6 +175,21 @@ Matrix.ev.on("connection.update", async update => {
         }
     }
 });
+
+Matrix.ev.on('messages.upsert', async chatUpdate => {
+  try {
+    if (config.AUTO_REACT) {
+      const mek = chatUpdate.messages[0];
+      console.log(mek);
+      if (mek.message && !mek.key.fromMe) {
+        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+        await m.React(randomEmoji, mek, Matrix);
+      }
+    }
+  } catch (err) {
+    console.error('Error during auto reaction:', err);
+  }
+});
 }
 
 start();
