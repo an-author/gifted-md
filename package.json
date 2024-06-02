@@ -29,7 +29,7 @@
     "file-type": "^19.0.0",
     "fluent-ffmpeg": "^2.1.3",
     "fs": "^0.0.1-security",
-    "generate-random-emoji": "^1.0.2",
+    "google-it": "^1.6.4",
     "human-readable": "^0.2.1",
     "jimp": "^0.16.13",
     "libphonenumber": "^0.0.10",
