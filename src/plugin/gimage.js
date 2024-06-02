@@ -1,4 +1,10 @@
-import google from 'google-it';
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import { promisify } from 'util';
+
+const writeFile = promisify(fs.writeFile);
+const unlink = promisify(fs.unlink);
 
 const imageCommand = async (m, gss, config) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -6,7 +12,7 @@ const imageCommand = async (m, gss, config) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const args = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['image', 'img', 'gimage'];
+  const validCommands = ['img', 'image', 'gimage'];
 
    if (validCommands.includes(cmd)) {
     if (!args) {
@@ -22,7 +28,12 @@ const imageCommand = async (m, gss, config) => {
       }
 
       for (const image of images) {
-        await gss.sendMessage(m.from, { image: { url: image.link }, caption: image.title || '' }, { quoted: m });
+        const response = await axios.get(image.link, { responseType: 'arraybuffer' });
+        const filePath = path.join(__dirname, `temp_${Date.now()}.jpg`);
+        await writeFile(filePath, response.data);
+
+        await gss.sendMessage(m.from, { image: { url: filePath }, caption: image.title || '' }, { quoted: m });
+        await unlink(filePath); // Clean up the temporary file
       }
     } catch (error) {
       console.error("Error fetching images:", error);
