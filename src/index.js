@@ -183,7 +183,7 @@ Matrix.ev.on('messages.upsert', async chatUpdate => {
       console.log(mek);
       if (mek.message && !mek.key.fromMe) {
         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-        await m.React(randomEmoji, mek, Matrix);
+        await doReact(randomEmoji, mek, Matrix);
       }
     }
   } catch (err) {
