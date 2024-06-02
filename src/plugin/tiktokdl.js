@@ -40,7 +40,7 @@ const tiktokCommand = async (m, Matrix) => {
       // Fetch TikTok data
       const tikTokData = await tikdown(text);
       if (!tikTokData.status) {
-        m.reply('No results found.');
+        await m.reply('No results found.');
         await m.React("❌");
         return;
       }
@@ -82,7 +82,7 @@ const tiktokCommand = async (m, Matrix) => {
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: currentResult.data.title,
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -108,7 +108,7 @@ const tiktokCommand = async (m, Matrix) => {
       searchIndex += 1; // Increment the global search index for the next set of results
     } catch (error) {
       console.error("Error processing your request:", error);
-      m.reply('Error processing your request.');
+      await m.reply('Error processing your request.');
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
@@ -143,7 +143,7 @@ const tiktokCommand = async (m, Matrix) => {
           await Matrix.sendMessage(m.from, content, { quoted: m });
         } catch (error) {
           console.error("Error processing your request:", error);
-          m.reply('Error processing your request.');
+          await m.reply('Error processing your request.');
           await m.React("❌");
         }
       }
