@@ -1,48 +1,39 @@
 import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import { promisify } from 'util';
-import google from 'google-it';
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const __filename = new URL(import.meta.url).pathname;
-const __dirname = path.dirname(__filename);
-
-const writeFile = promisify(fs.writeFile);
-const unlink = promisify(fs.unlink);
-
-const imageCommand = async (m, gss, config) => {
+const imageCommand = async (m, sock) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const args = m.body.slice(prefix.length + cmd.length).trim();
+  const query = args;
 
-  const validCommands = ['img', 'image', 'gimage'];
+  const validCommands = ['image', 'img', 'gimage'];
 
    if (validCommands.includes(cmd)) {
-    if (!args) {
-      return m.reply(`Usage: ${prefix + cmd} <search_query>\nExample: ${prefix + cmd} cats`);
+    if (!query) {
+      return sock.sendMessage(m.from, { text: `Usage: ${prefix + cmd} black cats` });
     }
 
     try {
-      const results = await google({ query: args, noDisplay: true, includeImages: true });
-      const images = results.slice(0, 5); // Get the top 5 images
+      const response = await axios.get(`https://aemt.me/googleimage?query=${encodeURIComponent(query)}`);
+      const results = response.data.result.slice(0, 5); // Get the top 5 images
 
-      if (images.length === 0) {
-        return m.reply('No images found for your search query.');
+      if (results.length === 0) {
+        return sock.sendMessage(m.from, { text: 'No images found for your search query.' });
       }
 
-      for (const image of images) {
-        const response = await axios.get(image.link, { responseType: 'arraybuffer' });
-        const filePath = path.join(__dirname, `temp_${Date.now()}.jpg`);
-        await writeFile(filePath, response.data);
+      for (const imageUrl of results) {
+        await sleep(500);
+        const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(response.data, 'binary');
 
-        await gss.sendMessage(m.from, { image: { url: filePath }, caption: image.title || '' }, { quoted: m });
-        await unlink(filePath); // Clean up the temporary file
+        await sock.sendMessage(m.from, { image: imageBuffer, caption: '' }, { quoted: m });
       }
     } catch (error) {
       console.error("Error fetching images:", error);
-      await m.reply('Error fetching images.');
+      await sock.sendMessage(m.from, { text: 'Error fetching images.' });
     }
   }
 };
