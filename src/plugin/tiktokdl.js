@@ -2,6 +2,7 @@ import pkg from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import pkgg from 'nayan-media-downloader';
 const { tikdown } = pkgg;
+
 // Global map to store search results and current index
 const searchResultsMap = new Map();
 let searchIndex = 1; // Global index for search results
@@ -26,7 +27,7 @@ const tiktokCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['tiktok', 'tt', 'ttdl', 'tiktokdl'];
+  const validCommands = ['tiktok', 'tt', 'ttdl'];
 
   if (validCommands.includes(cmd)) {
     if (!text) {
@@ -54,14 +55,14 @@ const tiktokCommand = async (m, Matrix) => {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
             display_text: "Video",
-            id: `ttmedia_video_${searchIndex}`
+            id: `media_video_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
             display_text: "Audio",
-            id: `ttmedia_audio_${searchIndex}`
+            id: `media_audio_${searchIndex}`
           })
         }
       ];
@@ -81,7 +82,7 @@ const tiktokCommand = async (m, Matrix) => {
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: "",
+                title: currentResult.data.title,
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -111,7 +112,7 @@ const tiktokCommand = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { // Check if selectedId exists
-    if (selectedId.startsWith('ttmedia_')) {
+    if (selectedId.startsWith('media_')) {
       const parts = selectedId.split('_');
       const type = parts[1];
       const key = parseInt(parts[2]);
@@ -148,6 +149,12 @@ const tiktokCommand = async (m, Matrix) => {
       }
     }
   }
+};
+
+const getStreamBuffer = async (url) => {
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  return Buffer.from(buffer);
 };
 
 export default tiktokCommand;
