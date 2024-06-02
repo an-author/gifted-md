@@ -26,7 +26,7 @@ const tiktokCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['tiktok'];
+  const validCommands = ['tiktok', 'tt', 'ttdl', 'tiktokdl'];
 
   if (validCommands.includes(cmd)) {
     if (!text) {
