@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './event/index.js';
-import { generateEmojis } from 'generate-random-emoji';
 import { Boom } from '@hapi/boom';
 import express from 'express';
 import pino from 'pino';
