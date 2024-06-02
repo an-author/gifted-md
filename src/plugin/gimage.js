@@ -4,6 +4,10 @@ import path from 'path';
 import { promisify } from 'util';
 import google from 'google-it';
 
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
 const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
 
