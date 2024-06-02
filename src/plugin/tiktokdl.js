@@ -134,9 +134,9 @@ const tiktokCommand = async (m, Matrix) => {
           const fileSizeInMB = finalMediaBuffer.length / (1024 * 1024);
 
           if (type === 'video' && fileSizeInMB <= 300) {
-            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: 'Downloaded by Ethix-MD' };
+            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> © Powered by Ethix-MD' };
           } else if (type === 'audio' && fileSizeInMB <= 300) {
-            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: 'Downloaded by Ethix-MD' };
+            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: '> © Powered by Ethix-MD' };
           }
 
           await Matrix.sendMessage(m.from, content, { quoted: m });
