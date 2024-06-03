@@ -88,11 +88,13 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         
         
 
-const botNumber = sock.decodeJid(sock.user.id);
-const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+const botNumber = await sock.decodeJid(sock.user.id);
+const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.from);
 
-if (!sock.public && !isCreator) {
-    return;
+if (!sock.public) {
+    if (!isCreator) {
+        return;
+    }
 }
 
 
