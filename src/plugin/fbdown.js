@@ -52,9 +52,9 @@ const facebookCommand = async (m, Matrix) => {
       const sections = [{
         title: 'Video Qualities',
         rows: fbData.data.map((video, index) => ({
-          header: video.resolution,
+          header: '',
           title: `Download ${video.resolution}`,
-          description: 'Click to download',
+          description: '',
           id: `media_${index}_${fbSearchIndex}`
         }))
       }];
@@ -76,7 +76,7 @@ const facebookCommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Facebook Video Download\n\n🔍 Select the desired video quality to download.\n\n📌 Choose an option to download.\n\n`
+                text: `Ethix-MD Facebook Video Download\n\n🔍 Select the desired video quality to download.\n\n📌 Choose an option to download.\n\n👨‍💻 `
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
