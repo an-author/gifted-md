@@ -52,7 +52,7 @@ const facebookCommand = async (m, Matrix) => {
       const sections = [{
         title: 'Video Qualities',
         rows: fbData.data.map((video, index) => ({
-          header: ,
+          header: '',
           title: `Download ${video.resolution}`,
           description: '',
           id: `media_${index}_${fbSearchIndex}`
