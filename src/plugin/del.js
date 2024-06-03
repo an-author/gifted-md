@@ -1,3 +1,5 @@
+import config from '../../config.cjs'
+
 const deleteMessage = async (m, gss) => {
   const botNumber = await gss.decodeJid(gss.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
