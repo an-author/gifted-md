@@ -1,4 +1,4 @@
-const cricketScore = async (m, Matrix, doReact, fetch) => {
+const cricketScore = async (m, Matrix, fetch) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -8,7 +8,7 @@ const cricketScore = async (m, Matrix, doReact, fetch) => {
 
   if (validCommands.includes(cmd)) {
     if (!text) {
-      await doReact("❌");
+      await m.React("❌");
       return m.reply(`*Provide a match ID for cricket score.*\nExample: ${prefix}cricketscore 12345`);
     }
 
@@ -19,7 +19,7 @@ const cricketScore = async (m, Matrix, doReact, fetch) => {
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
-        await doReact("❌");
+        await m.React("❌");
         return m.reply(`Invalid response from the cricket score API. Status code: ${response.status}`);
       }
 
@@ -36,7 +36,7 @@ const cricketScore = async (m, Matrix, doReact, fetch) => {
         formattedResult += `│⿻ \n`;
       } else {
         await m.reply(`*Update:* Data not found for the specified match ID.`);
-        await doReact("❌");
+        await m.React("❌");
         return;
       }
 
@@ -60,10 +60,10 @@ const cricketScore = async (m, Matrix, doReact, fetch) => {
       formattedResult += `╰══•∞•═══════════════╯ `;
 
       await m.reply(formattedResult);
-      await doReact("✅");
+      await m.React("✅");
     } catch (error) {
       console.error(error);
-      await doReact("❌");
+      await m.React("❌");
       return m.reply(`An error occurred while processing the cricket score request. ${error.message}`);
     }
   }
