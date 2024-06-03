@@ -49,7 +49,7 @@ const tempMail = async (m, Matrix) => {
                     },
                     {
                       "name": "quick_reply",
-                      "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"check_mail\"}"
+                      "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"checkmail\"}"
                     }
                   ],
                 })
