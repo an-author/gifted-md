@@ -7,24 +7,8 @@ const restartBot = async (m) => {
 
   if (cmd === 'restart') {
     try {
-      m.reply('Restarting bot...');
-      exec('pm2 restart all', (error, stdout, stderr) => {
-        if (error) {
-          console.error(error);
-          m.reply(`An error occurred while restarting the bot: ${error.message}`);
-         m.React("❌");
-          return;
-        }
-        if (stderr) {
-          console.error(stderr);
-          m.reply(`Error output while restarting the bot: ${stderr}`);
-          m.React("❌");
-          return;
-        }
-        console.log(stdout);
-        m.reply(`Bot successfully restarted.`);
-       m.React("✅");
-      });
+      m.reply('Proses....')
+      exec('pm2 restart all')
     } catch (error) {
       console.error(error);
       await m.React("❌");
