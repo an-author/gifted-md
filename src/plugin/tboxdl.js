@@ -8,7 +8,7 @@ const teraboxDownload = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['terabox', 'tb', 'tbdl', 'teraboxdl', 'tboxdl'];
+  const validCommands = ['terabox', 'tb', 'tbdl', 'teraboxdl'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a Terabox URL.');
@@ -20,28 +20,21 @@ const teraboxDownload = async (m, Matrix) => {
       const response = await axios.get(apiUrl);
       const result = response.data;
 
-      if (result.status && result.data.length > 0) {
-        const mediaType = result.data[0].type;
-        const mediaUrl = result.data[0].url;
+      if (result.response && result.response.length > 0) {
+        const mediaInfo = result.response[0];
+        const mediaUrl = mediaInfo.resolutions["Fast Download"];
         const caption = "> © Powered By Ethix-Xsid";
         
-        if (mediaType === 'image') {
-          const sendImage = {
-            image: { url: mediaUrl },
-            caption: caption,
-          };
-          await Matrix.sendMessage(m.from, sendImage, { quoted: m });
-        } else if (mediaType === 'video') {
+        if (mediaUrl) {
           const sendVideo = {
             video: { url: mediaUrl },
             caption: caption,
           };
           await Matrix.sendMessage(m.from, sendVideo, { quoted: m });
+          await m.React('✅');
         } else {
-          throw new Error('Unsupported media type.');
+          throw new Error('Fast Download URL not found.');
         }
-
-        await m.React('✅');
       } else {
         throw new Error('Invalid response from the downloader.');
       }
