@@ -2,7 +2,6 @@ import pkg from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import pkgg from 'nayan-media-downloader';
 const { ndown } = pkgg;
-
 // Global map to store search results and current index
 const fbSearchResultsMap = new Map();
 let fbSearchIndex = 1; // Global index for search results
@@ -52,9 +51,9 @@ const facebookCommand = async (m, Matrix) => {
       const sections = [{
         title: 'Video Qualities',
         rows: fbData.data.map((video, index) => ({
-          header: '',
+          header: video.resolution,
           title: `Download ${video.resolution}`,
-          description: '',
+          description: 'Click to download',
           id: `media_${index}_${fbSearchIndex}`
         }))
       }];
@@ -146,6 +145,7 @@ const facebookCommand = async (m, Matrix) => {
 
 const getStreamBuffer = async (url) => {
   const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch ${url}`);
   const buffer = await response.arrayBuffer();
   return Buffer.from(buffer);
 };
