@@ -2,7 +2,7 @@ import config from '../../config.cjs';
 
 // Main command function
 const anticallcommand = async (m, Matrix) => {
-  const botNumber = await gss.decodeJid(gss.user.id);
+  const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
