@@ -82,7 +82,7 @@ const facebookCommand = async (m, Matrix) => {
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: "Facebook Video",
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -146,6 +146,7 @@ const facebookCommand = async (m, Matrix) => {
 
 const getStreamBuffer = async (url) => {
   const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch ${url}`);
   const buffer = await response.arrayBuffer();
   return Buffer.from(buffer);
 };
