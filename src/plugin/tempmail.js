@@ -5,7 +5,7 @@ const { generateWAMessageFromContent, proto } = pkg;
 const tempMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/gen';
 const checkMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/getmessage?email=';
 
-const tempMail = async (m, Matrix) => {
+const tempMailAndCheckMail = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -29,36 +29,34 @@ const tempMail = async (m, Matrix) => {
                 "deviceListMetadata": {},
                 "deviceListMetadataVersion": 2
               },
-              interactiveMessage: proto.Message.InteractiveMessage.create({
-                body: proto.Message.InteractiveMessage.Body.create({
+              interactiveMessage: {
+                body: {
                   text: tempMailInfo
-                }),
-                footer: proto.Message.InteractiveMessage.Footer.create({
+                },
+                footer: {
                   text: "Use the buttons below to copy or check the email."
-                }),
-                header: proto.Message.InteractiveMessage.Header.create({
+                },
+                header: {
                   title: "Temporary Email",
                   subtitle: result.email,
                   hasMediaAttachment: false
-                }),
-                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                  buttons: [
-                    {
-                      "name": "cta_copy",
-                      "buttonParamsJson": `{"display_text":"Copy Email","id":"copy_email","copy_code":"${result.email}"}`
-                    },
-                    {
-                      "name": "quick_reply",
-                      "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"checkmail\"}"
-                    }
-                  ],
-                })
-              })
+                },
+                buttons: [
+                  {
+                    "name": "cta_copy",
+                    "buttonParamsJson": `{"display_text":"Copy Email","id":"copy_email","copy_code":"${result.email}"}`
+                  },
+                  {
+                    "name": "quick_reply",
+                    "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"check_mail\"}"
+                  }
+                ]
+              }
             }
           }
         };
 
-        const generatedMsg = await Matrix.generateWAMessageFromContent(m.chat, msg, {});
+        const generatedMsg = await Matrix.generateWAMessageFromContent(m.from, msg, {});
         await Matrix.relayMessage(m.from, generatedMsg.message, { messageId: generatedMsg.key.id });
 
         await m.React('✅');
@@ -70,18 +68,10 @@ const tempMail = async (m, Matrix) => {
       m.reply('Error generating temporary email.');
       await m.React('❌');
     }
-  }
-};
-
-const checkTempMail = async (m, Matrix) => {
-  const prefixMatch = m.body.match(/^[\\/!#.]/);
-  const prefix = prefixMatch ? prefixMatch[0] : '/';
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-
-  const validCommands = ['checkmail'];
-
-  if (validCommands.includes(cmd)) {
-    const tempEmail = m.quoted?.text?.match(/Temporary Email: (.+)/)?.[1];
+  } else if (cmd === 'checkmail') {
+    const quotedText = m.quoted?.text;
+    const tempEmailMatch = quotedText?.match(/Temporary Email: (.+)/);
+    const tempEmail = tempEmailMatch ? tempEmailMatch[1] : null;
     if (!tempEmail) return m.reply('Please generate a temporary email first using the tempmail command.');
 
     try {
@@ -107,4 +97,4 @@ const checkTempMail = async (m, Matrix) => {
   }
 };
 
-export default { tempMail, checkTempMail };
+export default tempMailAndCheckMail;
