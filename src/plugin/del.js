@@ -11,23 +11,16 @@ const deleteMessage = async (m, gss) => {
 
    if (validCommands.includes(cmd)) {
      if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
-    if (!m.quoted) return m.reply('Please mention a message to delete.');
+            if (!m.quoted) return m.reply('Pʟᴇᴀsᴇ ᴍᴇɴᴛɪᴏɴ ᴀ ᴍᴇssᴀɢᴇ');
+        let { from, id } = m.quoted;
 
-    const { chat, id } = m.quoted;
+        const key = {
+            remoteJid: m.from,
+            id: m.quoted.id,
+            participant: m.quoted.sender
+        };
 
-    const key = {
-      remoteJid: m.chat,
-      id: m.quoted.id,
-      participant: m.quoted.sender,
-    };
-
-    try {
-      await gss.sendMessage(m.from, { delete: key });
-      m.reply('Message deleted successfully.');
-    } catch (error) {
-      console.error(error);
-      m.reply(`An error occurred while deleting the message: ${error.message}`);
-    }
+        await gss.sendMessage(m.from, { delete: key });
   }
 };
 
