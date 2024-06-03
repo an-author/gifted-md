@@ -1,4 +1,6 @@
-const cricketScore = async (m, Matrix, fetch) => {
+import axios from 'axios';
+
+const cricketScore = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -16,14 +18,14 @@ const cricketScore = async (m, Matrix, fetch) => {
 
     try {
       const apiUrl = `https://iol.apinepdev.workers.dev/${matchId}`;
-      const response = await fetch(apiUrl);
+      const response = await axios.get(apiUrl);
 
-      if (!response.ok) {
+      if (!response.status === 200) {
         await m.React("❌");
         return m.reply(`Invalid response from the cricket score API. Status code: ${response.status}`);
       }
 
-      const result = await response.json();
+      const result = response.data;
 
       let formattedResult = `╭══════════════•∞•══╮\n`;
       formattedResult += `│⿻   *Ethix-MD 😎 🔥*\n`;
