@@ -17,7 +17,7 @@ const getMessage = async (key, store) => {
         return msg.message || undefined;
     }
     return {
-        conversation: "Hai Im gss botwa"
+        conversation: "Hai Im sock botwa"
     };
 };
 
@@ -88,10 +88,11 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         
         
 
-        const onrNumber = m.from.match(/\d+/)[0];
-
+const botNumber = await sock.decodeJid(sock.user.id);
+  const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+  
 if (!sock.public) {
-        if (!m.isSelf && onrNumber !== config.OWNER_NUMBER) {
+        if (!isCreator) {
             return;
         }
     }
