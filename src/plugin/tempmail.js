@@ -1,7 +1,6 @@
 import axios from 'axios';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-
 const tempMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/gen';
 const checkMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/getmessage?email=';
 
@@ -22,27 +21,22 @@ const tempMailAndCheckMail = async (m, Matrix) => {
       if (result && result.email) {
         const tempMailInfo = `Temporary Email: ${result.email}`;
 
-                  let msg = generateWAMessageFromContent(m.from, {
-            viewOnceMessage: {
-              message: {
-                messageContextInfo: {
-                  deviceListMetadata: {},
-                  deviceListMetadataVersion: 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.create({
-                  body: proto.Message.InteractiveMessage.Body.create({
-                  text: tempMailInfo
-                },
-                footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "> © Powered By Ethix-MD"
-                  }),
-                  header: proto.Message.InteractiveMessage.Header.create({
-                    title: "",
-                    subtitle: "",
-                    hasMediaAttachment: false
-                  }),
-                  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                    buttons: [
+        let generatedMsg = generateWAMessageFromContent(m.from, {
+          interactiveMessage: proto.Message.InteractiveMessage.create({
+            message: {
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: tempMailInfo
+              }),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: "> © Powered By Ethix-MD"
+              }),
+              header: proto.Message.InteractiveMessage.Header.create({
+                title: "",
+                subtitle: "",
+                hasMediaAttachment: false
+              }),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [
                   {
                     "name": "cta_copy",
                     "buttonParamsJson": `{"display_text":"Copy Email","id":"copy_email","copy_code":"${result.email}"}`
@@ -52,10 +46,11 @@ const tempMailAndCheckMail = async (m, Matrix) => {
                     "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"check_mail\"}"
                   }
                 ]
-              }
+              })
             }
-          }
+          })
         };
+
         await Matrix.relayMessage(m.from, generatedMsg.message, { messageId: generatedMsg.key.id });
 
         await m.React('✅');
@@ -83,7 +78,10 @@ const tempMailAndCheckMail = async (m, Matrix) => {
       if (result && result.messages) {
         const messages = result.messages.map((msg, index) => `${index + 1}. From: ${msg.from}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`).join('');
         const mailInfo = `Emails for ${tempEmail}:\n\n${messages}`;
-        await Matrix.sendMessage(m.from, { text: mailInfo }, { quoted: m });
+        
+        const mailInfoMessage = generateWAMessageFromContent(m.from, { text: mailInfo });
+        await Matrix.relayMessage(m.from, mailInfoMessage, { quoted: m });
+        
         await m.React('✅');
       } else {
         throw new Error('No messages found or invalid response from the email check API.');
