@@ -30,7 +30,7 @@ const gptResponse = async (m, Matrix) => {
         if (codeMatch) {
           const code = codeMatch[1];
           
-          let msg = generateWAMessageFromContent(m.chat, {
+          let msg = generateWAMessageFromContent(m.from, {
             viewOnceMessage: {
               message: {
                 messageContextInfo: {
