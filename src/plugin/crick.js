@@ -26,7 +26,7 @@ const cricketScore = async (m, Matrix, doReact, fetch) => {
       const result = await response.json();
 
       let formattedResult = `╭══════════════•∞•══╮\n`;
-      formattedResult += `│⿻   *GSS BOTWA 😎 🔥*\n`;
+      formattedResult += `│⿻   *Ethix-MD 😎 🔥*\n`;
       formattedResult += `│⿻   *LIVE MATCH INFO* ✨\n`;
       formattedResult += `│⿻\n`;
 
