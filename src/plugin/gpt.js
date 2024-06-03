@@ -42,11 +42,11 @@ const gptResponse = async (m, Matrix) => {
                     text: answer
                   }),
                   footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "Copy the code with one tap"
+                    text: "> © Powered By Ethix-MD"
                   }),
                   header: proto.Message.InteractiveMessage.Header.create({
-                    title: "Code Snippet",
-                    subtitle: "One-tap copy",
+                    title: "",
+                    subtitle: "",
                     hasMediaAttachment: false
                   }),
                   nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
@@ -54,7 +54,7 @@ const gptResponse = async (m, Matrix) => {
                       {
                         name: "cta_copy",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "Copy",
+                          display_text: "Copy Your Code",
                           id: "copy_code",
                           copy_code: code
                         })
