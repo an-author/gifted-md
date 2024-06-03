@@ -22,26 +22,27 @@ const tempMailAndCheckMail = async (m, Matrix) => {
       if (result && result.email) {
         const tempMailInfo = `Temporary Email: ${result.email}`;
 
-        const msg = {
-          viewOnceMessage: {
-            message: {
-              "messageContextInfo": {
-                "deviceListMetadata": {},
-                "deviceListMetadataVersion": 2
-              },
-              interactiveMessage: {
-                body: {
+                  let msg = generateWAMessageFromContent(m.from, {
+            viewOnceMessage: {
+              message: {
+                messageContextInfo: {
+                  deviceListMetadata: {},
+                  deviceListMetadataVersion: 2
+                },
+                interactiveMessage: proto.Message.InteractiveMessage.create({
+                  body: proto.Message.InteractiveMessage.Body.create({
                   text: tempMailInfo
                 },
-                footer: {
-                  text: "Use the buttons below to copy or check the email."
-                },
-                header: {
-                  title: "Temporary Email",
-                  subtitle: result.email,
-                  hasMediaAttachment: false
-                },
-                buttons: [
+                footer: proto.Message.InteractiveMessage.Footer.create({
+                    text: "> © Powered By Ethix-MD"
+                  }),
+                  header: proto.Message.InteractiveMessage.Header.create({
+                    title: "",
+                    subtitle: "",
+                    hasMediaAttachment: false
+                  }),
+                  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                    buttons: [
                   {
                     "name": "cta_copy",
                     "buttonParamsJson": `{"display_text":"Copy Email","id":"copy_email","copy_code":"${result.email}"}`
@@ -55,8 +56,6 @@ const tempMailAndCheckMail = async (m, Matrix) => {
             }
           }
         };
-
-        const generatedMsg = await Matrix.generateWAMessageFromContent(m.from, msg, {});
         await Matrix.relayMessage(m.from, generatedMsg.message, { messageId: generatedMsg.key.id });
 
         await m.React('✅');
