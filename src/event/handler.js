@@ -88,14 +88,13 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         
         
 
-const botNumber = await sock.decodeJid(sock.user.id);
-  const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
-  
-if (!sock.public) {
-        if (!isCreator) {
-            return;
-        }
-    }
+const botNumber = sock.decodeJid(sock.user.id);
+const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+
+if (!sock.public && !isCreator) {
+    return;
+}
+
 
 /* // ANTIBOT TEMPERERY OFF //
         if (m.isGroup && m.key && m.key.id.startsWith("BAE5") && m.key.id.length === 16) {
