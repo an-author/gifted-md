@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 
-const restartPM2 = async (m, doReact) => {
+const restartPM2 = async (m) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
