@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 
-const restartBot = async (m, doReact) => {
+const restartBot = async (m) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -12,22 +12,22 @@ const restartBot = async (m, doReact) => {
         if (error) {
           console.error(error);
           m.reply(`An error occurred while restarting the bot: ${error.message}`);
-          doReact("❌");
+         m.React("❌");
           return;
         }
         if (stderr) {
           console.error(stderr);
           m.reply(`Error output while restarting the bot: ${stderr}`);
-          doReact("❌");
+          m.React("❌");
           return;
         }
         console.log(stdout);
         m.reply(`Bot successfully restarted.`);
-        doReact("✅");
+       m.React("✅");
       });
     } catch (error) {
       console.error(error);
-      await doReact("❌");
+      await m.React("❌");
       return m.reply(`An error occurred while restarting the bot: ${error.message}`);
     }
   }
