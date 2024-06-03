@@ -1,6 +1,7 @@
 import pkg from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-const { ndown } = require('nayan-media-downloader');
+import pkgg from 'nayan-media-downloader';
+const { ndown } = pkgg;
 
 // Global map to store search results and current index
 const fbSearchResultsMap = new Map();
