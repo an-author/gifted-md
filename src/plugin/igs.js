@@ -8,24 +8,16 @@ const instagramProfileCommandHandler = async (m) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const username = m.body.split(' ')[1]; // Assuming the command is in the format: /insta username
+  const username = m.body.split(' ')[1];
 
+  // Assuming the command is in the format: /insta username
   if (cmd === 'igs' && username) {
     try {
       const userProfile = await instagram.getUser(username);
       if (userProfile) {
-        const profileInfo = `
-          *Username:* ${userProfile.username}
-          *Full Name:* ${userProfile.full_name}
-          *Bio:* ${userProfile.biography}
-          *Followers:* ${userProfile.edge_followed_by.count}
-          *Following:* ${userProfile.edge_follow.count}
-          *Posts:* ${userProfile.edge_owner_to_timeline_media.count}
-          *Profile Picture:* ${userProfile.profile_pic_url_hd}
-        `;
-        
+        const profileInfo = `*Username:* ${userProfile.username}\n*Full Name:* ${userProfile.full_name}\n*Bio:* ${userProfile.biography}\n*Followers:* ${userProfile.edge_followed_by.count}\n*Following:* ${userProfile.edge_follow.count}\n*Posts:* ${userProfile.edge_owner_to_timeline_media.count}\n*Profile Picture:* ${userProfile.profile_pic_url_hd}`;
         // Send profile picture
-        await gss.sendImage(m.from, userProfile.profile_pic_url_hd, m, { caption: profileinfo });
+        await sock.sendMessage(m.from, { image: userProfile.profile_pic_url_hd }, { caption: profileInfo, quoted: m });
       } else {
         m.reply('User not found.');
       }
