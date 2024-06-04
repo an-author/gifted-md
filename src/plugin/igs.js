@@ -24,7 +24,6 @@ const instagramProfileCommandHandler = async (m) => {
           *Profile Picture:* ${userProfile.profile_pic_url_hd}
         `;
         
-
         // Send profile picture
         await gss.sendImage(m.from, userProfile.profile_pic_url_hd, m, { caption: profileinfo });
       } else {
