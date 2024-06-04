@@ -1,30 +1,22 @@
-import pkg from 'instagram-user';
-const { Instagram } = pkg;
-import axios from 'axios';
-
+import apiDylux from 'api-dylux';
 
 const instagramProfileCommandHandler = async (m, sock) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const username = m.body.split(' ')[1];
+  const args = m.body.split(' ');
+  const validCommands = ['igs', 'igstalk'];
 
-  // Assuming the command is in the format: /insta username
-  if (cmd === 'igs' && username) {
+  if (validCommands.includes(cmd)) {
+    if (!args[1]) return m.reply(`Enter Instagram Username\n\nExample: ${prefix}igs world_reacode_egg`);
+    await m.reply(`Please wait...`);
     try {
-      const userProfile = await instagram.getUser(username);
-      if (userProfile) {
-        const profileInfo = `*Username:* ${userProfile.username}\n*Full Name:* ${userProfile.full_name}\n*Bio:* ${userProfile.biography}\n*Followers:* ${userProfile.edge_followed_by.count}\n*Following:* ${userProfile.edge_follow.count}\n*Posts:* ${userProfile.edge_owner_to_timeline_media.count}\n*Profile Picture:* ${userProfile.profile_pic_url_hd}`;
-        // Send profile picture
-        await sock.sendMessage(m.from, { image: userProfile.profile_pic_url_hd }, { caption: profileInfo, quoted: m });
-      } else {
-        m.reply('User not found.');
-      }
-    } catch (error) {
-      console.error('Error fetching Instagram profile:', error);
-      m.reply('Error fetching Instagram profile.');
+      const res = await apiDylux.igStalk(args[1]);
+      const te = `┌──「 *Information* ▢ *🔖Name:* ${res.name} ▢ *🔖Username:* ${res.username} ▢ *👥Follower:* ${res.followersH} ▢ *🫂Following:* ${res.followingH} ▢ *📌Bio:* ${res.description} ▢ *🏝️Posts:* ${res.postsH} ▢ *🔗 Link* : https://instagram.com/${res.username.replace(/^@/, '')} └────────────`;
+      await sock.sendMessage(m.from, { image: { url: res.profilePic }, caption: te }, { quoted: m });
+    } catch {
+      m.reply(`Make sure the username comes from *Instagram*`);
     }
-  } else {
   }
 };
 
