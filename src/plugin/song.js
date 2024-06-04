@@ -7,7 +7,9 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
   
-  if (cmd == 'song') {
+  const validCommands = ['song', 'ytmp3'];
+
+   if (validCommands.includes(cmd)) {
   
     if (!text) return m.reply('give a YT URL or search query');	 
  
