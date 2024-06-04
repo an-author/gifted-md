@@ -1,4 +1,4 @@
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+import pkg from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import fetch from 'node-fetch'; // Import fetch for Node.js environment
 
@@ -6,6 +6,20 @@ const tempMailCommand = async (m, Matrix) => {
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+
+    let selectedListId;
+    const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
+    const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
+
+    if (interactiveResponseMessage) {
+        const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
+        if (paramsJson) {
+            const params = JSON.parse(paramsJson);
+            selectedListId = params.id;
+        }
+    }
+
+    const selectedId = selectedListId || selectedButtonId;
 
     if (cmd === 'tempmail') {
         try {
@@ -84,9 +98,9 @@ const tempMailCommand = async (m, Matrix) => {
             m.reply('Error processing your request.');
             await m.React("❌");
         }
-    } else if (cmd.startsWith('check_inbox_')) {
-        // Extract email from the command
-        const email = cmd.slice('check_inbox_'.length);
+    } else if (selectedId && selectedId.startsWith('check_inbox_')) {
+        // Extract email from the selectedId
+        const email = selectedId.slice('check_inbox_'.length);
 
         try {
             await m.React("🕘");
@@ -112,7 +126,6 @@ const tempMailCommand = async (m, Matrix) => {
             await m.React("❌");
         }
     } else {
-        m.reply('Invalid command.');
     }
 };
 
