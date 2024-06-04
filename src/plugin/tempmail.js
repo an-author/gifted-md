@@ -173,7 +173,6 @@ const tempMailCommand = async (m, Matrix) => {
             await m.React("❌");
         }
     } else {
-        m.reply('Invalid command.');
     }
 };
 
