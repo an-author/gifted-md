@@ -88,7 +88,7 @@ const tempMailCommand = async (m, Matrix) => {
                 },
             }, {});
 
-            await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+            const sentMsg = await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
                 messageId: msg.key.id
             });
             await m.React("✅");
@@ -109,62 +109,28 @@ const tempMailCommand = async (m, Matrix) => {
             const inboxResponse = await fetch(`https://tempmail.apinepdev.workers.dev/api/getmessage?email=${email}`);
             const inboxData = await inboxResponse.json();
 
+            let inboxMessages;
             if (inboxData && inboxData.length > 0) {
-                let inboxMessages = 'Inbox Messages:\n\n';
+                inboxMessages = 'Inbox Messages:\n\n';
                 inboxData.forEach((msg, index) => {
                     inboxMessages += `${index + 1}. From: ${msg.from}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`;
                 });
-                m.reply(inboxMessages);
             } else {
-                m.reply('No messages found in the inbox.');
+                inboxMessages = 'No messages found in the inbox.';
             }
 
-            const checkInboxButtons = [
-                {
-                    "name": "quick_reply",
-                    "buttonParamsJson": JSON.stringify({
-                        "display_text": "Check Inbox Again",
-                        "id": `check_inbox_${email}`
-                    })
+            // Edit the existing message to show the updated inbox
+            const updatedMsg = {
+                protocolMessage: {
+                    key: m.key, // Use the key of the original message
+                    type: 14,
+                    editedMessage: {
+                        conversation: inboxMessages
+                    }
                 }
-            ];
+            };
 
-            const checkInboxMsg = generateWAMessageFromContent(m.from, {
-                viewOnceMessage: {
-                    message: {
-                        messageContextInfo: {
-                            deviceListMetadata: {},
-                            deviceListMetadataVersion: 2
-                        },
-                        interactiveMessage: proto.Message.InteractiveMessage.create({
-                            body: proto.Message.InteractiveMessage.Body.create({
-                                text: `You can check the inbox for ${email} again.`
-                            }),
-                            footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: "© Powered By YourApp"
-                            }),
-                            header: proto.Message.InteractiveMessage.Header.create({
-                                title: "Check Inbox",
-                                gifPlayback: true,
-                                subtitle: "",
-                                hasMediaAttachment: false
-                            }),
-                            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                                buttons: checkInboxButtons
-                            }),
-                            contextInfo: {
-                                mentionedJid: [m.sender],
-                                forwardingScore: 9999,
-                                isForwarded: true,
-                            }
-                        }),
-                    },
-                },
-            }, {});
-
-            await Matrix.relayMessage(checkInboxMsg.key.remoteJid, checkInboxMsg.message, {
-                messageId: checkInboxMsg.key.id
-            });
+            await Matrix.relayMessage(m.chat, updatedMsg, {});
             await m.React("✅");
 
         } catch (error) {
@@ -173,7 +139,6 @@ const tempMailCommand = async (m, Matrix) => {
             await m.React("❌");
         }
     } else {
-
     }
 };
 
