@@ -11,7 +11,7 @@ const stickerCommandHandler = async (m, gss) => {
     try {
       const { data } = await axios.get(`https://api.waifu.pics/sfw/${cmd}`);
       if (data && data.url) {
-        gss.sendImageAsSticker(m.chat, data.url, m, { packname: "", author: "" });
+        gss.sendImageAsSticker(m.from, data.url, m, { packname: "", author: "" });
       } else {
         m.reply('Error fetching sticker.');
       }
