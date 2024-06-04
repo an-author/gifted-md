@@ -40,7 +40,6 @@ try {
   },
   caption: `
 ╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
 │✑ *Title:* ${videoInfo.title}
 │✑ *duration:* ${videoInfo.timestamp}
 │✑ *Uploaded* ${videoInfo.ago}
@@ -84,7 +83,6 @@ try {
   },
   caption: `
 ╭──═❮ *YouTube Player* ✨ ❯═─┈•
-│  
 │✑ *Title:* ${firstVideo.title}
 │✑ *duration:* ${firstVideo.timestamp}
 │✑ *Uploaded* ${firstVideo.ago}
@@ -115,7 +113,6 @@ try {
     };
 
     await Matrix.sendMessage(m.from, doc, { quoted: m });
-          //await Matrix.sendMessage(m.from, { audio: finalAudioBuffer, mimetype: 'audio/mpeg' }, { quoted: m });
           await m.React("✅");
         } catch (err) {
           console.error('Error sending audio:', err);
