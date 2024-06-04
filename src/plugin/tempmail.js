@@ -36,7 +36,6 @@ const tempMailCommand = async (m, Matrix) => {
             }
 
             const tempEmail = genData.email;
-
             const buttons = [
                 {
                     "name": "cta_copy",
