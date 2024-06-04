@@ -9,10 +9,8 @@ const stickerCommandHandler = async (m) => {
   const stickerCommands = ['cry', 'kiss', 'kill', 'kick'];
 
   if (stickerCommands.includes(cmd)) {
-    const mentionedUsers = m.mentionedIds.map(id => '@' + id.replace('@c.us', ''));
-    const senderName = m.sender ? '@' + m.sender.replace('@c.us', '') : '';
-    const packname = `${global.packname} ${mentionedUsers.join(' ')}`;
-    const author = `${global.author} ${senderName}`;
+    const packname = `Ethix-MD`;
+    const author = '';
 
     try {
       const { data } = await axios.get(`https://api.waifu.pics/sfw/${cmd}`);
