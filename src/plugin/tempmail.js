@@ -112,11 +112,14 @@ const tempMailCommand = async (m, Matrix) => {
             let inboxMessages;
             let buttons = [];
 
-            if (inboxData.messages && inboxData.messages.length > 0) {
-                inboxMessages = 'Inbox Messages:\n\n';
-                inboxData.messages.forEach((msg, index) => {
-                    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`;
 
+if (inboxData.messages && inboxData.messages.length > 0) {
+  inboxMessages = 'Inbox Messages:\n\n';
+  inboxData.messages.forEach((msg, index) => {
+    const message = JSON.parse(msg.message);
+    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nBody: ${message.body}\n\n`;
+  });
+}
                     // Check for OTP or code in the email body
                     const emailBody = JSON.parse(msg.message).textBody || '';
                     const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
