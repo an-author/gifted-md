@@ -1,4 +1,4 @@
-import Instagram from 'instagram-user';
+import { Instagram } from 'instagram-user';
 import axios from 'axios';
 
 // Initialize Instagram client
