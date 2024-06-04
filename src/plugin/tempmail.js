@@ -36,6 +36,7 @@ const tempMailCommand = async (m, Matrix) => {
             }
 
             const tempEmail = genData.email;
+
             const buttons = [
                 {
                     "name": "cta_copy",
@@ -109,24 +110,39 @@ const tempMailCommand = async (m, Matrix) => {
             const inboxData = await inboxResponse.json();
 
             let inboxMessages;
-            if (inboxData && inboxData.length > 0) {
+            let buttons = [];
+
+            if (inboxData.messages && inboxData.messages.length > 0) {
                 inboxMessages = 'Inbox Messages:\n\n';
-                inboxData.forEach((msg, index) => {
-                    inboxMessages += `${index + 1}. From: ${msg.from}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`;
+                inboxData.messages.forEach((msg, index) => {
+                    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`;
+
+                    // Check for OTP or code in the email body
+                    const emailBody = JSON.parse(msg.message).textBody || '';
+                    const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
+
+                    if (otpMatch) {
+                        buttons.push({
+                            "name": "cta_copy",
+                            "buttonParamsJson": JSON.stringify({
+                                "display_text": "Copy OTP",
+                                "id": "copy_otp",
+                                "copy_code": otpMatch[0]
+                            })
+                        });
+                    }
                 });
             } else {
                 inboxMessages = 'No messages found in the inbox.';
             }
 
-            const buttons = [
-                {
-                    "name": "quick_reply",
-                    "buttonParamsJson": JSON.stringify({
-                        "display_text": "Check Inbox Again",
-                        "id": `check_inbox_${email}`
-                    })
-                }
-            ];
+            buttons.push({
+                "name": "quick_reply",
+                "buttonParamsJson": JSON.stringify({
+                    "display_text": "Check Inbox Again",
+                    "id": `check_inbox_${email}`
+                })
+            });
 
             const updatedMsg = generateWAMessageFromContent(m.from, {
                 viewOnceMessage: {
@@ -168,6 +184,8 @@ const tempMailCommand = async (m, Matrix) => {
 
         } catch (error) {
             console.error("Error processing your request:", error);
+            m.reply('Error processing your request.');
+            await m.React("❌");
         }
     } else {
     }
