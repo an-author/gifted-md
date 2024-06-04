@@ -1,4 +1,5 @@
-import { Instagram } from 'instagram-user';
+import pkg from 'instagram-user';
+const { Instagram } = pkg;
 import axios from 'axios';
 
 // Initialize Instagram client
