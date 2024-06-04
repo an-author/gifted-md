@@ -4,7 +4,7 @@ import axios from 'axios';
 // Initialize Instagram client
 const instagram = new Instagram();
 
-const instagramProfileCommandHandler = async (m) => {
+const instagramProfileCommandHandler = async (m, sock) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
