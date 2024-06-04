@@ -168,8 +168,6 @@ const tempMailCommand = async (m, Matrix) => {
 
         } catch (error) {
             console.error("Error processing your request:", error);
-            m.reply('Error processing your request.');
-            await m.React("❌");
         }
     } else {
     }
