@@ -67,7 +67,7 @@ const tempMailCommand = async (m, Matrix) => {
                                 text: `Generated Temporary Email: ${tempEmail}`
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: "© Powered By YourApp"
+                                text: "© Powered By Ethix-MD"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
                                 title: "Temporary Email",
@@ -112,29 +112,27 @@ const tempMailCommand = async (m, Matrix) => {
             let inboxMessages;
             let buttons = [];
 
-
-if (inboxData.messages && inboxData.messages.length > 0) {
-  inboxMessages = 'Inbox Messages:\n\n';
-  inboxData.messages.forEach((msg, index) => {
-    const message = JSON.parse(msg.message);
-    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nBody: ${message.body}\n\n`;
-  });
-}
-                    // Check for OTP or code in the email body
-                    const emailBody = JSON.parse(msg.message).textBody || '';
-                    const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
-
-                    if (otpMatch) {
-                        buttons.push({
-                            "name": "cta_copy",
-                            "buttonParamsJson": JSON.stringify({
-                                "display_text": "Copy OTP",
-                                "id": "copy_otp",
-                                "copy_code": otpMatch[0]
-                            })
-                        });
-                    }
+            if (inboxData.messages && inboxData.messages.length > 0) {
+                inboxMessages = 'Inbox Messages:\n\n';
+                inboxData.messages.forEach((msg, index) => {
+                    const message = JSON.parse(msg.message);
+                    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nMessage: ${message.body}\n\n`;
                 });
+
+                // Check for OTP or code in the email body
+                const emailBody = JSON.parse(msg.message).textBody || '';
+                const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
+
+                if (otpMatch) {
+                    buttons.push({
+                        "name": "cta_copy",
+                        "buttonParamsJson": JSON.stringify({
+                            "display_text": "Copy OTP",
+                            "id": "copy_otp",
+                            "copy_code": otpMatch[0]
+                        })
+                    });
+                }
             } else {
                 inboxMessages = 'No messages found in the inbox.';
             }
@@ -159,10 +157,10 @@ if (inboxData.messages && inboxData.messages.length > 0) {
                                 text: inboxMessages
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: "© Powered By YourApp"
+                                text: "© Powered By Ethix-MD"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
-                                title: "Inbox Messages",
+                                title: "",
                                 gifPlayback: true,
                                 subtitle: "",
                                 hasMediaAttachment: false
@@ -191,6 +189,7 @@ if (inboxData.messages && inboxData.messages.length > 0) {
             await m.React("❌");
         }
     } else {
+        m.reply('Invalid command.');
     }
 };
 
