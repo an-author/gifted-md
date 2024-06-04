@@ -1,4 +1,4 @@
-import apiDylux from 'api-dylux';
+import Instagram from 'instagram-private-api';
 
 const instagramProfileCommandHandler = async (m, sock) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -9,12 +9,13 @@ const instagramProfileCommandHandler = async (m, sock) => {
 
   if (validCommands.includes(cmd)) {
     if (!args[1]) return m.reply(`Enter Instagram Username\n\nExample: ${prefix}igs world_reacode_egg`);
-    await m.reply(`Please wait...`);
     try {
-      const res = await apiDylux.igStalk(args[1]);
-      const te = `┌──「 *Information* ▢ *🔖Name:* ${res.name} ▢ *🔖Username:* ${res.username} ▢ *👥Follower:* ${res.followersH} ▢ *🫂Following:* ${res.followingH} ▢ *📌Bio:* ${res.description} ▢ *🏝️Posts:* ${res.postsH} ▢ *🔗 Link* : https://instagram.com/${res.username.replace(/^@/, '')} └────────────`;
-      await sock.sendMessage(m.from, { image: { url: res.profilePic }, caption: te }, { quoted: m });
-    } catch {
+      await m.reply(`Please wait...`);
+      const user = await Instagram.getUSERByUsername(args[1]);
+      const te = `┌──「 *Information* ▢ *🔖Name:* ${user.full_name} ▢ *🔖Username:* ${user.username} ▢ *👥Follower:* ${user.followers_count} ▢ *🫂Following:* ${user.following_count} ▢ *📌Bio:* ${user.biography} ▢ *🏝️Posts:* ${user.media_count} ▢ *🔗 Link* : https://instagram.com/${user.username} └────────────`;
+      await sock.sendMessage(m.from, { image: { url: user.profile_pic_url }, caption: te }, { quoted: m });
+    } catch (err) {
+      console.error(err);
       m.reply(`Make sure the username comes from *Instagram*`);
     }
   }
