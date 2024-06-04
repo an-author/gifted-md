@@ -119,18 +119,52 @@ const tempMailCommand = async (m, Matrix) => {
                 inboxMessages = 'No messages found in the inbox.';
             }
 
-            // Edit the existing message to show the updated inbox
-            const updatedMsg = {
-                protocolMessage: {
-                    key: m.key, // Use the key of the original message
-                    type: 14,
-                    editedMessage: {
-                        conversation: inboxMessages
-                    }
+            const buttons = [
+                {
+                    "name": "quick_reply",
+                    "buttonParamsJson": JSON.stringify({
+                        "display_text": "Check Inbox Again",
+                        "id": `check_inbox_${email}`
+                    })
                 }
-            };
+            ];
 
-            await Matrix.relayMessage(m.chat, updatedMsg, {});
+            const updatedMsg = generateWAMessageFromContent(m.from, {
+                viewOnceMessage: {
+                    message: {
+                        messageContextInfo: {
+                            deviceListMetadata: {},
+                            deviceListMetadataVersion: 2
+                        },
+                        interactiveMessage: proto.Message.InteractiveMessage.create({
+                            body: proto.Message.InteractiveMessage.Body.create({
+                                text: inboxMessages
+                            }),
+                            footer: proto.Message.InteractiveMessage.Footer.create({
+                                text: "© Powered By YourApp"
+                            }),
+                            header: proto.Message.InteractiveMessage.Header.create({
+                                title: "Inbox Messages",
+                                gifPlayback: true,
+                                subtitle: "",
+                                hasMediaAttachment: false
+                            }),
+                            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                                buttons
+                            }),
+                            contextInfo: {
+                                mentionedJid: [m.sender],
+                                forwardingScore: 9999,
+                                isForwarded: true,
+                            }
+                        }),
+                    },
+                },
+            }, {});
+
+            await Matrix.relayMessage(updatedMsg.key.remoteJid, updatedMsg.message, {
+                messageId: updatedMsg.key.id
+            });
             await m.React("✅");
 
         } catch (error) {
@@ -139,6 +173,7 @@ const tempMailCommand = async (m, Matrix) => {
             await m.React("❌");
         }
     } else {
+        m.reply('Invalid command.');
     }
 };
 
