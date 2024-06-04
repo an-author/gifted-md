@@ -53,9 +53,6 @@ const deleteUpdate = async (message, sock, store) => {
             sock.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg));
         } else {
             console.log("serializeM method not found in sock object");
-            await sock.sendMessage(message.key.remoteJid, {
-                text: "serializeM method not found in sock object"
-            }, { quoted: message });
         }
     } catch (e) {
         console.error(e);
