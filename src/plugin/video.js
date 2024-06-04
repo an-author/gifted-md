@@ -7,7 +7,9 @@ const video = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'video') {
+  const validCommands = ['video', 'ytmp4', 'vid'];
+
+   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Give a YouTube URL or search query.');
 
     try {
