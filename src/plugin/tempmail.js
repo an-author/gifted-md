@@ -1,97 +1,120 @@
-import axios from 'axios';
+import pkg from '@whiskeysockets/baileys';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-const tempMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/gen';
-const checkMailApiBaseUrl = 'https://tempmail.apinepdev.workers.dev/api/getmessage?email=';
+import fetch from 'node-fetch'; // Import fetch for Node.js environment
 
-const tempMailAndCheckMail = async (m, Matrix) => {
-  const prefixMatch = m.body.match(/^[\\/!#.]/);
-  const prefix = prefixMatch ? prefixMatch[0] : '/';
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+const tempMailCommand = async (m, Matrix) => {
+    const prefixMatch = m.body.match(/^[\\/!#.]/);
+    const prefix = prefixMatch ? prefixMatch[0] : '/';
+    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  const validCommands = ['tempmail'];
+    if (cmd === 'tempmail') {
+        try {
+            await m.React("🕘");
 
-  if (validCommands.includes(cmd)) {
-    try {
-      await m.React('🕘');
+            // Generate temporary email
+            const genResponse = await fetch('https://tempmail.apinepdev.workers.dev/api/gen');
+            const genData = await genResponse.json();
 
-      const response = await axios.get(tempMailApiBaseUrl);
-      const result = response.data;
-
-      if (result && result.email) {
-        const tempMailInfo = `Temporary Email: ${result.email}`;
-
-        let generatedMsg = generateWAMessageFromContent(m.from, {
-          interactiveMessage: proto.Message.InteractiveMessage.create({
-            message: {
-              body: proto.Message.InteractiveMessage.Body.create({
-                text: tempMailInfo
-              }),
-              footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "> © Powered By Ethix-MD"
-              }),
-              header: proto.Message.InteractiveMessage.Header.create({
-                title: "",
-                subtitle: "",
-                hasMediaAttachment: false
-              }),
-              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                buttons: [
-                  {
-                    "name": "cta_copy",
-                    "buttonParamsJson": `{"display_text":"Copy Email","id":"copy_email","copy_code":"${result.email}"}`
-                  },
-                  {
-                    "name": "quick_reply",
-                    "buttonParamsJson": "{\"display_text\":\"Check Mail\",\"id\":\"check_mail\"}"
-                  }
-                ]
-              })
+            if (!genData.email) {
+                m.reply('Failed to generate temporary email.');
+                await m.React("❌");
+                return;
             }
-          })
-        };
 
-        await Matrix.relayMessage(m.from, generatedMsg.message, { messageId: generatedMsg.key.id });
+            const tempEmail = genData.email;
 
-        await m.React('✅');
-      } else {
-        throw new Error('Invalid response from the TempMail API.');
-      }
-    } catch (error) {
-      console.error('Error generating temporary email:', error.message);
-      m.reply('Error generating temporary email.');
-      await m.React('❌');
+            const buttons = [
+                {
+                    "name": "cta_copy",
+                    "buttonParamsJson": JSON.stringify({
+                        "display_text": "Copy Email",
+                        "id": "copy_email",
+                        "copy_code": tempEmail
+                    })
+                },
+                {
+                    "name": "quick_reply",
+                    "buttonParamsJson": JSON.stringify({
+                        "display_text": "Check Inbox",
+                        "id": `check_inbox_${tempEmail}`
+                    })
+                }
+            ];
+
+            const msg = generateWAMessageFromContent(m.from, {
+                viewOnceMessage: {
+                    message: {
+                        messageContextInfo: {
+                            deviceListMetadata: {},
+                            deviceListMetadataVersion: 2
+                        },
+                        interactiveMessage: proto.Message.InteractiveMessage.create({
+                            body: proto.Message.InteractiveMessage.Body.create({
+                                text: `Generated Temporary Email: ${tempEmail}`
+                            }),
+                            footer: proto.Message.InteractiveMessage.Footer.create({
+                                text: "© Powered By YourApp"
+                            }),
+                            header: proto.Message.InteractiveMessage.Header.create({
+                                title: "Temporary Email",
+                                gifPlayback: true,
+                                subtitle: "",
+                                hasMediaAttachment: false
+                            }),
+                            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                                buttons
+                            }),
+                            contextInfo: {
+                                mentionedJid: [m.sender],
+                                forwardingScore: 9999,
+                                isForwarded: true,
+                            }
+                        }),
+                    },
+                },
+            }, {});
+
+            await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+                messageId: msg.key.id
+            });
+            await m.React("✅");
+
+        } catch (error) {
+            console.error("Error processing your request:", error);
+            m.reply('Error processing your request.');
+            await m.React("❌");
+        }
+    } else if (cmd.startsWith('check_inbox_')) {
+        // Extract email from the command
+        const email = cmd.slice('check_inbox_'.length);
+
+        try {
+            await m.React("🕘");
+
+            // Check inbox for the provided email
+            const inboxResponse = await fetch(`https://tempmail.apinepdev.workers.dev/api/getmessage?email=${email}`);
+            const inboxData = await inboxResponse.json();
+
+            if (inboxData && inboxData.length > 0) {
+                let inboxMessages = 'Inbox Messages:\n\n';
+                inboxData.forEach((msg, index) => {
+                    inboxMessages += `${index + 1}. From: ${msg.from}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`;
+                });
+                m.reply(inboxMessages);
+            } else {
+                m.reply('No messages found in the inbox.');
+            }
+            await m.React("✅");
+
+        } catch (error) {
+            console.error("Error processing your request:", error);
+            m.reply('Error processing your request.');
+            await m.React("❌");
+        }
+    } else {
+        m.reply('Invalid command.');
     }
-  } else if (cmd === 'checkmail') {
-    const quotedText = m.quoted?.text;
-    const tempEmailMatch = quotedText?.match(/Temporary Email: (.+)/);
-    const tempEmail = tempEmailMatch ? tempEmailMatch[1] : null;
-    if (!tempEmail) return m.reply('Please generate a temporary email first using the tempmail command.');
-
-    try {
-      await m.React('🕘');
-
-      const apiUrl = `${checkMailApiBaseUrl}${encodeURIComponent(tempEmail)}`;
-      const response = await axios.get(apiUrl);
-      const result = response.data;
-
-      if (result && result.messages) {
-        const messages = result.messages.map((msg, index) => `${index + 1}. From: ${msg.from}\nSubject: ${msg.subject}\nDate: ${msg.date}\n\n`).join('');
-        const mailInfo = `Emails for ${tempEmail}:\n\n${messages}`;
-        
-        const mailInfoMessage = generateWAMessageFromContent(m.from, { text: mailInfo });
-        await Matrix.relayMessage(m.from, mailInfoMessage, { quoted: m });
-        
-        await m.React('✅');
-      } else {
-        throw new Error('No messages found or invalid response from the email check API.');
-      }
-    } catch (error) {
-      console.error('Error checking temporary email:', error.message);
-      m.reply('Error checking temporary email.');
-      await m.React('❌');
-    }
-  }
 };
 
-export default tempMailAndCheckMail;
+export default tempMailCommand;
