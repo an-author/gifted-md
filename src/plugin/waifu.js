@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const stickerCommandHandler = async (m) => {
+const stickerCommandHandler = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
