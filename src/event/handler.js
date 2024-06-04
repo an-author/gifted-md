@@ -36,30 +36,32 @@ const deleteUpdate = async (message, sock, store) => {
             fromMe,
             id,
             participant
-        } = message
-        if (fromMe)
-            return
+        } = message;
+        if (fromMe) return;
         if (sock.serializeM) {
-            let msg = await sock.serializeM(await sock.loadMessage(id))
-            if (!msg)
-                return
-           
-                await sock.reply(sock.user.id, `
+            let msg = await sock.serializeM(await sock.loadMessage(id));
+            if (!msg) return;
+
+            await sock.reply(sock.user.id, `
                 ≡ deleted a message 
                 ┌─⊷  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
                 ▢ *Number :* @${participant.split`@`[0]} 
                 └─────────────
                 `.trim(), msg, {
-                            mentions: [participant]
-                        })
-                sock.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg))
+                mentions: [participant]
+            });
+            sock.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg));
         } else {
             console.log("serializeM method not found in sock object");
+            await sock.sendMessage(message.key.remoteJid, {
+                text: "serializeM method not found in sock object"
+            }, { quoted: message });
         }
     } catch (e) {
-        console.error(e)
+        console.error(e);
     }
 };
+
 
 
 const Handler = async (chatUpdate, sock, logger, store) => {
