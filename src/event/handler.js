@@ -39,23 +39,28 @@ const deleteUpdate = async (message, sock, store) => {
         } = message
         if (fromMe)
             return
-        let msg = await this.serializeM(await this.loadMessage(id))
-        if (!msg)
-            return
-       
-            await this.reply(sock.user.id, `
-            ≡ deleted a message 
-            ┌─⊷  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
-            ▢ *Number :* @${participant.split`@`[0]} 
-            └─────────────
-            `.trim(), msg, {
-                        mentions: [participant]
-                    })
-        this.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg))
+        if (sock.serializeM) {
+            let msg = await sock.serializeM(await sock.loadMessage(id))
+            if (!msg)
+                return
+           
+                await sock.reply(sock.user.id, `
+                ≡ deleted a message 
+                ┌─⊷  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
+                ▢ *Number :* @${participant.split`@`[0]} 
+                └─────────────
+                `.trim(), msg, {
+                            mentions: [participant]
+                        })
+                sock.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg))
+        } else {
+            console.log("serializeM method not found in sock object");
+        }
     } catch (e) {
         console.error(e)
     }
 };
+
 
 const Handler = async (chatUpdate, sock, logger, store) => {
     try {
