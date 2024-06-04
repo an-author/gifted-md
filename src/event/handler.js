@@ -1,10 +1,8 @@
-import { downloadMediaMessage, generateWAMessageFromContent, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-const { proto } = pkg;
 import { serialize, decodeJid } from '../../lib/Serializer.js';
 import path from 'path';
 import fs from 'fs/promises';
 import config from '../../config.cjs';
+import { smsg } from '../../lib/myfunc.cjs';
 
 const userCommandCounts = new Map();
 
@@ -34,28 +32,28 @@ export const getGroupAdmins = (participants) => {
 
 const deleteUpdate = async (message, sock, store) => {
     try {
-        const { fromMe, id, participant } = message;
-        if (fromMe || !participant) return; // Check if participant is defined
-
-        const msg = await getMessage({ remoteJid: message.key.remoteJid, id: message.key.id }, store); // Fetch the original message
-        if (!msg) return;
-
-        const serializedMsg = serialize(msg, sock); // Serialize the fetched message
-        if (!serializedMsg) return;
-
-        await sock.sendMessage(serializedMsg.from, {
-            text: `
-≡ deleted a message 
-┌─⊷ 𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
-▢ *Number :* @${participant.split`@`[0]} 
-└─────────────
-            `.trim(),
-            mentions: [participant]
-        }, { quoted: serializedMsg });
-
-        await sock.copyNForward(serializedMsg.from, serializedMsg, false).catch(e => console.log(e, serializedMsg));
+        const {
+            fromMe,
+            id,
+            participant
+        } = message
+        if (fromMe)
+            return
+        let msg = await this.serializeM(await this.loadMessage(id))
+        if (!msg)
+            return
+       
+            await this.reply(sock.user.id, `
+            ≡ deleted a message 
+            ┌─⊷  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
+            ▢ *Number :* @${participant.split`@`[0]} 
+            └─────────────
+            `.trim(), msg, {
+                        mentions: [participant]
+                    })
+        this.copyNForward(sock.user.id, msg, false).catch(e => console.log(e, msg))
     } catch (e) {
-        console.error(e);
+        console.error(e)
     }
 };
 
@@ -86,27 +84,15 @@ const Handler = async (chatUpdate, sock, logger, store) => {
             await sock.readMessages([m.key]);
         }
         
-        
+        const botNumber = await sock.decodeJid(sock.user.id);
+        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.from);
 
-const botNumber = await sock.decodeJid(sock.user.id);
-const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.from);
-
-if (!sock.public) {
-    if (!isCreator) {
-        return;
-    }
-}
-
-
-/* // ANTIBOT TEMPERERY OFF //
-        if (m.isGroup && m.key && m.key.id.startsWith("BAE5") && m.key.id.length === 16) {
-            if (!isBotAdmins) return m.reply(`Eh, the bot is not an admin`);
-            if (isAdmins) return m.reply(`Ehh, sorry you are admin`);
-            await sock.sendMessage(m.from, { text: "Bot detect" }, { quoted: m });
-            await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
-            return;
+        if (!sock.public) {
+            if (!isCreator) {
+                return;
+            }
         }
-*/
+
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
         const commandLimit = 10; // Daily command limit
