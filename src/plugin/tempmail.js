@@ -105,34 +105,24 @@ const tempMailCommand = async (m, Matrix) => {
         try {
             await m.React("🕘");
 
-            // Check inbox for the provided email
-            const inboxResponse = await fetch(`https://tempmail.apinepdev.workers.dev/api/getmessage?email=${email}`);
-            const inboxData = await inboxResponse.json();
+  const inboxMessages = 'Inbox Messages:\n\n';
+inboxData.messages.forEach((msg, index) => {
+    const message = JSON.parse(msg.message);
+    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nMessage: ${message.body}\n\n`;
 
-            let inboxMessages;
-            let buttons = [];
-
-            if (inboxData.messages && inboxData.messages.length > 0) {
-                inboxMessages = 'Inbox Messages:\n\n';
-                inboxData.messages.forEach((msg, index) => {
-                    const message = JSON.parse(msg.message);
-                    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nMessage: ${message.body}\n\n`;
-                });
-                
-                
-               const emailBody = JSON.parse(msg.message).textBody || ''; // Error occurs here
-               const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
-               if (otpMatch) {
-                 buttons.push({
-        "name": "cta_copy",
-        "buttonParamsJson": JSON.stringify({
-            "display_text": "Copy OTP",
-            "id": "copy_otp",
-            "copy_code": otpMatch[0]
-        })
-    });
-}
-              
+    const emailBody = message.textBody || ''; // Using message.textBody from the parsed message
+    const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
+    if (otpMatch) {
+        buttons.push({
+            "name": "cta_copy",
+            "buttonParamsJson": JSON.stringify({
+                "display_text": "Copy OTP",
+                "id": "copy_otp",
+                "copy_code": otpMatch[0]
+            })
+        });
+    }
+});
             } else {
                 inboxMessages = 'No messages found in the inbox.';
             }
