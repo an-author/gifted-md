@@ -1,4 +1,3 @@
-import pkg from '@whiskeysockets/baileys';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import fetch from 'node-fetch'; // Import fetch for Node.js environment
