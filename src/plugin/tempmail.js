@@ -118,6 +118,53 @@ const tempMailCommand = async (m, Matrix) => {
             } else {
                 m.reply('No messages found in the inbox.');
             }
+
+            const checkInboxButtons = [
+                {
+                    "name": "quick_reply",
+                    "buttonParamsJson": JSON.stringify({
+                        "display_text": "Check Inbox Again",
+                        "id": `check_inbox_${email}`
+                    })
+                }
+            ];
+
+            const checkInboxMsg = generateWAMessageFromContent(m.from, {
+                viewOnceMessage: {
+                    message: {
+                        messageContextInfo: {
+                            deviceListMetadata: {},
+                            deviceListMetadataVersion: 2
+                        },
+                        interactiveMessage: proto.Message.InteractiveMessage.create({
+                            body: proto.Message.InteractiveMessage.Body.create({
+                                text: `You can check the inbox for ${email} again.`
+                            }),
+                            footer: proto.Message.InteractiveMessage.Footer.create({
+                                text: "© Powered By YourApp"
+                            }),
+                            header: proto.Message.InteractiveMessage.Header.create({
+                                title: "Check Inbox",
+                                gifPlayback: true,
+                                subtitle: "",
+                                hasMediaAttachment: false
+                            }),
+                            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                                buttons: checkInboxButtons
+                            }),
+                            contextInfo: {
+                                mentionedJid: [m.sender],
+                                forwardingScore: 9999,
+                                isForwarded: true,
+                            }
+                        }),
+                    },
+                },
+            }, {});
+
+            await Matrix.relayMessage(checkInboxMsg.key.remoteJid, checkInboxMsg.message, {
+                messageId: checkInboxMsg.key.id
+            });
             await m.React("✅");
 
         } catch (error) {
@@ -126,6 +173,7 @@ const tempMailCommand = async (m, Matrix) => {
             await m.React("❌");
         }
     } else {
+        m.reply('Invalid command.');
     }
 };
 
