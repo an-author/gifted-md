@@ -2,8 +2,6 @@ import pkg from 'instagram-user';
 const { Instagram } = pkg;
 import axios from 'axios';
 
-// Initialize Instagram client
-const instagram = new Instagram();
 
 const instagramProfileCommandHandler = async (m, sock) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
