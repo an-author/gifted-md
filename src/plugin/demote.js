@@ -9,6 +9,8 @@ const demote = async (m, gss) => {
     const validCommands = ['demote', 'unadmin'];
 
     if (!validCommands.includes(cmd)) return;
+    
+if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
 
     if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
     const groupMetadata = await gss.groupMetadata(m.from);
