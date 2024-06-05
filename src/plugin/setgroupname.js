@@ -21,7 +21,7 @@ const setGroupName = async (m, gss) => {
 
     if (!text) return m.reply("*📛 PLEASE PROVIDE A NAME TO SET*");
 
-    await gss.setSubject(m.from, text);
+    await gss.groupUpdateSubject(m.from, text);
     m.reply(`Group Name Has Been Set To: ${text}`);
   } catch (error) {
     console.error('Error:', error);
