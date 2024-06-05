@@ -1,6 +1,9 @@
+import config from '../../config.cjs';
+
 const block = async (m, gss) => {
   try {
     const botNumber = await gss.decodeJid(gss.user.id);
+  const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -9,6 +12,8 @@ const block = async (m, gss) => {
     const validCommands = ['block'];
 
     if (!validCommands.includes(cmd)) return;
+    
+    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
 
     let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
     
