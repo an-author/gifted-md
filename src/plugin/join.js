@@ -1,3 +1,5 @@
+import config from '../../config.cjs';
+
 const joinGroup = async (m, gss) => {
   try {
     const botNumber = await gss.decodeJid(gss.user.id);
