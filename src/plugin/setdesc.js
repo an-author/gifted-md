@@ -21,7 +21,7 @@ const setDescription = async (m, gss) => {
 
     if (!text) return m.reply("*📛 PLEASE PROVIDE A DESCRIPTION TO SET*");
 
-    await gss.setGroupDescription(m.from, text);
+    await gss.groupUpdateDescription(m.from, text);
     m.reply(`Group Description Has Been Set To: ${text}`);
   } catch (error) {
     console.error('Error:', error);
