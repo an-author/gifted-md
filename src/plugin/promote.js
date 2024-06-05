@@ -10,14 +10,14 @@ const promote = async (m, gss) => {
 
     if (!validCommands.includes(cmd)) return;
 
-    if (!m.isGroup) return m.reply("📛 *This command can only be used in groups*);
+    if (!m.isGroup) return m.reply("*🚫 THIS COMMAND CAN ONLY BE USED IN GROUPS.");
     const groupMetadata = await gss.groupMetadata(m.from);
     const participants = groupMetadata.participants;
     const botAdmin = participants.find(p => p.id === botNumber)?.admin;
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
-    if (!botAdmin) return m.reply("🚫 *Bot must be an admin to use this command*");
-    if (!senderAdmin) return m.reply("🚫 *You must be an admin to use this command*");
+    if (!botAdmin) return m.reply("*🚫 BOT MUST BE AN ADMIN TO USE THIS COMMAND.");
+    if (!senderAdmin) return m.reply("*🚫 YOU MUST BE AN ADMIN TO USE THIS COMMAND.");
 
     if (!m.mentionedJid) m.mentionedJid = [];
 
@@ -30,26 +30,29 @@ const promote = async (m, gss) => {
       : [];
 
     if (users.length === 0) {
-      return m.reply("📛 *Please mention or quote a user to promote*");
+      return m.reply("*🚫 PLEASE MENTION OR QUOTE A USER TO PROMOTE*");
     }
-
+    console.log('users: ', users)
     const validUsers = users.filter(Boolean);
 
     const usernames = await Promise.all(
       validUsers.map(async (user) => {
+        console.log('user: ', user)
         try {
           const contact = await gss.getContact(user);
+          console.log('contact: ', contact)
           return contact.notify || contact.pushname || user.split('@')[0];
         } catch (error) {
           return user.split('@')[0];
         }
       })
     );
+    console.log('usernames: ', usernames)
 
     await gss.groupParticipantsUpdate(m.from, validUsers, 'promote')
       .then(() => {
-        const promotedNames = usernames.map(username => `@${username.split("@")[0]}`);
-        m.reply(`Users ${promotedNames} promoted successfully in the group ${groupMetadata.subject}.`);
+        const promotedNames = usernames.map(username => `@${username}`).join(', ');
+        m.reply(`*Users ${promotedNames} promoted successfully in the group ${groupMetadata.subject}.*`);
       })
       .catch(() => m.reply('Failed to promote user(s) in the group.'));
   } catch (error) {
