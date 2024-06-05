@@ -7,8 +7,6 @@ const __dirname = path.dirname(__filename);
 const reminiPath = path.resolve(__dirname, '../remini.cjs');
 const { remini } = require(reminiPath);
 
-
-
 const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
