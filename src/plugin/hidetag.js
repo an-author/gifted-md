@@ -1,4 +1,4 @@
-const tagAll = async (m, gss) => {
+const tagall = async (m, gss) => {
   try {
     // Ensure the function is async
     const botNumber = await gss.decodeJid(gss.user.id);
@@ -36,4 +36,4 @@ const tagAll = async (m, gss) => {
   }
 };
 
-export default tagAll;
+export default tagall;
