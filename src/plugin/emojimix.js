@@ -13,7 +13,7 @@ const emojimix = async (m, Matrix) => {
 
     let [emoji1, emoji2] = text.split('+');
     if (!emoji1 || !emoji2) {
-      throw `Example: ${prefix + cmd} 😅+🤔`;
+      return m.reply(`Example: ${prefix + cmd} 😅+🤔`);
     }
 
     const url = `https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`;
