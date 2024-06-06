@@ -1,8 +1,3 @@
-import cron from 'node-cron';
-import moment from 'moment-timezone';
-
-let scheduledTasks = {};
-
 const groupSetting = async (m, gss) => {
   try {
     const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -23,15 +18,20 @@ const groupSetting = async (m, gss) => {
     if (!senderAdmin) return m.reply("*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*");
 
     const args = m.body.slice(prefix.length + cmd.length).trim().split(/\s+/);
-    if (args.length < 2) return m.reply(`Please specify a setting (open/close) and a time.\n\nExample:\n*${prefix + cmd} open 04:00*`);
+    if (args.length < 2) return m.reply(`Please specify a setting (open/close) and a time.\n\nExample:\n*${prefix + cmd} open 04:00 PM*`);
 
     const groupSetting = args[0].toLowerCase();
-    const time = args[1];
+    let time = args[1];
 
     // Check if the provided time is valid
-    if (!/^\d{2}:\d{2}$/.test(time)) return m.reply(`Invalid time format. Use HH:mm format.\n\nExample:\n*${prefix + cmd} open 04:00*`);
+    if (!/^\d{1,2}:\d{2}\s*(?:AM|PM)?$/i.test(time)) {
+      return m.reply(`Invalid time format. Use HH:mm AM/PM format.\n\nExample:\n*${prefix + cmd} open 04:00 PM*`);
+    }
 
-    const [hour, minute] = time.split(':').map(Number);
+    // Convert time to 24-hour format
+    const [hour, minute, period] = moment(time, ['h:mm A', 'hh:mm A']).format('HH:mm').split(':');
+    time = `${hour}:${minute}`;
+
     const cronTime = `${minute} ${hour} * * *`;
 
     // Clear any existing scheduled task for this group
