@@ -5,17 +5,17 @@ let scheduledTasks = {};
 
 const groupSetting = async (m, gss) => {
   try {
-    const botNumber = await gss.decodeJid(gss.user.id);
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
     const validCommands = ['group'];
     if (!validCommands.includes(cmd)) return;
-    
-        if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
+
+    if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
     const groupMetadata = await gss.groupMetadata(m.from);
     const participants = groupMetadata.participants;
+    const botNumber = await gss.decodeJid(gss.user.id);
     const botAdmin = participants.find(p => p.id === botNumber)?.admin;
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
