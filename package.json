@@ -34,6 +34,8 @@
     "human-readable": "^0.2.1",
     "instagram-user": "^2.0.1",
     "jimp": "^0.16.13",
+    "jpeg-js": "^0.4.4",
+    "jsqr": "^1.4.0",
     "libphonenumber": "^0.0.10",
     "moment-timezone": "^0.5.45",
     "nayan-media-downloader": "^2.3.3",
