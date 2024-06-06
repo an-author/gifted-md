@@ -38,7 +38,4 @@ const typeWriterEffect = async (m, sock, key, message) => {
   }, typingSpeed);
 }
 
-ping.type = 'main';
-ping.desc = 'check bot response';
-
 export default ping;
