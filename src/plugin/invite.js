@@ -9,6 +9,10 @@ const invite = async (m, gss) => {
     if (!validCommands.includes(cmd)) return;
 
     const text = m.body.slice(prefix.length + cmd.length).trim();
+    
+    if (!m.isGroup) {
+      return m.reply('This command can only be used in groups.');
+    }
 
     if (!text) {
       return m.reply(`*Enter the number you want to invite to the group*\n\nExample:\n*${prefix + cmd}* 919142294671`);
