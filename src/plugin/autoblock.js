@@ -21,7 +21,6 @@ const autoblockCommand = async (m, Matrix) => {
     } else {
       responseMessage = "Usage:\n- `autoblock on`: Enable Auto-Block\n- `autoblock off`: Disable Auto-Block";
     }
-
     try {
       await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m });
     } catch (error) {
