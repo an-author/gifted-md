@@ -89,13 +89,21 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         }
         
         const botNumber = await sock.decodeJid(sock.user.id);
-        const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.from);
+const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+let isCreator = false;
 
-        if (!sock.public) {
-            if (!isCreator) {
-                return;
-            }
-        }
+if (m.isGroup) {
+    isCreator = m.sender === ownerNumber || m.sender === botNumber;
+} else {
+    isCreator = m.sender === ownerNumber || m.sender === botNumber;
+}
+
+if (!sock.public) {
+    if (!isCreator) {
+        return;
+    }
+}
+
 
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
