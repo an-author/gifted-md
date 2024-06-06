@@ -7,7 +7,7 @@ const groupSetting = async (m, gss) => {
     const validCommands = ['group'];
     if (!validCommands.includes(cmd)) return;
 
-    if (!m.isGroupMsg) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
+    if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
     const groupMetadata = await gss.groupMetadata(m.from);
     const participants = groupMetadata.participants;
     const botNumber = await gss.decodeJid(gss.user.id);
