@@ -11,11 +11,11 @@ const invite = async (m, gss) => {
     const text = m.body.slice(prefix.length + cmd.length).trim();
     
     if (!m.isGroup) {
-      return m.reply('This command can only be used in groups.');
+      return m.reply('*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS.*');
     }
 
     if (!text) {
-      return m.reply(`*Enter the number you want to invite to the group*\n\nExample:\n*${prefix + cmd}* 919142294671`);
+      return m.reply(`*📛 ENTER THE NUMBER YOU WANT TO INVITE TO THE GROUP*\n\nExample:\n*${prefix + cmd}* 919142294671`);
     }
 
     if (text.includes('+')) {
