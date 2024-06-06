@@ -29,7 +29,7 @@ const tagAll = async (m, gss) => {
       message += `❒ @${participant.id.split('@')[0]}\n`;
     }
 
-    await gss.sendMessage(m.from, { text: message });
+    await gss.sendMessage(m.from, { text: message, mentions: participants.map(a => a.id) }, { quoted: m });
   } catch (error) {
     console.error('Error:', error);
     await m.reply('An error occurred while processing the command.');
