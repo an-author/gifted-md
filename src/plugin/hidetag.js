@@ -7,7 +7,7 @@ const tagAll = async (m, gss) => {
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     
     // Check for the valid command
-    const validCommands = ['tagall'];
+    const validCommands = ['hidetag'];
     if (!validCommands.includes(cmd)) return;
 
 
