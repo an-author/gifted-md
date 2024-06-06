@@ -13,6 +13,14 @@ const invite = async (m, gss) => {
     if (!m.isGroup) {
       return m.reply('*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS.*');
     }
+    
+    const groupMetadata = await gss.groupMetadata(m.chat);
+    const botNumber = await gss.decodeJid(gss.user.id);
+    const isBotAdmins = groupMetadata.participants.find(p => p.id === botNumber)?.admin;
+
+    if (!isBotAdmins) {
+      return m.reply('*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND.*');
+    }
 
     if (!text) {
       return m.reply(`*📛 ENTER THE NUMBER YOU WANT TO INVITE TO THE GROUP*\n\nExample:\n*${prefix + cmd}* 919142294671`);
