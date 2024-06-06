@@ -14,7 +14,7 @@ const shazam = async (m, gss) => {
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    const validCommands = ['shazam'];
+    const validCommands = ['shazam', 'find', 'whatmusic'];
     if (!validCommands.includes(cmd)) return;
 
     if (!quoted || (quoted.mtype !== 'audioMessage' && quoted.mtype !== 'videoMessage')) {
