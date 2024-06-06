@@ -11,7 +11,6 @@ const linkgc = async (m, gss) => {
     if (!m.isGroup) {
       return m.reply('*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS.*');
     }
-
     const groupMetadata = await gss.groupMetadata(m.from);
     const botNumber = await gss.decodeJid(gss.user.id);
     const isBotAdmins = groupMetadata.participants.find(p => p.id === botNumber)?.admin;
