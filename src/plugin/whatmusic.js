@@ -16,6 +16,8 @@ const shazam = async (m, gss) => {
 
     const validCommands = ['shazam', 'find', 'whatmusic'];
     if (!validCommands.includes(cmd)) return;
+    
+    const quoted = m.quoted || {}; 
 
     if (!quoted || (quoted.mtype !== 'audioMessage' && quoted.mtype !== 'videoMessage')) {
       return m.reply('You asked about music. Please provide a quoted audio or video message for identification.');
