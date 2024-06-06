@@ -1,4 +1,4 @@
-const groupSetting = async (m, gss) => {
+const groupsetting = async (m, gss) => {
   try {
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
