@@ -12,7 +12,6 @@ const invite = async (m, gss) => {
 
     const text = m.body.slice(prefix.length + cmd.length).trim();
     
-    const groupMetadata = await gss.groupMetadata(m.from);
     const botNumber = await gss.decodeJid(gss.user.id);
     const isBotAdmins = groupMetadata.participants.find(p => p.id === botNumber)?.admin;
 
