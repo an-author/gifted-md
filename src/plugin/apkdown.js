@@ -2,7 +2,6 @@ import { search, download } from 'aptoide-scraper';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Use a global variable to store the APKs and index
 const apkMap = new Map();
 let apkIndex = 1; // Global index for APKs
 
