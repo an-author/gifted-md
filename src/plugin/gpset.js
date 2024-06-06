@@ -5,8 +5,6 @@ const groupSetting = async (m, gss) => {
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (!m.isGroup) return m.reply("This command can only be used in groups.");
-    if (!m.isBotAdmins) return m.reply("Bot must be an admin to use this command.");
 
     const validCommands = ['group'];
     if (!validCommands.includes(cmd)) return;
