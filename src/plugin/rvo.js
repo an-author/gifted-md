@@ -20,6 +20,10 @@ const rvo = async (m, sock) => {
     // Extract the message and its type
     const msg = m.quoted.message;
     const type = Object.keys(msg)[0];
+    
+    const originalCaption = msg[type].caption || '';
+    const newCaption = `${originalCaption}\n\n> © Powered By Ethix-MD`;
+
 
     // Download the media content
     const mediaStream = await downloadContentFromMessage(msg[type], type === 'imageMessage' ? 'image' : 'video');
@@ -32,7 +36,7 @@ const rvo = async (m, sock) => {
     if (/video/.test(type)) {
       await sock.sendMessage(m.from, {
         video: buffer,
-        caption: msg[type].caption || '',
+        caption: newCaption,
         contextInfo: {
           mentionedJid: [m.sender],
           forwardingScore: 9999,
@@ -42,7 +46,7 @@ const rvo = async (m, sock) => {
     } else if (/image/.test(type)) {
       await sock.sendMessage(m.from, {
         image: buffer,
-        caption: msg[type].caption || '',
+        caption: newCaption,
         contextInfo: {
           mentionedJid: [m.sender],
           forwardingScore: 9999,
