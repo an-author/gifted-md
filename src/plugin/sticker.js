@@ -6,7 +6,7 @@ const stickerCommand = async (m, gss) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  const packname = "(¯´•._.• 𝐄𝐭𝐡𝐢𝐱-𝐌𝐃 •._.•´¯)";
+  const packname = "";
   const author = "𝐄𝐭𝐡𝐢𝐱-𝐌𝐃";
 
   const validCommands = ['sticker', 's'];
