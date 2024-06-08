@@ -5,7 +5,7 @@ const report = async (m, gss) => {
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    const validCommands = ['cal'];
+    const validCommands = ['cal', 'calculater', 'calc'];
     
     if (validCommands.includes(cmd)) {
       let id = m.from;
@@ -35,7 +35,7 @@ const report = async (m, gss) => {
 
       let result = (new Function('return ' + val))();
 
-      if (isNaN(result)) throw new Error('example: 17+19*81');
+      if (isNaN(result)) throw new Error('example: 17+19');
 
       m.reply(`*${format}* = _${result}_`);
     }
