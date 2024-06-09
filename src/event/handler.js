@@ -5,6 +5,7 @@ import config from '../../config.cjs';
 import { smsg } from '../../lib/myfunc.cjs';
 
 const userCommandCounts = new Map();
+const antilinkSettings = {}; // In-memory database to store antilink settings for each chat
 
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
@@ -39,8 +40,12 @@ const Handler = async (chatUpdate, sock, logger, store) => {
 
         const participants = m.isGroup ? await sock.groupMetadata(m.from).then(metadata => metadata.participants) : [];
         const groupAdmins = m.isGroup ? getGroupAdmins(participants) : [];
-        const isBotAdmins = m.isGroup ? groupAdmins.includes(m.isSelf) : false;
+
+        // Retrieve the bot's ID from the socket connection and remove the suffix
+        const botId = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+        const isBotAdmins = m.isGroup ? groupAdmins.includes(botId) : false;
         const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false;
+
 
         const PREFIX = /^[\\/!#.]/;
         const isCOMMAND = (body) => PREFIX.test(body);
@@ -49,30 +54,25 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
         const text = m.body.slice(prefix.length + cmd.length).trim();
 
-        if (
-            m.key &&
-            m.key.remoteJid === 'status@broadcast' &&
-            config.AUTO_STATUS_SEEN
-        ) {
+        if (m.key && m.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_SEEN) {
             await sock.readMessages([m.key]);
         }
-        
+
         const botNumber = await sock.decodeJid(sock.user.id);
-const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
-let isCreator = false;
+        const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+        let isCreator = false;
 
-if (m.isGroup) {
-    isCreator = m.sender === ownerNumber || m.sender === botNumber;
-} else {
-    isCreator = m.sender === ownerNumber || m.sender === botNumber;
-}
+        if (m.isGroup) {
+            isCreator = m.sender === ownerNumber || m.sender === botNumber;
+        } else {
+            isCreator = m.sender === ownerNumber || m.sender === botNumber;
+        }
 
-if (!sock.public) {
-    if (!isCreator) {
-        return;
-    }
-}
-
+        if (!sock.public) {
+            if (!isCreator) {
+                return;
+            }
+        }
 
         const groupChatId = '120363162694704836@g.us';
         const groupLink = 'https://chat.whatsapp.com/E3PWxdvLc7ZCp1ExOCkEGp';
@@ -97,7 +97,7 @@ if (!sock.public) {
                     const hoursLeft = Math.floor(timeLeft / (60 * 60 * 1000));
                     const minutesLeft = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
 
-                    const warnmsg = `You have reached the maximum number of allowed commands. Join the group on tap join Group for using continuous commands.\n\nOtherwise, wait for some time to use commands again.\n\nLeftTime: ${hoursLeft}H ${minutesLeft}M`;
+                    const warnmsg = `You have reached the maximum number of allowed commands. Join the group to use more commands continuously.\n\nOtherwise, wait for some time to use commands again.\n\nTime Left: ${hoursLeft}H ${minutesLeft}M`;
 
                     await sock.sendMessage(m.from, {
                         text: warnmsg,
@@ -115,6 +115,78 @@ if (!sock.public) {
                     userInfo.count += 1;
                     userCommandCounts.set(m.sender, userInfo);
                 }
+            }
+        }
+
+    if (cmd === 'antilink') {
+    const action = args[0] ? args[0].toLowerCase() : '';
+
+    if (!m.isGroup) {
+        await sock.sendMessage(m.from, { text: 'This command can only be used in groups.' }, { quoted: m });
+        return;
+    }
+
+    if (!isBotAdmins) {
+        await sock.sendMessage(m.from, { text: 'The bot needs to be an admin to manage the antilink feature.' }, { quoted: m });
+        return;
+    }
+
+    if (action === 'on') {
+        if (isAdmins) {
+            antilinkSettings[m.from] = true;
+            await sock.sendMessage(m.from, { text: 'Antilink feature has been enabled for this chat.' }, { quoted: m });
+        } else {
+            await sock.sendMessage(m.from, { text: 'Only admins can enable the antilink feature.' }, { quoted: m });
+        }
+        return;
+    }
+
+    if (action === 'off') {
+        if (isAdmins) {
+            antilinkSettings[m.from] = false;
+            await sock.sendMessage(m.from, { text: 'Antilink feature has been disabled for this chat.' }, { quoted: m });
+        } else {
+            await sock.sendMessage(m.from, { text: 'Only admins can disable the antilink feature.' }, { quoted: m });
+        }
+        return;
+    }
+
+    await sock.sendMessage(m.from, { text: `Usage: ${prefix + cmd} on\n ${prefix + cmd} off` }, { quoted: m });
+    return;
+}
+
+        if (!m.isGroup && antilinkSettings[m.from]) {
+            if (m.body.match(/(chat.whatsapp.com\/)/gi)) {
+                if (!isBotAdmins) {
+                    await sock.sendMessage(m.from, { text: `The bot needs to be an admin to remove links.` });
+                    return;
+                }
+                let gclink = `https://chat.whatsapp.com/${await sock.groupInviteCode(m.from)}`;
+                let isLinkThisGc = new RegExp(gclink, 'i');
+                let isgclink = isLinkThisGc.test(m.body);
+                if (isgclink) {
+                    await sock.sendMessage(m.from, { text: `The link you shared is for this group, so you won't be removed.` });
+                    return;
+                }
+                if (isAdmins) {
+                    await sock.sendMessage(m.from, { text: `Admins are allowed to share links.` });
+                    return;
+                }
+                if (isCreator) {
+                    await sock.sendMessage(m.from, { text: `The owner is allowed to share links.` });
+                    return;
+                }
+
+                // Send warning message first
+                await sock.sendMessage(m.from, {
+                    text: `\`\`\`「 Group Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]}, please do not share group links in this group.`,
+                    contextInfo: { mentionedJid: [m.sender] }
+                }, { quoted: m });
+
+                // Wait for a short duration before kicking
+                setTimeout(async () => {
+                    await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
+                }, 5000); // 5 seconds delay before kick
             }
         }
 
