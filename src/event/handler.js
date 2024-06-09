@@ -53,37 +53,6 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         const text = m.body.slice(prefix.length + cmd.length).trim();
         const args = m.body.slice(prefix.length + cmd.length).trim().split(' ');
 
-        if (m.message.protocolMessage && m.message.protocolMessage.type === 'REVOKE') {
-            console.log("Debugging REVOKE message:", m);
-            const key = m.message.protocolMessage.key;
-            if (!key) return;
-
-            const deletedMsg = chatUpdate.messages.find(msg => msg.key.id === key.id || msg.key.remoteJid === key.remoteJid);
-            if (deletedMsg) {
-                const serializedMsg = serialize(deletedMsg, sock);
-                const participant = key.participant || m.key.participant || m.participant || m.key.remoteJid;
-                const sender = participant ? participant.split('@')[0] : 'unknown';
-
-                if (serializedMsg.message) {
-                    console.log(`Deleted message from ${sender}:`, serializedMsg.message);
-                } else {
-                    console.log(`Deleted message from ${sender}: Message type not supported for logging`);
-                }
-            } else {
-                const participant = key.participant || m.key.participant || m.participant || m.key.remoteJid;
-                const sender = participant ? participant.split('@')[0] : 'unknown';
-                console.log(`Deleted message from ${sender} but no message found. Detailed info:`, {
-                    keyId: key.id,
-                    chatUpdateMessages: chatUpdate.messages.map(msg => msg.key.id),
-                    m: m
-                });
-            }
-        }
-
-        // Handle edited messages
-        if (m.message.extendedTextMessage && m.message.extendedTextMessage.contextInfo && m.message.extendedTextMessage.contextInfo.quotedMessage && m.message.extendedTextMessage.contextInfo.quotedMessage.type === 'editedMessage') {
-            console.log("Edited message:", m.message.extendedTextMessage.text);
-        }
 
         if (m.key && m.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_SEEN) {
             await sock.readMessages([m.key]);
@@ -150,7 +119,7 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         }
 
 
-        if (m.isGroup && antilinkSettings[m.from]) {
+        if (!m.isGroup && antilinkSettings[m.from]) {
             if (m.body.match(/(chat.whatsapp.com\/)/gi)) {
                 if (!isBotAdmins) {
                     await sock.sendMessage(m.from, { text: `The bot needs to be an admin to remove links.` });
