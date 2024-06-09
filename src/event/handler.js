@@ -119,6 +119,7 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         }
 
     if (cmd === 'antilink') {
+      const args = m.body.slice(prefix.length + cmd.length).trim().split(/\s+/);
     const action = args[0] ? args[0].toLowerCase() : '';
 
     if (!m.isGroup) {
