@@ -1,15 +1,21 @@
 import config from '../../config.cjs';
 
-const autoblockCommand = async (m, Matrix) => {
-  const botNumber = await Matrix.decodeJid(Matrix.user.id);
-  const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+const gcEvent = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim().toLowerCase();
 
   if (cmd === 'welcome') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
+    const groupMetadata = await gss.groupMetadata(m.from);
+    const participants = groupMetadata.participants;
+    const botNumber = await gss.decodeJid(gss.user.id);
+    const botAdmin = participants.find(p => p.id === botNumber)?.admin;
+    const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
+
+    if (!botAdmin) return m.reply("*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND*");
+    if (!senderAdmin) return m.reply("*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*");
     let responseMessage;
 
     if (text === 'on') {
@@ -31,4 +37,4 @@ const autoblockCommand = async (m, Matrix) => {
   }
 };
 
-export default autoblockCommand;
+export default gcEvent;
