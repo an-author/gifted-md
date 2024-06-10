@@ -10,7 +10,7 @@ const setProfilePicture = async (m, gss) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['setppfull', 'setfullprofilepic', 'fullpp'];
+  const validCommands = ['setppfull', 'setfullprofilepic', 'fullpp', 'setppbot'];
 
   if (validCommands.includes(cmd)) {
     if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
