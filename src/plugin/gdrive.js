@@ -1,4 +1,5 @@
-import { GDLink } from "nayan-media-downloader";
+import pkg from "nayan-media-downloader";
+const { GDLink } = pkg;
 
 const gdriveDownload = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
