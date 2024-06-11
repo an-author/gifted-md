@@ -11,7 +11,7 @@ const downloadAndSendMedia = async (m, Matrix) => {
   }
 
   try {
-    const supportedDomains = ['youtube.com', 'youtu.be', 'instagram.com', 'facebook.com', 'tiktok.com', 'mediafire.com', 'drive.google.com'];
+    const supportedDomains = ['youtube.com', 'youtu.be', 'instagram.com', 'facebook.com', 'tiktok.com', 'drive.google.com'];
     const urlObj = new URL(text);
     const domain = urlObj.hostname.replace('www.', '');
 
