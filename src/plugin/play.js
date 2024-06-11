@@ -192,7 +192,7 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YouTube Search\n\n🔍 Select the desired media type to download.\n\n📌 Choose an option to download.\n\nTitle: ${currentResult.title}\nAuthor: ${currentResult.author.name}\nViews: ${currentResult.views}\nDuration: ${currentResult.timestamp}\n\n`
+                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YouTube Search\n\nTitle: ${currentResult.title}\nAuthor: ${currentResult.author.name}\nViews: ${currentResult.views}\nDuration: ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
