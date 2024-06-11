@@ -1,6 +1,6 @@
 import ytdl from 'ytdl-core';
 import ytSearch from 'yt-search';
-import pkg from '@whiskeysockets/baileys';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
 // Global map to store search results and current index
