@@ -18,19 +18,20 @@ const gdriveDownload = async (m, Matrix) => {
       const gdriveUrl = text;
       const gdriveInfo = await GDLink(gdriveUrl);
 
-      if (gdriveInfo && gdriveInfo.link) {
-        const mediaUrl = gdriveInfo.link;
-        const mimeType = gdriveInfo.mime;
-        const caption = `> © Powered By Ethix-Xsid\n> File: ${gdriveInfo.name}\n> Size: ${gdriveInfo.size}\n> Date: ${gdriveInfo.date}`;
+      if (gdriveInfo && gdriveInfo.status && gdriveInfo.data) {
+        const mediaUrl = gdriveInfo.data;
+        const extension = mediaUrl.split('.').pop().toLowerCase();
+        const fileName = mediaUrl.split('/').pop();
+        const caption = `> © Powered By Ethix-Xsid\n> Developer: ${gdriveInfo.developer}\n> DevFB: ${gdriveInfo.devfb}\n> DevWP: ${gdriveInfo.devwp}`;
 
-        if (mimeType.startsWith('image/')) {
+        if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
           await Matrix.sendMessage(m.from, { image: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (mimeType.startsWith('video/')) {
+        } else if (['mp4', 'mkv', 'webm'].includes(extension)) {
           await Matrix.sendMessage(m.from, { video: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (mimeType.startsWith('audio/')) {
+        } else if (['mp3', 'wav', 'aac'].includes(extension)) {
           await Matrix.sendMessage(m.from, { audio: { url: mediaUrl }, caption: caption }, { quoted: m });
         } else {
-          await Matrix.sendMessage(m.from, { document: { url: mediaUrl }, fileName: gdriveInfo.name, caption: caption }, { quoted: m });
+          await Matrix.sendMessage(m.from, { document: { url: mediaUrl }, fileName: fileName, caption: caption }, { quoted: m });
         }
 
         await m.React('✅');
