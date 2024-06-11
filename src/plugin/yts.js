@@ -3,10 +3,9 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Use a global variable to store the topVideos and video index
 const videoMap = new Map();
-let videoIndex = 1; // Global index for video links
-let audioIndex = 1001; // Separate index for audio links to ensure unique IDs
+let videoIndex = 1; 
+let audioIndex = 1001;
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -53,7 +52,7 @@ const song = async (m, Matrix) => {
           "header": "",
           "title": video.title,
           "description": ``,
-          "id": `video_${uniqueId}` // Unique key format for video buttons
+          "id": `🎦video_${uniqueId}` 
         };
       });
 
@@ -64,7 +63,7 @@ const song = async (m, Matrix) => {
           "header": "",
           "title": video.title,
           "description": ``,
-          "id": `audio_${uniqueId}` // Unique key format for audio buttons
+          "id": `🎵audio_${uniqueId}`
         };
       });
 
@@ -134,7 +133,7 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      // Increment the global video and audio indices for the next set of videos
+ 
       videoIndex += topVideos.length;
       audioIndex += topVideos.length;
     } catch (error) {
@@ -142,10 +141,10 @@ const song = async (m, Matrix) => {
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) { 
     const isAudio = selectedId.startsWith('audio_');
     const key = parseInt(selectedId.replace(isAudio ? 'audio_' : 'video_', ''));
-    const selectedVideo = videoMap.get(key); // Find video by unique key
+    const selectedVideo = videoMap.get(key);
 
     if (selectedVideo) {
       try {
@@ -155,10 +154,10 @@ const song = async (m, Matrix) => {
         const duration = videoInfo.videoDetails.lengthSeconds;
         const uploadDate = videoInfo.videoDetails.uploadDate;
         const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.videoId}`;
-        const thumbnailUrl = selectedVideo.thumbnail; // Get the thumbnail URL from search results
+        const thumbnailUrl = selectedVideo.thumbnail; 
 
         if (selectedVideo.isAudio) {
-          // Download audio
+ 
           const audioStream = ytdl(videoUrl, { filter: 'audioonly', quality: 'highestaudio' });
           const finalAudioBuffer = await streamToBuffer(audioStream);
           
@@ -166,7 +165,7 @@ const song = async (m, Matrix) => {
 
           await Matrix.sendMessage(m.from, { audio: finalAudioBuffer, mimetype: 'audio/mpeg' }, { quoted: m });
         } else {
-          // Download video
+ 
           const videoStream = ytdl(videoUrl, { filter: 'audioandvideo', quality: 'highest' });
           const finalVideoBuffer = await streamToBuffer(videoStream);
 
