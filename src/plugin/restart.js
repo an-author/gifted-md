@@ -1,5 +1,3 @@
-import { exec } from 'child_process';
-
 const restartBot = async (m) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
@@ -8,7 +6,7 @@ const restartBot = async (m) => {
   if (cmd === 'restart') {
     try {
       m.reply('Proses....')
-      exec('pm2 restart all')
+      process.exit()
     } catch (error) {
       console.error(error);
       await m.React("❌");
