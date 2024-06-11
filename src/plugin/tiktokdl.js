@@ -1,11 +1,11 @@
-import pkg from '@whiskeysockets/baileys';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import pkgg from 'nayan-media-downloader';
 const { tikdown } = pkgg;
 
-// Global map to store search results and current index
+
 const searchResultsMap = new Map();
-let searchIndex = 1; // Global index for search results
+let searchIndex = 1;
 
 const tiktokCommand = async (m, Matrix) => {
   let selectedListId;
@@ -37,7 +37,7 @@ const tiktokCommand = async (m, Matrix) => {
     try {
       await m.React("🕘");
 
-      // Fetch TikTok data
+
       const tikTokData = await tikdown(text);
       if (!tikTokData.status) {
         await m.reply('No results found.');
@@ -45,23 +45,23 @@ const tiktokCommand = async (m, Matrix) => {
         return;
       }
 
-      // Store TikTok data in global map
+
       searchResultsMap.set(searchIndex, tikTokData);
 
-      // Create buttons for the result
+
       const currentResult = searchResultsMap.get(searchIndex);
       const buttons = [
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Video",
+            display_text: "🎦 Video",
             id: `media_video_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Audio",
+            display_text: "🎵 Audio",
             id: `media_audio_${searchIndex}`
           })
         }
@@ -82,6 +82,7 @@ const tiktokCommand = async (m, Matrix) => {
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
+                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: "",
                 gifPlayback: true,
                 subtitle: "",
@@ -105,13 +106,13 @@ const tiktokCommand = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      searchIndex += 1; // Increment the global search index for the next set of results
+      searchIndex += 1; 
     } catch (error) {
       console.error("Error processing your request:", error);
       await m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) { 
     if (selectedId.startsWith('media_')) {
       const parts = selectedId.split('_');
       const type = parts[1];
