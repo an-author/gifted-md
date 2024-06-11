@@ -2,9 +2,8 @@ import ytdl from 'ytdl-core';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Global map to store video details
 const videoMap = new Map();
-let videoIndex = 1; // Global index for video links
+let videoIndex = 1; 
 
 const song = async (m, Matrix) => {
   let selectedListId;
@@ -36,7 +35,7 @@ const song = async (m, Matrix) => {
     try {
       await m.React("🕘");
 
-      // Get video info
+
       const info = await ytdl.getInfo(text);
       const formats = ytdl.filterFormats(info.formats, 'videoandaudio');
 
@@ -63,7 +62,7 @@ const song = async (m, Matrix) => {
           "header": "",
           "title": `${format.qualityLabel} (${format.container}) - ${size}`,
           "description": `Bitrate: ${format.bitrate}`,
-          "id": `quality_${uniqueId}` // Unique key format for quality buttons
+          "id": `quality_${uniqueId}` 
         };
       }));
 
@@ -82,8 +81,8 @@ const song = async (m, Matrix) => {
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: info.videoDetails.thumbnails[0].url } }, { upload: Matrix.waUploadToServer })),
-                title: info.videoDetails.title,
+                ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -96,7 +95,7 @@ const song = async (m, Matrix) => {
                       title: "🎬 Select a video quality",
                       sections: [
                         {
-                          title: "Available Qualities",
+                          title: "♂️ Available Qualities",
                           highlight_label: "💡 Choose Quality",
                           rows: qualityButtons
                         },
@@ -120,16 +119,15 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      // Increment the global video index for the next set of videos
       videoIndex += formats.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) {
     const key = parseInt(selectedId.replace('quality_', ''));
-    const selectedFormat = videoMap.get(key); // Find video format by unique key
+    const selectedFormat = videoMap.get(key);
 
     if (selectedFormat) {
       try {
