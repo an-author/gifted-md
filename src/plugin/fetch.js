@@ -23,7 +23,7 @@ const fetchData = async (m, Matrix) => {
 
       const contentType = res.headers.get('content-type');
       if (!/text|json/.test(contentType)) {
-        await Matrix.sendMedia(m.from, url, 'file', 'API FETCHED FROM GSS_BOTWA', m);
+        await Matrix.sendMedia(m.from, url, 'file', '> Api Fetched From Ethix-MD', m);
         return;
       }
 
