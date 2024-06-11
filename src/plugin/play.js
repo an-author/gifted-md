@@ -149,35 +149,35 @@ const playcommand = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎧Audio",
+            display_text: "🎧 Audio",
             id: `media_audio_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎥Video",
+            display_text: "🎥 Video",
             id: `media_video_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎵Audio Document",
+            display_text: "🎵 Audio Document",
             id: `media_audiodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎦Video Document",
+            display_text: "🎦 Video Document",
             id: `media_videodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "⏩Next",
+            display_text: "⏩ Next",
             id: `next_${nextIndex + 1}`
           })
         }
