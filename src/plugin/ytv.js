@@ -117,7 +117,7 @@ const song = async (m, Matrix) => {
               }),
               contextInfo: {
                 mentionedJid: [m.sender],
-                forwardingScore: 9999,
+                forwardingScore: 999,
                 isForwarded: true,
               }
             }),
