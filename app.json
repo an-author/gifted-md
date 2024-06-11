@@ -4,7 +4,7 @@
   "keywords": [
     "whatsapp bot"
   ],
-  "repository": "https://github.com/gssbotwa/Ethix-MD",
+  "repository": "https://github.com/Ethix-Xsid/Ethix-MD",
   "stack": "container",
   "env": { 
       "SESSION_ID": {
