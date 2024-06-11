@@ -7,7 +7,7 @@ const mediafireDownload = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['mediafire', 'mf', 'mfdl', 'mfdownload'];
+  const validCommands = ['mediafire', 'mf', 'mfdownload'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a MediaFire URL.');
@@ -16,22 +16,17 @@ const mediafireDownload = async (m, Matrix) => {
       await m.React('🕘');
 
       const mediafireUrl = text;
-      const mediafireInfo = await mediafireDl(mediafireUrl);
+      const mediafireInfo = await mediafiredl(mediafireUrl);
 
       if (mediafireInfo && mediafireInfo.link) {
         const mediaUrl = mediafireInfo.link;
-        const mimeType = mediafireInfo.mime;
         const caption = `> © Powered By Ethix-Xsid\n> File: ${mediafireInfo.name}\n> Size: ${mediafireInfo.size}\n> Date: ${mediafireInfo.date}`;
 
-        if (mimeType.startsWith('image/')) {
-          await Matrix.sendMessage(m.from, { image: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (mimeType.startsWith('video/')) {
-          await Matrix.sendMessage(m.from, { video: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (mimeType.startsWith('audio/')) {
-          await Matrix.sendMessage(m.from, { audio: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else {
-          await Matrix.sendMessage(m.from, { document: { url: mediaUrl }, fileName: mediafireInfo.name, caption: caption }, { quoted: m });
-        }
+
+        const extension = mediaUrl.split('.').pop().toLowerCase();
+
+
+        await Matrix.sendMedia(m.from, mediaUrl, extension, caption, m);
 
         await m.React('✅');
       } else {
