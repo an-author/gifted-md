@@ -20,18 +20,21 @@ const downloadAndSendMedia = async (m, Matrix) => {
       const res = await fetch(apiUrl);
       const result = await res.json();
 
-      if (result.status && result.data.length > 0) {
-        const mediaUrl = result.data[0].url;
-        const extension = mediaUrl.split('.').pop().toLowerCase();
+      if (result.status) {
+        const mediaData = result.data;
         const caption = `> © Powered By Ethix-Xsid`;
 
-        await Matrix.sendMedia(m.from, mediaUrl, extension, caption, m);
-        await m.React('✅');
+        if (mediaData.low) {
+          const mediaUrl = mediaData.low;
+          const extension = mediaUrl.split('.').pop().toLowerCase();
+
+          await Matrix.sendMedia(m.from, mediaUrl, extension, caption, m);
+          await m.React('✅');
+        } else {
+        }
       } else {
-        throw new Error('Invalid response from the downloader API.');
       }
     } else {
-      m.reply('Invalid command or unsupported domain.');
     }
   } catch (error) {
     console.error('Error downloading and sending media:', error.message);
