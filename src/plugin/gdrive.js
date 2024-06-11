@@ -20,19 +20,13 @@ const gdriveDownload = async (m, Matrix) => {
 
       if (gdriveInfo && gdriveInfo.status && gdriveInfo.data) {
         const mediaUrl = gdriveInfo.data;
-        const extension = mediaUrl.split('.').pop().toLowerCase();
-        const fileName = mediaUrl.split('/').pop();
         const caption = `> © Powered By Ethix-MD`;
 
-        if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
-          await Matrix.sendMessage(m.from, { image: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (['mp4', 'mkv', 'webm'].includes(extension)) {
-          await Matrix.sendMessage(m.from, { video: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else if (['mp3', 'wav', 'aac'].includes(extension)) {
-          await Matrix.sendMessage(m.from, { audio: { url: mediaUrl }, caption: caption }, { quoted: m });
-        } else {
-          await Matrix.sendMessage(m.from, { document: { url: mediaUrl }, fileName: fileName, caption: caption }, { quoted: m });
-        }
+        // Inferring the file type based on the file extension
+        const extension = mediaUrl.split('.').pop().toLowerCase();
+
+        // Send the media using Matrix.sendMedia
+        await Matrix.sendMedia(m.from, mediaUrl, extension, caption, m);
 
         await m.React('✅');
       } else {
