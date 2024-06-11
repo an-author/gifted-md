@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 const fetchData = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
