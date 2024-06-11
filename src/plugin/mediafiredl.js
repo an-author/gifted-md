@@ -1,6 +1,5 @@
 import axios from 'axios';
-import pkg from 'mediafire-dl-nimeshofficial';
-const { mediafiredl } = pkg;
+import { mediafiredl } from 'mediafire-dl-nimeshofficial';
 
 const mediafireDownload = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
