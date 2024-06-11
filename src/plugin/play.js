@@ -59,28 +59,28 @@ const playcommand = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Audio",
+            display_text: "🎧Audio",
             id: `media_audio_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Video",
+            display_text: "🎥Video",
             id: `media_video_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Audio Document",
+            display_text: "🎵Audio Document",
             id: `media_audiodoc_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Video Document",
+            display_text: "🎦Video Document",
             id: `media_videodoc_${searchIndex}`
           })
         },
@@ -108,7 +108,8 @@ const playcommand = async (m, Matrix) => {
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: currentResult.title,
+                 ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
@@ -131,13 +132,13 @@ const playcommand = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      searchIndex += 1; // Increment the global search index for the next set of results
+      searchIndex += 1; 
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) { 
     if (selectedId.startsWith('next_')) {
       const nextIndex = parseInt(selectedId.replace('next_', ''));
       const currentResult = searchResultsMap.get(nextIndex);
@@ -145,41 +146,39 @@ const playcommand = async (m, Matrix) => {
       if (!currentResult) {
         return m.reply('No more results.');
       }
-
-      // Create buttons for the next result
       const buttons = [
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Audio",
+            display_text: "🎧Audio",
             id: `media_audio_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Video",
+            display_text: "🎥Video",
             id: `media_video_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Audio Document",
+            display_text: "🎵Audio Document",
             id: `media_audiodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Video Document",
+            display_text: "🎦Video Document",
             id: `media_videodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "Next",
+            display_text: "⏩Next",
             id: `next_${nextIndex + 1}`
           })
         }
@@ -200,7 +199,8 @@ const playcommand = async (m, Matrix) => {
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                title: currentResult.title,
+                 ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: "",
                 gifPlayback: true,
                 subtitle: "",
                 hasMediaAttachment: false 
