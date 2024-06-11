@@ -3,9 +3,8 @@ import ytSearch from 'yt-search';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 
-// Global map to store search results and current index
 const searchResultsMap = new Map();
-let searchIndex = 1; // Global index for search results
+let searchIndex = 1; 
 
 const playcommand = async (m, Matrix) => {
   let selectedListId;
@@ -37,9 +36,9 @@ const playcommand = async (m, Matrix) => {
     try {
       await m.React("🕘");
 
-      // Perform YouTube search
+ 
       const searchResults = await ytSearch(text);
-      const videos = searchResults.videos.slice(0, 5); // Get top 5 results
+      const videos = searchResults.videos.slice(0, 5); 
 
       if (videos.length === 0) {
         m.reply('No results found.');
@@ -47,13 +46,13 @@ const playcommand = async (m, Matrix) => {
         return;
       }
 
-      // Store search results in global map
+
       videos.forEach((video, index) => {
         const uniqueId = searchIndex + index;
         searchResultsMap.set(uniqueId, video);
       });
 
-      // Create buttons for the first result
+
       const currentResult = searchResultsMap.get(searchIndex);
       const buttons = [
         {
