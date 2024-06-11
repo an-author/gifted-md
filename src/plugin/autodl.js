@@ -1,6 +1,9 @@
 import fetch from 'node-fetch';
+import config from '../../config.cjs';
 
 const downloadAndSendMedia = async (m, Matrix) => {
+  if (!config.AUTO_DL) return;  // Exit early if AUTO_DL is false
+
   const text = m.body.trim();
 
   if (!/^https?:\/\//.test(text)) {
@@ -13,7 +16,7 @@ const downloadAndSendMedia = async (m, Matrix) => {
     const urlObj = new URL(text);
     const domain = urlObj.hostname.replace('www.', '');
 
-    if (config.AUTO_DL && supportedDomains.some(d => domain.includes(d))) {
+    if (supportedDomains.some(d => domain.includes(d))) {
       const apiUrl = `https://aiodownloader.onrender.com/download?url=${encodeURIComponent(text)}`;
       const res = await fetch(apiUrl);
       const result = await res.json();
