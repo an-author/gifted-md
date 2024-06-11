@@ -1,4 +1,4 @@
-import pkg from '@whiskeysockets/baileys';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import pkgg from 'nayan-media-downloader';
 const { ndown } = pkgg;
