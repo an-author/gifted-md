@@ -3,9 +3,9 @@ const { generateWAMessageFromContent, proto } = pkg;
 import pkgg from 'nayan-media-downloader';
 const { ndown } = pkgg;
 
-// Global map to store search results and current index
+
 const fbSearchResultsMap = new Map();
-let fbSearchIndex = 1; // Global index for search results
+let fbSearchIndex = 1; 
 
 const facebookCommand = async (m, Matrix) => {
   let selectedListId;
@@ -37,7 +37,7 @@ const facebookCommand = async (m, Matrix) => {
     try {
       await m.React("🕘");
 
-      // Fetch Facebook video data
+
       const fbData = await ndown(text);
       if (!fbData.status) {
         await m.reply('No results found.');
@@ -51,7 +51,7 @@ const facebookCommand = async (m, Matrix) => {
         title: 'Video Qualities',
         rows: fbData.data.map((video, index) => ({
           header: '',
-          title: `Download ${video.resolution}`,
+          title: `📥 Download ${video.resolution}`,
           description: '',
           id: `media_${index}_${fbSearchIndex}`
         }))
@@ -60,7 +60,7 @@ const facebookCommand = async (m, Matrix) => {
       const buttons = [{
         name: "single_select",
         buttonParamsJson: JSON.stringify({
-          title: 'Select Quality',
+          title: '♂️ Select Quality',
           sections: sections
         })
       }];
@@ -80,6 +80,7 @@ const facebookCommand = async (m, Matrix) => {
                 text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
+                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: "",
                 gifPlayback: true,
                 subtitle: "",
@@ -103,13 +104,13 @@ const facebookCommand = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      fbSearchIndex += 1; // Increment the global search index for the next set of results
+      fbSearchIndex += 1; 
     } catch (error) {
       console.error("Error processing your request:", error);
       await m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
+  } else if (selectedId) { 
     if (selectedId.startsWith('media_')) {
       const parts = selectedId.split('_');
       const qualityIndex = parseInt(parts[1]);
