@@ -33,7 +33,7 @@ const searchAPK = async (m, Matrix) => {
     try {
       await m.React("🕘");
 
-      // Search Aptoide for the provided query
+
       let searchResult = await search(text);
       const topAPKs = searchResult.slice(0, 10);
 
@@ -45,16 +45,16 @@ const searchAPK = async (m, Matrix) => {
 
       const apkButtons = await Promise.all(topAPKs.map(async (apk, index) => {
         const uniqueId = `apk_${apkIndex + index}`;
-        const apkDetails = await download(apk.id); // Fetching the APK details including size
+        const apkDetails = await download(apk.id); 
         apkMap.set(uniqueId, {
           ...apk,
-          size: apkDetails.size // Adding the size to the APK details
+          size: apkDetails.size 
         });
         return {
           "header": "",
-          "title": apk.name, // Use the name of the APK
+          "title": `📥 ${apk.name}`, 
           "description": `Size: ${apkDetails.size}`,
-          "id": uniqueId // Unique key format: apk_{index}
+          "id": uniqueId 
         };
       }));
 
@@ -73,7 +73,7 @@ const searchAPK = async (m, Matrix) => {
                 text: "> © Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: `https://uploadimage.org/i/Untitled69-2.jpg` } }, { upload: Matrix.waUploadToServer })),
+                ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: ``,
                 gifPlayback: true,
                 subtitle: "",
@@ -111,26 +111,26 @@ const searchAPK = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      // Increment the global APK index for the next set of APKs
+
       apkIndex += topAPKs.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
       await m.React("❌");
     }
-  } else if (selectedId) { // Check if selectedId exists
-    const selectedAPK = apkMap.get(selectedId); // Find APK by unique key
+  } else if (selectedId) { 
+    const selectedAPK = apkMap.get(selectedId);
 
     if (selectedAPK) {
       try {
-        const apkDetails = await download(selectedAPK.id); // Fetching the APK details
+        const apkDetails = await download(selectedAPK.id); 
         const url = apkDetails.dllink;
         const iconUrl = apkDetails.icon;
         const size = apkDetails.size;
 
         await Matrix.sendMessage(m.from, { image: { url: iconUrl }, caption: `You selected this APK:\n\nName: ${selectedAPK.name}\nsize: ${size}\n\n> © Powered by Ethix-MD` }, { quoted: m });
 
-        // Send APK directly from URL
+  
         const apkMessage = {
           document: { url },
           mimetype: 'application/vnd.android.package-archive',
