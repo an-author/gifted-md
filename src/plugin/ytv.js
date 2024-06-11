@@ -75,7 +75,7 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 Video Downloader\n\n🔍 Select the desired quality to download the video.\n\n📌 Simply select a quality from the list below to get started.\n\nTitle: ${videoDetails.title}\nAuthor: ${videoDetails.author}\nViews: ${videoDetails.views}\nLikes: ${videoDetails.likes}\nUpload Date: ${videoDetails.uploadDate}\nDuration: ${videoDetails.duration}\n\n`
+                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 Video Downloader\n\nTitle: ${videoDetails.title}\nAuthor: ${videoDetails.author}\nViews: ${videoDetails.views}\nLikes: ${videoDetails.likes}\nUpload Date: ${videoDetails.uploadDate}\nDuration: ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
