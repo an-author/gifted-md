@@ -38,6 +38,7 @@
     "jpeg-js": "^0.4.4",
     "jsqr": "^1.4.0",
     "libphonenumber": "^0.0.10",
+    "mediafire-dl-nimeshofficial": "^1.0.0",
     "moment-timezone": "^0.5.45",
     "nayan-media-downloader": "^2.3.3",
     "node-cache": "^5.1.2",
