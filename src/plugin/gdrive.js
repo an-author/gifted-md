@@ -22,7 +22,7 @@ const gdriveDownload = async (m, Matrix) => {
         const mediaUrl = gdriveInfo.data;
         const extension = mediaUrl.split('.').pop().toLowerCase();
         const fileName = mediaUrl.split('/').pop();
-        const caption = `> © Powered By Ethix-Xsid\n> Developer: ${gdriveInfo.developer}\n> DevFB: ${gdriveInfo.devfb}\n> DevWP: ${gdriveInfo.devwp}`;
+        const caption = `> © Powered By Ethix-MD`;
 
         if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
           await Matrix.sendMessage(m.from, { image: { url: mediaUrl }, caption: caption }, { quoted: m });
