@@ -7,7 +7,6 @@ const downloadAndSendMedia = async (m, Matrix) => {
   const text = m.body.trim();
 
   if (!/^https?:\/\//.test(text)) {
-    m.reply('Start the *URL* with http:// or https://');
     return;
   }
 
