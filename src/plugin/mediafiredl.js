@@ -16,7 +16,7 @@ const mediafireDownload = async (m, Matrix) => {
       await m.React('🕘');
 
       const mediafireUrl = text;
-      const mediafireInfo = await mediafiredl(mediafireUrl);
+      const mediafireInfo = await mediafireDl(mediafireUrl);
 
       if (mediafireInfo && mediafireInfo.link) {
         const mediaUrl = mediafireInfo.link;
