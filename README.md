@@ -67,7 +67,8 @@
 
 ## `DEVELOPERS`
 <div align="left">
-  <a href="[https://github.com/Ethix-Xsid]"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="150" height="200" alt="Ash"/></a>
+  <a href="[https://github.com/Ethix-Xsid]"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="300" height="200" alt="Ash"/></a>
+<div align="left">
 <a href="[https://github.com/chhaseeb47]"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="Ash"/></a>
  </div>
  
