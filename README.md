@@ -2,7 +2,7 @@
  
 <p align="center">  
   <a href="https://youtu.be/WcA7GZuaN0A">
-   <img alt="Ethix-MD" height="300" src="https://github.com/Ethix-Xsid.png">
+   <img alt="Ethix-MD" height="300" src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg">
     
 <p align="center">
 <a href="https://github.com/Ethix-Xsid"><img title="Author" src="https://img.shields.io/badge/Ethix-Xsid-black?style=for-the-badge&logo=WhatsApp"></a>
