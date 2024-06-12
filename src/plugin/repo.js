@@ -33,7 +33,7 @@ const handleRepoCommand = async (m, Matrix) => {
               text: "© Powered By Ethix-MD"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
-              ...(await prepareWAMessageMedia({ image: { url: owner.avatar_url } }, { upload: Matrix.waUploadToServer })),
+             ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
               title: "",
               gifPlayback: true,
               subtitle: "",
