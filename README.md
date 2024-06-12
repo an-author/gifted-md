@@ -47,9 +47,6 @@
 ### 2. GET SESSION VIA PAIR CODE
 <a href='https://replit.com/@sid47/Ethix-MD-1?v=1' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Click here to get your credit js-black?style=for-the-badge&logo=opencv&logoColor=white'/></a>
 
-<a href='https://youtu.be/_Yqtsho9eI0?si=_ezalTW5QiTI-0w2' target="_blank"><img alt='Mongodb Url Tutorial' src='https://img.shields.io/badge/-Mongodb Url Tutorial-green?style=for-the-badge&logo=mongodb&logoColor=darkgreen'/></a>
-
-
 
 #### DEPLOY TO HEROKU 
 
