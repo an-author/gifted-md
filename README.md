@@ -61,7 +61,7 @@
 ## DEVELOPERS
 
 <div align="left">
-  <a href="https://github.com/Ethix-Xsid"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="200" height="200" alt="Sid"></a>
+  <a href="https://github.com/Ethix-Xsid"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="300" height="200" alt="Sid"></a>
   
   | [SIDHARTH](https://github.com/Ethix-Xsid) |
   | Owner, Developer, Bug Fixer, Maintainer, updates |
