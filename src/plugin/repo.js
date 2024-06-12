@@ -15,8 +15,8 @@ const handleRepoCommand = async (m, Matrix) => {
     \n⭐ *Stars:* ${stargazers_count}
     \n🍴 *Forks:* ${forks_count}
     \n📅 *Created At:* ${new Date(created_at).toLocaleDateString()}
-    \n🛠️**Last Updated:** ${new Date(updated_at).toLocaleDateString()}
-    \n👤 *Owner:** ${owner.login}`;
+    \n🛠️*Last Updated:* ${new Date(updated_at).toLocaleDateString()}
+    \n👤 *Owner:* ${owner.login}`;
 
     const repoMessage = generateWAMessageFromContent(m.from, {
       viewOnceMessage: {
