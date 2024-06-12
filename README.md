@@ -65,57 +65,22 @@
      <br>
           <a href='https://youtu.be/NbREC9DTQcA?si=bamV9UTA5nXGwDDD' target="_blank"><img alt='Heroku Deploy Tutorial' src='https://img.shields.io/badge/-Heroku Deploy Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white'/></a>
 
-#### DEPLOY TO CODESPACE
-
-1. If You don't have a account in Codespace. Create a account.
-    <br>
-<a href='https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fcodespaces' target="_blank"><img alt='Codespaces' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode' width="96.35" height="28"/></a></p>
-
-2. Now Deploy
-    <br>
-<a href='https://github.com/codespaces/new' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/DEPLOY -h?color=black&style=for-the-badge&logo=visualstudiocode' width="96.35" height="28"/></a></p>
-
-
-#### DEPLOY TO RAILWAY
-
-1. If You don't have a account in Railway. Create a account.
-    <br>
-<a href='https://railway.app/login' target="_blank"><img alt='Railway' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=railway' width="96.35" height="28"/></a></p>
-
-2. Now Deploy
-    <br>
-<a href='https://railway.app/new' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/DEPLOY -h?color=black&style=for-the-badge&logo=railway' width="96.35" height="28"/></a></p>
-
-#### DEPLOY TO MONGENIUS
-
-1. If You don't have a account in Mongenius. Create a account.
-    <br>
-<a href='https://studio.mogenius.com/user/registration' target="_blank"><img alt='Mongenius' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=genius' width="96.35" height="28"/></a></p>
-
-2. Now Deploy
-    <br>
-<a href='https://railway.app/new' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/DEPLOY -h?color=black&style=for-the-badge&logo=genius' width="96.35" height="28"/></a></p>
-
-
-#### DEPLOY TO REPLIT
-
-1. If You don't have a account in Replit. Create a account.
-    <br>
-<a href='https://replit.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
-
-2. Now Deploy
-    <br>
-<a href='https://replit.com/github/Ethix-Xsid/Ethix-MD' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
-
----
-
 ## `DEVELOPERS`
 <div align="left">
-  <a href="[https://github.com/Ethix-Xsid]"><img src="https://github.com/Ethix-Xsid.png" width="150" height="200" alt="Ash"/></a>
+  <a href="[https://github.com/Ethix-Xsid]"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="150" height="200" alt="Ash"/></a>
 <a href="[https://github.com/chhaseeb47]"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="Ash"/></a>
  </div>
+ 
+ ## `HELPER`
+ <div align="left">
+ <a href="[https://github.com/Rushmaster12]"><img
+ src="https://avatars.githubusercontent.com/u/160727728?v=4" width="150" height="200" alt="Ash"/></a>
+ 
 <br>
 <h4 align="left">
+
+ | [ RUSHMASTER ](https://github.com/Rushmaster12) |
+ | helper |
 
 | [SIDHARTH ](https://github.com/Ethix-Xsid) |
 | Owner, Developer, Bug Fixer, Maintainer, updates|
