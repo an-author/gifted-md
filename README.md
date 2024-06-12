@@ -76,11 +76,11 @@
  <a href="[https://github.com/Rushmaster12]"><img
  src="https://avatars.githubusercontent.com/u/160727728?v=4" width="150" height="200" alt="Ash"/></a>
  
+  | [ RUSHMASTER ](https://github.com/Rushmaster12) |
+ | helper |
+ 
 <br>
 <h4 align="left">
-
- | [ RUSHMASTER ](https://github.com/Rushmaster12) |
- | helper |
 
 | [SIDHARTH ](https://github.com/Ethix-Xsid) |
 | Owner, Developer, Bug Fixer, Maintainer, updates|
