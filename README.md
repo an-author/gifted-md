@@ -29,7 +29,7 @@
    
 <p align="center">
 <a href="https://github.com/Ethix-Xsid/followers"><img title="Followers" src="https://img.shields.io/github/followers/Ethix-Xsid?color=red&style=flat-square"></a>
-<a href="https://github.com/Ethix-Xsid/Ethix-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Ethix-Xsid/Ethix-X?color=blue&style=flat-square"></a>
+<a href="https://github.com/Ethix-Xsid/Ethix-MD/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/Ethix-Xsid/Ethix-X?color=blue&style=flat-square"></a>
 <a href="https://github.com/Ethix-Xsid/Ethix-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Ethix-Xsid/Ethix-MD?color=red&style=flat-square"></a>
 <a href="https://github.com/Ethix-Xsid/Ethix-MD/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Ethix-Xsid/Ethix-MD?label=Watchers&color=blue&style=flat-square"></a>
 <a href="https://github.com/Ethix-Xsid/Ethix-MD"><img title="Open Source" src="https://img.shields.io/badge/Author-ETHIX SID X %20HASEEB-red?v=103"></a>
