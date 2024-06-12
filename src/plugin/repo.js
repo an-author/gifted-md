@@ -15,7 +15,7 @@ const handleRepoCommand = async (m, Matrix) => {
     \n⭐ *Stars:* ${stargazers_count}
     \n🍴 *Forks:* ${forks_count}
     \n📅 *Created At:* ${new Date(created_at).toLocaleDateString()}
-    \n🛠️*Last Updated:* ${new Date(updated_at).toLocaleDateString()}
+    \n🛠️ *Last Updated:* ${new Date(updated_at).toLocaleDateString()}
     \n👤 *Owner:* ${owner.login}`;
 
     const repoMessage = generateWAMessageFromContent(m.from, {
@@ -34,7 +34,7 @@ const handleRepoCommand = async (m, Matrix) => {
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({ image: { url: owner.avatar_url } }, { upload: Matrix.waUploadToServer })),
-              title: ,
+              title: "",
               gifPlayback: true,
               subtitle: "",
               hasMediaAttachment: false 
@@ -51,7 +51,7 @@ const handleRepoCommand = async (m, Matrix) => {
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "Click Here To Forks",
+                    display_text: "Click Here To Fork",
                     url: `https://github.com/Ethix-Xsid/Ethix-MD/fork`
                   })
                 },
