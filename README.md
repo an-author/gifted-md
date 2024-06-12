@@ -77,7 +77,7 @@
  ## `HELPER`
  <div align="left">
  <a href="[https://github.com/Rushmaster12]"><img
- src="https://avatars.githubusercontent.com/u/160727728?v=4" width="150" height="200" alt="Ash"/></a>
+ src="https://avatars.githubusercontent.com/u/160727728?v=4" width="200" height="200" alt="Ash"/></a>
  
   | [ RUSHMASTER ](https://github.com/Rushmaster12) |
  | helper |
@@ -86,7 +86,7 @@
 <a href="[https://github.com/chhaseeb47]"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="Ash"/></a>
 
 | [ CH HASEEB ](https://github.com/chhaseeb47) |
-| CO.Devloper |
+| Thanks Hasib Bhai |
 
  
 <br>
@@ -110,14 +110,7 @@
  <p align="left">
 <a href="mailto:bsid4961@gmail.com"><img title="Author" src="https://img.shields.io/badge/GMAIL-ME-black?style=for-the-badge&logo=Gmail"></a>
  <p align="left"> 
-  <a href="https://wa.me/919142294671?text=Hi+sid+Sir...+I+need+some+help+in+Gss_Botwa"><img title="Author" src="https://img.shields.io/badge/WHATSAPP-ME-red?style=for-the-badge&logo=WhatsApp"></a>
-  
-   
-
- 
-
-
-
+  <a href="https://wa.me/919142294671?text=Hi+sid+Sir...+I+need+some+help+in+Ethix-MD"><img title="Author" src="https://img.shields.io/badge/WHATSAPP-ME-red?style=for-the-badge&logo=WhatsApp"></a>
 </br>
 
 
