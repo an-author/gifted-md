@@ -8,7 +8,7 @@ const handleRepoCommand = async (m, Matrix) => {
     const response = await axios.get(repoUrl);
     const repoData = response.data;
 
-    const { full_name, forks_count, stargazers_count, created_at, updated_at, owner } = repoData;
+    const { full_name, name, forks_count, stargazers_count, created_at, updated_at, owner } = repoData;
 
     const messageText = `📊 Repository Information:
     \n🔸 *Name:* ${name}
