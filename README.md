@@ -68,8 +68,10 @@
 ## `DEVELOPERS`
 <div align="left">
   <a href="[https://github.com/Ethix-Xsid]"><img src="https://telegra.ph/file/fbbe1744668b44637c21a.jpg" width="300" height="200" alt="Ash"/></a>
-<div align="left">
-<a href="[https://github.com/chhaseeb47]"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="Ash"/></a>
+  
+  | [SIDHARTH ](https://github.com/Ethix-Xsid) |
+| Owner, Developer, Bug Fixer, Maintainer, updates|
+
  </div>
  
  ## `HELPER`
@@ -80,15 +82,15 @@
   | [ RUSHMASTER ](https://github.com/Rushmaster12) |
  | helper |
  
-<br>
-<h4 align="left">
-
-| [SIDHARTH ](https://github.com/Ethix-Xsid) |
-| Owner, Developer, Bug Fixer, Maintainer, updates|
+ <div align="left">
+<a href="[https://github.com/chhaseeb47]"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="Ash"/></a>
 
 | [ CH HASEEB ](https://github.com/chhaseeb47) |
 | CO.Devloper |
 
+ 
+<br>
+<h4 align="left">
 
 
   </br> 
