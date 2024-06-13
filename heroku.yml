@@ -3,4 +3,4 @@ build:
     worker: Dockerfile
     
 run:
-  worker: pm2-runtime pm2.config.js --env production
+  worker: pm2-runtime pm2.config.cjs --env production
