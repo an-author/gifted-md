@@ -1,1 +1,1 @@
-worker: npm start 
+worker: pm2 start server.cjs --env production
