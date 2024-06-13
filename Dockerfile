@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["pm2-runtime", "pm2.config.js"]
+CMD ["pm2-runtime", "pm2.config.cjs"]
