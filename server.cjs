@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: "whatsapp-bot",
+            name: "Ethix-MD",
             script: "./src/index.js", 
             instances: 1,
             autorestart: true,
