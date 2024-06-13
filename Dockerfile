@@ -8,12 +8,13 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
-COPY package.json .
+WORKDIR /app
 
-RUN npm i && npm i -g qrcode-terminal
+COPY package.json .
+RUN npm install && npm install -g pm2
 
 COPY . .
 
 EXPOSE 5000
 
-CMD ["node", "src/index.js"]
+CMD ["pm2-runtime", "pm2.server.cjs"]
