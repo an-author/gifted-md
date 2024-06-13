@@ -3,4 +3,4 @@ build:
     worker: Dockerfile
     
 run:
-  worker: npm start
+  worker: pm2-runtime pm2.server.cjs --env production
