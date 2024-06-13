@@ -1,1 +1,1 @@
-worker: pm2 start server.cjs --env production
+worker: pm2-runtime pm2.server.cjs --env production
