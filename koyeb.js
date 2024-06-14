@@ -5,11 +5,11 @@ RUN sudo dnf -y update &&\
     sudo dnf install -y git ffmpeg ImageMagick nodejs yarnpkg libwebp &&\
     sudo dnf clean all -y
 
-RUN git clone bot
+RUN git clone https://github.com/Ethix-Xsid/Ethix-MD
 
-WORKDIR /root/botname
+WORKDIR /root/Ethix-MD
 
-COPY ./root/botname
+COPY ./root/Ethix-MD
 
 RUN yarn install
 
