@@ -1,1 +1,204 @@
-const _0x513f12=_0x196c;(function(_0x482fe2,_0x5d9794){const _0x11a586=_0x196c,_0x20474e=_0x482fe2();while(!![]){try{const _0x52882d=-parseInt(_0x11a586(0x1d3))/0x1+-parseInt(_0x11a586(0x1c9))/0x2*(parseInt(_0x11a586(0x194))/0x3)+-parseInt(_0x11a586(0x1db))/0x4*(parseInt(_0x11a586(0x18d))/0x5)+-parseInt(_0x11a586(0x1a4))/0x6*(parseInt(_0x11a586(0x195))/0x7)+-parseInt(_0x11a586(0x1af))/0x8*(parseInt(_0x11a586(0x18e))/0x9)+parseInt(_0x11a586(0x1aa))/0xa*(-parseInt(_0x11a586(0x1ac))/0xb)+parseInt(_0x11a586(0x1ce))/0xc;if(_0x52882d===_0x5d9794)break;else _0x20474e['push'](_0x20474e['shift']());}catch(_0x3901d5){_0x20474e['push'](_0x20474e['shift']());}}}(_0x3719,0x31537));import _0x428725 from'dotenv';_0x428725[_0x513f12(0x1c0)]();function _0x196c(_0x9f5761,_0x1e2443){const _0x371967=_0x3719();return _0x196c=function(_0x196cf8,_0x5ae718){_0x196cf8=_0x196cf8-0x18d;let _0x54bb45=_0x371967[_0x196cf8];return _0x54bb45;},_0x196c(_0x9f5761,_0x1e2443);}import{makeWASocket,Browsers,jidDecode,makeInMemoryStore,makeCacheableSignalKeyStore,fetchLatestBaileysVersion,DisconnectReason,useMultiFileAuthState,getAggregateVotesInPollMessage}from'@whiskeysockets/baileys';import{Handler,Callupdate,GroupUpdate}from'./event/index.js';import{Boom}from'@hapi/boom';import _0x41005d from'express';import _0x102a7c from'pino';import _0x484d83 from'fs';import _0x48316f from'node-cache';import _0x4d7367 from'path';import _0x3cdd44 from'chalk';import{writeFile}from'fs/promises';import _0x553cb3 from'moment-timezone';import _0xa6dd01 from'axios';import _0xaf95ff from'node-fetch';import*as _0x511c47 from'os';function _0x3719(){const _0x54860f=['timedOut','message','child','buttonsMessage','https://pastebin.com/raw/','#32CD32','102RNXNkf','MacOS','user','listMessage','PORT','self','1580uEMXvS','close','7766ZBSFxv','remoteJid','error','467216jyRmrf','creds','[🤕]\x20Connection\x20Lost\x20from\x20Server,\x20reconnecting.','Ethix-MD&','Hello\x20World','writeFileSync','public','loggedOut','messages','[😩]\x20Connection\x20closed,\x20reconnecting.','listen','SESSION_ID','exit','templateMessage','session','group-participants.update','store','config',',\x22time\x22:\x22','split','messages.upsert','length','statusCode','AUTO_REACT','MODE','connection.update','818CHVVSs','string','registered','darwin','sendMessage','21107784uiYoYP','platform','bind','send','get','154106lGYYER','[⏳]\x20Connection\x20Timed\x20Out,\x20Trying\x20to\x20Reconnect.','using\x20WA\x20v','restartRequired','bold','Windows','green','😃\x20Integration\x20Successful️\x20✅','776xqgrAY','log','Linux','121.0.6167.159','open','authState','level','red','10390XxKpvE','45UUaiqX','random','text','output','floor','silent','2727tIdSKh','92386TfMdIK','[😭]\x20Device\x20Logged\x20Out,\x20Please\x20Delete\x20Session\x20and\x20Scan\x20Again.','blue','CODED\x20BY\x20GOUTAM\x20KUMAR\x20&\x20Ethix-Xsid','hex','./session/creds.json','Hello\x20World!','session\x20file\x20created','[🚫️]\x20Something\x20Went\x20Wrong:\x20Failed\x20to\x20Make\x20Connection'];_0x3719=function(){return _0x54860f;};return _0x3719();}import _0x24c22e from'../config.cjs';import _0x5e7a5f from'../lib/autoreact.cjs';const {emojis,doReact}=_0x5e7a5f,sessionName=_0x513f12(0x1bd),app=_0x41005d(),orange=_0x3cdd44['bold'][_0x513f12(0x199)]('#FFA500'),lime=_0x3cdd44[_0x513f12(0x1d7)]['hex'](_0x513f12(0x1a3));let useQR,isSessionPutted,initialConnection=!![];const PORT=process['env'][_0x513f12(0x1a8)]||0xbb8,MAIN_LOGGER=_0x102a7c({'timestamp':()=>_0x513f12(0x1c1)+new Date()['toJSON']()+'\x22'}),logger=MAIN_LOGGER[_0x513f12(0x1a0)]({});logger[_0x513f12(0x1e1)]='trace';const msgRetryCounterCache=new _0x48316f(),store=makeInMemoryStore({'logger':_0x102a7c()[_0x513f12(0x1a0)]({'level':_0x513f12(0x193),'stream':_0x513f12(0x1bf)})});async function start(){const _0x31d2b6=_0x513f12;!_0x24c22e[_0x31d2b6(0x1ba)]?(useQR=!![],isSessionPutted=![]):(useQR=![],isSessionPutted=!![]);let {state:_0x40ad27,saveCreds:_0x389c50}=await useMultiFileAuthState(sessionName),{version:_0x19f187,isLatest:_0x547089}=await fetchLatestBaileysVersion();console['log'](_0x3cdd44['red'](_0x31d2b6(0x198))),console[_0x31d2b6(0x1dc)](_0x3cdd44[_0x31d2b6(0x1d9)](_0x31d2b6(0x1d5)+_0x19f187['join']('.')+',\x20isLatest:\x20'+_0x547089));const _0x330ff5=_0x511c47[_0x31d2b6(0x1cf)]()==='win32'?_0x31d2b6(0x1d8):_0x511c47[_0x31d2b6(0x1cf)]()===_0x31d2b6(0x1cc)?_0x31d2b6(0x1a5):_0x31d2b6(0x1dd),_0x1ac477=makeWASocket({'version':_0x19f187,'logger':_0x102a7c({'level':_0x31d2b6(0x193)}),'printQRInTerminal':useQR,'browser':[_0x330ff5,'chrome',_0x31d2b6(0x1de)],'patchMessageBeforeSending':_0x2d703f=>{const _0x2c4a16=_0x31d2b6,_0x514e3e=!!(_0x2d703f[_0x2c4a16(0x1a1)]||_0x2d703f[_0x2c4a16(0x1bc)]||_0x2d703f[_0x2c4a16(0x1a7)]);return _0x514e3e&&(_0x2d703f={'viewOnceMessage':{'message':{'messageContextInfo':{'deviceListMetadataVersion':0x2,'deviceListMetadata':{}},..._0x2d703f}}}),_0x2d703f;},'auth':{'creds':_0x40ad27['creds'],'keys':makeCacheableSignalKeyStore(_0x40ad27['keys'],_0x102a7c({'level':'fatal'})['child']({'level':'fatal'}))},'getMessage':async _0x14258e=>{const _0x17bf50=_0x31d2b6;if(store){const _0xa02702=await store['loadMessage'](_0x14258e[_0x17bf50(0x1ad)],_0x14258e['id']);return _0xa02702[_0x17bf50(0x19f)]||undefined;}return{'conversation':_0x17bf50(0x1b3)};},'markOnlineOnConnect':!![],'generateHighQualityLinkPreview':!![],'defaultQueryTimeoutMs':undefined,'msgRetryCounterCache':msgRetryCounterCache});store?.[_0x31d2b6(0x1d0)](_0x1ac477['ev']);if(!_0x1ac477[_0x31d2b6(0x1e0)][_0x31d2b6(0x1b0)][_0x31d2b6(0x1cb)]&&isSessionPutted){const _0x14cee7=_0x24c22e[_0x31d2b6(0x1ba)][_0x31d2b6(0x1c2)](_0x31d2b6(0x1b2))[0x1],_0x4160e2=_0x31d2b6(0x1a2)+_0x14cee7,_0x347666=await _0xaf95ff(_0x4160e2),_0x3ace5e=await _0x347666[_0x31d2b6(0x190)]();typeof _0x3ace5e===_0x31d2b6(0x1ca)&&(_0x484d83[_0x31d2b6(0x1b4)](_0x31d2b6(0x19a),_0x3ace5e),console[_0x31d2b6(0x1dc)](_0x31d2b6(0x19c)),await start());}async function _0x3fca21(_0x46ca8a){const _0x8a8a18=_0x31d2b6;if(store){const _0x4be9e3=await store['loadMessage'](_0x46ca8a[_0x8a8a18(0x1ad)],_0x46ca8a['id']);return _0x4be9e3?.['message'];}return{'conversation':_0x8a8a18(0x1b3)};}_0x1ac477['ev']['on'](_0x31d2b6(0x1c3),async _0x12d99f=>await Handler(_0x12d99f,_0x1ac477,logger)),_0x1ac477['ev']['on']('call',async _0x3d1aa9=>await Callupdate(_0x3d1aa9,_0x1ac477)),_0x1ac477['ev']['on'](_0x31d2b6(0x1be),async _0xaa2f57=>await GroupUpdate(_0x1ac477,_0xaa2f57));if(_0x24c22e[_0x31d2b6(0x1c7)]===_0x31d2b6(0x1b5))_0x1ac477['public']=!![];else _0x24c22e[_0x31d2b6(0x1c7)]===_0x31d2b6(0x1a9)&&(_0x1ac477['public']=![]);_0x1ac477['ev']['on'](_0x31d2b6(0x1c8),async _0x55b837=>{const _0x3b4ffc=_0x31d2b6,{connection:_0x447408,lastDisconnect:_0x36196a}=_0x55b837;if(_0x447408===_0x3b4ffc(0x1ab)){let _0x5f4fd3=new Boom(_0x36196a?.[_0x3b4ffc(0x1ae)])?.[_0x3b4ffc(0x191)][_0x3b4ffc(0x1c5)];if(_0x5f4fd3===DisconnectReason['connectionClosed'])console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x1e2)](_0x3b4ffc(0x1b8))),start();else{if(_0x5f4fd3===DisconnectReason['connectionLost'])console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x1e2)](_0x3b4ffc(0x1b1))),start();else{if(_0x5f4fd3===DisconnectReason[_0x3b4ffc(0x1b6)])console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x1e2)](_0x3b4ffc(0x196))),process[_0x3b4ffc(0x1bb)]();else{if(_0x5f4fd3===DisconnectReason[_0x3b4ffc(0x1d6)])console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x197)]('[♻️]\x20Server\x20Restarting.')),start();else _0x5f4fd3===DisconnectReason[_0x3b4ffc(0x19e)]?(console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x1e2)](_0x3b4ffc(0x1d4))),start()):(console[_0x3b4ffc(0x1dc)](_0x3cdd44['red'](_0x3b4ffc(0x19d))),process[_0x3b4ffc(0x1bb)]());}}}}_0x447408===_0x3b4ffc(0x1df)&&(initialConnection?(console['log'](_0x3cdd44[_0x3b4ffc(0x1d9)](_0x3b4ffc(0x1da))),_0x1ac477[_0x3b4ffc(0x1cd)](_0x1ac477[_0x3b4ffc(0x1a6)]['id'],{'text':_0x3b4ffc(0x1da)}),initialConnection=![]):console[_0x3b4ffc(0x1dc)](_0x3cdd44[_0x3b4ffc(0x197)]('♻️\x20Connection\x20reestablished\x20after\x20restart.')));}),_0x1ac477['ev']['on'](_0x31d2b6(0x1c3),async _0x2c1b98=>{const _0x4b7f7d=_0x31d2b6;try{const _0x4f9326=_0x2c1b98[_0x4b7f7d(0x1b7)][0x0];if(!_0x4f9326['key']['fromMe']&&_0x24c22e[_0x4b7f7d(0x1c6)]){console[_0x4b7f7d(0x1dc)](_0x4f9326);if(_0x4f9326[_0x4b7f7d(0x19f)]){const _0x2a9597=emojis[Math[_0x4b7f7d(0x192)](Math[_0x4b7f7d(0x18f)]()*emojis[_0x4b7f7d(0x1c4)])];await doReact(_0x2a9597,_0x4f9326,_0x1ac477);}}}catch(_0x5d6549){console[_0x4b7f7d(0x1ae)]('Error\x20during\x20auto\x20reaction:',_0x5d6549);}});}start(),app[_0x513f12(0x1d2)]('/',(_0x4128b5,_0x214521)=>{const _0x3a0d36=_0x513f12;_0x214521[_0x3a0d36(0x1d1)](_0x3a0d36(0x19b));}),app[_0x513f12(0x1b9)](PORT,()=>{const _0x3e0e26=_0x513f12;console[_0x3e0e26(0x1dc)]('Server\x20is\x20running\x20on\x20port\x20'+PORT);});
+import dotenv from 'dotenv';
+dotenv.config();
+import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
+import { Handler, Callupdate, GroupUpdate } from './event/index.js';
+import { Boom } from '@hapi/boom';
+import express from 'express';
+import pino from 'pino';
+import fs from 'fs';
+import NodeCache from 'node-cache';
+import path from 'path';
+import chalk from 'chalk';
+import { writeFile } from 'fs/promises';
+import moment from 'moment-timezone';
+import axios from 'axios';
+import fetch from 'node-fetch';
+import * as os from 'os';
+import config from '../config.cjs';  
+import pkg from '../lib/autoreact.cjs';
+const { emojis, doReact } = pkg;
+
+const sessionName = "session";
+const app = express();
+const orange = chalk.bold.hex("#FFA500");
+const lime = chalk.bold.hex("#32CD32");
+let useQR;
+let isSessionPutted;
+let initialConnection = true;
+const PORT = process.env.PORT || 3000;
+
+const MAIN_LOGGER = pino({
+    timestamp: () => `,"time":"${new Date().toJSON()}"`
+});
+const logger = MAIN_LOGGER.child({});
+logger.level = "trace";
+
+const msgRetryCounterCache = new NodeCache();
+
+const store = makeInMemoryStore({
+    logger: pino().child({
+        level: 'silent',
+        stream: 'store'
+    })
+});
+
+// Baileys Connection Option
+async function start() {
+    if (!config.SESSION_ID) {
+        useQR = true;
+        isSessionPutted = false;
+    } else {
+        useQR = false;
+        isSessionPutted = true;
+    }
+
+    let { state, saveCreds } = await useMultiFileAuthState(sessionName);
+    let { version, isLatest } = await fetchLatestBaileysVersion();
+    console.log(chalk.red("CODED BY GOUTAM KUMAR & Ethix-Xsid"));
+    console.log(chalk.green(`using WA v${version.join(".")}, isLatest: ${isLatest}`));
+
+    const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux';
+    const Matrix = makeWASocket({
+        version,
+        logger: pino({ level: 'silent' }),
+        printQRInTerminal: useQR,
+        browser: [Device, 'chrome', '121.0.6167.159'],
+        patchMessageBeforeSending: (message) => {
+            const requiresPatch = !!(
+                message.buttonsMessage ||
+                message.templateMessage ||
+                message.listMessage
+            );
+            if (requiresPatch) {
+                message = {
+                    viewOnceMessage: {
+                        message: {
+                            messageContextInfo: {
+                                deviceListMetadataVersion: 2,
+                                deviceListMetadata: {},
+                            },
+                            ...message,
+                        },
+                    },
+                };
+            }
+            return message;
+        },
+        auth: {
+            creds: state.creds,
+            keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+        },
+        getMessage: async (key) => {
+            if (store) {
+                const msg = await store.loadMessage(key.remoteJid, key.id);
+                return msg.message || undefined;
+            }
+            return {
+                conversation: "Hello World"
+            };
+        },
+        markOnlineOnConnect: true,
+        generateHighQualityLinkPreview: true,
+        defaultQueryTimeoutMs: undefined,
+        msgRetryCounterCache
+    });
+    store?.bind(Matrix.ev);
+
+    // Manage Device Logging
+    if (!Matrix.authState.creds.registered && isSessionPutted) {
+        const sessionID = config.SESSION_ID.split('Ethix-MD&')[1];
+        const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
+        const response = await fetch(pasteUrl);
+        const text = await response.text();
+        if (typeof text === 'string') {
+            fs.writeFileSync('./session/creds.json', text);
+            console.log('session file created');
+            await start();
+        }
+    }
+
+    // Response cmd pollMessage
+    async function getMessage(key) {
+        if (store) {
+            const msg = await store.loadMessage(key.remoteJid, key.id);
+            return msg?.message;
+        }
+        return {
+            conversation: "Hello World",
+        };
+    }
+
+    // Handle Incomming Messages
+    Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
+    Matrix.ev.on("call", async (json) => await Callupdate(json, Matrix));
+    Matrix.ev.on("group-participants.update", async (messag) => await GroupUpdate(Matrix, messag));
+
+    // Setting public or self mode based on config
+    if (config.MODE === 'public') {
+        Matrix.public = true;
+    } else if (config.MODE === 'self') {
+        Matrix.public = false;
+    }
+
+
+    // Check Baileys connections
+Matrix.ev.on("connection.update", async update => {
+    const { connection, lastDisconnect } = update;
+
+    if (connection === "close") {
+        let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+        if (reason === DisconnectReason.connectionClosed) {
+            console.log(chalk.red("[😩] Connection closed, reconnecting."));
+            start();
+        } else if (reason === DisconnectReason.connectionLost) {
+            console.log(chalk.red("[🤕] Connection Lost from Server, reconnecting."));
+            start();
+        } else if (reason === DisconnectReason.loggedOut) {
+            console.log(chalk.red("[😭] Device Logged Out, Please Delete Session and Scan Again."));
+            process.exit();
+        } else if (reason === DisconnectReason.restartRequired) {
+            console.log(chalk.blue("[♻️] Server Restarting."));
+            start();
+        } else if (reason === DisconnectReason.timedOut) {
+            console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
+            start();
+        } else {
+            console.log(chalk.red("[🚫️] Something Went Wrong: Failed to Make Connection"));
+        }
+    }
+
+    if (connection === "open") {
+        if (initialConnection) {
+            console.log(chalk.green("😃 Integration Successful️ ✅"));
+            Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
+            initialConnection = false;
+        } else {
+            console.log(chalk.blue("♻️ Connection reestablished after restart."));
+        }
+    }
+});
+
+Matrix.ev.on('messages.upsert', async chatUpdate => {
+  try {
+    const mek = chatUpdate.messages[0];
+    if (!mek.key.fromMe && config.AUTO_REACT) {
+      console.log(mek);
+      if (mek.message) {
+        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+        await doReact(randomEmoji, mek, Matrix);
+      }
+    }
+  } catch (err) {
+    console.error('Error during auto reaction:', err);
+  }
+});
+}
+
+start();
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
