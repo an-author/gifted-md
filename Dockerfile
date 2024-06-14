@@ -1,19 +1,11 @@
 FROM node:lts-buster
-
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y ffmpeg imagemagick webp
+RUN apt-get upgrade -y
+RUN rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 COPY package.json .
-
-RUN npm i && npm i -g qrcode-terminal
-
+RUN npm ci
+RUN npm install -g qrcode-terminal
 COPY . .
-
 EXPOSE 5000
-
-CMD ["node", "src/index.js"]
+CMD ["pm2 start", "src/index.js"]
