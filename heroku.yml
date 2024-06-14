@@ -1,6 +1,6 @@
 build:
   docker:
-    web: Procfile
+    worker: Dockerfile
     
 run:
-  web: node . --server
+  worker: npm start 
