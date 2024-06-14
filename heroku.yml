@@ -3,4 +3,4 @@ build:
     worker: Dockerfile
     
 run:
-  worker: pm2 start src/index.js
+  worker: npm start 
