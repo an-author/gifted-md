@@ -142,7 +142,7 @@ const song = async (m, Matrix) => {
       await m.React("❌");
     }
   } else if (selectedId) { 
-    const isAudio = selectedId.startsWith('audio_');
+    const isAudio = selectedId.startsWith('🎵audio_');
     const key = parseInt(selectedId.replace(isAudio ? '🎵audio_' : '🎦video_', ''));
     const selectedVideo = videoMap.get(key);
 
