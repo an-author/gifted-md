@@ -1,1 +1,604 @@
-const _0x34e709=_0x21dc;(function(_0x340b1e,_0x1afd38){const _0x1bf383=_0x21dc,_0xb676a2=_0x340b1e();while(!![]){try{const _0xe8d533=-parseInt(_0x1bf383(0xf6))/0x1*(parseInt(_0x1bf383(0xc8))/0x2)+parseInt(_0x1bf383(0xc4))/0x3+-parseInt(_0x1bf383(0x113))/0x4*(parseInt(_0x1bf383(0x104))/0x5)+parseInt(_0x1bf383(0xbe))/0x6*(-parseInt(_0x1bf383(0xf3))/0x7)+parseInt(_0x1bf383(0xe0))/0x8+-parseInt(_0x1bf383(0xe2))/0x9+parseInt(_0x1bf383(0xd6))/0xa;if(_0xe8d533===_0x1afd38)break;else _0xb676a2['push'](_0xb676a2['shift']());}catch(_0x1c4e9d){_0xb676a2['push'](_0xb676a2['shift']());}}}(_0x9fd3,0x8e16c));import _0x15e970 from'moment-timezone';import _0x4a3e4f from'fs';import _0x1c9a0d from'os';import _0x434975,{prepareWAMessageMedia}from'@whiskeysockets/baileys';const {generateWAMessageFromContent,proto}=_0x434975,totalMemoryBytes=_0x1c9a0d[_0x34e709(0xd3)](),freeMemoryBytes=_0x1c9a0d[_0x34e709(0xed)](),byteToKB=0x1/0x400,byteToMB=byteToKB/0x400,byteToGB=byteToMB/0x400;function formatBytes(_0x4cfeff){const _0xea051f=_0x34e709;if(_0x4cfeff>=Math[_0xea051f(0xdf)](0x400,0x3))return(_0x4cfeff*byteToGB)[_0xea051f(0xf1)](0x2)+'\x20GB';else{if(_0x4cfeff>=Math[_0xea051f(0xdf)](0x400,0x2))return(_0x4cfeff*byteToMB)[_0xea051f(0xf1)](0x2)+'\x20MB';else return _0x4cfeff>=0x400?(_0x4cfeff*byteToKB)[_0xea051f(0xf1)](0x2)+_0xea051f(0x110):_0x4cfeff[_0xea051f(0xf1)](0x2)+_0xea051f(0x10c);}}const uptime=process[_0x34e709(0x105)](),day=Math[_0x34e709(0xc1)](uptime/(0x18*0xe10)),hours=Math[_0x34e709(0xc1)](uptime%(0x18*0xe10)/0xe10),minutes=Math[_0x34e709(0xc1)](uptime%0xe10/0x3c),seconds=Math[_0x34e709(0xc1)](uptime%0x3c),uptimeMessage=_0x34e709(0xe1)+day+'d\x20'+hours+'h\x20'+minutes+'m\x20'+seconds+'s*',runMessage=_0x34e709(0xe3)+day+_0x34e709(0xcf)+hours+_0x34e709(0xcb)+minutes+_0x34e709(0xe9)+seconds+'\x20Seconds*\x0a',xtime=_0x15e970['tz'](_0x34e709(0xd1))[_0x34e709(0xe4)](_0x34e709(0xe8)),xdate=_0x15e970['tz'](_0x34e709(0xd1))['format'](_0x34e709(0xf0)),time2=_0x15e970()['tz'](_0x34e709(0xd1))[_0x34e709(0xe4)](_0x34e709(0xe8));let pushwish='';if(time2<_0x34e709(0xd9))pushwish=_0x34e709(0xef);else{if(time2<_0x34e709(0xf7))pushwish=_0x34e709(0xef);else{if(time2<'15:00:00')pushwish=_0x34e709(0xea);else{if(time2<_0x34e709(0x106))pushwish=_0x34e709(0xf5);else time2<_0x34e709(0xd2)?pushwish='Good\x20Evening\x20🌃':pushwish=_0x34e709(0xec);}}}function _0x9fd3(){const _0x220ea6=['\x20bytes','help','test','create','\x20KB','hey\x20','interactiveResponseMessage','24CnwBXg','sendMessage','match','Group\x20Menu','./src/ethix.jpg','\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝚂𝚃𝙰𝙻𝙺\x20❯━╮\x0a┃❐\x20𝙽𝚘𝚠𝚊\x0a┃❐\x20𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛\x0a┃❐\x20𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙿𝚛𝚘𝚏𝚒𝚕𝚎𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙽𝚞𝚖𝚋𝚎𝚛𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙴𝚖𝚊𝚒𝚕𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙿𝚑𝚘𝚗𝚎𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙻𝚘𝚌𝚊𝚝𝚒𝚘𝚗𝚜𝚝𝚊𝚕𝚔\x0a╰━━━━━━━━━━━━━━━⪼','relayMessage','platform','84KaVwfc','╭─────────────━┈⊷\x0a│🤖\x20ʙᴏᴛ\x20ɴᴀᴍᴇ:\x20*ᴇᴛʜɪx-ᴍᴅ*\x0a│📍\x20ᴠᴇʀꜱɪᴏɴ:\x202.0.3\x0a│👨‍💻\x20ᴏᴡɴᴇʀ\x20:\x20*ᴇᴛʜɪx\x20xsɪᴅ*\x20\x20\x20\x20\x20\x20\x0a│👤\x20ɴᴜᴍʙᴇʀ:\x20919142294671\x0a│📡\x20ᴘʟᴀᴛғᴏʀᴍ:\x20*','from','floor','Ai\x20Menu','includes','1275786wKfcWV','length','paramsJson','selectedId','2468UjGZjH','body','Tool\x20Menu','\x20Hour*\x0a*⏰\x20','\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙶𝚁𝙾𝚄𝙿\x20❯━╮\x0a┃❐\x20𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙\x0a┃❐\x20𝚂𝚎𝚝𝚙𝚙𝚐𝚌\x0a┃❐\x20𝚂𝚎𝚝𝚗𝚊𝚖𝚎\x0a┃❐\x20𝚂𝚎𝚝𝚍𝚎𝚜𝚌\x0a┃❐\x20𝙶𝚛𝚘𝚞𝚙\x0a┃❐\x20𝙶𝚌𝚜𝚎𝚝𝚝𝚒𝚗𝚐\x0a┃❐\x20𝚆𝚎𝚕𝚌𝚘𝚖𝚎\x0a┃❐\x20𝙻𝚎𝚏𝚝\x0a┃❐\x20𝚂𝚎𝚝𝚆𝚎𝚕𝚌𝚘𝚖𝚎\x0a┃❐\x20𝚂𝚎𝚝𝙻𝚎𝚏𝚝\x0a┃❐\x20𝙴𝚍𝚒𝚝𝚒𝚗𝚏𝚘\x0a┃❐\x20𝙰𝚍𝚍\x0a┃❐\x20𝙺𝚒𝚌𝚔\x0a┃❐\x20𝙷𝚒𝚍𝚎𝚃𝚊𝚐\x0a┃❐\x20𝚃𝚊𝚐𝚊𝚕𝚕\x0a┃❐\x20𝚃𝚘𝚝𝚊𝚐\x0a┃❐\x20𝚃𝚊𝚐𝚊𝚍𝚖𝚒𝚗\x0a┃❐\x20𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔\x0a┃❐\x20𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌\x0a┃❐\x20𝙼𝚞𝚝𝚎\x0a┃❐\x20𝙿𝚛𝚘𝚖𝚘𝚝𝚎\x0a┃❐\x20𝙳𝚎𝚖𝚘𝚝𝚎\x0a┃❐\x20𝚁𝚎𝚟𝚘𝚔𝚎\x0a┃❐\x20𝙿𝚘𝚕𝚕\x0a┃❐\x20𝙶𝚎𝚝𝚋𝚒𝚘\x0a╰━━━━━━━━━━━━━━━⪼\x0a\x20\x20\x20\x20\x20','waUploadToServer','View\x20All\x20Menu','\x20Day*\x0a*🕐\x20','single_select','Asia/Colombo','19:00:00','totalmem','status@broadcast','split','12080270GCgOQm','menu','Owner\x20Menu','05:00:00','{\x22title\x22:\x22🔖𝚻𝚫𝚸\x20𝐅𝚯𝚪\x20𝚯𝚸𝚵𝚴\x20𝚳𝚵𝚴𝐔\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22sections\x22:\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20[{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22😎\x20𝛯𝑇𝛨𝛪𝛸-𝛭𝐷\x20𝛥𝐿𝐿𝛭𝛯𝛮𝑈\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22highlight_label\x22:\x22🤩\x20𝛥𝐿𝐿𝛭𝛯𝛮𝑈\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22rows\x22:[\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22🔰\x20ᴀʟʟ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22🎨𝛯𝑇𝛨𝛪𝛸-𝛭𝐷\x20𝛥𝐿𝐿𝛭𝛯𝛮𝑈🎨\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22View\x20All\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22⬇️\x20ᴅᴏᴡɴʟᴀᴏᴅᴇʀ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22📂𝐒𝚮𝚯𝐖\x20𝚫𝐋𝐋\x20𝐃𝚯𝐖𝚴𝐋𝚯𝚫𝐃\x20𝐅𝚵𝚫𝚻𝐔𝚪𝚵𝐒🗂\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Downloader\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22👨‍👨‍👧‍👧ɢʀᴏᴜᴘ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22🥵𝐅𝚵𝚫𝚻𝐔𝚪𝚵\x20𝚻𝚮𝚫𝚻\x20𝚫𝚪𝚵\x20𝚯𝚴𝐋𝐘\x20𝚫𝛁𝚰𝐋𝚫𝚩𝐋𝚵\x20𝐅𝚯𝚪\x20𝐆𝚪𝚯𝐔𝚸🥵\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Group\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22👨‍🔧\x20ᴛᴏᴏʟ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22🛠\x20𝐒𝚮𝚯𝐖\x20𝚳𝚵\x20𝚻𝚯𝚯𝐋\x20𝚳𝚵𝚴𝐔\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Tool\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22🗿\x20ᴍᴀɪɴ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22📪\x20𝚩𝚯𝚻\x20𝚳𝚫𝚰𝚴\x20𝐂𝚯𝚳𝚳𝚫𝚴𝐃𝐒🗳\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Main\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22👨‍💻\x20ᴏᴡɴᴇʀ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22😎𝐅𝚵𝚫𝚻𝐔𝚪𝚵\x20𝚻𝚮𝚫𝚻\x20𝚫𝚪𝚵\x20𝚯𝚴𝐋𝐘\x20𝐅𝚯𝚪\x20𝚳𝐘\x20𝚮𝚫𝚴𝐃𝐒𝚯𝚳𝚵\x20𝚯𝐖𝚴𝚵𝚪👨‍💼\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Owner\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22👾\x20ғᴜɴ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22👻\x20𝐋𝚵𝚻𝐒\x20𝚳𝚫𝐊𝚵\x20𝚫\x20𝐒𝚯𝚳𝚵\x20𝐅𝐔𝚴\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Fun\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22✨\x20ᴀɪ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22💫\x20𝐒𝚮𝚯𝐖\x20𝚳𝚵\x20𝚫𝚰\x20𝚳𝚵𝚴𝐔\x20🎇\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Ai\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22🔍sᴇᴀʀᴄʜ\x20ᴍᴇɴᴜ🔎\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22♂️\x20𝐒𝚮𝚯𝐖\x20𝚳𝚵\x20𝐒𝚵𝚫𝚪𝐂𝚮\x20𝚳𝚵𝚴𝐔\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Search\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22🧚‍♂️\x20sᴛᴀʟᴋ\x20ᴍᴇɴᴜ\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22👨‍💼\x20𝐒𝚮𝚯𝐖\x20𝚳𝚵\x20𝐒𝚻𝚫𝐋𝐊\x20𝚳𝚵𝚴𝐔🪆\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Stalk\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22header\x22:\x22\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22title\x22:\x22🥏\x20𝚌𝚘𝚗𝚟𝚎𝚛𝚝𝚎𝚛\x20𝚖𝚎𝚗𝚞\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22description\x22:\x22🛷\x20𝐒𝚮𝚯𝐖\x20𝚳𝚵\x20𝐂𝚯𝚴𝛁𝚵𝚪𝚻𝚵𝚪\x20𝚳𝚵𝚴𝐔\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22id\x22:\x22Converter\x20Menu\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20]}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20]}','InteractiveMessage','BEGIN:VCARD\x0aVERSION:3.0\x0aN:;a,;;;\x0aFN:\x27MATRIX\x27\x0aitem1.TEL;waid=','MODE','*\x0a│🛡\x20ᴍᴏᴅᴇ:\x20*','pow','9107288ePNohD','*I\x20am\x20alive\x20now\x20since\x20','9829710YtEWpa','*☀️\x20','format','\x0aitem1.X-ABLabel:Ponsel\x0aEND:VCARD','key','©\x20Powered\x20By\x20Ethix-MD','HH:mm:ss','\x20Minutes*\x0a*⏱️\x20','Good\x20Afternoon\x20🌅','startsWith','Good\x20Night\x20🌌','freemem','*\x0a│💫\x20ᴘʀᴇғɪx:\x20*[Multi-Prefix]*\x0a╰─────────────━┈⊷\x20\x0a╭━❮\x20𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁\x20❯━╮\x0a┃❐\x20.𝙰𝚃𝚃𝙿\x0a┃❐\x20.𝙰𝚃𝚃𝙿2\x0a┃❐\x20.𝙰𝚃𝚃𝙿3\x0a┃❐\x20.𝙴𝙱𝙸𝙽𝙰𝚁𝚈\x0a┃❐\x20.𝙳𝙱𝙸𝙽𝙰𝚁𝚈\x0a┃❐\x20.𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙰𝙸\x20❯━╮\x0a┃❐\x20𝙰𝚒\x0a┃❐\x20𝚅𝚘𝚒𝚌𝚎𝚊𝚒\x0a┃❐\x20𝙱𝚞𝚐\x0a┃❐\x20𝚁𝚎𝚙𝚘𝚛𝚝\x0a┃❐\x20𝙶𝚙𝚝\x0a┃❐\x20𝙳𝚊𝚕𝚕𝚎\x0a┃❐\x20𝚁𝚎𝚖𝚒𝚗𝚒\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝚃𝙾𝙾𝙻\x20❯━╮\x0a┃❐\x20𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛\x0a┃❐\x20𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕\x0a┃❐\x20𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕\x0a┃❐\x20𝙸𝚗𝚏𝚘\x0a┃❐\x20𝚃𝚛𝚝\x0a┃❐\x20𝚃𝚝𝚜\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙶𝚁𝙾𝚄𝙿\x20❯━╮\x0a┃❐\x20𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙\x0a┃❐\x20𝚂𝚎𝚝𝚙𝚙𝚐𝚌\x0a┃❐\x20𝚂𝚎𝚝𝚗𝚊𝚖𝚎\x0a┃❐\x20𝚂𝚎𝚝𝚍𝚎𝚜𝚌\x0a┃❐\x20𝙶𝚛𝚘𝚞𝚙\x0a┃❐\x20𝙶𝚌𝚜𝚎𝚝𝚝𝚒𝚗𝚐\x0a┃❐\x20𝚆𝚎𝚕𝚌𝚘𝚖𝚎\x0a┃❐\x20𝙻𝚎𝚏𝚝\x0a┃❐\x20𝚂𝚎𝚝𝚆𝚎𝚕𝚌𝚘𝚖𝚎\x0a┃❐\x20𝚂𝚎𝚝𝙻𝚎𝚏𝚝\x0a┃❐\x20𝙴𝚍𝚒𝚝𝚒𝚗𝚏𝚘\x0a┃❐\x20𝙰𝚍𝚍\x0a┃❐\x20𝙺𝚒𝚌𝚔\x0a┃❐\x20𝙷𝚒𝚍𝚎𝚃𝚊𝚐\x0a┃❐\x20𝚃𝚊𝚐𝚊𝚕𝚕\x0a┃❐\x20𝚃𝚘𝚝𝚊𝚐\x0a┃❐\x20𝚃𝚊𝚐𝚊𝚍𝚖𝚒𝚗\x0a┃❐\x20𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔\x0a┃❐\x20𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌\x0a┃❐\x20𝙼𝚞𝚝𝚎\x0a┃❐\x20𝙿𝚛𝚘𝚖𝚘𝚝𝚎\x0a┃❐\x20𝙳𝚎𝚖𝚘𝚝𝚎\x0a┃❐\x20𝚁𝚎𝚟𝚘𝚔𝚎\x0a┃❐\x20𝙿𝚘𝚕𝚕\x0a┃❐\x20𝙶𝚎𝚝𝚋𝚒𝚘\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳\x20❯━╮\x0a┃❐\x20𝙰𝚙𝚔\x0a┃❐\x20𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔\x0a┃❐\x20𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎\x0a┃❐\x20𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕\x0a┃❐\x20𝚇𝚗𝚡𝚡𝚂𝚎𝚊𝚛𝚌𝚑\x0a┃❐\x20𝚇𝚗𝚡𝚡𝚍𝚕\x0a┃❐\x20𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎\x0a┃❐\x20𝙶𝚍𝚛𝚒𝚟𝚎\x0a┃❐\x20𝙸𝚗𝚜𝚝𝚊\x0a┃❐\x20𝚈𝚝𝚖𝚙3\x0a┃❐\x20𝚈𝚝𝚖𝚙4\x0a┃❐\x20𝙿𝚕𝚊𝚢\x0a┃❐\x20𝚂𝚘𝚗𝚐\x0a┃❐\x20𝚅𝚒𝚍𝚎𝚘\x0a┃❐\x20𝚈𝚝𝚖𝚙3𝚍𝚘𝚌\x0a┃❐\x20𝚈𝚝𝚖𝚙4𝚍𝚘𝚌\x0a┃❐\x20𝚃𝚒𝚔𝚝𝚘𝚔\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝚂𝙴𝙰𝚁𝙲𝙷\x20❯━╮\x0a┃❐\x20𝙿𝚕𝚊𝚢\x0a┃❐\x20𝚈𝚝𝚜\x0a┃❐\x20𝙸𝚖𝚍𝚋\x0a┃❐\x20𝙶𝚘𝚘𝚐𝚕𝚎\x0a┃❐\x20𝙶𝚒𝚖𝚊𝚐𝚎\x0a┃❐\x20𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝\x0a┃❐\x20𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛\x0a┃❐\x20𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊\x0a┃❐\x20𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑\x0a┃❐\x20𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎\x0a┃❐\x20𝙻𝚢𝚛𝚒𝚌𝚜\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙵𝚄𝙽\x20❯━╮\x0a┃❐\x20𝙳𝚎𝚕𝚝𝚝𝚝\x0a┃❐\x20𝚃𝚒𝚌𝚝𝚊𝚌𝚝𝚘𝚎\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙼𝙰𝙸𝙽\x20❯━╮\x0a┃❐\x20𝙿𝚒𝚗𝚐\x0a┃❐\x20𝙰𝚕𝚒𝚟𝚎\x0a┃❐\x20𝙾𝚠𝚗𝚎𝚛\x0a┃❐\x20𝙼𝚎𝚗𝚞\x0a┃❐\x20𝙸𝚗𝚏𝚘𝚌𝚑𝚊𝚝\x0a┃❐\x20𝚀𝚞𝚘𝚝𝚎𝚍\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚙𝚌\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚐𝚌\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚘𝚗𝚕𝚒𝚗𝚎\x0a┃❐\x20𝙸𝚗𝚏𝚘𝚋𝚘𝚝\x0a┃❐\x20𝙱𝚞𝚢𝚙𝚛𝚎𝚖𝚒𝚞𝚖\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝙾𝚆𝙽𝙴𝚁\x20❯━╮\x0a┃❐\x20𝚁𝚎𝚊𝚌𝚝\x0a┃❐\x20𝙲𝚑𝚊𝚝\x0a┃❐\x20𝙹𝚘𝚒𝚗\x0a┃❐\x20𝙻𝚎𝚊𝚟𝚎\x0a┃❐\x20𝙱𝚕𝚘𝚌𝚔\x0a┃❐\x20𝚄𝚗𝚋𝚕𝚘𝚌𝚔\x0a┃❐\x20𝙱𝚌𝚐𝚛𝚘𝚞𝚙\x0a┃❐\x20𝙱𝚌𝚊𝚕𝚕\x0a┃❐\x20𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝\x0a┃❐\x20𝚂𝚎𝚝𝚎𝚡𝚒𝚏\x0a┃❐\x20𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕\x0a┃❐\x20𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜\x0a┃❐\x20𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝\x0a┃❐\x20𝚂𝚕𝚎𝚎𝚙\x0a┃❐\x20𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐\x0a┃❐\x20𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎\x0a┃❐\x20𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍\x0a┃❐\x20𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠\x0a┃❐\x20𝚋𝚊𝚗\x0a┃❐\x20𝚞𝚗𝚋𝚊𝚗\x0a┃❐\x20𝚠𝚊𝚛𝚗\x0a┃❐\x20𝚞𝚗𝚠𝚊𝚛𝚗\x0a┃❐\x20𝚋𝚊𝚗𝚌𝚑𝚊𝚝\x0a╰━━━━━━━━━━━━━━━⪼\x0a╭━❮\x20𝚂𝚃𝙰𝙻𝙺\x20❯━╮\x0a┃❐\x20𝙽𝚘𝚠𝚊\x0a┃❐\x20𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛\x0a┃❐\x20𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙿𝚛𝚘𝚏𝚒𝚕𝚎𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙽𝚞𝚖𝚋𝚎𝚛𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙴𝚖𝚊𝚒𝚕𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙿𝚑𝚘𝚗𝚎𝚜𝚝𝚊𝚕𝚔\x0a┃❐\x20𝙻𝚘𝚌𝚊𝚝𝚒𝚘𝚗𝚜𝚝𝚊𝚕𝚔\x0a╰━━━━━━━━━━━━━━━⪼\x0a\x20\x20\x20','Good\x20Morning\x20🌄','DD/MM/YYYY','toFixed','templateButtonReplyMessage','393099qVdsny','\x0a╭─────────────━┈⊷\x0a│🤖\x20ʙᴏᴛ\x20ɴᴀᴍᴇ:\x20*ᴇᴛʜɪx-ᴍᴅ*\x0a│📍\x20ᴠᴇʀꜱɪᴏɴ:\x202.0.3\x0a│👨‍💻\x20ᴏᴡɴᴇʀ\x20:\x20*ᴇᴛʜɪx\x20xsɪᴅ*\x20\x20\x20\x20\x20\x20\x0a│👤\x20ɴᴜᴍʙᴇʀ:\x20919142294671\x0a│💻\x20ᴘʟᴀᴛғᴏʀᴍ:\x20*','Good\x20Evening\x20🌃','237GkpwBO','11:00:00','pushName','sender','\x0a│➥\x20𝙵𝚁𝙴𝙴\x20𝚁𝙰𝙼:\x20','NativeFlowMessage','0@s.whatsapp.net','\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙼𝙰𝙸𝙽\x20❯━╮\x0a┃❐\x20𝙿𝚒𝚗𝚐\x0a┃❐\x20𝙰𝚕𝚒𝚟𝚎\x0a┃❐\x20𝙾𝚠𝚗𝚎𝚛\x0a┃❐\x20𝙼𝚎𝚗𝚞\x0a┃❐\x20𝙸𝚗𝚏𝚘𝚌𝚑𝚊𝚝\x0a┃❐\x20𝚀𝚞𝚘𝚝𝚎𝚍\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚙𝚌\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚐𝚌\x0a┃❐\x20𝙻𝚒𝚜𝚝𝚘𝚗𝚕𝚒𝚗𝚎\x0a┃❐\x20𝙸𝚗𝚏𝚘𝚋𝚘𝚝\x0a┃❐\x20𝙱𝚞𝚢𝚙𝚛𝚎𝚖𝚒𝚞𝚖\x0a╰━━━━━━━━━━━━━━━⪼','Stalk\x20Menu','╭───❮\x20*s\x20ᴇ\x20ʀ\x20ᴠ\x20ᴇ\x20ʀ*\x20❯\x0a│➥\x20𝚃𝙾𝚃𝙰𝙻\x20𝚁𝙰𝙼:\x20','toLowerCase','Main\x20Menu','readFileSync','slice','15715AEJeHH','uptime','18:00:00','message','Message','env','*\x0a│💫\x20ᴘʀᴇғɪx:\x20*[Multi-Prefix]*\x0a╰─────────────━┈⊷\x20','\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙰𝙸\x20❯━╮\x0a┃❐\x20𝙰𝚒\x0a┃❐\x20𝚅𝚘𝚒𝚌𝚎𝚊𝚒\x0a┃❐\x20𝙱𝚞𝚐\x0a┃❐\x20𝚁𝚎𝚙𝚘𝚛𝚝\x0a┃❐\x20𝙶𝚙𝚝\x0a┃❐\x20𝙳𝚊𝚕𝚕𝚎\x0a┃❐\x20𝚁𝚎𝚖𝚒𝚗𝚒\x0a╰━━━━━━━━━━━━━━━⪼'];_0x9fd3=function(){return _0x220ea6;};return _0x9fd3();}function _0x21dc(_0x55d828,_0x1a3fbf){const _0x9fd3e0=_0x9fd3();return _0x21dc=function(_0x21dc43,_0x115647){_0x21dc43=_0x21dc43-0xbe;let _0x2c7165=_0x9fd3e0[_0x21dc43];return _0x2c7165;},_0x21dc(_0x55d828,_0x1a3fbf);}const test=async(_0x3adb0b,_0x4f47f7)=>{const _0x1b1cf2=_0x34e709;let _0xc7e543;const _0x5fc09=_0x3adb0b?.[_0x1b1cf2(0x107)]?.[_0x1b1cf2(0xf2)]?.[_0x1b1cf2(0xc7)],_0xf5321b=_0x3adb0b?.[_0x1b1cf2(0x107)]?.[_0x1b1cf2(0x112)];if(_0xf5321b){const _0x38ba78=_0xf5321b['nativeFlowResponseMessage']?.[_0x1b1cf2(0xc6)];if(_0x38ba78){const _0x5d9020=JSON['parse'](_0x38ba78);_0xc7e543=_0x5d9020['id'];}}const _0x344102=_0xc7e543||_0x5fc09,_0x239c55=/^[\\/!#.]/gi[_0x1b1cf2(0x10e)](_0x3adb0b['body'])?_0x3adb0b[_0x1b1cf2(0xc9)][_0x1b1cf2(0x115)](/^[\\/!#.]/gi)[0x0]:'/',_0x280505=_0x3adb0b[_0x1b1cf2(0xc9)][_0x1b1cf2(0xeb)](_0x239c55)?_0x3adb0b[_0x1b1cf2(0xc9)][_0x1b1cf2(0x103)](_0x239c55[_0x1b1cf2(0xc5)])[_0x1b1cf2(0x100)]():'',_0x5e8dab=process[_0x1b1cf2(0x109)][_0x1b1cf2(0xdd)],_0x2b0ee9=['list',_0x1b1cf2(0x10d),_0x1b1cf2(0xd7)];if(_0x2b0ee9[_0x1b1cf2(0xc3)](_0x280505)){let _0x4f23d8=generateWAMessageFromContent(_0x3adb0b[_0x1b1cf2(0xc0)],{'viewOnceMessage':{'message':{'messageContextInfo':{'deviceListMetadata':{},'deviceListMetadataVersion':0x2},'interactiveMessage':proto[_0x1b1cf2(0x108)][_0x1b1cf2(0xdb)]['create']({'body':proto[_0x1b1cf2(0x108)]['InteractiveMessage']['Body']['create']({'text':_0x1b1cf2(0xbf)+_0x1c9a0d[_0x1b1cf2(0x11a)]()+_0x1b1cf2(0xde)+_0x5e8dab+_0x1b1cf2(0x10a)}),'footer':proto[_0x1b1cf2(0x108)][_0x1b1cf2(0xdb)]['Footer'][_0x1b1cf2(0x10f)]({'text':_0x1b1cf2(0xe7)}),'header':proto[_0x1b1cf2(0x108)]['InteractiveMessage']['Header']['create']({...await prepareWAMessageMedia({'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117))},{'upload':_0x4f47f7[_0x1b1cf2(0xcd)]}),'title':'','gifPlayback':!![],'subtitle':'','hasMediaAttachment':![]}),'nativeFlowMessage':proto[_0x1b1cf2(0x108)][_0x1b1cf2(0xdb)][_0x1b1cf2(0xfb)][_0x1b1cf2(0x10f)]({'buttons':[{'name':_0x1b1cf2(0xd0),'buttonParamsJson':_0x1b1cf2(0xda)}]}),'contextInfo':{'mentionedJid':[_0x3adb0b['sender']],'forwardingScore':0x270f,'isForwarded':!![]}})}}},{});await _0x4f47f7[_0x1b1cf2(0x119)](_0x4f23d8[_0x1b1cf2(0xe6)]['remoteJid'],_0x4f23d8['message'],{'messageId':_0x4f23d8[_0x1b1cf2(0xe6)]['id']});}if(_0x344102==_0x1b1cf2(0xce)){const _0x5a76d0=process['env'][_0x1b1cf2(0xdd)],_0x3468c2=_0x1b1cf2(0x111)+_0x3adb0b[_0x1b1cf2(0xf8)]+'\x20'+pushwish+_0x1b1cf2(0xf4)+_0x1c9a0d[_0x1b1cf2(0x11a)]()+'*\x0a│🛡\x20ᴍᴏᴅᴇ:\x20*'+_0x5a76d0+_0x1b1cf2(0xee);let _0x50289c={'key':{'fromMe':![],'participant':_0x1b1cf2(0xfc),'remoteJid':_0x1b1cf2(0xd4)},'message':{'contactMessage':{'displayName':'MATRIX-MD','vcard':_0x1b1cf2(0xdc)+_0x3adb0b[_0x1b1cf2(0xf9)][_0x1b1cf2(0xd5)]('@')[0x0]+':'+_0x3adb0b[_0x1b1cf2(0xf9)]['split']('@')[0x0]+_0x1b1cf2(0xe5)}}},{key:_0x1d611f}=await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117)),'caption':_0x3468c2,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x50289c});}if(_0x344102=='Downloader\x20Menu'){const _0x42c361=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳\x20❯━╮\x0a┃❐\x20𝙰𝚙𝚔\x0a┃❐\x20𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔\x0a┃❐\x20𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎\x0a┃❐\x20𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕\x0a┃❐\x20𝚇𝚗𝚡𝚡𝚂𝚎𝚊𝚛𝚌𝚑\x0a┃❐\x20𝚇𝚗𝚡𝚡𝚍𝚕\x0a┃❐\x20𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎\x0a┃❐\x20𝙶𝚍𝚛𝚒𝚟𝚎\x0a┃❐\x20𝙸𝚗𝚜𝚝𝚊\x0a┃❐\x20𝚈𝚝𝚖𝚙3\x0a┃❐\x20𝚈𝚝𝚖𝚙4\x0a┃❐\x20𝙿𝚕𝚊𝚢\x0a┃❐\x20𝚂𝚘𝚗𝚐\x0a┃❐\x20𝚅𝚒𝚍𝚎𝚘\x0a┃❐\x20𝚈𝚝𝚖𝚙3𝚍𝚘𝚌\x0a┃❐\x20𝚈𝚝𝚖𝚙4𝚍𝚘𝚌\x0a┃❐\x20𝚃𝚒𝚔𝚝𝚘𝚔\x0a╰━━━━━━━━━━━━━━━⪼';await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117)),'caption':_0x42c361,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0x116)){const _0x4730ce=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+_0x1b1cf2(0xcc);await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b['from'],{'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117)),'caption':_0x4730ce,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0x101)){const _0x2a3b0b=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+'\x0a│➥\x20𝙵𝚁𝙴𝙴\x20𝚁𝙰𝙼:\x20'+formatBytes(freeMemoryBytes)+_0x1b1cf2(0xfd);await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f['readFileSync'](_0x1b1cf2(0x117)),'caption':_0x2a3b0b,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0xd8)){const _0x2c36a4=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙾𝚆𝙽𝙴𝚁\x20❯━╮\x0a┃❐\x20𝚁𝚎𝚊𝚌𝚝\x0a┃❐\x20𝙲𝚑𝚊𝚝\x0a┃❐\x20𝙹𝚘𝚒𝚗\x0a┃❐\x20𝙻𝚎𝚊𝚟𝚎\x0a┃❐\x20𝙱𝚕𝚘𝚌𝚔\x0a┃❐\x20𝚄𝚗𝚋𝚕𝚘𝚌𝚔\x0a┃❐\x20𝙱𝚌𝚐𝚛𝚘𝚞𝚙\x0a┃❐\x20𝙱𝚌𝚊𝚕𝚕\x0a┃❐\x20𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝\x0a┃❐\x20𝚂𝚎𝚝𝚎𝚡𝚒𝚏\x0a┃❐\x20𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕\x0a┃❐\x20𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜\x0a┃❐\x20𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝\x0a┃❐\x20𝚂𝚕𝚎𝚎𝚙\x0a┃❐\x20𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐\x0a┃❐\x20𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎\x0a┃❐\x20𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍\x0a┃❐\x20𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠\x0a┃❐\x20𝚋𝚊𝚗\x0a┃❐\x20𝚞𝚗𝚋𝚊𝚗\x0a┃❐\x20𝚠𝚊𝚛𝚗\x0a┃❐\x20𝚞𝚗𝚠𝚊𝚛𝚗\x0a┃❐\x20𝚋𝚊𝚗𝚌𝚑𝚊𝚝\x0a╰━━━━━━━━━━━━━━━⪼';await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f['readFileSync'](_0x1b1cf2(0x117)),'caption':_0x2c36a4,'contextInfo':{'mentionedJid':[_0x3adb0b['sender']],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102=='Search\x20Menu'){const _0x53765e=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝚂𝙴𝙰𝚁𝙲𝙷\x20❯━╮\x0a┃❐\x20𝙿𝚕𝚊𝚢\x0a┃❐\x20𝚈𝚝𝚜\x0a┃❐\x20𝙸𝚖𝚍𝚋\x0a┃❐\x20𝙶𝚘𝚘𝚐𝚕𝚎\x0a┃❐\x20𝙶𝚒𝚖𝚊𝚐𝚎\x0a┃❐\x20𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝\x0a┃❐\x20𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛\x0a┃❐\x20𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊\x0a┃❐\x20𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑\x0a┃❐\x20𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎\x0a┃❐\x20𝙻𝚢𝚛𝚒𝚌𝚜\x0a╰━━━━━━━━━━━━━━━⪼';await _0x4f47f7['sendMessage'](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f['readFileSync']('./src/ethix.jpg'),'caption':_0x53765e,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0xfe)){const _0x42dc3f='╭───❮\x20*s\x20ᴇ\x20ʀ\x20ᴠ\x20ᴇ\x20ʀ*\x20❯\x0a│➥\x20𝚃𝙾𝚃𝙰𝙻\x20𝚁𝙰𝙼:\x20'+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+_0x1b1cf2(0x118);await _0x4f47f7['sendMessage'](_0x3adb0b['from'],{'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117)),'caption':_0x42dc3f,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102=='Fun\x20Menu'){const _0x3563d7=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙵𝚄𝙽\x20❯━╮\x0a┃❐\x20𝙳𝚎𝚕𝚝𝚝𝚝\x0a┃❐\x20𝚃𝚒𝚌𝚝𝚊𝚌𝚝𝚘𝚎\x0a╰━━━━━━━━━━━━━━━⪼';await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f[_0x1b1cf2(0x102)](_0x1b1cf2(0x117)),'caption':_0x3563d7,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0xca)){const _0x26db5b=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝚃𝙾𝙾𝙻\x20❯━╮\x0a┃❐\x20𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛\x0a┃❐\x20𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕\x0a┃❐\x20𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕\x0a┃❐\x20𝙸𝚗𝚏𝚘\x0a┃❐\x20𝚃𝚛𝚝\x0a┃❐\x20𝚃𝚝𝚜\x0a╰━━━━━━━━━━━━━━━⪼';await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f[_0x1b1cf2(0x102)]('./src/ethix.jpg'),'caption':_0x26db5b,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102==_0x1b1cf2(0xc2)){const _0x906971='╭───❮\x20*s\x20ᴇ\x20ʀ\x20ᴠ\x20ᴇ\x20ʀ*\x20❯\x0a│➥\x20𝚃𝙾𝚃𝙰𝙻\x20𝚁𝙰𝙼:\x20'+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+_0x1b1cf2(0x10b);await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f[_0x1b1cf2(0x102)]('./src/ethix.jpg'),'caption':_0x906971,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}if(_0x344102=='Converter\x20Menu'){const _0x26c1ae=_0x1b1cf2(0xff)+formatBytes(totalMemoryBytes)+_0x1b1cf2(0xfa)+formatBytes(freeMemoryBytes)+'\x0a╰━━━━━━━━━━━━━━━➥\x0a╭━❮\x20𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁\x20❯━╮\x0a┃❐\x20.𝙰𝚃𝚃𝙿\x0a┃❐\x20.𝙰𝚃𝚃𝙿2\x0a┃❐\x20.𝙰𝚃𝚃𝙿3\x0a┃❐\x20.𝙴𝙱𝙸𝙽𝙰𝚁𝚈\x0a┃❐\x20.𝙳𝙱𝙸𝙽𝙰𝚁𝚈\x0a┃❐\x20.𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇\x0a╰━━━━━━━━━━━━━━━⪼\x0a\x20\x20\x20\x20\x20';await _0x4f47f7[_0x1b1cf2(0x114)](_0x3adb0b[_0x1b1cf2(0xc0)],{'image':_0x4a3e4f['readFileSync'](_0x1b1cf2(0x117)),'caption':_0x26c1ae,'contextInfo':{'mentionedJid':[_0x3adb0b[_0x1b1cf2(0xf9)]],'forwardingScore':0x270f,'isForwarded':!![]}},{'quoted':_0x3adb0b});}};export default test;
+import moment from 'moment-timezone';
+import fs from 'fs';
+import os from 'os';
+
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+
+// Get total memory and free memory in bytes
+const totalMemoryBytes = os.totalmem();
+const freeMemoryBytes = os.freemem();
+
+// Define unit conversions
+const byteToKB = 1 / 1024;
+const byteToMB = byteToKB / 1024;
+const byteToGB = byteToMB / 1024;
+
+// Function to format bytes to a human-readable format
+function formatBytes(bytes) {
+  if (bytes >= Math.pow(1024, 3)) {
+    return (bytes * byteToGB).toFixed(2) + ' GB';
+  } else if (bytes >= Math.pow(1024, 2)) {
+    return (bytes * byteToMB).toFixed(2) + ' MB';
+  } else if (bytes >= 1024) {
+    return (bytes * byteToKB).toFixed(2) + ' KB';
+  } else {
+    return bytes.toFixed(2) + ' bytes';
+  }
+}
+// Bot Process Time
+const uptime = process.uptime();
+const day = Math.floor(uptime / (24 * 3600)); // Calculate days
+const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
+const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
+const seconds = Math.floor(uptime % 60); // Calculate seconds
+
+// Uptime
+const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
+const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
+
+const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
+const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
+const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
+let pushwish = "";
+
+if (time2 < "05:00:00") {
+  pushwish = `Good Morning 🌄`;
+} else if (time2 < "11:00:00") {
+  pushwish = `Good Morning 🌄`;
+} else if (time2 < "15:00:00") {
+  pushwish = `Good Afternoon 🌅`;
+} else if (time2 < "18:00:00") {
+  pushwish = `Good Evening 🌃`;
+} else if (time2 < "19:00:00") {
+  pushwish = `Good Evening 🌃`;
+} else {
+  pushwish = `Good Night 🌌`;
+}
+
+const test = async (m, Matrix) => {
+  let selectedListId;
+  const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
+  const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
+  if (interactiveResponseMessage) {
+    const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
+    if (paramsJson) {
+      const params = JSON.parse(paramsJson);
+      selectedListId = params.id;
+     // console.log(selectedListId);
+    }
+  }
+  const selectedId = selectedListId || selectedButtonId;
+  
+  const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '.';
+        const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
+        const mode = process.env.MODE;
+        const validCommands = ['list', 'help', 'menu'];
+
+  if (validCommands.includes(cmd)) {
+    let msg = generateWAMessageFromContent(m.from, {
+      viewOnceMessage: {
+        message: {
+          "messageContextInfo": {
+            "deviceListMetadata": {},
+            "deviceListMetadataVersion": 2
+          },
+          interactiveMessage: proto.Message.InteractiveMessage.create({
+            body: proto.Message.InteractiveMessage.Body.create({
+              text: `╭─────────────━┈⊷
+│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
+│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
+│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
+│👤 ɴᴜᴍʙᴇʀ: 919142294671
+│📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
+│🛡 ᴍᴏᴅᴇ: *${mode}*
+│💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
+╰─────────────━┈⊷ `
+            }),
+            footer: proto.Message.InteractiveMessage.Footer.create({
+              text: "© Powered By Ethix-MD"
+            }),
+            header: proto.Message.InteractiveMessage.Header.create({
+                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./src/ethix.jpg')}, { upload: Matrix.waUploadToServer})), 
+                  title: ``,
+                  gifPlayback: true,
+                  subtitle: "",
+                  hasMediaAttachment: false  
+                }),
+            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+              buttons: [
+                {
+                  "name": "single_select",
+                  "buttonParamsJson": `{"title":"🔖𝚻𝚫𝚸 𝐅𝚯𝚪 𝚯𝚸𝚵𝚴 𝚳𝚵𝚴𝐔",
+                 "sections":
+                   [{
+                    "title":"😎 𝛯𝑇𝛨𝛪𝛸-𝛭𝐷 𝛥𝐿𝐿𝛭𝛯𝛮𝑈",
+                    "highlight_label":"🤩 𝛥𝐿𝐿𝛭𝛯𝛮𝑈",
+                    "rows":[
+                      {
+                       "header":"",
+                       "title":"🔰 ᴀʟʟ ᴍᴇɴᴜ",
+                       "description":"🎨𝛯𝑇𝛨𝛪𝛸-𝛭𝐷 𝛥𝐿𝐿𝛭𝛯𝛮𝑈🎨",
+                       "id":"View All Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"⬇️ ᴅᴏᴡɴʟᴀᴏᴅᴇʀ ᴍᴇɴᴜ",
+                        "description":"📂𝐒𝚮𝚯𝐖 𝚫𝐋𝐋 𝐃𝚯𝐖𝚴𝐋𝚯𝚫𝐃 𝐅𝚵𝚫𝚻𝐔𝚪𝚵𝐒🗂",
+                        "id":"Downloader Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"👨‍👨‍👧‍👧ɢʀᴏᴜᴘ ᴍᴇɴᴜ",
+                        "description":"🥵𝐅𝚵𝚫𝚻𝐔𝚪𝚵 𝚻𝚮𝚫𝚻 𝚫𝚪𝚵 𝚯𝚴𝐋𝐘 𝚫𝛁𝚰𝐋𝚫𝚩𝐋𝚵 𝐅𝚯𝚪 𝐆𝚪𝚯𝐔𝚸🥵",
+                        "id":"Group Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"👨‍🔧 ᴛᴏᴏʟ ᴍᴇɴᴜ",
+                        "description":"🛠 𝐒𝚮𝚯𝐖 𝚳𝚵 𝚻𝚯𝚯𝐋 𝚳𝚵𝚴𝐔",
+                        "id":"Tool Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"🗿 ᴍᴀɪɴ ᴍᴇɴᴜ",
+                        "description":"📪 𝚩𝚯𝚻 𝚳𝚫𝚰𝚴 𝐂𝚯𝚳𝚳𝚫𝚴𝐃𝐒🗳",
+                        "id":"Main Menu"
+                      },
+                     {
+                        "header":"",
+                        "title":"👨‍💻 ᴏᴡɴᴇʀ ᴍᴇɴᴜ",
+                        "description":"😎𝐅𝚵𝚫𝚻𝐔𝚪𝚵 𝚻𝚮𝚫𝚻 𝚫𝚪𝚵 𝚯𝚴𝐋𝐘 𝐅𝚯𝚪 𝚳𝐘 𝚮𝚫𝚴𝐃𝐒𝚯𝚳𝚵 𝚯𝐖𝚴𝚵𝚪👨‍💼",
+                        "id":"Owner Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"✨ ᴀɪ ᴍᴇɴᴜ",
+                        "description":"💫 𝐒𝚮𝚯𝐖 𝚳𝚵 𝚫𝚰 𝚳𝚵𝚴𝐔 🎇",
+                        "id":"Ai Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"🔍sᴇᴀʀᴄʜ ᴍᴇɴᴜ🔎",
+                        "description":"♂️ 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐒𝚵𝚫𝚪𝐂𝚮 𝚳𝚵𝚴𝐔",
+                        "id":"Search Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"🧚‍♂️ sᴛᴀʟᴋ ᴍᴇɴᴜ",
+                        "description":"👨‍💼 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐒𝚻𝚫𝐋𝐊 𝚳𝚵𝚴𝐔🪆",
+                        "id":"Stalk Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"🥏 𝚌𝚘𝚗𝚟𝚎𝚛𝚝𝚎𝚛 𝚖𝚎𝚗𝚞",
+                        "description":"🛷 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐂𝚯𝚴𝛁𝚵𝚪𝚻𝚵𝚪 𝚳𝚵𝚴𝐔",
+                        "id":"Converter Menu"
+                      }
+                    ]}
+                  ]}`
+                },
+              ],
+            }),
+            contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 9999,
+                  isForwarded: true,
+                }
+          }),
+        },
+      },
+    }, {});
+
+    await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+      messageId: msg.key.id
+    });
+  }
+      if (selectedId == "View All Menu") {
+        const mode = process.env.MODE;
+        const str = `hey ${m.pushName} ${pushwish}
+╭─────────────━┈⊷
+│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
+│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
+│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
+│👤 ɴᴜᴍʙᴇʀ: 919142294671
+│💻 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
+│🛡 ᴍᴏᴅᴇ: *${mode}*
+│💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
+╰─────────────━┈⊷ 
+╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
+┃✰ ${prefix}𝙰𝚃𝚃𝙿
+┃✰ ${prefix}𝙰𝚃𝚃𝙿2
+┃✰ ${prefix}𝙰𝚃𝚃𝙿3
+┃✰ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
+┃✰ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
+┃✰ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
+┃✰ ${prefix}𝙼𝙿3
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝙰𝙸 ❯━╮
+┃✰ ${prefix}𝙰𝚒
+┃✰ ${prefix}𝙱𝚞𝚐
+┃✰ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
+┃✰ ${prefix}𝙶𝚙𝚝
+┃✰ ${prefix}𝙳𝚊𝚕𝚕𝚎
+┃✰ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
+┃✰ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝚃𝙾𝙾𝙻 ❯━╮
+┃✰ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
+┃✰ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
+┃✰ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
+┃✰ ${prefix}𝚃𝚛𝚝
+┃✰ ${prefix}𝚃𝚝𝚜
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝙶𝚁𝙾𝚄𝙿 ❯━╮
+┃✰ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
+┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
+┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
+┃✰ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
+┃✰ ${prefix}𝙶𝚛𝚘𝚞𝚙
+┃✰ ${prefix}𝙶𝚌𝚜𝚎𝚝𝚝𝚒𝚗𝚐
+┃✰ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
+┃✰ ${prefix}𝙰𝚍𝚍
+┃✰ ${prefix}𝙺𝚒𝚌𝚔
+┃✰ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
+┃✰ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
+┃✰ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
+┃✰ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
+┃✰ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 ❯━╮
+┃✰ ${prefix}𝙰𝚙𝚔
+┃✰ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
+┃✰ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
+┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
+┃✰ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
+┃✰ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
+┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊
+┃✰ ${prefix}𝚈𝚝𝚖𝚙3
+┃✰ ${prefix}𝚈𝚝𝚖𝚙4
+┃✰ ${prefix}𝙿𝚕𝚊𝚢
+┃✰ ${prefix}𝚂𝚘𝚗𝚐
+┃✰ ${prefix}𝚅𝚒𝚍𝚎𝚘
+┃✰ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
+┃✰ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
+┃✰ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝚂𝙴𝙰𝚁𝙲𝙷 ❯━╮
+┃✰ ${prefix}𝙿𝚕𝚊𝚢
+┃✰ ${prefix}𝚈𝚝𝚜
+┃✰ ${prefix}𝙸𝚖𝚍𝚋
+┃✰ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
+┃✰ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
+┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
+┃✰ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
+┃✰ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
+┃✰ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
+┃✰ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
+┃✰ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝙼𝙰𝙸𝙽 ❯━╮
+┃✰ ${prefix}𝙿𝚒𝚗𝚐
+┃✰ ${prefix}𝙰𝚕𝚒𝚟𝚎
+┃✰ ${prefix}𝙾𝚠𝚗𝚎𝚛
+┃✰ ${prefix}𝙼𝚎𝚗𝚞
+┃✰ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝙾𝚆𝙽𝙴𝚁 ❯━╮
+┃✰ ${prefix}𝙹𝚘𝚒𝚗
+┃✰ ${prefix}𝙻𝚎𝚊𝚟𝚎
+┃✰ ${prefix}𝙱𝚕𝚘𝚌𝚔
+┃✰ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
+┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
+┃✰ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
+┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
+┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
+┃✰ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
+┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
+┃✰ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
+╰━━━━━━━━━━━━━━━⪼
+╭━❮ 𝚂𝚃𝙰𝙻𝙺 ❯━╮
+┃✰ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
+┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
+┃✰ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
+╰━━━━━━━━━━━━━━━⪼
+   `;
+        let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `MATRIX-MD`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: fgg
+});
+}
+   if ( selectedId == "Downloader Menu") {
+     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 ❯━╮
+┃✰ ${prefix}𝙰𝚙𝚔
+┃✰ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
+┃✰ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
+┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
+┃✰ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
+┃✰ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
+┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊
+┃✰ ${prefix}𝚈𝚝𝚖𝚙3
+┃✰ ${prefix}𝚈𝚝𝚖𝚙4
+┃✰ ${prefix}𝙿𝚕𝚊𝚢
+┃✰ ${prefix}𝚂𝚘𝚗𝚐
+┃✰ ${prefix}𝚅𝚒𝚍𝚎𝚘
+┃✰ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
+┃✰ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
+┃✰ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if ( selectedId == "Group Menu") {
+     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙶𝚁𝙾𝚄𝙿 ❯━╮
+┃✰ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
+┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
+┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
+┃✰ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
+┃✰ ${prefix}𝙶𝚛𝚘𝚞𝚙
+┃✰ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
+┃✰ ${prefix}𝙰𝚍𝚍
+┃✰ ${prefix}𝙺𝚒𝚌𝚔
+┃✰ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
+┃✰ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
+┃✰ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
+┃✰ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
+┃✰ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
+╰━━━━━━━━━━━━━━━⪼
+     `
+     await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Main Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙼𝙰𝙸𝙽 ❯━╮
+┃✰ ${prefix}𝙿𝚒𝚗𝚐
+┃✰ ${prefix}𝙰𝚕𝚒𝚟𝚎
+┃✰ ${prefix}𝙾𝚠𝚗𝚎𝚛
+┃✰ ${prefix}𝙼𝚎𝚗𝚞
+┃✰ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Owner Menu") {
+     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙾𝚆𝙽𝙴𝚁 ❯━╮
+┃✰ ${prefix}𝙹𝚘𝚒𝚗
+┃✰ ${prefix}𝙻𝚎𝚊𝚟𝚎
+┃✰ ${prefix}𝙱𝚕𝚘𝚌𝚔
+┃✰ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
+┃✰ ${prefix}𝙱𝚌𝚐𝚛𝚘𝚞𝚙
+┃✰ ${prefix}𝙱𝚌𝚊𝚕𝚕
+┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
+┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
+┃✰ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
+┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
+┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
+┃✰ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
+┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
+┃✰ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Search Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝚂𝙴𝙰𝚁𝙲𝙷 ❯━╮
+┃✰ ${prefix}𝙿𝚕𝚊𝚢
+┃✰ ${prefix}𝚈𝚝𝚜
+┃✰ ${prefix}𝙸𝚖𝚍𝚋
+┃✰ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
+┃✰ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
+┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
+┃✰ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
+┃✰ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
+┃✰ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
+┃✰ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
+┃✰ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   if (selectedId == "Stalk Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝚂𝚃𝙰𝙻𝙺 ❯━╮
+┃✰ ${prefix}𝙽𝚘𝚠𝚊
+┃✰ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
+┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
+┃✰ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Tool Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝚃𝙾𝙾𝙻 ❯━╮
+┃✰ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
+┃✰ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
+┃✰ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
+┃✰ ${prefix}𝙸𝚗𝚏𝚘
+┃✰ ${prefix}𝚃𝚛𝚝
+┃✰ ${prefix}𝚃𝚝𝚜
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Ai Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙰𝙸 ❯━╮
+┃✰ ${prefix}𝙰𝚒
+┃✰ ${prefix}𝙱𝚞𝚐
+┃✰ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
+┃✰ ${prefix}𝙶𝚙𝚝
+┃✰ ${prefix}𝙳𝚊𝚕𝚕𝚎
+┃✰ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
+┃✰ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
+╰━━━━━━━━━━━━━━━⪼`
+await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+   
+   if (selectedId == "Converter Menu") {
+     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
+│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
+│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
+╰━━━━━━━━━━━━━━━➥
+╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
+┃✰ ${prefix}𝙰𝚃𝚃𝙿
+┃✰ ${prefix}𝙰𝚃𝚃𝙿2
+┃✰ ${prefix}𝙰𝚃𝚃𝙿3
+┃✰ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
+┃✰ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
+┃✰ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
+┃✰ ${prefix}𝙼𝙿3
+╰━━━━━━━━━━━━━━━⪼
+     `
+     await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./src/ethix.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: true,
+  }
+}, {
+  quoted: m
+});
+}
+};
+
+export default test;
