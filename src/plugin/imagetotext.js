@@ -5,6 +5,7 @@ const givetextCommand = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const args = m.body.split(' ').slice(1); 
 
   const validCommands = ['givetext', 'extract'];
 
@@ -13,25 +14,29 @@ const givetextCommand = async (m, Matrix) => {
       return m.reply(`Send/Reply with an image to extract text ${prefix + cmd}`);
     }
 
+    let lang = 'eng'; 
+    if (args.length > 0) {
+      lang = args[0]; 
+    }
+
     try {
-      const media = await m.quoted.download(); // Download the media from the quoted message
+      const media = await m.quoted.download(); 
       if (!media) throw new Error('Failed to download media.');
 
       const filePath = `./${Date.now()}.png`;
-      await writeFile(filePath, media); // Save the downloaded media to a file
+      await writeFile(filePath, media);
 
-      // Perform OCR using Tesseract.js with multiple languages
-      const { data: { text } } = await Tesseract.recognize(filePath, 'eng+spa+fra+deu+ita+chi_sim+jpn+hi+bn+pn+ur', {
+      const { data: { text } } = await Tesseract.recognize(filePath, lang, {
         logger: m => console.log(m)
       });
 
       const responseMessage = `Extracted Text:\n\n${text}`;
-      await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m }); // Send the extracted text back to the user
+      await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m }); 
 
-      await unlink(filePath); // Clean up the temporary file
+      await unlink(filePath); 
     } catch (error) {
       console.error("Error extracting text from image:", error);
-      await Matrix.sendMessage(m.from, { text: 'Error extracting text from image.' }, { quoted: m }); // Error handling
+      await Matrix.sendMessage(m.from, { text: 'Error extracting text from image.' }, { quoted: m }); 
     }
   }
 };
