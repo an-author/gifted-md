@@ -1,5 +1,5 @@
 import Tesseract from 'tesseract.js';
-import { writeFile } from 'fs/promises';
+import { writeFile, unlink } from 'fs/promises';
 
 const givetextCommand = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -8,7 +8,7 @@ const givetextCommand = async (m, Matrix) => {
 
   const validCommands = ['givetext', 'extract'];
 
-   if (validCommands.includes(cmd)) {
+  if (validCommands.includes(cmd)) {
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
       return m.reply(`Send/Reply with an image to extract text ${prefix + cmd}`);
     }
@@ -20,13 +20,15 @@ const givetextCommand = async (m, Matrix) => {
       const filePath = `./${Date.now()}.png`;
       await writeFile(filePath, media); // Save the downloaded media to a file
 
-      // Perform OCR using Tesseract.js
-      const { data: { text } } = await Tesseract.recognize(filePath, 'eng', {
+      // Perform OCR using Tesseract.js with multiple languages
+      const { data: { text } } = await Tesseract.recognize(filePath, 'eng+spa+fra+deu+ita+chi_sim+jpn+hi+bn+pn+ur', {
         logger: m => console.log(m)
       });
 
       const responseMessage = `Extracted Text:\n\n${text}`;
       await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m }); // Send the extracted text back to the user
+
+      await unlink(filePath); // Clean up the temporary file
     } catch (error) {
       console.error("Error extracting text from image:", error);
       await Matrix.sendMessage(m.from, { text: 'Error extracting text from image.' }, { quoted: m }); // Error handling
