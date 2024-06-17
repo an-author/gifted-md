@@ -1,4 +1,4 @@
-import axios from 'axios';
+import nodeFetch from 'node-fetch';
 
 const flirting = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -9,22 +9,21 @@ const flirting = async (m, Matrix) => {
 
   if (validCommands.includes(cmd)) {
     try {
-      const apiKey = 'shizo'; 
+      const apiKey = 'shizo';
 
-      const res = await axios.get(`https://shizoapi.onrender.com/api/texts/flirt?apikey=${apiKey}`);
-      if (!res.ok) {
-        throw new Error('Failed to fetch flirt message');
+      const response = await nodeFetch(`https://shizoapi.onrender.com/api/texts/flirt?apikey=${apiKey}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch flirt message: ${await response.text()}`);
       }
 
-      const result = res.data.result;
+      const json = await response.json();
+      const result = json.result;
       await Matrix.sendMessage(m.from, { text: result, mentions: [m.sender] }, { quoted: m });
     } catch (error) {
       console.error('Error fetching flirt message:', error);
       await Matrix.sendMessage(m.from, { text: "Failed to retrieve flirt message. Please try again later." });
     }
   }
-
-  await m.React("❌");
 };
 
 export default flirting;
