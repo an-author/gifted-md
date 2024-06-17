@@ -9,16 +9,22 @@ const flirting = async (m, Matrix) => {
 
   if (validCommands.includes(cmd)) {
     try {
-      let shizokeys = 'shizo'	
-  let res = await fetch(`https://shizoapi.onrender.com/api/texts/flirt?apikey=${shizokeys}`)
-  if (!res.ok) throw await res.text()
-	    let json = await res.json()
+      const apiKey = 'shizo'; 
 
-  let result = `${json.result}`
-  await Matrix.sendMessage(m.from, { text: result, mentions: [m.sender] }, { quoted: m })
-}
-      await m.React("❌");
+      const res = await axios.get(`https://shizoapi.onrender.com/api/texts/flirt?apikey=${apiKey}`);
+      if (!res.ok) {
+        throw new Error('Failed to fetch flirt message');
+      }
+
+      const result = res.data.result;
+      await Matrix.sendMessage(m.from, { text: result, mentions: [m.sender] }, { quoted: m });
+    } catch (error) {
+      console.error('Error fetching flirt message:', error);
+      await Matrix.sendMessage(m.from, { text: "Failed to retrieve flirt message. Please try again later." });
     }
+  }
+
+  await m.React("❌");
 };
 
 export default flirting;
