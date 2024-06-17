@@ -62,7 +62,7 @@
     <a href='https://studio.mogenius.com/register' target="_blank"><img alt='Mogenius' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=mogenius&logoColor=white'/></a>
 2. Deploy using Mogenius.
     <br>
-    <a href='https://mogenius.com/new-service' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=mogenius&logoColor=white'/></a>
+    <a href='https://studio.mogenius.com/studio/cloud-space/cloud-space-overview' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=mogenius&logoColor=white'/></a>
 
 ### DEPLOY TO RENDER
 
