@@ -1,6 +1,11 @@
 build:
   docker:
-    worker: Dockerfile
-    
+    web: Dockerfile
+
 run:
-  web: node . --server
+  web:
+    image: worker
+    command:
+      - node
+      - .
+      - --server
