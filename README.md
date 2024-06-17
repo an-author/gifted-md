@@ -56,7 +56,33 @@
     <a href='https://heroku.com/deploy' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 3. How to deploy video tutorial.
     <br>
-    <a href='https://youtu.be/NbREC9DTQcA?si=bamV9UTA5nXGwDDD' target="_blank"><img alt='Heroku Deploy Tutorial' src='https://img.shields.io/badge/-Heroku Deploy Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white'/></a>
+    <a href='https://youtu.be/NbREC9DTQcA?si=bamV9UTA5nXGwDDD' target="_blank"><img alt='Heroku Deploy Tutorial' src='https://img.shields.io/badge/-Heroku Deploy Tutorial-red?style=for-the-badge&
+
+logo=youtube&logoColor=white'/></a>
+
+### DEPLOY TO MOGINIUS
+
+1. If you don't have an account on Mogenius, create one.
+    <br>
+    <a href='https://studio.mogenius.com/register' target="_blank"><img alt='Mogenius' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=mogenius&logoColor=white'/></a>
+2. Deploy using Mogenius.
+    <br>
+    <a href='https://mogenius.com/new-service' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=mogenius&logoColor=white'/></a>
+3. How to deploy video tutorial.
+    <br>
+    <a href='https://youtu.be/MogeniusDeployTutorial' target="_blank"><img alt='Mogenius Deploy Tutorial' src='https://img.shields.io/badge/-Mogenius Deploy Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white'/></a>
+
+### DEPLOY TO RENDER
+
+1. If you don't have an account on Render, create one.
+    <br>
+    <a href='https://dashboard.render.com/register' target="_blank"><img alt='Render' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=render&logoColor=white'/></a>
+2. Deploy using Render.
+    <br>
+    <a href='https://render.com/deploy' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=render&logoColor=white'/></a>
+3. How to deploy video tutorial.
+    <br>
+    <a href='https://youtu.be/RenderDeployTutorial' target="_blank"><img alt='Render Deploy Tutorial' src='https://img.shields.io/badge/-Render Deploy Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white'/></a>
 
 ## DEVELOPERS
 
