@@ -8,9 +8,9 @@ const gcEvent = async (m, Matrix) => {
 
   if (cmd === 'welcome') {
     if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
-    const groupMetadata = await gss.groupMetadata(m.from);
+    const groupMetadata = await Matrix.groupMetadata(m.from);
     const participants = groupMetadata.participants;
-    const botNumber = await gss.decodeJid(gss.user.id);
+    const botNumber = await Matrix.decodeJid(Matrix.user.id);
     const botAdmin = participants.find(p => p.id === botNumber)?.admin;
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
