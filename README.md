@@ -85,21 +85,11 @@
 
 ## HELPERS
 
-<div align="left">
-  <a href="https://github.com/Rushmaster12"><img src="https://avatars.githubusercontent.com/u/160727728?v=4" width="200" height="200" alt="Rushmaster"></a>
-  
-  | [RUSHMASTER](https://github.com/Rushmaster12) |
-  | Helper |
-</div>
+<a href="https://github.com/chhaseeb47"><img src="https://github.com/chhaseeb47.png?size=100" width="130" height="100"></a> | [<img src="https://github.com/Rushmaster12.png?size=100" width="100" height="100">](https://github.com/Rushmaster12) 
+---|---
+[CH HASEEB](https://github.com/Ajmal-Achu)  | [RUSHMASTER](https://github.com/Rushmaster12)
+Promotion | Groups Management|
 
-<div align="left">
-  <a href="https://github.com/chhaseeb47"><img src="https://github.com/chhaseeb47.png" width="200" height="200" alt="CH HASEEB"></a>
-  
-  | [CH HASEEB](https://github.com/chhaseeb47) |
-  | Thanks Hasib Bhai |
-</div>
-
----
 
 ## Reminder
 
