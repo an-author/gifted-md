@@ -54,8 +54,8 @@ async function start() {
 
     let { state, saveCreds } = await useMultiFileAuthState(sessionName);
     let { version, isLatest } = await fetchLatestBaileysVersion();
-    console.log(chalk.red("CODED BY GOUTAM KUMAR & Ethix-Xsid"));
-    console.log(chalk.green(`using WA v${version.join(".")}, isLatest: ${isLatest}`));
+    console.log(chalk.red("GIFTED CONNECTING TO WHATSAPP"));
+    console.log(chalk.green(`CHECKING WA VERSION v${version.join(".")}, isLatest: ${isLatest}`));
 
     const Device = (os.platform() === 'win32') ? 'Windows' : (os.platform() === 'darwin') ? 'MacOS' : 'Linux';
     const Matrix = makeWASocket({
@@ -106,7 +106,7 @@ async function start() {
 
     // Manage Device Logging
     if (!Matrix.authState.creds.registered && isSessionPutted) {
-        const sessionID = config.SESSION_ID.split('Ethix-MD&')[1];
+        const sessionID = config.SESSION_ID.split('Gifted~')[1];
         const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
         const response = await fetch(pasteUrl);
         const text = await response.text();
@@ -169,8 +169,8 @@ Matrix.ev.on("connection.update", async update => {
 
     if (connection === "open") {
         if (initialConnection) {
-            console.log(chalk.green("😃 Integration Successful️ ✅"));
-            Matrix.sendMessage(Matrix.user.id, { text: `😃 Integration Successful️ ✅` });
+            console.log(chalk.green("✅WHATSAPP LOGIN SUCCESSFUL"));
+            Matrix.sendMessage(Matrix.user.id, { text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃\n\n𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞  : PostegreSql\n𝐎𝐰𝐧𝐞𝐫    : t.me/giftedmd\n𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥𝐬  : youtube.com/@giftedtechnexus\n𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥 : https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l` });
             initialConnection = false;
         } else {
             console.log(chalk.blue("♻️ Connection reestablished after restart."));
@@ -200,5 +200,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Gifted Server Live on Port ${PORT}`);
 });
