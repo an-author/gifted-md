@@ -1,16 +1,16 @@
 {
-  "name": "Ethix-MD",
-  "version": "10.8.1",
-  "description": "Ethix-MD latest multi device whatsapp bot",
+  "name": "Gifted-Md",
+  "version": "5.0.0",
+  "description": "Gifted latest multi device whatsapp bot",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
-  "keywords": ["ethix-md", "whatsapp-bot", "whatsapp md bot"],
-  "author": "Ethix-Xsid",
-  "license": "ISC",
+  "keywords": ["gifted-md", "whatsapp-bot", "gifted-tech"],
+  "author": "Gifted Tech",
+  "license": "GNU",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@google/generative-ai": "^0.9.0",
