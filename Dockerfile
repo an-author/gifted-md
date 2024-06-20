@@ -1,3 +1,4 @@
+
 FROM node:lts-buster
 
 RUN apt-get update && \
@@ -17,3 +18,6 @@ COPY . .
 EXPOSE 5000
 
 CMD ["node", "src/index.js"]
+
+
+
