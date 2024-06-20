@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const config = {
   SESSION_ID: process.env.SESSION_ID || "Put Your Session ID",
-  HEROKU_API_TOKEN: process.env.HEROKU_API_TOKEN || "",
+  HEROKU_API_TOKEN: process.env.HEROKU_API_TOKEN || "HRKU-0a1fe665-8a35-42e8-b7ad-761f25ffe195",
   AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN !== undefined ? process.env.AUTO_STATUS_SEEN === 'true' : true, 
   AUTO_DL: process.env.AUTO_DL !== undefined ? process.env.AUTO_DL === 'true' : false,
   AUTO_READ: process.env.AUTO_READ !== undefined ? process.env.AUTO_READ === 'true' : false,
