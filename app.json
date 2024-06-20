@@ -1,58 +1,59 @@
 {
-  "name": "whatsapp-bot (Ethix-MD)",
-  "description": " Whatsapp bot.",
+  "name": "gifted-md@v5.0.0",
+  "description": "A Multi Device Whatsapp bot.",
   "keywords": [
     "whatsapp bot"
   ],
-  "repository": "https://github.com/Ethix-Xsid/Ethix-MD",
+  "repository": "https://github.com/mouricedevs/gifted-md",
   "stack": "container",
   "env": { 
       "SESSION_ID": {
-      "description": "your session id",
+      "description": "Put Your Session Id",
       "required": true,
       "value": ""
     },
     "MODE": {
-      "description": "mode public or self",
+      "description": "Put Mode either public or self",
       "required": true,
       "value": "public"
     },
     "AUTO_STATUS_SEEN": {
-      "description": "make it true if you want bot to view status",
+      "description": "Put true if you want bot to view status",
       "required": false,
       "value": ""
     },
     "AUTO_READ": {
-      "description": "make it true if you want bot to read message",
+      "description": "Put true if you want bot to read message",
       "required": false,
       "value": ""
     },
     "AUTO_TYPING": {
-      "description": "make it true if you want bot to show typing",
+      "description": "Put true if you want bot to show typing",
       "required": false,
       "value": ""
     },
     "AUTO_RECORDING": {
-      "description": "make it true if you want bot to show recording audio",
+      "description": "Put true if you want bot to show recording audio",
       "required": false,
       "value": ""
     },
     "ALWAYS_ONLINE": {
-      "description": "make it true if you want bot to show always online",
+      "description": "Put true if you want bot to show always online",
       "required": false,
       "value": ""
     },
     "AUTO_BLOCK": {
-      "description": "make it true if you want bot to auto block only 212 numbers",
+      "description": "Put true if you want bot to auto block only 212 numbers",
       "required": false,
       "value": ""
     },
     "REJECT_CALL": {
-      "description": "make it true if you want to reject call",
+      "description": "Put true if you want to reject call",
       "required": false,
       "value": ""
     }
     },
+    "addons": [{ "plan": "heroku-postgresql:essential-1" }],
     "buildpacks": [
     {
       "url": "heroku/nodejs"
