@@ -9,7 +9,7 @@ const gptResponse = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['gpt', 'ai'];
+  const validCommands = ['gpt', 'gpt4', 'ai'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a question.');
@@ -54,7 +54,7 @@ const gptResponse = async (m, Matrix) => {
                       {
                         name: "cta_copy",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "Copy Your Code",
+                          display_text: "ᴄᴏᴘʏ ᴄᴏᴅᴇ",
                           id: "copy_code",
                           copy_code: code
                         })
