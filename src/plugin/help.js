@@ -119,61 +119,61 @@ const test = async (m, Matrix) => {
                       {
                        "header":"",
                        "title":"🔰 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
-                       "description":"😎ɢɪғᴛᴇᴅ-ᴍᴅ ᴀʟʟ ᴍᴇɴᴜ😎",
+                       "description":"ɢɪғᴛᴇᴅ-ᴍᴅ ᴀʟʟ ᴍᴇɴᴜ",
                        "id":"View All Menu"
                       },
                       {
                         "header":"",
                         "title":"⬇️ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"🗂 sʜᴏᴡs ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
+                        "description":"sʜᴏᴡs ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
                       },
                       {
                         "header":"",
                         "title":"👨‍👨‍👧‍👧𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔",
-                        "description":"🥵sʜᴏᴡs ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs🥵",
+                        "description":"sʜᴏᴡs ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Group Menu"
                       },
                       {
                         "header":"",
                         "title":"👨‍🔧 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
-                        "description":"🛠 sʜᴏᴡs ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡs ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Tool Menu"
                       },
                       {
                         "header":"",
                         "title":"🗿 𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔",
-                        "description":"📪 sʜᴏᴡs ʙᴏᴛ ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡs ʙᴏᴛ ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Main Menu"
                       },
                      {
                         "header":"",
                         "title":"👨‍💻 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"😎sʜᴏᴡs ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs👨‍💼",
+                        "description":"sʜᴏᴡs ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Owner Menu"
                       },
                       {
                         "header":"",
                         "title":"✨ 𝐀𝐈 𝐌𝐄𝐍𝐔",
-                        "description":"💫 sʜᴏᴡs ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs 🎇",
+                        "description":"sʜᴏᴡs ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Ai Menu"
                       },
                       {
                         "header":"",
                         "title":"🔍𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔🔎",
-                        "description":"♂️ sʜᴏᴡs sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡs sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Search Menu"
                       },
                       {
                         "header":"",
                         "title":"🧚‍♂️ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"👨‍💼 sʜᴏᴡs sᴛᴀʟᴋ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs🪆",
+                        "description":"sʜᴏᴡs sᴛᴀʟᴋ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Stalk Menu"
                       },
                       {
                         "header":"",
                         "title":"🥏 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐓 𝐌𝐄𝐍𝐔",
-                        "description":"🛷 sʜᴏᴡs ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡs ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Converter Menu"
                       }
                     ]}
