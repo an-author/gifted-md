@@ -19,7 +19,7 @@ const invite = async (m, gss) => {
       return m.reply('*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND.*');
     }
 
-    if (!text) return m.reply(`*📛 ENTER THE NUMBER YOU WANT TO INVITE TO THE GROUP*\n\nExample:\n*${prefix + cmd}* 919142294671`);
+    if (!text) return m.reply(`*📛 ENTER THE NUMBER YOU WANT TO INVITE TO THE GROUP*\n\nExample:\n*${prefix + cmd}* 254711111111`);
     if (text.includes('+')) return m.reply(`*📛 ENTER THE NUMBER TOGETHER WITHOUT *+*`);
     if (isNaN(text)) return m.reply(`*📛 ENTER ONLY THE NUMBERS PLUS YOUR COUNTRY CODE WITHOUT SPACES`);
 
@@ -29,7 +29,7 @@ const invite = async (m, gss) => {
     const inviteMessage = `≡ *GROUP INVITATION*\n\nA USER INVITES YOU TO JOIN THE GROUP "${groupMetadata.subject}".\n\nInvite Link: ${link}\n\nINVITED BY: @${m.sender.split('@')[0]}`;
 
     await gss.sendMessage(`${text}@s.whatsapp.net`, { text: inviteMessage, mentions: [m.sender] });
-    m.reply(`*☑ AN INVITE LINK IS SENT TO THE USER.*`);
+    m.reply(`*☑ INVITE LINK SENT TO THE USER.*`);
 
   } catch (error) {
     console.error('Error:', error);
