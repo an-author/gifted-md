@@ -51,7 +51,7 @@ const facebookCommand = async (m, Matrix) => {
         title: 'Video Qualities',
         rows: fbData.data.map((video, index) => ({
           header: '',
-          title: `📥 Download ${video.resolution}`,
+          title: `📥 ᴅᴏᴡɴʟᴏᴀᴅ ${video.resolution}`,
           description: '',
           id: `media_${index}_${fbSearchIndex}`
         }))
@@ -60,7 +60,7 @@ const facebookCommand = async (m, Matrix) => {
       const buttons = [{
         name: "single_select",
         buttonParamsJson: JSON.stringify({
-          title: '♂️ Select Quality',
+          title: '♂️ sᴇʟᴇᴄᴛ ǫᴜᴀʟɪᴛʏ',
           sections: sections
         })
       }];
@@ -74,13 +74,13 @@ const facebookCommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Ethix-MD Facebook Video Download\n\n🔍 Select the desired video quality to download.\n\n📌 Choose an option to download.\n\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐅𝐁 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n🔍 Select the desired video quality to download.\n\n📌 Choose an option to download.\n\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By Ethix-MD"
+                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
+                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/bf3a4cac5fc11b3199b56.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: "",
                 gifPlayback: true,
                 subtitle: "",
@@ -92,7 +92,7 @@ const facebookCommand = async (m, Matrix) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               }
             }),
           },
@@ -128,7 +128,7 @@ const facebookCommand = async (m, Matrix) => {
           const fileSizeInMB = finalMediaBuffer.length / (1024 * 1024);
 
           if (fileSizeInMB <= 300) {
-            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> © Powered by Ethix-MD' };
+            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*' };
             await Matrix.sendMessage(m.from, content, { quoted: m });
           } else {
             await m.reply('The video file size exceeds 300MB.');
