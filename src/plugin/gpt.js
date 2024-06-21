@@ -42,7 +42,7 @@ const gptResponse = async (m, Matrix) => {
                     text: answer
                   }),
                   footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "> © Powered By Ethix-MD"
+                    text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
                   }),
                   header: proto.Message.InteractiveMessage.Header.create({
                     title: "",
