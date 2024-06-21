@@ -34,7 +34,7 @@ const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
 const seconds = Math.floor(uptime % 60); // Calculate seconds
 
 // Uptime
-const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
+const uptimeMessage = `*I am alive since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
 const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
 
 const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
@@ -73,7 +73,7 @@ const test = async (m, Matrix) => {
   const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '.';
         const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
         const mode = process.env.MODE;
-        const validCommands = ['list', 'help', 'menu'];
+        const validCommands = ['menu', 'listmenu', 'help', 'list'];
 
   if (validCommands.includes(cmd)) {
     let msg = generateWAMessageFromContent(m.from, {
@@ -85,18 +85,19 @@ const test = async (m, Matrix) => {
           },
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
-              text: `╭─────────────━┈⊷
-│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
-│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
-│👤 ɴᴜᴍʙᴇʀ: 919142294671
-│📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
-│🛡 ᴍᴏᴅᴇ: *${mode}*
-│💫 ᴘʀᴇғɪx: *[Multi-Prefix]*
+              text: `
+╭─────────────━┈⊷
+│🤖 *ʙᴏᴛ ɴᴀᴍᴇ:* ɢɪғᴛᴇᴅ-ᴍᴅ
+│📍 *ᴠᴇʀꜱɪᴏɴ:* 5.0.0
+│👨‍💻 *ᴏᴡɴᴇʀ :* ɢɪғᴛᴇᴅ ᴛᴇᴄʜ      
+│👤 *ᴅᴀᴛᴀʙᴀsᴇ:* CPanel
+│📡 *ᴘʟᴀᴛғᴏʀᴍ:* ${os.platform()}
+│🛡  *ᴍᴏᴅᴇ:* ${mode}
+│💫 *ᴘʀᴇғɪx:* _[Multi-Prefix]_
 ╰─────────────━┈⊷ `
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "© Powered By Ethix-MD"
+              text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image : fs.readFileSync('./src/ethix.jpg')}, { upload: Matrix.waUploadToServer})), 
