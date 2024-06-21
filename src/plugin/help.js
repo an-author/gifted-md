@@ -37,9 +37,9 @@ const seconds = Math.floor(uptime % 60); // Calculate seconds
 const uptimeMessage = `*I am alive since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
 const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
 
-const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
-const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
-const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
+const xtime = moment.tz("Africa/Nairobi").format("HH:mm:ss");
+const xdate = moment.tz("Africa/Nairobi").format("DD/MM/YYYY");
+const time2 = moment().tz("Africa/Nairobi").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "05:00:00") {
@@ -186,6 +186,12 @@ const test = async (m, Matrix) => {
                   isForwarded: false,
                 }
           }),
+          {
+                  name: "cta_url",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ",
+                    url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
+                  }),
         },
       },
     }, {});
