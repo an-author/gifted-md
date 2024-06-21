@@ -8,7 +8,7 @@ const githubStalk = async (m, gss) => {
     const text = m.body.slice(prefix.length + cmd.length).trim();
     const args = text.split(' ');
 
-    const validCommands = ['githubstalk', 'ghstalk'];
+    const validCommands = ['githubstalk', 'gitstalk', 'ghstalk'];
 
    if (validCommands.includes(cmd)) {
       if (!args[0]) return m.reply('Mention a GitHub username to stalk.');
