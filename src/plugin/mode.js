@@ -17,7 +17,7 @@ const modeCommand = async (m, Matrix) => {
       responseMessage = "Mode has been set to public.";
     } else if (text === 'self') {
       config.MODE = 'self';
-      responseMessage = "Mode has been set to self.";
+      responseMessage = "Mode has been set to private.";
     } else {
       responseMessage = "Usage:\n- `mode public`: Set mode to public\n- `mode self`: Set mode to self";
     }
