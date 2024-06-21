@@ -6,10 +6,10 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['dbinary'];
+  const validCommands = ['decode', 'dbinary'];
 
    if (validCommands.includes(cmd)) {
-         if (!text) return m.reply('Please provide a text.');
+         if (!text) return m.reply('Please provide a text to decode.');
          let db = await dBinary(text)
          m.reply(db)
    }
