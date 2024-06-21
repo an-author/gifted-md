@@ -5,7 +5,7 @@ const restartBot = async (m) => {
 
   if (cmd === 'restart') {
     try {
-      m.reply('Proses....')
+      m.reply('Gifted-Md is Restarting....')
       process.exit()
     } catch (error) {
       console.error(error);
