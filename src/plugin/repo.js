@@ -11,7 +11,7 @@ const handleRepoCommand = async (m, Matrix) => {
     const { full_name, name, forks_count, stargazers_count, created_at, updated_at, owner } = repoData;
 
     const messageText = `*ɢɪғᴛᴇᴅ-ᴍᴅ,* ᴀ sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ.\n
-    \n*❲❒❳ ɴᴀᴍᴇ:* ${name}
+    \n*💿 ɴᴀᴍᴇ:* ${name}
     \n*⭐ sᴛᴀʀs:* ${stargazers_count}
     \n*🍴 ғᴏʀᴋs:* ${forks_count}
     \n*📅 ᴄʀᴇᴀᴛᴇᴅ ᴏɴ:* ${new Date(created_at).toLocaleDateString()}
