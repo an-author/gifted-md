@@ -23,6 +23,8 @@ const lyricsCommand = async (m, Matrix) => {
     }
 
     const replyMessage = `
+     > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+    
       *✍️ Title:* ${result.title}
       *👨‍🎤 Author:* ${result.author}
       *🔗 Url:* ${result.link}
