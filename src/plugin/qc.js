@@ -59,8 +59,8 @@ const quotedChat = async (m, gss) => {
       const buffer = Buffer.from(response.data.result.image, 'base64');
 
       await gss.sendImageAsSticker(m.from, buffer, m, {
-        packname: "",
-        author: "> Ethix-MD"
+        packname: "𝐆𝐈𝐅𝐓𝐄𝐃",
+        author: "> 𝐆𝐈𝐅𝐓𝐄𝐃"
       });
     } catch (error) {
       console.error('Error during HTTP request:', error);
