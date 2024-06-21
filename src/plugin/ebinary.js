@@ -9,7 +9,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   const validCommands = ['ebinary'];
 
    if (validCommands.includes(cmd)) {
-         if (!text) return m.reply('Please provide a question.');
+         if (!text) return m.reply('Please provide a text to encode');
          let db = await eBinary(text)
          m.reply(db)
    }
