@@ -11,7 +11,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
 
    if (validCommands.includes(cmd)) {
   
-    if (!text) return m.reply('give a YT URL or search query');	 
+    if (!text) return m.reply('Give a YT URL or search query');	 
  
 try {
     await m.React("🕘");
@@ -39,7 +39,7 @@ try {
     url: videoInfo.thumbnail,
   },
   caption: `
-╭──═❮ *YouTube Player* ✨ ❯═─┈•
+╭──═❮ *Gifted Audio Player* ✨ ❯═─┈•
 │✑ *Title:* ${videoInfo.title}
 │✑ *duration:* ${videoInfo.timestamp}
 │✑ *Uploaded* ${videoInfo.ago}
@@ -82,7 +82,7 @@ try {
     url: firstVideo.thumbnail,
   },
   caption: `
-╭──═❮ *YouTube Player* ✨ ❯═─┈•
+╭──═❮ *Gifted Audio Player* ✨ ❯═─┈•
 │✑ *Title:* ${firstVideo.title}
 │✑ *duration:* ${firstVideo.timestamp}
 │✑ *Uploaded* ${firstVideo.ago}
