@@ -54,14 +54,14 @@ const tiktokCommand = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎦 Video",
+            display_text: "🎦 ᴠɪᴅᴇᴏ",
             id: `media_video_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎵 Audio",
+            display_text: "🎵 ᴀᴜᴅɪᴏ",
             id: `media_audio_${searchIndex}`
           })
         }
@@ -76,13 +76,13 @@ const tiktokCommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 TikTok Download\n\nTitle: ${currentResult.data.title}\nAuthor: ${currentResult.data.author.nickname}\nViews: ${currentResult.data.view}\nDuration: ${currentResult.data.duration}s\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐈𝐊𝐓𝐎𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\nᴛɪᴛᴛʟᴇ: ${currentResult.data.title}\nᴀᴜᴛʜᴏʀ: ${currentResult.data.author.nickname}\nᴠɪᴇᴡs: ${currentResult.data.view}\nᴅᴜʀᴀᴛɪᴏɴ: ${currentResult.data.duration}s\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
+                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/bf3a4cac5fc11b3199b56.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: "",
                 gifPlayback: true,
                 subtitle: "",
@@ -94,7 +94,7 @@ const tiktokCommand = async (m, Matrix) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               }
             }),
           },
@@ -136,9 +136,9 @@ const tiktokCommand = async (m, Matrix) => {
           const fileSizeInMB = finalMediaBuffer.length / (1024 * 1024);
 
           if (type === 'video' && fileSizeInMB <= 300) {
-            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> © Powered by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿' };
+            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*' };
           } else if (type === 'audio' && fileSizeInMB <= 300) {
-            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: '> © Powered by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿' };
+            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: '> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*' };
           }
 
           await Matrix.sendMessage(m.from, content, { quoted: m });
