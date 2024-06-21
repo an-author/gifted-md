@@ -4,10 +4,10 @@ const ping = async (m, sock) => {
   if (cmd === "ping") {
 
     const startTime = new Date();
-    const { key } = await sock.sendMessage(m.from, { text: '*_Pinging..._*' }, { quoted: m });
+    const { key } = await sock.sendMessage(m.from, { text: '*_ᴄʜᴇᴄᴋ..._*' }, { quoted: m });
     await m.React('🚀');
 
-    const text = `*_🔥⃝вσт ѕρєє∂: ${new Date() - startTime} ms_*`;
+    const text = `*_🔥⃝ɢɪғᴛᴇᴅ ѕρєє∂: ${new Date() - startTime} ms_*`;
     await typeWriterEffect(m, sock, key, text);
 
     await m.React('⚡');
