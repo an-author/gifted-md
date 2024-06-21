@@ -17,38 +17,38 @@ export default async function GroupParticipants(sock, { id, participants, action
          // action
          if (action == "add" && config.WELCOME ) {
            const userName = jid.split("@")[0];
-                    const joinTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
-                    const joinDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
+                    const joinTime = moment.tz('Africa/Nairobi').format('HH:mm:ss');
+                    const joinDate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY');
                     const membersCount = metadata.participants.length;
             sock.sendMessage(id, {
                text: `> Hello @${userName}! Welcome to *${metadata.subject}*.\n> You are the ${membersCount}th member.\n> Joined at: ${joinTime} on ${joinDate}
 "`, contextInfo: {
                   mentionedJid: [jid],
                   externalAdReply: {
-                     title: `Welcome`,
+                     title: `Member Joined`,
                      mediaType: 1,
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: metadata.subject,
-                     sourceUrl: 'https://sid-bhai.vercel.app'
+                     sourceUrl: 'https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l'
                   }
                }
             })
          } else if (action == "remove" && config.WELCOME ) {
            const userName = jid.split('@')[0];
-                    const leaveTime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
-                    const leaveDate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
+                    const leaveTime = moment.tz('Africa/Nairobi').format('HH:mm:ss');
+                    const leaveDate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY');
                     const membersCount = metadata.participants.length;
             sock.sendMessage(id, {
                text: `> Goodbye @${userName} from ${metadata.subject}.\n> We are now ${membersCount} in the group.\n> Left at: ${leaveTime} on ${leaveDate}"`, contextInfo: {
                   mentionedJid: [jid],
                   externalAdReply: {
-                     title: `Leave`,
+                     title: `Member Left`,
                      mediaType: 1,
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: profile,
-                     sourceUrl: 'https://sid-bhai.vercel.app'
+                     sourceUrl: 'https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l'
                   }
                }
             })
