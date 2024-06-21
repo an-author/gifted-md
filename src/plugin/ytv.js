@@ -75,13 +75,13 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 Video Downloader\n*🔍Title:* ${videoDetails.title}\n*✍️ Author:* ${videoDetails.author}\n*🥸Views:* ${videoDetails.views}\n*👍 Likes:* ${videoDetails.likes}\n*📆 Upload Date:* ${videoDetails.uploadDate}\n*🏮 Duration:* ${videoDetails.duration}\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n*ᴛɪᴛᴛʟᴇ:* ${videoDetails.title}\n*✍ᴀʀᴛɪsᴛ:* ${videoDetails.author}\n*ᴠɪᴇᴡs:* ${videoDetails.views}\n*ʟɪᴋᴇᴅ:* ${videoDetails.likes}\n*ᴜᴘʟᴏᴀᴅᴇᴅ ᴏɴ:* ${videoDetails.uploadDate}\n*ᴅᴜʀᴀᴛɪᴏᴍ:* ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
+                ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/bf3a4cac5fc11b3199b56.jpg` } }, { upload: Matrix.waUploadToServer })),
                 title: "",
                 gifPlayback: true,
                 subtitle: "",
@@ -107,7 +107,7 @@ const song = async (m, Matrix) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
-                isForwarded: true,
+                isForwarded: false,
               }
             }),
           },
@@ -141,7 +141,7 @@ const song = async (m, Matrix) => {
         await Matrix.sendMessage(m.from, {
           video: finalVideoBuffer,
           mimetype: 'video/mp4',
-          caption: `Title: ${selectedFormat.title}\nAuthor: ${selectedFormat.author}\nViews: ${selectedFormat.views}\nLikes: ${selectedFormat.likes}\nUpload Date: ${selectedFormat.uploadDate}\nDuration: ${duration}\nSize: ${size}\n\n> Powered by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿`
+          caption: `ᴛɪᴛᴛʟᴇ: ${selectedFormat.title}\nᴀʀᴛɪsᴛ: ${selectedFormat.author}\nᴠɪᴇᴡs: ${selectedFormat.views}\nʟɪᴋᴇs: ${selectedFormat.likes}\nᴜᴘʟᴏᴀᴅᴇᴅ ᴏɴ: ${selectedFormat.uploadDate}\nᴅᴜʀᴀᴛɪᴏɴ: ${duration}\nSize: ${size}\n\n> ©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓`
         }, { quoted: m });
       } catch (error) {
         console.error("Error fetching video details:", error);
