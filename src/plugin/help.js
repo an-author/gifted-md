@@ -86,15 +86,13 @@ const test = async (m, Matrix) => {
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
               text: `
-╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ⊷
-┃❍ *ᴏᴡɴᴇʀ:* ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
-┃❍ *ᴠᴇʀꜱɪᴏɴ:* 5.0.0      
-┃❍ *ᴜᴘᴛɪᴍᴇ:* ${uptime}
-┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* ᴄᵖᵃⁿᵉˡ
-┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* ${os.platform()}
-┃❍ *ᴍᴏᴅᴇ:* ${mode}
-┃❍ *ᴘʀᴇғɪx:* _[Multi-Prefix]_
-╰═════════════════⊷`
+╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴍᴏᴅᴇ:* _${mode}_
+┃❍ *ᴘʀᴇғɪx:* _[.]_
+╰══════════════════⊷`
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
               text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
