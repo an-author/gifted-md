@@ -7,7 +7,7 @@ const givetextCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const args = m.body.split(' ').slice(1); 
 
-  const validCommands = ['givetext', 'extract'];
+  const validCommands = ['totext', 'givetext', 'extract'];
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
