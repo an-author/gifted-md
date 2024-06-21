@@ -186,12 +186,6 @@ const test = async (m, Matrix) => {
                   isForwarded: false,
                 }
           }),
-          {
-                  name: "cta_url",
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ",
-                    url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
-                  }),
         },
       },
     }, {});
