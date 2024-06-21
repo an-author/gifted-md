@@ -41,7 +41,7 @@ const tempMailCommand = async (m, Matrix) => {
                 {
                     "name": "cta_copy",
                     "buttonParamsJson": JSON.stringify({
-                        "display_text": "Copy Email",
+                        "display_text": "ᴄᴏᴘʏ ᴇᴍᴀɪʟ",
                         "id": "copy_email",
                         "copy_code": tempEmail
                     })
@@ -49,7 +49,7 @@ const tempMailCommand = async (m, Matrix) => {
                 {
                     "name": "quick_reply",
                     "buttonParamsJson": JSON.stringify({
-                        "display_text": "Check Inbox",
+                        "display_text": "ᴄʜᴇᴄᴋ ɪɴʙᴏx",
                         "id": `check_inbox_${tempEmail}`
                     })
                 }
@@ -64,13 +64,13 @@ const tempMailCommand = async (m, Matrix) => {
                         },
                         interactiveMessage: proto.Message.InteractiveMessage.create({
                             body: proto.Message.InteractiveMessage.Body.create({
-                                text: `Generated Temporary Email: ${tempEmail}`
+                                text: `ɢᴇɴᴇʀᴀᴛᴇᴅ ᴛᴇᴍᴘᴏʀᴀᴛʏ ᴇᴍᴀɪʟ: ${tempEmail}`
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
-                                title: "Temporary Email",
+                                title: "GIFTED-MD TEMPMAIL",
                                 gifPlayback: true,
                                 subtitle: "",
                                 hasMediaAttachment: false
@@ -81,7 +81,7 @@ const tempMailCommand = async (m, Matrix) => {
                             contextInfo: {
                                 mentionedJid: [m.sender],
                                 forwardingScore: 9999,
-                                isForwarded: true,
+                                isForwarded: false,
                             }
                         }),
                     },
@@ -124,7 +124,7 @@ const tempMailCommand = async (m, Matrix) => {
                         buttons.push({
                             "name": "cta_copy",
                             "buttonParamsJson": JSON.stringify({
-                                "display_text": "Copy OTP",
+                                "display_text": "ᴄᴏᴘʏ ᴏᴛᴘ",
                                 "id": "copy_otp",
                                 "copy_code": otpMatch[0]
                             })
@@ -138,7 +138,7 @@ const tempMailCommand = async (m, Matrix) => {
             buttons.push({
                 "name": "quick_reply",
                 "buttonParamsJson": JSON.stringify({
-                    "display_text": "Check Inbox Again",
+                    "display_text": "ᴄʜᴇᴄᴋ ɪɴʙᴏx ᴀɢᴀɪɴ",
                     "id": `check_inbox_${email}`
                 })
             });
@@ -155,7 +155,7 @@ const tempMailCommand = async (m, Matrix) => {
                                 text: inboxMessages
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
                                 title: "",
@@ -169,7 +169,7 @@ const tempMailCommand = async (m, Matrix) => {
                             contextInfo: {
                                 mentionedJid: [m.sender],
                                 forwardingScore: 9999,
-                                isForwarded: true,
+                                isForwarded: false,
                             }
                         }),
                     },
