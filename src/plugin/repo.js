@@ -10,7 +10,7 @@ const handleRepoCommand = async (m, Matrix) => {
 
     const { full_name, name, forks_count, stargazers_count, created_at, updated_at, owner } = repoData;
 
-    const messageText = `*ɢɪғᴛᴇᴅ-ᴍᴅ,* ᴀ sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ. \n📊 Repository Information:
+    const messageText = `*ɢɪғᴛᴇᴅ-ᴍᴅ,* ᴀ sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ.\n
     \n*❲❒❳ ɴᴀᴍᴇ:* ${name}
     \n*⭐ sᴛᴀʀs:* ${stargazers_count}
     \n*🍴 ғᴏʀᴋs:* ${forks_count}
@@ -44,21 +44,21 @@ const handleRepoCommand = async (m, Matrix) => {
                 {
                   name: "quick_reply",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "*ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ*",
+                    display_text: "ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ",
                     id: ".owner"
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "*ғᴏʀᴋ ʀᴇᴘᴏ*",
+                    display_text: "ᴠɪsɪᴛ ʀᴇᴘᴏ",
                     url: `https://github.com/mouricedevs/gifted-md/fork`
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "*ᴊᴏɪɴ ᴄᴊᴀɴɴᴇʟ*",
+                    display_text: "ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ",
                     url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
                   })
                 }
