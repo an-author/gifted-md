@@ -58,35 +58,35 @@ const playcommand = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎧 Audio",
+            display_text: "🎧 ᴀᴜᴅɪᴏ",
             id: `media_audio_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎥 Video",
+            display_text: "🎥 ᴠɪᴅᴇᴏ",
             id: `media_video_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎵 Audio Document",
+            display_text: "🎵 ᴀᴜᴅɪᴏ ᴅᴏᴄᴜᴍᴇɴᴛ",
             id: `media_audiodoc_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎦 Video Document",
+            display_text: "🎦 ᴠɪᴅᴇᴏ ᴅᴏᴄᴜᴍᴇɴᴛ",
             id: `media_videodoc_${searchIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "⏩ Next",
+            display_text: "⏩ sᴇᴀʀᴄʜ ɴᴇxᴛ",
             id: `next_${searchIndex + 1}`
           })
         }
@@ -149,35 +149,35 @@ const playcommand = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎧 Audio",
+            display_text: "🎧 ᴀᴜᴅɪᴏ",
             id: `media_audio_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎥 Video",
+            display_text: "🎥 ᴠɪᴅᴇᴏ",
             id: `media_video_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎵 Audio Document",
+            display_text: "🎵 ᴀᴜᴅɪᴏ ᴅᴏᴄᴜᴍᴇɴᴛ",
             id: `media_audiodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "🎦 Video Document",
+            display_text: "🎦 ᴠɪᴅᴇᴏ ᴅᴏᴄᴜᴍᴇɴᴛ",
             id: `media_videodoc_${nextIndex}`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "⏩ Next",
+            display_text: "⏩ sᴇᴀʀᴄʜ ɴᴇxᴛ",
             id: `next_${nextIndex + 1}`
           })
         }
