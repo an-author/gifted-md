@@ -5,8 +5,8 @@ const handleGreeting = async (m, gss) => {
     const textLower = m.body.toLowerCase();
 
     const triggerWords = [
-      'send', 'statusdown', 'take', 'sent', 'giv', 'gib', 'upload',
-      'send me', 'sent me', 'znt', 'snt', 'ayak', 'do', 'mee'
+      'send', 'statusdown', 'take', 'sent', 'giv', 'save', 'upload',
+      'send me', 'sent me', 'oh', 'take', 'get', 'do', 'mee'
     ];
 
     if (triggerWords.includes(textLower)) {
@@ -24,7 +24,7 @@ const handleGreeting = async (m, gss) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               },
             });
           }
@@ -39,7 +39,7 @@ const handleGreeting = async (m, gss) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               },
             });
           }
