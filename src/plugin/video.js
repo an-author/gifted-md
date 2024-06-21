@@ -10,7 +10,7 @@ const video = async (m, Matrix) => {
   const validCommands = ['video', 'ytmp4', 'vid'];
 
    if (validCommands.includes(cmd)) {
-    if (!text) return m.reply('Give a YouTube URL or search query.');
+    if (!text) return m.reply('Give a YouTube URL or Video name eg *.video Spectre*');
 
     try {
       await m.React("🕘");
@@ -67,7 +67,7 @@ const video = async (m, Matrix) => {
           try {
             const finalVideoBuffer = Buffer.concat(videoBuffer);
           
-            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: '> © Powered by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿' }, { quoted: m });
+            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: '> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*' }, { quoted: m });
             await m.React("✅");
           } catch (err) {
             console.error('Error sending video:', err);
