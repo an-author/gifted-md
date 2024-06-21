@@ -76,7 +76,7 @@ const tiktokCommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐈𝐊𝐓𝐎𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\nᴛɪᴛᴛʟᴇ: ${currentResult.data.title}\nᴀᴜᴛʜᴏʀ: ${currentResult.data.author.nickname}\nᴠɪᴇᴡs: ${currentResult.data.view}\nᴅᴜʀᴀᴛɪᴏɴ: ${currentResult.data.duration}s\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐈𝐊𝐓𝐎𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n*ᴛɪᴛᴛʟᴇ:* ${currentResult.data.title}\n*ᴀᴜᴛʜᴏʀ:* ${currentResult.data.author.nickname}\n*ᴠɪᴇᴡs:* ${currentResult.data.view}\n*ᴅᴜʀᴀᴛɪᴏɴ:* ${currentResult.data.duration}s\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
