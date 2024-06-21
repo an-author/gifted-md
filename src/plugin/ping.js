@@ -7,7 +7,7 @@ const ping = async (m, sock) => {
     const { key } = await sock.sendMessage(m.from, { text: '*_ᴄʜᴇᴄᴋ..._*' }, { quoted: m });
     await m.React('🚀');
 
-    const text = `*_🔥⃝ɢɪғᴛᴇᴅ ѕρєє∂: ${new Date() - startTime} ms_*`;
+    const text = `*_🔥⃝ɢɪғᴛᴇᴅ sᴘᴇᴇᴅ: ${new Date() - startTime} ms_*`;
     await typeWriterEffect(m, sock, key, text);
 
     await m.React('⚡');
