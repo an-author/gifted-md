@@ -30,7 +30,7 @@ const playcommand = async (m, Matrix) => {
 
   if (validCommands.includes(cmd)) {
     if (!text) {
-      return m.reply('Please provide a search query.');
+      return m.reply('Please provide a song tittle eg .play Spectre by Alan Walker');
     }
 
     try {
@@ -101,10 +101,10 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YouTube Search\n\n*🔍Title:* ${currentResult.title}\n*✍️Author:* ${currentResult.author.name}\n*🥸 Views:* ${currentResult.views}\n*🏮 Duration:* ${currentResult.timestamp}\n`
+                text: `*ɢɪғᴛᴇᴅ-ᴍᴅ* YouTube Search\n\n*🔍Title:* ${currentResult.title}\n*✍️Author:* ${currentResult.author.name}\n*🥸 Views:* ${currentResult.views}\n*🏮 Duration:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                  ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
@@ -119,7 +119,7 @@ const playcommand = async (m, Matrix) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               }
             }),
           },
@@ -192,10 +192,10 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YouTube Search\n\n*🔍Title:* ${currentResult.title}\n*✍️ Author:* ${currentResult.author.name}\n*🥸 Views:* ${currentResult.views}\n*🏮 Duration:* ${currentResult.timestamp}\n`
+                text: `*ɢɪғᴛᴇᴅ-ᴍᴅ* YouTube Search\n\n*🔍Title:* ${currentResult.title}\n*✍️ Author:* ${currentResult.author.name}\n*🥸 Views:* ${currentResult.views}\n*🏮 Duration:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                  ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
@@ -210,7 +210,7 @@ const playcommand = async (m, Matrix) => {
               contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 9999,
-                isForwarded: true,
+                isForwarded: false,
               }
             }),
           },
