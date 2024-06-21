@@ -75,7 +75,7 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n*ᴛɪᴛᴛʟᴇ:* ${videoDetails.title}\n*✍ᴀʀᴛɪsᴛ:* ${videoDetails.author}\n*ᴠɪᴇᴡs:* ${videoDetails.views}\n*ʟɪᴋᴇᴅ:* ${videoDetails.likes}\n*ᴜᴘʟᴏᴀᴅᴇᴅ ᴏɴ:* ${videoDetails.uploadDate}\n*ᴅᴜʀᴀᴛɪᴏᴍ:* ${videoDetails.duration}\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝐈𝐃𝐄𝐎 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n*ᴛɪᴛᴛʟᴇ:* ${videoDetails.title}\n*✍ᴀʀᴛɪsᴛ:* ${videoDetails.author}\n*ᴠɪᴇᴡs:* ${videoDetails.views}\n*ʟɪᴋᴇᴅ:* ${videoDetails.likes}\n*ᴜᴘʟᴏᴀᴅᴇᴅ ᴏɴ:* ${videoDetails.uploadDate}\n*ᴅᴜʀᴀᴛɪᴏᴍ:* ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
@@ -92,10 +92,10 @@ const song = async (m, Matrix) => {
                   {
                     name: "single_select",
                     buttonParamsJson: JSON.stringify({
-                      title: "🎬 Select a video quality",
+                      title: "🎬 sᴇʟᴇᴄᴛ ᴠɪᴅᴇᴏ ǫᴜᴀʟɪᴛʏ",
                       sections: [
                         {
-                          title: "♂️ Available Qualities",
+                          title: "♂️ ᴀᴠᴀɪʟᴀʙʟᴇ ǫᴜᴀʟɪᴛɪᴇs",
                           highlight_label: "💡 Choose Quality",
                           rows: qualityButtons
                         },
