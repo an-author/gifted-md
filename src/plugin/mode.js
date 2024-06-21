@@ -9,7 +9,7 @@ const modeCommand = async (m, Matrix) => {
   const text = m.body.slice(prefix.length + cmd.length).trim().toLowerCase();
 
   if (cmd === 'mode') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("*ᴛʜɪs ɪs ᴏᴡɴᴇʀ ᴏɴʟʏ ᴄᴏᴍᴍᴀɴᴅ*");
     let responseMessage;
 
     if (text === 'public') {
