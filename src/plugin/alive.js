@@ -97,7 +97,7 @@ const serverStatusCommand = async (m, Matrix) => {
       clearInterval(loadingInterval);
 
       // Create the status message
-      const statusMessage = `_Ethix-MD Status_\n\n📅 Uptime: ${uptime}\n🖥 Platform: ${platform}\n\n> © Powered by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿`;
+      const statusMessage = `_Gifted-Md is Active 24/7_\n\n📅 Uptime: ${uptime}\n🖥 Platform: CPanel\n\n> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*`;
 
       await typeWriterEffect(m, Matrix, key, statusMessage);
     } catch (error) {
