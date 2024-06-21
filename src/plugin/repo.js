@@ -3,20 +3,20 @@ const { generateWAMessageFromContent, proto } = pkg;
 import axios from 'axios'; // Import axios for HTTP requests
 
 const handleRepoCommand = async (m, Matrix) => {
-  const repoUrl = 'https://api.github.com/repos/Ethix-Xsid/Ethix-MD';
+  const repoUrl = 'https://api.github.com/repos/mouricedevs/gifted-md';
   try {
     const response = await axios.get(repoUrl);
     const repoData = response.data;
 
     const { full_name, name, forks_count, stargazers_count, created_at, updated_at, owner } = repoData;
 
-    const messageText = `📊 Repository Information:
-    \n🔸 *Name:* ${name}
-    \n⭐ *Stars:* ${stargazers_count}
-    \n🍴 *Forks:* ${forks_count}
-    \n📅 *Created At:* ${new Date(created_at).toLocaleDateString()}
-    \n🛠️ *Last Updated:* ${new Date(updated_at).toLocaleDateString()}
-    \n👤 *Owner:* ${owner.login}`;
+    const messageText = `*ɢɪғᴛᴇᴅ-ᴍᴅ,* ᴀ sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ. \n📊 Repository Information:
+    \n*❲❒❳ ɴᴀᴍᴇ:* ${name}
+    \n*⭐ sᴛᴀʀs:* ${stargazers_count}
+    \n*🍴 ғᴏʀᴋs:* ${forks_count}
+    \n*📅 ᴄʀᴇᴀᴛᴇᴅ ᴏɴ:* ${new Date(created_at).toLocaleDateString()}
+    \n*🛠️ ʟᴀᴅᴛ ᴜᴘᴅᴀᴛᴇᴅ:* ${new Date(updated_at).toLocaleDateString()}
+    \n*👤 ᴏᴡɴᴇʀ:* 𝑮𝒊𝒇𝒕𝒆𝒅 𝑻𝒆𝒄𝒉`;
 
     const repoMessage = generateWAMessageFromContent(m.from, {
       viewOnceMessage: {
@@ -30,10 +30,10 @@ const handleRepoCommand = async (m, Matrix) => {
               text: messageText
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "© Powered By Ethix-MD"
+              text: "*©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
-             ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
+             ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/bf3a4cac5fc11b3199b56.jpg` } }, { upload: Matrix.waUploadToServer })),
               title: "",
               gifPlayback: true,
               subtitle: "",
@@ -44,22 +44,22 @@ const handleRepoCommand = async (m, Matrix) => {
                 {
                   name: "quick_reply",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "Contact Owner",
+                    display_text: "*ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ*",
                     id: ".owner"
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "Click Here To Fork",
-                    url: `https://github.com/Ethix-Xsid/Ethix-MD/fork`
+                    display_text: "*ғᴏʀᴋ ʀᴇᴘᴏ*",
+                    url: `https://github.com/mouricedevs/gifted-md/fork`
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "Join Our Community",
-                    url: `https://whatsapp.com/channel/0029VaWJMi3GehEE9e1YsI1S`
+                    display_text: "*ᴊᴏɪɴ ᴄᴊᴀɴɴᴇʟ*",
+                    url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
                   })
                 }
               ],
@@ -67,7 +67,7 @@ const handleRepoCommand = async (m, Matrix) => {
             contextInfo: {
               mentionedJid: [m.sender],
               forwardingScore: 9999,
-              isForwarded: true,
+              isForwarded: false,
             }
           }),
         },
