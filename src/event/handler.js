@@ -17,7 +17,7 @@ const getMessage = async (key, store) => {
         return msg.message || undefined;
     }
     return {
-        conversation: "Hai Im sock botwa"
+        conversation: "Hi I am Gifted-Md"
     };
 };
 
