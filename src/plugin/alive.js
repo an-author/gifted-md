@@ -29,7 +29,7 @@ const getPlatformName = () => {
 
 // Letter-by-letter typewriter effect function
 const typeWriterEffect = async (m, Matrix, key, message) => {
-  const typingSpeed = 350; // Speed in milliseconds
+  const typingSpeed = 300; // Speed in milliseconds
   let i = 0;
 
   const typewriterInterval = setInterval(async () => {
@@ -63,7 +63,8 @@ const serverStatusCommand = async (m, Matrix) => {
 
     try {
       const loadingMessages = [
-        "*ʟᴏᴀᴅɪʙɢ.*",
+        "*ʟᴏᴀᴅɪɴɢ*",
+        "*ʟᴏᴀᴅɪɴɢ.*",
         "*ʟᴏᴀᴅɪɴɢ..*",
         "*ʟᴏᴀᴅɪɴɢ...*",
       ];
