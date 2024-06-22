@@ -45,17 +45,17 @@ const time2 = moment().tz("Africa/Nairobi").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "04:00:00") {
-  pushwish = `Good Morning 🌄`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐌𝐨𝐫𝐧𝐢𝐧𝐠🌄,`;
 } else if (time2 < "11:00:00") {
-  pushwish = `Good Morning 🌄`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐌𝐨𝐫𝐧𝐢𝐧𝐠🌄,`;
 } else if (time2 < "15:00:00") {
-  pushwish = `Good Afternoon 🌅`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐀𝐟𝐭𝐞𝐫𝐧𝐨𝐨𝐧🌅,`;
 } else if (time2 < "18:00:00") {
-  pushwish = `Good Evening 🌃`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐄𝐯𝐞𝐧𝐢𝐧𝐠🌃,`;
 } else if (time2 < "19:00:00") {
-  pushwish = `Good Evening 🌃`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐄𝐯𝐞𝐧𝐢𝐧𝐠🌃,`;
 } else {
-  pushwish = `Good Night 🌌`;
+  pushwish = `𝐆𝐨𝐨𝐝 𝐍𝐢𝐠𝐡𝐭🌌,`;
 }
 
 const test = async (m, Matrix) => {
@@ -88,6 +88,7 @@ const test = async (m, Matrix) => {
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
               text: `
+*${pushwish} _${m.pushName}*_
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
@@ -201,7 +202,7 @@ const test = async (m, Matrix) => {
   }
       if (selectedId == "View All Menu") {
         const mode = process.env.MODE;
-        const str = `${pushwish} ${m.pushName}
+        const str = `*${pushwish} _${m.pushName}*_
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
