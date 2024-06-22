@@ -101,7 +101,7 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐒𝐎𝐍𝐆 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n*ᴛɪᴛᴛʟᴇ:* ${currentResult.title}\n*ᴀʀᴛɪsᴛ:* ${currentResult.author.name}\n*ᴠɪᴇᴡs:* ${currentResult.views}\n*🏮 ᴅᴜʀᴀᴛɪᴏᴍ:* ${currentResult.timestamp}\n`
+                text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐒𝐎𝐍𝐆 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n*ᴛɪᴛᴛʟᴇ:* ${currentResult.title}\n*ᴀʀᴛɪsᴛ:* ${currentResult.author.name}\n*ᴠɪᴇᴡs:* ${currentResult.views}\n*ᴅᴜʀᴀᴛɪᴏᴍ:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
