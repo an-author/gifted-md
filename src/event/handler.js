@@ -46,7 +46,7 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false;
 
 
-        const PREFIX = config.PREFIX;
+        const PREFIX = /^[\\/!#.]/;
         const isCOMMAND = (body) => PREFIX.test(body);
         const prefixMatch = isCOMMAND(m.body) ? m.body.match(PREFIX) : null;
         const prefix = prefixMatch ? prefixMatch[0] : '/';
