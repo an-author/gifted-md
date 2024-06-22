@@ -29,7 +29,7 @@ const getPlatformName = () => {
 
 // Letter-by-letter typewriter effect function
 const typeWriterEffect = async (m, Matrix, key, message) => {
-  const typingSpeed = 100; // Speed in milliseconds
+  const typingSpeed = 150; // Speed in milliseconds
   let i = 0;
 
   const typewriterInterval = setInterval(async () => {
@@ -63,14 +63,9 @@ const serverStatusCommand = async (m, Matrix) => {
 
     try {
       const loadingMessages = [
-        "*「▰▰▰▱▱▱▱▱▱▱」*",
-        "*「▰▰▰▰▱▱▱▱▱▱」*",
-        "*「▰▰▰▰▰▱▱▱▱▱」*",
-        "*「▰▰▰▰▰▰▱▱▱▱」*",
-        "*「▰▰▰▰▰▰▰▱▱▱」*",
-        "*「▰▰▰▰▰▰▰▰▱▱」*",
-        "*「▰▰▰▰▰▰▰▰▰▱」*",
-        "*「▰▰▰▰▰▰▰▰▰▰」*",
+        "*ʟᴏᴀᴅɪʙɢ.*",
+        "*ʟᴏᴀᴅɪɴɢ..*",
+        "*ʟᴏᴀᴅɪɴɢ...*",
       ];
 
       const loadingMessageCount = loadingMessages.length;
@@ -97,7 +92,7 @@ const serverStatusCommand = async (m, Matrix) => {
       clearInterval(loadingInterval);
 
       // Create the status message
-      const statusMessage = `_Gifted-Md is Active 24/7_\n\n📅 Uptime: ${uptime}\n🖥 Platform: CPanel\n\n> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*`;
+      const statusMessage = `*Gifted-Md* is Active 24/7\n\n*Uptime:* ${uptime}\n*Database:* CPanel\n*Platform:* Whatsapp\n\n> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*`;
 
       await typeWriterEffect(m, Matrix, key, statusMessage);
     } catch (error) {
