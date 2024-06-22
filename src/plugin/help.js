@@ -89,11 +89,14 @@ const test = async (m, Matrix) => {
             body: proto.Message.InteractiveMessage.Body.create({
               text: `
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
-┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
-┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
-┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴜsᴇʀ:* _${m.pushName}_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
+┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷`
             }),
@@ -200,11 +203,14 @@ const test = async (m, Matrix) => {
         const mode = process.env.MODE;
         const str = `${pushwish} ${m.pushName}
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
-┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
-┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
-┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴜsᴇʀ:* _${m.pushName}_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
+┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
 ${readmore}
