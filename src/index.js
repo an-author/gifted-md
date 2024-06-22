@@ -107,7 +107,7 @@ async function start() {
     // Manage Device Logging
     if (!Matrix.authState.creds.registered && isSessionPutted) {
         const sessionID = config.SESSION_ID.split('Gifted~')[1];
-        const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
+        const pasteUrl = `https://paste.c-net.org/${sessionID}`;
         const response = await fetch(pasteUrl);
         const text = await response.text();
         if (typeof text === 'string') {
