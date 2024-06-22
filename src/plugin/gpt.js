@@ -1,7 +1,7 @@
 import axios from 'axios';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-const gptApiBaseUrl = 'https://api.maher-zubair.tech/ai/chatgptv4?q=';
+const gptApiBaseUrl = 'https://aemt.me/gpt4?text=';
 
 const gptResponse = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
