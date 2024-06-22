@@ -25,7 +25,7 @@ const lime = chalk.bold.hex("#32CD32");
 let useQR;
 let isSessionPutted;
 let initialConnection = true;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const MAIN_LOGGER = pino({
     timestamp: () => `,"time":"${new Date().toJSON()}"`
@@ -48,7 +48,7 @@ async function start() {
         useQR = true;
         isSessionPutted = false;
     } else {
-        useQR = false;
+        useQR = true;
         isSessionPutted = true;
     }
 
@@ -107,12 +107,13 @@ async function start() {
     // Manage Device Logging
     if (!Matrix.authState.creds.registered && isSessionPutted) {
         const sessionID = config.SESSION_ID.split('Gifted~')[1];
-        const pasteUrl = `https://paste.c-net.org/${sessionID}`;
+        const pasteUrl = `https://pastebin.com/raw/${sessionID}`;
         const response = await fetch(pasteUrl);
         const text = await response.text();
         if (typeof text === 'string') {
             fs.writeFileSync('./session/creds.json', text);
-            console.log('session file created');
+            console.log('Session ID Converted to creds.json');
+           console.log('Creds.json file saved in Session Folder');
             await start();
         }
     }
@@ -162,8 +163,6 @@ Matrix.ev.on("connection.update", async update => {
         } else if (reason === DisconnectReason.timedOut) {
             console.log(chalk.red("[⏳] Connection Timed Out, Trying to Reconnect."));
             start();
-        } else {
-            console.log(chalk.red("[🚫️] Something Went Wrong: Failed to Make Connection"));
         }
     }
 
