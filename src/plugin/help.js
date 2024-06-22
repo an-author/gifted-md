@@ -38,8 +38,8 @@ const getUptime = () => {
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
-// Uptime
 const uptime = getUptime();
+// Uptime
 const uptimeMessage = `*I am alive since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
 const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
 
