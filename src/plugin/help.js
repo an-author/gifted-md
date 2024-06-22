@@ -1,6 +1,8 @@
 import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
+const more = String.fromCharCode(8206)
+const readmore = more.repeat(4001)
 
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
@@ -123,56 +125,57 @@ const test = async (m, Matrix) => {
                       },
                       {
                         "header":"",
+                        "highlight_label":"𝐌𝐄𝐍𝐔",
                         "title":"⬇️ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
+                        "description":"sʜᴏᴡ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
                       },
                       {
                         "header":"",
                         "title":"👨‍👨‍👧‍👧𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Group Menu"
                       },
                       {
                         "header":"",
                         "title":"👨‍🔧 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Tool Menu"
                       },
                       {
                         "header":"",
                         "title":"🗿 𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ʙᴏᴛ ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ʙᴏᴛ ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Main Menu"
                       },
                      {
                         "header":"",
                         "title":"👨‍💻 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
+                        "description":"sʜᴏᴡ ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Owner Menu"
                       },
                       {
                         "header":"",
                         "title":"✨ 𝐀𝐈 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Ai Menu"
                       },
                       {
                         "header":"",
-                        "title":"🔍𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔🔎",
-                        "description":"sʜᴏᴡs sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "title":"🔍𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔",
+                        "description":"sʜᴏᴡ sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Search Menu"
                       },
                       {
                         "header":"",
                         "title":"🧚‍♂️ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs sᴛᴀʟᴋ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ sᴛᴀʟᴋ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Stalk Menu"
                       },
                       {
                         "header":"",
                         "title":"🥏 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡs ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Converter Menu"
                       }
                     ]}
@@ -205,7 +208,7 @@ const test = async (m, Matrix) => {
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
-
+${readmore}
 ╭━❮ *ᴄᴏɴᴠᴇʀᴛᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿2
