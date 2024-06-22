@@ -28,17 +28,14 @@ function formatBytes(bytes) {
     return bytes.toFixed(2) + ' bytes';
   }
 }
-// Function to get the uptime in a human-readable format
-const getUptime = () => {
-  const uptimeSeconds = process.uptime();
-  const days = Math.floor(uptimeSeconds / (24 * 3600));
-  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
-  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-  const seconds = Math.floor(uptimeSeconds % 60);
 
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-};
-const uptime = getUptime();
+// Bot Process Time
+const uptime = process.uptime();
+const day = Math.floor(uptime / (24 * 3600)); // Calculate days
+const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
+const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
+const seconds = Math.floor(uptime % 60); // Calculate seconds
+
 // Uptime
 const uptimeMessage = `*I am alive since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
 const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
@@ -96,7 +93,6 @@ const test = async (m, Matrix) => {
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
-┃❍ *ᴜᴘᴛɪᴍᴇ:* _${uptime}_
 ┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
 ┃❍ *ᴜsᴇʀ:* _${m.pushName}_
 ┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
