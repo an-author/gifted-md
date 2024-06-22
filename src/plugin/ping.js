@@ -15,7 +15,7 @@ const ping = async (m, sock) => {
 }
 
 const typeWriterEffect = async (m, sock, key, message) => {
-  const typingSpeed = 300;
+  const typingSpeed = 600;
   const words = message.split(' ');
   let i = 0;
 
