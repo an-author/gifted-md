@@ -1,23 +1,19 @@
+# Don't change this [ /GiftedTech/ ] name!
+# Change from below link, else bot wil not work!
 
-FROM node:lts-buster
 
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
+FROM node:20
 
-COPY package.json .
+RUN git clone https://github.com/ac-ee/V5 /root/Gifted
 
-RUN npm i && npm i -g qrcode-terminal
+# Clear npm cache and remove node_modules directories
+RUN npm cache clean --force
+RUN rm -rf /root/Gifted/node_modules
 
-COPY . .
+# Install dependencies
+WORKDIR /root/Gifted
+RUN npm install
 
+# Add additional Steps To Run...
 EXPOSE 5000
-
-CMD ["npm", "start"]
-
-
-
+CMD ["npm","start" ]
