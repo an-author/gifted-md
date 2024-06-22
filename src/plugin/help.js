@@ -44,7 +44,7 @@ const xdate = moment.tz("Africa/Nairobi").format("DD/MM/YYYY");
 const time2 = moment().tz("Africa/Nairobi").format("HH:mm:ss");
 let pushwish = "";
 
-if (time2 < "05:00:00") {
+if (time2 < "04:00:00") {
   pushwish = `Good Morning 🌄`;
 } else if (time2 < "11:00:00") {
   pushwish = `Good Morning 🌄`;
@@ -120,12 +120,11 @@ const test = async (m, Matrix) => {
                       {
                        "header":"",
                        "title":"🔰 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
-                       "description":"ɢɪғᴛᴇᴅ-ᴍᴅ ᴀʟʟ ᴍᴇɴᴜ",
+                       "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀʟʟ ᴍᴇɴᴜ",
                        "id":"View All Menu"
                       },
                       {
                         "header":"",
-                        "highlight_label":"𝐌𝐄𝐍𝐔",
                         "title":"⬇️ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
@@ -199,7 +198,7 @@ const test = async (m, Matrix) => {
   }
       if (selectedId == "View All Menu") {
         const mode = process.env.MODE;
-        const str = `hey ${m.pushName} ${pushwish}
+        const str = `${pushwish} ${m.pushName}
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
 ┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
@@ -218,7 +217,7 @@ ${readmore}
 ┃◇ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
 ┃◇ ${prefix}𝙼𝙿3
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴀɪ* ❯━╮
 ┃◇ ${prefix}𝙰𝚒
 ┃◇ ${prefix}𝙱𝚞𝚐
@@ -228,7 +227,7 @@ ${readmore}
 ┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
 ┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒 
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴛᴏᴏʟs* ❯━╮
 ┃◇ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
 ┃◇ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
@@ -236,7 +235,7 @@ ${readmore}
 ┃◇ ${prefix}𝚃𝚛𝚝
 ┃◇ ${prefix}𝚃𝚝𝚜
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ɢʀᴏᴜᴘ* ❯━╮
 ┃◇ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
 ┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
@@ -255,7 +254,7 @@ ${readmore}
 ┃◇ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
 ┃◇ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚙𝚔 
 ┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
@@ -273,7 +272,7 @@ ${readmore}
 ┃◇ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
 ┃◇ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *sᴇᴀʀᴄʜ* ❯━╮
 ┃◇ ${prefix}𝙿𝚕𝚊𝚢
 ┃◇ ${prefix}𝚈𝚝𝚜
@@ -287,7 +286,7 @@ ${readmore}
 ┃◇ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
 ┃◇ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴍᴀɪɴ* ❯━╮
 ┃◇ ${prefix}𝙿𝚒𝚗𝚐
 ┃◇ ${prefix}𝙰𝚕𝚒𝚟𝚎
@@ -295,7 +294,7 @@ ${readmore}
 ┃◇ ${prefix}𝙼𝚎𝚗𝚞
 ┃◇ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴏᴡɴᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙹𝚘𝚒𝚗
 ┃◇ ${prefix}𝙻𝚎𝚊𝚟𝚎
@@ -310,7 +309,7 @@ ${readmore}
 ┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
 ┃◇ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *sᴛᴀʟᴋᴇʀ* ❯━╮
 ┃◇ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
 ┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
@@ -325,7 +324,7 @@ ${readmore}
             },
             message: {
                 contactMessage: {
-                    displayName: `MATRIX-MD`,
+                    displayName: `GIFTED-MD-V5`,
                     vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
                         m.sender.split("@")[0]
                     }:${
@@ -352,7 +351,7 @@ ${readmore}
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀs* ❯━╮
 ┃◇ ${prefix}𝙰𝚙𝚔
 ┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
@@ -389,7 +388,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ɢʀᴏᴜᴘ* ❯━╮
 ┃◇ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
 ┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
@@ -427,7 +426,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴍᴀɪɴ* ❯━╮
 ┃◇ ${prefix}𝙿𝚒𝚗𝚐
 ┃◇ ${prefix}𝙰𝚕𝚒𝚟𝚎
@@ -454,7 +453,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴏᴡɴᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙹𝚘𝚒𝚗
 ┃◇ ${prefix}𝙻𝚎𝚊𝚟𝚎
@@ -490,7 +489,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *sᴇᴀʀᴄʜ* ❯━╮
 ┃◇ ${prefix}𝙿𝚕𝚊𝚢
 ┃◇ ${prefix}𝚈𝚝𝚜
@@ -522,7 +521,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *sᴛᴀʟᴋᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙽𝚘𝚠𝚊
 ┃◇ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
@@ -548,7 +547,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴛᴏᴏʟs* ❯━╮
 ┃◇ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
 ┃◇ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
@@ -576,7 +575,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴀɪ* ❯━╮
 ┃◇ ${prefix}𝙰𝚒
 ┃◇ ${prefix}𝙱𝚞𝚐
@@ -605,7 +604,7 @@ await Matrix.sendMessage(m.from, {
 │♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
 │♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴄᴏɴᴠᴇʀᴛᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿2
