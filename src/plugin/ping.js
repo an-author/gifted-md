@@ -7,7 +7,7 @@ const ping = async (m, sock) => {
     const { key } = await sock.sendMessage(m.from, { text: '*_ᴄʜᴇᴄᴋ..._*' }, { quoted: m });
     await m.React('🚀');
 
-    const text = `*_🔥⃝ɢɪғᴛᴇᴅ sᴘᴇᴇᴅ: ${new Date() - startTime} ms_*`;
+    const text = `*_ɢɪғᴛᴇᴅ sᴘᴇᴇᴅ: ${new Date() - startTime} ms_*`;
     await typeWriterEffect(m, sock, key, text);
 
     await m.React('⚡');
@@ -15,7 +15,7 @@ const ping = async (m, sock) => {
 }
 
 const typeWriterEffect = async (m, sock, key, message) => {
-  const typingSpeed = 300;
+  const typingSpeed = 350;
   const words = message.split(' ');
   let i = 0;
 
