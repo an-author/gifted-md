@@ -14,12 +14,7 @@ const gptResponse = async (m, Matrix) => {
     if (!text) return m.reply('Please provide a question.');
 
     try {
-      // Ensure m.React method exists
-      if (typeof m.React === 'function') {
-        await m.React('🕘');
-      } else {
-        console.warn('React method not available on m object');
-      }
+      await m.React('🕘');
 
       const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
@@ -27,48 +22,9 @@ const gptResponse = async (m, Matrix) => {
 
       if (result && result.answer) {
         const answer = result.answer;
-
+        
         // Check if the answer contains code
         const codeMatch = answer.match(/```([\s\S]*?)```/);
-
-        if (codeMatch) {
-          const code = codeMatch[1];
-
-          let msg = generateWAMessageFromContent(m.from, {
-            viewOnceMessage: {
-              message: {
-                messageContextInfo: {
-                  deviceListMetadata: {},
-                  deviceListMetadataVersion: 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.create({
-                  body: proto.Message.InteractiveMessage.Body.create({
-                    text: answer
-                  }),
-                  footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
-                  }),
-                  header: proto.Message.InteractiveMessage.Header.create({
-                    title: "",
-                    subtitle: "",
-                    hasMediaAttachment: false
-                  }),
-                  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                    buttons: [
-                      {
-                        name: "cta_copy",
-                        buttonParamsJson: JSON.stringify({
-                          display_text: "ᴄᴏᴘʏ ᴄᴏᴅᴇ",
-                          id: "copy_code",
-                          copy_code: code
-                        })
-                      }
-                    ]
-                  })
-                })
-              }
-            }
-          }, {});
 
           await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
             messageId: msg.key.id
@@ -77,18 +33,14 @@ const gptResponse = async (m, Matrix) => {
           await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
         }
 
-        if (typeof m.React === 'function') {
-          await m.React('✅');
-        }
+        await m.React('✅');
       } else {
         throw new Error('Invalid response from the GPT API.');
       }
     } catch (error) {
-      console.error('Error getting GPT response:', error);
+      console.error('Error getting GPT response:', error.message);
       m.reply('Error getting response from GPT.');
-      if (typeof m.React === 'function') {
-        await m.React('❌');
-      }
+      await m.React('❌');
     }
   }
 };
