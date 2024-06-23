@@ -25,11 +25,21 @@ const obfuscator = async (m, Matrix) => {
     stringArrayThreshold: 1
   });
 
-await Matrix.sendMessage(obfuscationResult.getObfuscatedCode());
+await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+            messageId: msg.key.id
+          });
+        } else {
+          await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
+        }
 
-  } catch (error) {
-      console.error('Error fetching flirt message:', error);
-      await Matrix.sendMessage(m.from, { text: "Failed to retrieve flirt message. Please try again later." });
+        await m.React('✅');
+      } else {
+        throw new Error('Invalid code for encryption.');
+      }
+    } catch (error) {
+      console.error('Error getting GPT response:', error.message);
+      m.reply('Error getting response from GPT.');
+      await m.React('❌');
     }
   }
 };
