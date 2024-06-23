@@ -89,7 +89,7 @@ const test = async (m, Matrix) => {
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
               text: `
-> *${pushwish}*
+> *${pushwish}* _${m.pushName}_
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
@@ -204,7 +204,7 @@ const test = async (m, Matrix) => {
       if (selectedId == "View All Menu") {
         const mode = process.env.MODE;
         const str = `
-> *${pushwish}*
+> *${pushwish}* _${m.pushName}_
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
@@ -264,7 +264,7 @@ ${readmore}
 ┃◇ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
 ┃◇ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
 ╰━━━━━━━━━━━━━━━⊷
-
+${readmore}
 ╭━❮ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚙𝚔 
 ┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
@@ -337,7 +337,7 @@ ${readmore}
             },
             message: {
                 contactMessage: {
-                    displayName: `GIFTED-MD-V5`,
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
                     vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
                         m.sender.split("@")[0]
                     }:${
@@ -360,10 +360,18 @@ ${readmore}
 }
    if ( selectedId == "Downloader Menu") {
      const str = `
-╭───❮ *sᴇʀᴠᴇʀ ɪɴғᴏ* ❯
-│♧ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│♧ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━⊷
+> *${pushwish}* _${m.pushName}_
+╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
+┃❍ *ᴍᴏᴅᴇ:* _${mode}_
+┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴜsᴇʀ:* _${m.pushName}_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
+┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
+┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
+╰═════════════════⊷
 ${readmore}
 ╭━❮ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀs* ❯━╮
 ┃◇ ${prefix}𝙰𝚙𝚔
