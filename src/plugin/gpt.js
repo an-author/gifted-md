@@ -1,7 +1,6 @@
 import axios from 'axios';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-const gptApiBaseUrl = 'https://aemt.me/gpt4?text=';
 
 const gptResponse = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -9,7 +8,7 @@ const gptResponse = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['gpt', 'gpt4', 'ai'];
+  const validCommands = ['gpt', 'gptai', 'ai'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a question.');
@@ -17,7 +16,7 @@ const gptResponse = async (m, Matrix) => {
     try {
       await m.React('🕘');
 
-      const apiUrl = `${gptApiBaseUrl}${encodeURIComponent(text)}`;
+      const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
       const result = response.data;
 
