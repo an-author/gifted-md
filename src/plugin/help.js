@@ -209,14 +209,13 @@ const test = async (m, Matrix) => {
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
 ┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
-┃❍ *ᴜsᴇʀ:* _${m.pushName}_
 ┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
 ┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
 ┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
 ┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
-> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━❮ *ᴄᴏɴᴠᴇʀᴛᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿
@@ -373,7 +372,8 @@ ${readmore}
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
 ${readmore}
-╭━❮ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀs* ❯━╮
+> *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔*
+╭━━━━━━━━━━━━━━━⊷
 ┃◇ ${prefix}𝙰𝚙𝚔
 ┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
 ┃◇ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
@@ -389,8 +389,29 @@ ${readmore}
 ┃◇ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
 ┃◇ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
 ┃◇ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -399,9 +420,9 @@ await Matrix.sendMessage(m.from, {
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if ( selectedId == "Group Menu") {
      const str = `
