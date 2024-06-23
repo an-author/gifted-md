@@ -14,10 +14,10 @@ const autoreadCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_READ = true;
-      responseMessage = "Auto-Read has been enabled.";
+      responseMessage = "Auto-Read has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_READ = false;
-      responseMessage = "Auto-Read has been disabled.";
+      responseMessage = "Auto-Read has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autoread on`: Enable Auto-Read\n- `autoread off`: Disable Auto-Read";
     }
