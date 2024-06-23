@@ -195,7 +195,7 @@ const playcommand = async (m, Matrix) => {
                 text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐒𝐎𝐍𝐆 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑\n\n*ᴛɪᴛᴛʟᴇ:* ${currentResult.title}\n*ᴀʀᴛɪsᴛ:* ${currentResult.author.name}\n*ᴠɪᴇᴡs:* ${currentResult.views}\n*ᴅᴜʀᴀᴛɪᴏɴ:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "> ©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
+                text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                  ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/bf3a4cac5fc11b3199b56.jpg` } }, { upload: Matrix.waUploadToServer })),
@@ -250,7 +250,7 @@ const playcommand = async (m, Matrix) => {
           } else if (type === 'audiodoc') {
             content = { document: finalMediaBuffer, mimetype: 'audio/mp3', fileName: `${selectedMedia.title}.mp3` };
           } else if (type === 'videodoc') {
-            content = { document: finalMediaBuffer, mimetype: 'video/mp4', fileName: `${selectedMedia.title}.mp4`, caption: `*Downloaded Video:* ${selectedMedia.title}` };
+            content = { document: finalMediaBuffer, mimetype: 'video/mp4', fileName: `${selectedMedia.title}.mp4`, caption: `*𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 𝐕𝐢𝐝𝐞𝐨:*\n ${selectedMedia.title}` };
           }
 
           await Matrix.sendMessage(m.from, content, { quoted: m });
