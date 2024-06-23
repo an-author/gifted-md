@@ -106,6 +106,9 @@ const test = async (m, Matrix) => {
               text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
               text: "> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*"
             }),
+            footer: proto.Message.InteractiveMessage.Footer.create({
+              text: "> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*"
+            }),
             header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image : fs.readFileSync('./src/gifted.jpg')}, { upload: Matrix.waUploadToServer})), 
                   title: ``,
