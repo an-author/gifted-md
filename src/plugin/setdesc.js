@@ -6,7 +6,7 @@ const setDescription = async (m, gss) => {
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    const validCommands = ['setdescription', 'setdesc', 'setgroupbio'];
+    const validCommands = ['setdescription', 'setdesc', 'gdesc', 'setgroupbio'];
 
     if (!validCommands.includes(cmd)) return;
 
