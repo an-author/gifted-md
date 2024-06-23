@@ -14,10 +14,10 @@ const autotypingCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_TYPING = true;
-      responseMessage = "Auto-Typing has been enabled.";
+      responseMessage = "Auto-Typing has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_TYPING = false;
-      responseMessage = "Auto-Typing has been disabled.";
+      responseMessage = "Auto-Typing has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autotyping on`: Enable Auto-Typing\n- `autotyping off`: Disable Auto-Typing";
     }
