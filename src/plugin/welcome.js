@@ -20,10 +20,10 @@ const gcEvent = async (m, Matrix) => {
 
     if (text === 'on') {
       config.WELCOME = true;
-      responseMessage = "WELCOME & LEFT message has been enabled.";
+      responseMessage = "WELCOME & LEFT message has been Enabled.";
     } else if (text === 'off') {
       config.WELCOME = false;
-      responseMessage = "WELCOME & LEFT message has been disabled.";
+      responseMessage = "WELCOME & LEFT message has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `WELCOME on`: Enable WELCOME & LEFT message\n- `WELCOME off`: Disable WELCOME & LEFT message";
     }
