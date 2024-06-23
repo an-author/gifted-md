@@ -1,6 +1,7 @@
 import axios from 'axios';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
+const gptApiBaseUrl = 'https://aemt.me/gpt4?text=';
 
 const gptResponse = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -8,7 +9,7 @@ const gptResponse = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['gpt', 'gptai', 'ai'];
+  const validCommands = ['gpt', 'ai'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a question.');
@@ -16,7 +17,7 @@ const gptResponse = async (m, Matrix) => {
     try {
       await m.React('🕘');
 
-      const apiUrl = `${encodeURIComponent(text)}`;
+      const apiUrl = `${gptApiBaseUrl}${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
       const result = response.data;
 
@@ -41,7 +42,7 @@ const gptResponse = async (m, Matrix) => {
                     text: answer
                   }),
                   footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
+                    text: "> > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                   }),
                   header: proto.Message.InteractiveMessage.Header.create({
                     title: "",
@@ -53,7 +54,7 @@ const gptResponse = async (m, Matrix) => {
                       {
                         name: "cta_copy",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "ᴄᴏᴘʏ ᴄᴏᴅᴇ",
+                          display_text: "Copy Your Code",
                           id: "copy_code",
                           copy_code: code
                         })
