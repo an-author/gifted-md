@@ -29,7 +29,7 @@ const tourl = async (m, gss) => {
 
     fs.writeFileSync(localFilePath, media);
 
-    m.reply('Processing...');
+    m.reply('*Please Wait, Processing...*');
 
     removeBackgroundFromImageFile({
       path: localFilePath,
