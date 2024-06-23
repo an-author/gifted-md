@@ -129,57 +129,57 @@ const test = async (m, Matrix) => {
                        "id":"All Menu"
                       },
                       {
-                        "header":"",
+                        "header":"MENU LIST",
                         "title":"⬇️ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
                       },
                       {
-                        "header":"",
+                        "header":"MENU LIST",
                         "title":"👨‍👨‍👧‍👧𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Group Menu"
                       },
                       {
                         "header":"",
                         "title":"👨‍🔧 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Tools Menu"
                       },
                       {
                         "header":"",
-                        "title":"🗿 𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ʙᴏᴛ ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅs",
+                        "title":"🗿 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 𝐌𝐄𝐍𝐔",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ɢᴇɴᴇʀᴀʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"General Menu"
                       },
                      {
                         "header":"",
                         "title":"👨‍💻 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Owner Menu"
                       },
                       {
                         "header":"",
                         "title":"✨ 𝐀𝐈 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Ai Menu"
                       },
                       {
                         "header":"",
                         "title":"🔍𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Search Menu"
                       },
                       {
                         "header":"",
                         "title":"🧚‍♂️ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ sᴛᴀʟᴋ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ sᴛᴀʟᴋᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Stalker Menu"
                       },
                       {
                         "header":"",
                         "title":"🥏 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔",
-                        "description":"sʜᴏᴡ ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Converter Menu"
                       }
                     ]}
@@ -816,13 +816,13 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐈 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃┃◇ ${prefix}𝙰𝚒
-┃┃◇ ${prefix}𝙱𝚞𝚐
-┃┃◇ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
-┃┃◇ ${prefix}𝙶𝚙𝚝
-┃┃◇ ${prefix}𝙳𝚊𝚕𝚕𝚎
-┃┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
-┃┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
+┃◇ ${prefix}𝙰𝚒
+┃◇ ${prefix}𝙱𝚞𝚐
+┃◇ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
+┃◇ ${prefix}𝙶𝚙𝚝
+┃◇ ${prefix}𝙳𝚊𝚕𝚕𝚎
+┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
+┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -876,13 +876,13 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇┃ ${prefix}𝙰𝚃𝚃𝙿
-┃◇┃ ${prefix}𝙰𝚃𝚃𝙿2
-┃◇┃ ${prefix}𝙰𝚃𝚃𝙿3
-┃◇┃ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
-┃◇┃ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
-┃◇┃ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
-┃◇┃ ${prefix}𝙼𝙿3
+┃◇ ${prefix}𝙰𝚃𝚃𝙿
+┃◇ ${prefix}𝙰𝚃𝚃𝙿2
+┃◇ ${prefix}𝙰𝚃𝚃𝙿3
+┃◇ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
+┃◇ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
+┃◇ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
+┃◇ ${prefix}𝙼𝙿3
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
