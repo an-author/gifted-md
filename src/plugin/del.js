@@ -29,7 +29,7 @@ const deleteMessage = async (m, gss) => {
     }
   } catch (error) {
     console.error('Error deleting message:', error);
-    m.reply('An error occurred while trying to delete the message.');
+    m.reply('An error occurred while trying to delete the Message.');
   }
 };
 
