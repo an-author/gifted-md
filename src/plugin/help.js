@@ -876,16 +876,20 @@ ${readmore}
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
-> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*`
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`
          
        await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./src/ethix.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
-    isForwarded: false,
+    isForwarded: true,
   }
-},
-
+}, {
+  quoted: m
+});
+}
+};
 export default test;
