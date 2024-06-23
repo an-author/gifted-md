@@ -22,7 +22,6 @@ const flirting = async (m, Matrix) => {
       const json = await response.json();
       const result = json.result;
       await Matrix.sendMessage(m.from, { text: result, mentions: [m.sender] }, { quoted: m });
-      await m.React('✅');
     } catch (error) {
       console.error('Error fetching time:', error);
       await Matrix.sendMessage(m.from, { text: "Failed to retrieve flirt message. Please try again later." });
