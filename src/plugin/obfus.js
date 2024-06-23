@@ -26,7 +26,7 @@ const {jidDecode}=require("@whiskeysockets/baileys")
     splitStrings: true,
     stringArrayThreshold: 1
   });
-const result = (obfuscationResult.getObfuscatedCode());
+
       let msg = generateWAMessageFromContent(m.from, {
             viewOnceMessage: {
               message: {
@@ -67,7 +67,7 @@ await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
             messageId: msg.key.id
           });
         } else {
-          await Matrix.sendMessage(m.from, { text: result }, { quoted: m });
+          await Matrix.sendMessage(obfuscationResult.getObfuscatedCode());
         }
 
         await m.React('✅');
