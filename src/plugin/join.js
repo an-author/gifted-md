@@ -10,7 +10,7 @@ const joinGroup = async (m, gss) => {
     const text = m.body.slice(prefix.length + cmd.length).trim();
     const args = text.split(' ');
 
-    const validCommands = ['join'];
+    const validCommands = ['join', 'joingc', 'joinchat', 'joingroup'];
 
     if (!validCommands.includes(cmd)) return;
     
