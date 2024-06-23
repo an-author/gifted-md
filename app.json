@@ -20,7 +20,7 @@
     "AUTO_STATUS_SEEN": {
       "description": "Put true if you want bot to view status",
       "required": false,
-      "value": ""
+      "value": "true"
     },
     "AUTO_READ": {
       "description": "Put true if you want bot to read message",
@@ -50,9 +50,15 @@
     "REJECT_CALL": {
       "description": "Put true if you want to reject call",
       "required": false,
-      "value": ""
+      "value": "true"
     }
     },
+    "formation": {
+                "web": {
+                        "quantity": 1,
+                        "size": "Standard-2X"
+                }
+        },
     "addons": [{ "plan": "heroku-postgresql:essential-1" }],
     "buildpacks": [
     {
