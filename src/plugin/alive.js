@@ -29,7 +29,7 @@ const getPlatformName = () => {
 
 // Letter-by-letter typewriter effect function
 const typeWriterEffect = async (m, Matrix, key, message) => {
-  const typingSpeed = 600; // Speed in milliseconds
+  const typingSpeed = 150; // Speed in milliseconds
   let i = 0;
 
   const typewriterInterval = setInterval(async () => {
