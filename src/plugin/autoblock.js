@@ -14,10 +14,10 @@ const autoblockCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_BLOCK = true;
-      responseMessage = "Auto-Block has been enabled.";
+      responseMessage = "Auto-Block has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_BLOCK = false;
-      responseMessage = "Auto-Block has been disabled.";
+      responseMessage = "Auto-Block has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autoblock on`: Enable Auto-Block\n- `autoblock off`: Disable Auto-Block";
     }
