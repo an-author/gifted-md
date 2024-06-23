@@ -4,7 +4,7 @@ const linkgc = async (m, gss) => {
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    const validCommands = ['linkgc', 'grouplink'];
+    const validCommands = ['linkgc', 'invite', 'link', 'grouplink'];
 
     if (!validCommands.includes(cmd)) return;
 
@@ -32,3 +32,6 @@ const linkgc = async (m, gss) => {
 };
 
 export default linkgc;
+
+
+
