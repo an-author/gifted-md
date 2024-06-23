@@ -169,7 +169,7 @@ Matrix.ev.on("connection.update", async update => {
     if (connection === "open") {
         if (initialConnection) {
             console.log(chalk.green("✅WHATSAPP LOGIN SUCCESSFUL, BOT IS ACTIVE"));
-            Matrix.sendMessage(Matrix.user.id, { text: ` ```𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃\n\n𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞  : PostegreSql\n𝐎𝐰𝐧𝐞𝐫    : t.me/giftedmd\n𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥𝐬  : youtube.com/@giftedtechnexus\n𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥 : https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l``` ` });
+            Matrix.sendMessage(Matrix.user.id, { text: `𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃\n\n𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞  : Cpanel \n𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦: Whatsapp \n𝐎𝐰𝐧𝐞𝐫    : t.me/giftedmd\n𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥𝐬  : youtube.com/@giftedtechnexus\n𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥 : https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l\n\n> 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇` });
             initialConnection = false;
         } else {
             console.log(chalk.blue("♻️ Connection reestablished after restart."));
