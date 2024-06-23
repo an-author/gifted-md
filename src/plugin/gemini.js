@@ -12,7 +12,7 @@ const geminiResponse = async (m, Matrix) => {
   const genAI = new GoogleGenerativeAI(apiKey);
 
 
-  const validCommands = ['gemini', 'vision'];
+  const validCommands = ['gemini', 'gglegemini', 'vision'];
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
