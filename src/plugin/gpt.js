@@ -18,7 +18,7 @@ const gptResponse = async (m, Matrix) => {
 
       const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
-      const result = response.data;
+      const result = response.data.result;
 
       if (result && result.answer) {
         const answer = result.answer;
@@ -27,7 +27,7 @@ const gptResponse = async (m, Matrix) => {
             messageId: msg.key.id
           });
         } else {
-          await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
+          await Matrix.sendMessage(m.from, { text: result }, { quoted: m });
         }
 
         await m.React('✅');
