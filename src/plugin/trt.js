@@ -10,7 +10,7 @@ const translateCommand = async (m, sock, config) => {
 
  
 
-  const validCommands = ['translate', 'trt'];
+  const validCommands = ['translate', 'trans', 'transl', 'trt'];
 
    if (validCommands.includes(cmd)) {
     const targetLang = args[0];
