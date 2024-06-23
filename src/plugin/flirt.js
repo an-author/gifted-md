@@ -13,7 +13,7 @@ const flirting = async (m, Matrix) => {
 
       const response = await nodeFetch(`https://shizoapi.onrender.com/api/texts/flirt?apikey=${apiKey}`);
       if (!response.ok) {
-        throw new Error(`Failed to fetch flirt message: ${await response.text()}`);
+        throw new Error(`Failed to fetch flirting Message: ${await response.text()}`);
       }
 
       const json = await response.json();
