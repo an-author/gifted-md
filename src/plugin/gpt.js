@@ -14,7 +14,12 @@ const gptResponse = async (m, Matrix) => {
     if (!text) return m.reply('Please provide a question.');
 
     try {
-      await m.React('🕘');
+      // Ensure m.React method exists
+      if (typeof m.React === 'function') {
+        await m.React('🕘');
+      } else {
+        console.warn('React method not available on m object');
+      }
 
       const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
@@ -22,13 +27,13 @@ const gptResponse = async (m, Matrix) => {
 
       if (result && result.answer) {
         const answer = result.answer;
-        
+
         // Check if the answer contains code
         const codeMatch = answer.match(/```([\s\S]*?)```/);
-        
+
         if (codeMatch) {
           const code = codeMatch[1];
-          
+
           let msg = generateWAMessageFromContent(m.from, {
             viewOnceMessage: {
               message: {
@@ -72,14 +77,18 @@ const gptResponse = async (m, Matrix) => {
           await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
         }
 
-        await m.React('✅');
+        if (typeof m.React === 'function') {
+          await m.React('✅');
+        }
       } else {
         throw new Error('Invalid response from the GPT API.');
       }
     } catch (error) {
-      console.error('Error getting GPT response:', error.message);
+      console.error('Error getting GPT response:', error);
       m.reply('Error getting response from GPT.');
-      await m.React('❌');
+      if (typeof m.React === 'function') {
+        await m.React('❌');
+      }
     }
   }
 };
