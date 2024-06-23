@@ -14,10 +14,10 @@ const autoreadCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_REACT = true;
-      responseMessage = "AUTO_REACT has been enabled.";
+      responseMessage = "AUTO_REACT has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_REACT = false;
-      responseMessage = "AUTO_REACT has been disabled.";
+      responseMessage = "AUTO_REACT has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autoreact on`: Enable Auto-React\n- `autoreact off`: Disable Auto-React";
     }
