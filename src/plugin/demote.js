@@ -44,8 +44,11 @@ const demote = async (m, gss) => {
       .catch(() => m.reply('Failed to demote user(s) in the group.'));
   } catch (error) {
     console.error('Error:', error);
-    m.reply('An error occurred while processing the command.');
+    m.reply('An error Occurred while processing the command.');
   }
 };
 
 export default demote;
+
+
+    
