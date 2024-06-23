@@ -1,6 +1,6 @@
 import nodeFetch from 'node-fetch';
-const JavaScriptObfuscator = require('javascript-obfuscator')
-const {jidDecode}=require("@whiskeysockets/baileys")
+import JavaScriptObfuscator from 'javascript-obfuscator';
+import jidDecode from "@whiskeysockets/baileys";
 
 
   const obfuscator = async (m, Matrix) => {
@@ -29,46 +29,10 @@ const {jidDecode}=require("@whiskeysockets/baileys")
 
       let msg = generateWAMessageFromContent(m.from, {
             viewOnceMessage: {
-              message: {
-                messageContextInfo: {
-                  deviceListMetadata: {},
-                  deviceListMetadataVersion: 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.create({
-                  body: proto.Message.InteractiveMessage.Body.create({
-                    text: answer
-                  }),
-                  footer: proto.Message.InteractiveMessage.Footer.create({
-                    text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
-                  }),
-                  header: proto.Message.InteractiveMessage.Header.create({
-                    title: "",
-                    subtitle: "",
-                    hasMediaAttachment: false
-                  }),
-                  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                    buttons: [
-                      {
-                        name: "cta_copy",
-                        buttonParamsJson: JSON.stringify({
-                          display_text: "ᴄᴏᴘʏ ᴄᴏᴅᴇ",
-                          id: "copy_code",
-                          copy_code: code
-                        })
-                      }
-                    ]
-                  })
-                })
-              }
-            }
-          }, {});
+            
       
-await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-            messageId: msg.key.id
-          });
-        } else {
+
           await Matrix.sendMessage(obfuscationResult.getObfuscatedCode());
-        }
 
         await m.React('✅');
       } else {
