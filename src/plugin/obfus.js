@@ -9,12 +9,11 @@ const obfuscator = async (m, Matrix) => {
   const validCommands = ['obfus', 'obf', 'enc', 'encrypt', 'obfuscate'];
 
   if (validCommands.includes(cmd)) {
+    if (!text) return m.reply('Please provide a javascript code to encrypt.');
+
     try {
-  
-let code = arg.join(' ')
-
-  if (!arg[0]) { repondre('After the command, provide a valid JavaScript code for encryption');return}; 
-
+      await m.React('🧿');
+      
   const obfuscationResult = JavaScriptObfuscator.obfuscate(code, {
     compact: false,
     controlFlowFlattening: true,
