@@ -7,14 +7,10 @@ const flirting = async (m, Matrix) => {
 
   const validCommands = ['time', 'timenow'];
 
-      if (validCommands.includes(cmd)) {
-    if (!text) return m.reply('Please provide a countrys short code eg _.time KE_.');
-
-    try {
-      await m.React('🕘');
 
 
-      const response = await nodeFetch(`https://levanter.onrender.com/time?code=${text}`);
+
+      const response = await nodeFetch(`https://levanter.onrender.com/time?code=${encodeURIComponent(text)}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch time: ${await response.text()}`);
       }
