@@ -37,6 +37,7 @@
     "latest": "^0.2.0",
     "instagram-user": "^2.0.1",
     "jimp": "^0.16.13",
+    "javascript-obfuscator": "^4.1.0",
     "jpeg-js": "^0.4.4",
     "jsqr": "^1.4.0",
     "libphonenumber": "^0.0.10",
@@ -61,4 +62,4 @@
     "yt-search": "^2.11.0",
     "ytdl-core": "^4.11.5"
   }
-}
+  }
