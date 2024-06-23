@@ -69,7 +69,7 @@ const gptResponse = async (m, Matrix) => {
             messageId: msg.key.id
           });
         } else {
-          await Matrix.sendMessage(m.from, { text: result }, { quoted: m });
+          await Matrix.sendMessage(m.from, { text: response.data }, { quoted: m });
         }
 
         await m.React('✅');
