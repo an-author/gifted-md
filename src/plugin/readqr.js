@@ -13,7 +13,7 @@ const readqr = async (m, gss) => {
     if (!validCommands.includes(cmd)) return;
 
     if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
-      return m.reply('Please quote an image containing a QR code with a caption.');
+      return m.reply('Please quote an image containing a QR code with a Caption.');
     }
 
     const buffer = await m.quoted.download();
