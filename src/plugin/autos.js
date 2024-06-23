@@ -9,7 +9,7 @@ const anticallCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim().toLowerCase();
   
-  const validCommands = ['autostatus', 'autosview', 'autostatusview'];
+  const validCommands = ['autostatus', 'viewstatus', 'status', 'autosview', 'autostatusview'];
 
  if (validCommands.includes(cmd)){
    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
@@ -17,10 +17,10 @@ const anticallCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_STATUS_SEEN = true;
-      responseMessage = "AUTO STATUS SEEN has been enabled.";
+      responseMessage = "AUTO STATUS SEEN has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_STATUS_SEEN = false;
-      responseMessage = "AUTO STATUS SEEN has been disabled.";
+      responseMessage = "AUTO STATUS SEEN has been Disabled.";
     } else {
       responseMessage = `Usage:\n- *${prefix + cmd} ON:* Enable AUTO STATUS VIEW\n- *${prefix + cmd} off:* Disable AUTO STATUS SEEN`;
     }
