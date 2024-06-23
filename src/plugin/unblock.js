@@ -18,7 +18,7 @@ const unblock = async (m, gss) => {
     let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
     
     await gss.updateBlockStatus(users, 'unblock')
-      .then((res) => m.reply(`Unblocked ${users.split('@')[0]} successfully.`))
+      .then((res) => m.reply(`Unblocked ${users.split('@')[0]} Successfully.`))
       .catch((err) => m.reply(`Failed to unblock user: ${err}`));
   } catch (error) {
     console.error('Error:', error);
