@@ -14,10 +14,10 @@ const autorecordingCommand = async (m, Matrix) => {
 
     if (text === 'on') {
       config.AUTO_RECORDING = true;
-      responseMessage = "Auto-Recording has been enabled.";
+      responseMessage = "Auto-Recording has been Enabled.";
     } else if (text === 'off') {
       config.AUTO_RECORDING = false;
-      responseMessage = "Auto-Recording has been disabled.";
+      responseMessage = "Auto-Recording has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autorecording on`: Enable Auto-Recording\n- `autorecording off`: Disable Auto-Recording";
     }
