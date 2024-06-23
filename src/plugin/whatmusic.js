@@ -55,8 +55,11 @@ const shazam = async (m, gss) => {
     }
   } catch (error) {
     console.error('Error:', error);
-    m.reply('An Error Occurred While Processing The Command.');
+    m.reply('An Error Occurred While Processing Your Request.');
   }
 };
 
 export default shazam;
+
+
+        
