@@ -371,8 +371,8 @@ ${readmore}
 ┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
-${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔*
+${readmore}
 ╭━━━━━━━━━━━━━━━⊷
 ┃◇ ${prefix}𝙰𝚙𝚔
 ┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
@@ -448,19 +448,39 @@ ${readmore}
 ┃◇ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
 ┃◇ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
 ╰━━━━━━━━━━━━━━━⊷
-     `
-     await Matrix.sendMessage(m.from, {
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
-    isForwarded: true,
+    isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if (selectedId == "Main Menu") {
      const str =`
@@ -475,8 +495,29 @@ ${readmore}
 ┃◇ ${prefix}𝙾𝚠𝚗𝚎𝚛
 ┃◇ ${prefix}𝙼𝚎𝚗𝚞
 ┃◇ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -485,9 +526,9 @@ await Matrix.sendMessage(m.from, {
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if (selectedId == "Owner Menu") {
      const str = `
@@ -511,17 +552,38 @@ ${readmore}
 ┃◇ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
 ┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
 ┃◇ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
-    isForwarded: true,
+    isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
 }
    
@@ -544,19 +606,40 @@ ${readmore}
 ┃◇ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
 ┃◇ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
 ┃◇ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
     forwardingScore: 9999,
-    isForwarded:false,
+    isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    if (selectedId == "Stalk Menu") {
      const str =`
 ╭───❮ *sᴇʀᴠᴇʀ ɪɴғᴏ* ❯
@@ -569,8 +652,29 @@ ${readmore}
 ┃◇ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
 ┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
 ┃◇ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -579,9 +683,9 @@ await Matrix.sendMessage(m.from, {
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if (selectedId == "Tool Menu") {
      const str =`
@@ -597,8 +701,29 @@ ${readmore}
 ┃◇ ${prefix}𝙸𝚗𝚏𝚘
 ┃◇ ${prefix}𝚃𝚛𝚝
 ┃◇ ${prefix}𝚃𝚝𝚜
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -607,9 +732,9 @@ await Matrix.sendMessage(m.from, {
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if (selectedId == "Ai Menu") {
      const str =`
@@ -626,8 +751,29 @@ ${readmore}
 ┃◇ ${prefix}𝙳𝚊𝚕𝚕𝚎
 ┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
 ┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
-╰━━━━━━━━━━━━━━━⊷`
-await Matrix.sendMessage(m.from, {
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -636,9 +782,9 @@ await Matrix.sendMessage(m.from, {
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
+   }
    
    if (selectedId == "Converter Menu") {
      const str =`
@@ -656,8 +802,28 @@ ${readmore}
 ┃◇ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
 ┃◇ ${prefix}𝙼𝙿3
 ╰━━━━━━━━━━━━━━━⊷
-     `
-     await Matrix.sendMessage(m.from, {
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
   image: fs.readFileSync('./src/gifted.jpg'), 
   caption: str, 
   contextInfo: {
@@ -666,9 +832,8 @@ ${readmore}
     isForwarded: false,
   }
 }, {
-  quoted: m
+  quoted: fgg
 });
-}
-};
+   }
 
 export default test;
