@@ -27,7 +27,7 @@ const setProfilePictureGroup = async (m, gss) => {
 
     try {
       const media = await m.quoted.download(); // Download the media from the quoted message
-      if (!media) throw new Error('Failed to download media.');
+      if (!media) throw new Error('Failed to download Media.');
 
       const filePath = `./${Date.now()}.png`;
       await writeFile(filePath, media);
@@ -49,7 +49,7 @@ const setProfilePictureGroup = async (m, gss) => {
             content: img
           }]
         });
-        m.reply('Profile picture updated successfully.');
+        m.reply('Profile picture Updated Successfully.');
       } catch (err) {
         throw err;
       } finally {
