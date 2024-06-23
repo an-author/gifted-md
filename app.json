@@ -1,10 +1,11 @@
 {
   "name": "gifted-md@v5.0.0",
-  "description": "A Multi Device Whatsapp bot.",
-  "keywords": [
-    "whatsapp bot"
-  ],
+  "description": "I am Gifted-Md Whatsapp MultiDevice Whatsapp Bot built in NodeJs to make experience better",
+  "website": "https://web.giftedtechnexus.co.ke",
   "repository": "https://github.com/mouricedevs/gifted-md",
+  "logo": "https://telegra.ph/file/a202f454c9532c3f5b7f8.jpg",
+  "keywords": ["gifted-md", "giftedtech", "Gifted-Md"],
+  "success_url": "/",
   "stack": "container",
   "env": { 
       "SESSION_ID": {
@@ -45,7 +46,7 @@
     "AUTO_BLOCK": {
       "description": "Put true if you want bot to auto block only 212 numbers",
       "required": false,
-      "value": ""
+      "value": "true"
     },
     "REJECT_CALL": {
       "description": "Put true if you want to reject call",
@@ -61,7 +62,7 @@
         },
     "addons": [{ "plan": "heroku-postgresql:essential-1" }],
     "buildpacks": [
-    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest"},
+    {"url": "https://github.com/heroku/heroku-buildpack-nodejs#latest"},
     {"url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"},
     {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"},
     {"url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"}
