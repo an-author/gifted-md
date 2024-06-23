@@ -16,7 +16,7 @@ const gptResponse = async (m, Matrix) => {
     try {
       await m.React('🕘');
 
-      const apiUrl = `https://aemt.me/gpt4?text=${text}`;
+      const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl);
       const result = response.data;
 
@@ -25,12 +25,51 @@ const gptResponse = async (m, Matrix) => {
         
         // Check if the answer contains code
         const codeMatch = answer.match(/```([\s\S]*?)```/);
+        
+        if (codeMatch) {
+          const code = codeMatch[1];
+          
+          let msg = generateWAMessageFromContent(m.from, {
+            viewOnceMessage: {
+              message: {
+                messageContextInfo: {
+                  deviceListMetadata: {},
+                  deviceListMetadataVersion: 2
+                },
+                interactiveMessage: proto.Message.InteractiveMessage.create({
+                  body: proto.Message.InteractiveMessage.Body.create({
+                    text: answer
+                  }),
+                  footer: proto.Message.InteractiveMessage.Footer.create({
+                    text: "> *© ɢɪғᴛᴇᴅ-ᴍᴅ ᴠᴇʀsɪᴏɴ5*"
+                  }),
+                  header: proto.Message.InteractiveMessage.Header.create({
+                    title: "",
+                    subtitle: "",
+                    hasMediaAttachment: false
+                  }),
+                  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                    buttons: [
+                      {
+                        name: "cta_copy",
+                        buttonParamsJson: JSON.stringify({
+                          display_text: "ᴄᴏᴘʏ ᴄᴏᴅᴇ",
+                          id: "copy_code",
+                          copy_code: code
+                        })
+                      }
+                    ]
+                  })
+                })
+              }
+            }
+          }, {});
 
           await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
             messageId: msg.key.id
           });
         } else {
-          await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
+          await Matrix.sendMessage(m.from, { text: result }, { quoted: m });
         }
 
         await m.React('✅');
