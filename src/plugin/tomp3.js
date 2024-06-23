@@ -6,7 +6,7 @@ const tomp3 = async (m, gss) => {
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    const validCommands = ['tomp3', 'mp3'];
+    const validCommands = ['tomp3', 'tomusic', 'mp3'];
 
     if (!validCommands.includes(cmd)) return;
 
