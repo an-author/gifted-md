@@ -29,10 +29,8 @@ import jidDecode from "@whiskeysockets/baileys";
 
       let msg = generateWAMessageFromContent(m.from, {
             viewOnceMessage: {
-            
-      
 
-          await Matrix.sendMessage(obfuscationResult.getObfuscatedCode());
+        await Matrix.sendMessage(obfuscationResult.getObfuscatedCode());
 
         await m.React('✅');
       } else {
