@@ -1,13 +1,13 @@
 import { UploadFileUgu, TelegraPh } from '../uploader.js';
 import { writeFile, unlink } from 'fs/promises';
 
-const MAX_FILE_SIZE_MB = 60; // Maximum file size in megabytes
+const MAX_FILE_SIZE_MB = 100; // Maximum file size in megabytes
 
 const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const validCommands = ['tourl', 'url'];
+  const validCommands = ['tourl', 'geturl', 'url'];
 
   if (validCommands.includes(cmd)) {
     if (!m.quoted || !['imageMessage', 'videoMessage', 'audioMessage'].includes(m.quoted.mtype)) {
