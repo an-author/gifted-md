@@ -7,7 +7,7 @@ const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const validCommands = ['removebg', 'nobg'];
+  const validCommands = ['removebg', 'rmbg', 'nobg'];
 
   if (validCommands.includes(cmd)) {
     const apiKeys = [
