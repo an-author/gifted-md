@@ -35,7 +35,7 @@ const report = async (m, gss) => {
 
       let result = (new Function('return ' + val))();
 
-      if (isNaN(result)) throw new Error('example: 17+19');
+      if (isNaN(result)) throw new Error('example: .calc 500+500');
 
       m.reply(`*${format}* = _${result}_`);
     }
