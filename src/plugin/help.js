@@ -204,6 +204,7 @@ const test = async (m, Matrix) => {
       if (selectedId == "View All Menu") {
         const mode = process.env.MODE;
         const str = `> *${pushwish}*
+> *𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
 ╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
 ┃❍ *ᴍᴏᴅᴇ:* _${mode}_
 ┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
@@ -215,6 +216,7 @@ const test = async (m, Matrix) => {
 ┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
 ┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
 ╰═════════════════⊷
+> *©𝟐𝟎𝟐𝟒 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇*
 ${readmore}
 ╭━❮ *ᴄᴏɴᴠᴇʀᴛᴇʀ* ❯━╮
 ┃◇ ${prefix}𝙰𝚃𝚃𝙿
