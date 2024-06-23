@@ -16,7 +16,7 @@ const gptResponse = async (m, Matrix) => {
     try {
       await m.React('🕘');
 
-      const apiUrl = `https://aemt.me/gpt4?text=${encodeURIComponent(text)}`;
+      const apiUrl = `https://aemt.me/gpt4?text=${text}`;
       const response = await axios.get(apiUrl);
       const result = response.data;
 
