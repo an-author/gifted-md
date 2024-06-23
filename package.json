@@ -1,5 +1,5 @@
 {
-  "name": "Gifted-Md",
+  "name": "gifted-md",
   "version": "5.0.0",
   "description": "Gifted latest multi device whatsapp bot",
   "main": "src/index.js",
@@ -33,6 +33,8 @@
     "fs": "^0.0.1-security",
     "google-it": "^1.6.4",
     "human-readable": "^0.2.1",
+    "javascript-obfuscator": "^4.1.0",
+    "latest": "^0.2.0",
     "instagram-user": "^2.0.1",
     "jimp": "^0.16.13",
     "jpeg-js": "^0.4.4",
