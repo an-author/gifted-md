@@ -1,4 +1,4 @@
-import { serialize } from '../../lib/Serializer.js';
+import { serialize } from '../../gift/serialize.js';
 
 const antilinkSettings = {}; // In-memory database to store antilink settings for each chat
 
