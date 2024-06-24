@@ -15,7 +15,7 @@ const handleRepoCommand = async (m, Matrix) => {
     *❲❒❳ sᴛᴀʀs:* ${stargazers_count} \n
     *❲❒❳ ғᴏʀᴋs:* ${forks_count} \n
     *❲❒❳ ᴄʀᴇᴀᴛᴇᴅ ᴏɴ:* ${new Date(created_at).toLocaleDateString()} \n
-    *❲❒❳ ʟᴀᴅᴛ ᴜᴘᴅᴀᴛᴇᴅ:* ${new Date(updated_at).toLocaleDateString()} \n
+    *❲❒❳ ʟᴀsᴛ ᴜᴘᴅᴀᴛᴇᴅ:* ${new Date(updated_at).toLocaleDateString()} \n
     *❲❒❳ ᴏᴡɴᴇʀ:* 𝑮𝒊𝒇𝒕𝒆𝒅 𝑻𝒆𝒄𝒉`;
 
     const repoMessage = generateWAMessageFromContent(m.from, {
