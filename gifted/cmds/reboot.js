@@ -1,9 +1,9 @@
-const restartBot = async (m) => {
+const rebootBot = async (m) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  if (cmd === 'restart') {
+  if (cmd === 'reboot') {
     try {
     await m.reply('*Gifted-Md is Rebooting....*')
       process.exit()
@@ -15,5 +15,5 @@ const restartBot = async (m) => {
   }
 };
 
-export default restartBot;
+export default rebootBot;
 
