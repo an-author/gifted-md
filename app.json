@@ -18,7 +18,7 @@
       "required": true,
       "value": "private"
     },
-    "AUTO_STATUS_SEEN": {
+    "AUTO_READ_STATUS": {
       "description": "Put true if you want bot to view status",
       "required": false,
       "value": "true"
