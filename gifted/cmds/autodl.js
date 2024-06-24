@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import config from '../../set.cjs';
 
 const downloadAndSendMedia = async (m, Matrix) => {
-  if (!config.AUTO_DL) return;  // Exit early if AUTO_DL is false
+  if (!config.AUTO_DOWNLOAD) return;  // Exit early if AUTO_DL is false
 
   const text = m.body.trim();
 
