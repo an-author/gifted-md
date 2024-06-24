@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { makeWASocket, Browsers, jidDecode, makeInMemoryStore, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, DisconnectReason, useMultiFileAuthState, getAggregateVotesInPollMessage } from '@whiskeysockets/baileys';
-import { Handler, Callupdate, GroupUpdate } from './event/index.js';
+import { Handler, Callupdate, GroupUpdate } from './funcs/giftedte.js';
 import { Boom } from '@hapi/boom';
 import express from 'express';
 import pino from 'pino';
@@ -15,7 +15,7 @@ import axios from 'axios';
 import fetch from 'node-fetch';
 import * as os from 'os';
 import config from '../set.cjs';  
-import pkg from '../gift/areact.cjs';
+import pkg from '../gift/giftke.cjs';
 const { emojis, doReact } = pkg;
 
 const sessionName = "session";
