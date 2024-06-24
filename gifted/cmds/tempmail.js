@@ -116,7 +116,7 @@ const tempMailCommand = async (m, Matrix) => {
                 inboxMessages = '*ɪɴʙᴏx ᴍᴇssᴀɢᴇs:*\n\n';
                 inboxData.messages.forEach((msg, index) => {
                     const message = JSON.parse(msg.message);
-                    inboxMessages += `*From:* ${msg.sender}\n*Subject:* ${msg.subject}\n*Date:* ${new Date(message.date).toLocaleString()}\n*Message:* ${message.body}\n\n`;
+                    inboxMessages += `${index + 1}. *From:* ${msg.sender}\n*Subject:* ${msg.subject}\n*Date:* ${new Date(message.date).toLocaleString()}\n*Message:* ${message.body}\n\n`;
 
                     const emailBody = message.textBody || ''; // Using message.textBody from the parsed message
                     const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
