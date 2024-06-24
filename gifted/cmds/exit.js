@@ -1,4 +1,4 @@
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const leaveGroup = async (m, gss) => {
   try {
