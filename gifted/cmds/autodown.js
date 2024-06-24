@@ -13,10 +13,10 @@ const autodlCommand = async (m, Matrix) => {
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_DL = true;
+      config.AUTO_DOWNLOAD = true;
       responseMessage = "AUTO-DOWNLOAD has been Enabled.";
     } else if (text === 'off') {
-      config.AUTO_DL = false;
+      config.AUTO_DOWNLOAD = false;
       responseMessage = "AUTO-DOWNLOAD has been Disabled.";
     } else {
       responseMessage = "Usage:\n- `autodl on`: Enable Auto-Download\n- `autodl off`: Disable Auto-Download";
