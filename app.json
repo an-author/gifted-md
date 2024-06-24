@@ -28,6 +28,11 @@
       "required": false,
       "value": "254110853827"
     },
+     "NOT_ALLOW": {
+      "description": "Put value true to disable bot in pm during public mode.",
+      "required": false,
+      "value": "false"
+    },
      "WELCOME": {
       "description": "Put true or false to enableand disable group welcoming and goodbye messages",
       "required": false,
