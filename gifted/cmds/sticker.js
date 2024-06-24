@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const stickerCommand = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
