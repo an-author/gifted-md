@@ -14,10 +14,10 @@ const anticallcommand = async (m, Matrix) => {
     let responseMessage;
 
     if (text === 'on') {
-      config.REJECT_CALL = true;
+      config.AUTO_REJECT_CALLS = true;
       responseMessage = "Anti-Call has been enabled.";
     } else if (text === 'off') {
-      config.REJECT_CALL = false;
+      config.AUTO_REJECT_CALLS = false;
       responseMessage = "Anti-Call has been disabled.";
     } else {
       responseMessage = "Usage:\n- `anticall on`: Enable Anti-Call\n- `anticall off`: Disable Anti-Call";
