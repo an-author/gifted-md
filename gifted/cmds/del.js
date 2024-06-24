@@ -1,4 +1,4 @@
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const deleteMessage = async (m, gss) => {
   try {
@@ -8,7 +8,7 @@ const deleteMessage = async (m, gss) => {
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    const validCommands = ['del', 'delete'];
+    const validCommands = ['del', 'wipe', 'delete'];
 
     if (validCommands.includes(cmd)) {
       if (!isCreator) {
