@@ -42,7 +42,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
 *•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
 
  *𝑻𝒆𝒔𝒕𝒊𝒏𝒈 𝑺𝒑𝒆𝒆𝒅: ${new Date() - startTime} 𝒎𝒔*
- *ʟᴏᴀᴅɪɴɢ ᴛᴇsᴛ...*
+ *ʟᴏᴀᴅɪɴɢ ᴛᴇsᴛ👇👇...*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMessage, { quoted: m });
@@ -83,7 +83,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
 *•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
 
  *𝑻𝒆𝒔𝒕𝒊𝒏𝒈 𝑺𝒑𝒆𝒆𝒅: ${new Date() - startTime} 𝒎𝒔*
- *ʟᴏᴀᴅɪɴɢ ᴛᴇsᴛ...*
+ *ʟᴏᴀᴅɪɴɢ ᴛᴇsᴛ👇👇...*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMsg, { quoted: m });
@@ -99,7 +99,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           mentionedJid: [m.sender],
           externalAdReply: {
             title: "𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐈𝐒 𝐀𝐂𝐓𝐈𝐕𝐄",
-            body: `ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ\nᴛᴀᴘ ᴛᴏ ᴊᴏɪɴ ᴡᴀᴄʜᴀɴɴᴇʟ`,
+            body: `💜ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ💜`,
             thumbnailUrl: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
             sourceUrl: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`,
             mediaType: 1,
