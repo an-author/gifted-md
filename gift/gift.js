@@ -14,8 +14,8 @@ import pino from 'pino';
 import path from 'path';
 import PhoneNumber from 'awesome-phonenumber';
 import config from '../set.cjs';
-import { writeExifImg, writeExifVid } from '../gift/exif.cjs';
-import { getBuffer, getSizeMedia } from '../gift/myfunc.cjs'
+import { writeExifImg, writeExifVid } from '../gift/giftedte.cjs';
+import { getBuffer, getSizeMedia } from '../gift/gifted.cjs'
 import baileys from "@whiskeysockets/baileys";
 const proto = baileys.proto;
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
@@ -130,7 +130,7 @@ function serialize(m, sock, logger) {
         vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await sock.getName(i + "@s.whatsapp.net")}\nFN:${name}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nEND:VCARD`
       });
     }
-    sock.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted });
+    sock.sendMessage(jid, { contacts: { displayName: `${list.length} Contact`, contacts: list }, ...opts }, { quoted });
   };
 
 
@@ -205,7 +205,7 @@ function serialize(m, sock, logger) {
     let type = '', mimetype = mime, pathFile = filename
     if (options.asDocument) type = 'document'
     if (options.asSticker || /webp/.test(mime)) {
-      let { writeExif } = require('./gift/exif')
+      let { writeExif } = require('./gift/giftedte')
       let media = { mimetype: mime, data }
       pathFile = await writeExif(media, { packname: options.packname ? options.packname : global.packname, author: options.author ? options.author : global.author, categories: options.categories ? options.categories : [] })
       await fs.promises.unlink(filename)
