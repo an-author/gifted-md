@@ -1,5 +1,5 @@
-import setEnvCommand from '../setvar.js';
-import config from '../../config.cjs';
+import setEnvCommand from '../giftke.js';
+import config from '../../set.cjs';
 const ownerContact = async (m, gss) => {
     const ownernumber = config.OWNER_NUMBER;
     const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -16,7 +16,7 @@ const ownerContact = async (m, gss) => {
             m.reply('Error sending owner contact.');
             await m.React("❌");
         }
-    } else if (cmd === 'setenv') {
+    } else if (cmd === 'setvar') {
         const args = text.split(' ');
         await setEnvCommand(m, args);
     }
