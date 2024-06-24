@@ -1,13 +1,26 @@
 import ytdl from 'ytdl-core'
 import yts from 'yt-search'
+import fs from 'fs';
 
+// Function to get the uptime in a human-readable format
+const getUptime = () => {
+  const uptimeSeconds = process.uptime();
+  const days = Math.floor(uptimeSeconds / (24 * 3600));
+  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+  const seconds = Math.floor(uptimeSeconds % 60);
+
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+};
+
+const uptime = getUptime();
 const song = async (m, Matrix) => {
 const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
   
-  const validCommands = ['alive2', 'test2', 'ytmp3', 'music'];
+  const validCommands = ['alive', 'test'];
 
    if (validCommands.includes(cmd)) {
   
@@ -35,15 +48,12 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
         
           const thumbnailMessage = {
   image: {
-    url: videoInfo.thumbnail,
+    url: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
   },
   caption: `
-╭──═❮ *Gifted Audio Player* ✨ ❯═─┈•
-│✑ *Title:* ${videoInfo.title}
-│✑ *duration:* ${videoInfo.timestamp}
-│✑ *Uploaded* ${videoInfo.ago}
-│✑ *Uploader:* ${videoInfo.author.name}
-╰────────────────❃ 
+*•═❮ ✨GIFTED IS TESTING...✨ ❯═•*
+
+UPTIME: ${uptime}
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMessage, { quoted: m });
@@ -78,15 +88,10 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           const finalAudioBuffer = Buffer.concat(audioBuffer);
           const thumbnailMsg = {
   image: {
-    url: firstVideo.thumbnail,
+    url: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
   },
   caption: `
-╭──═❮ *Gifted Audio Player* ✨ ❯═─┈•
-│✑ *Title:* ${firstVideo.title}
-│✑ *duration:* ${firstVideo.timestamp}
-│✑ *Uploaded* ${firstVideo.ago}
-│✑ *Uploader:* ${firstVideo.author.name}
-╰────────────────❃ 
+*•═❮ ✨GIFTED IS TESTING...✨ ❯═•*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMsg, { quoted: m });
@@ -102,8 +107,8 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           mentionedJid: [m.sender],
           externalAdReply: {
             title: "↺ |◁   II   ▷|   ♡",
-            body: `GIFTED-MD V5 ACTIVE: ${text}`,
-            thumbnailUrl: firstVideo.thumbnail,
+            body: `*GIFTED-MD V5 ACTIVE*`,
+            thumbnailUrl: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
             sourceUrl: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`,
             mediaType: 1,
             renderLargerThumbnail: true
