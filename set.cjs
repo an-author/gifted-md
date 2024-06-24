@@ -5,6 +5,10 @@ require("dotenv").config();
 const config = {
   SESSION_ID: process.env.SESSION_ID || "Put Your Session ID",
   HEROKU_API_TOKEN: process.env.HEROKU_API_TOKEN || "HRKU-0a1fe665-8a35-42e8-b7ad-761f25ffe195",
+  HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || "",
+  KOYEB_API_TOKEN: process.env.KOYEB_API_TOKEN || "",
+  KOYEB_APP_NAME: process.env.KOYEB_APP_NAME || "",
+  DEPLOYMENT_PLATFORM: process.env.DEPLOYMENT_PLATFORM || "",
   AUTO_READ_STATUS: process.env.AUTO_READ_STATUS !== undefined ? process.env.AUTO_STATUS_SEEN === 'true' : true, 
   AUTO_DL: process.env.AUTO_DL !== undefined ? process.env.AUTO_DL === 'true' : false,
   AUTO_READ: process.env.AUTO_READ !== undefined ? process.env.AUTO_READ === 'true' : false,
@@ -16,7 +20,7 @@ const config = {
   AUTO_BLOCK: process.env.AUTO_BLOCK !== undefined ? process.env.AUTO_BLOCK === 'true' : true,
   
   
-  AUTO_REJECT_CALL: process.env.AUTO_REJECT_CALL !== undefined ? process.env.REJECT_CALL === 'true' : false, 
+  AUTO_REJECT_CALL: process.env.AUTO_REJECT_CALLS !== undefined ? process.env.REJECT_CALL === 'true' : false, 
   NOT_ALLOW: process.env.NOT_ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
   MODE: process.env.MODE || 'private',
   PREFIX: process.env.PREFIX || '.',
