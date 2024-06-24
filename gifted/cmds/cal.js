@@ -5,7 +5,7 @@ const report = async (m, gss) => {
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    const validCommands = ['calculate', 'calc', 'math', 'maths', 'calculater', 'cal'];
+    const validCommands = ['calculate', 'calc', 'math', 'maths', 'calculator', 'cal'];
     
     if (validCommands.includes(cmd)) {
       let id = m.from;
