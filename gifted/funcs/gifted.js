@@ -1,9 +1,9 @@
-import { serialize, decodeJid } from '../../gift/serialize.js';
+import { serialize, decodeJid } from '../../gift/gift.js';
 import path from 'path';
 import fs from 'fs/promises';
 import config from '../../set.cjs';
-import { smsg } from '../../gift/myfunc.cjs';
-import { handleAntilink } from './antilink.js';
+import { smsg } from '../../gift/gifted.cjs';
+import { handleAntilink } from './giftke.js';
 
 
 const userCommandCounts = new Map();
