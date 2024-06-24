@@ -93,7 +93,7 @@ const updateKoyebEnv = async (varName, varValue) => {
 // Main function to set environment variable and restart the appropriate service
 const setEnvCommand = async (m, args) => {
   if (args.length !== 1) {
-    m.reply('Usage: .setenv VARIABLE_NAME=VARIABLE_VALUE');
+    m.reply('*Usage: .setvar OWNER_NUMBER=2547XXXXXXXX*');
     return;
   }
 
@@ -101,13 +101,13 @@ const setEnvCommand = async (m, args) => {
   const [varName, varValue] = varAssignment.split('=');
 
   if (!varName || !varValue) {
-    m.reply('Invalid format. Usage: .setenv VARIABLE_NAME=VARIABLE_VALUE');
+    m.reply('*Invalid format. Usage: .setvar OWNER_NUMBER=2547XXXXXXX');
     return;
   }
 
   try {
     updateEnvFile(varName, varValue);
-    m.reply(`Environment variable ${varName} has been set to ${varValue}.`);
+    m.reply(`The environmental variable ${varName} has been set to ${varValue}. Pleass restart bot for changes to take effect.`);
 
     const platform = process.env.DEPLOYMENT_PLATFORM;
     if (!platform) {
