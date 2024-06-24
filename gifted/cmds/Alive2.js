@@ -15,7 +15,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
     await m.React("🕘");
 
     // Check if the input is a valid YouTube URL
-   const {text} = "Spectre";
+   const {text} = `Spectre`;
    const isUrl = ytdl.validateURL(text);
 
     if (isUrl) {
