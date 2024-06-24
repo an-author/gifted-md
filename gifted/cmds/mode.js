@@ -1,4 +1,4 @@
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const modeCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
@@ -15,11 +15,11 @@ const modeCommand = async (m, Matrix) => {
     if (text === 'public') {
       config.MODE = 'public';
       responseMessage = "Mode has been set to public.";
-    } else if (text === 'self') {
-      config.MODE = 'self';
+    } else if (text === 'private') {
+      config.MODE = 'private';
       responseMessage = "Mode has been set to private.";
     } else {
-      responseMessage = "Usage:\n- `mode public`: Set mode to public\n- `mode self`: Set mode to self";
+      responseMessage = "Usage:\n- `mode public`: Set mode to public\n- `mode private`: Set mode to private";
     }
 
     try {
