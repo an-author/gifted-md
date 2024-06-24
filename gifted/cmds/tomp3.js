@@ -1,4 +1,4 @@
-import { toAudio } from '../../lib/converter.cjs'; // Import statement placed outside the try block
+import { toAudio } from '../../gift/gifke.cjs'; // Import statement placed outside the try block
 
 const tomp3 = async (m, gss) => {
   try {
