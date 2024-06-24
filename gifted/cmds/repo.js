@@ -44,6 +44,13 @@ const handleRepoCommand = async (m, Matrix) => {
                 {
                   name: "quick_reply",
                   buttonParamsJson: JSON.stringify({
+                    display_text: "ᴠɪᴇᴡ ᴍᴇɴᴜ",
+                    id: ".menu"
+                  })
+                },
+                {
+                  name: "quick_reply",
+                  buttonParamsJson: JSON.stringify({
                     display_text: "ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ",
                     id: ".owner"
                   })
