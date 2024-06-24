@@ -63,10 +63,10 @@
       "required": false,
       "value": "true"
     },
-    "AUTO_DL": {
+    "AUTO_DOWNLOAD": {
       "description": "Put true if you need to download media by using link without cmd",
       "required": false,
-      "value": "false"
+      "value": "true"
     },
     "AUTO_BLOCK": {
       "description": "Put true if you want bot to auto block only 212 numbers",
