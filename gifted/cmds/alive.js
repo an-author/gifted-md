@@ -1,18 +1,8 @@
 import ytdl from 'ytdl-core'
 import yts from 'yt-search'
-import fs from 'fs'
 
-// Function to get the uptime in a human-readable format
-const getUptime = () => {
-  const uptimeSeconds = process.uptime();
-  const days = Math.floor(uptimeSeconds / (24 * 3600));
-  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
-  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-  const seconds = Math.floor(uptimeSeconds % 60);
 
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-};
-
+const startTime = new Date();
 const song = async (m, Matrix) => {
 const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
@@ -44,7 +34,6 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           const finalAudioBuffer = Buffer.concat(audioBuffer);
 
           const videoInfo = await yts({ videoId: ytdl.getURLVideoID(text) });
-          const uptime = getUptime();
           const thumbnailMessage = {
   image: {
     url: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
@@ -52,7 +41,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   caption: `
 *•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
 
-*𝑼𝒑𝒕𝒊𝒎𝒆: ${uptime}*
+*𝑺𝒑𝒆𝒆𝒅: ${new Date() - startTime} 𝒎𝒔*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMessage, { quoted: m });
@@ -92,7 +81,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   caption: `
 *•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
 
-*𝑼𝒑𝒕𝒊𝒎𝒆: ${uptime}*
+*𝑺𝒑𝒆𝒆𝒅: ${new Date() - startTime} 𝒎𝒔*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMsg, { quoted: m });
