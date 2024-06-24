@@ -1,6 +1,6 @@
-import Handler from './handler.js'
-import Callupdate from './call-handler.js'
-import GroupUpdate from './group-handler.js'
+import Handler from './gifted.js'
+import Callupdate from './anticall.js'
+import GroupUpdate from './gift.js'
 
 export { Handler, Callupdate, GroupUpdate };
 
