@@ -11,7 +11,7 @@ const downloadAndSendMedia = async (m, Matrix) => {
   }
 
   try {
-    const supportedDomains = ['youtube.com', 'telegra.ph', 'youtu.be', 'instagram.com', 'facebook.com', 'tiktok.com', 'drive.google.com', 'x.com', 'twitter.com', 'giftedtechnexus.co.ke', 'snapchat.com', 'likee.com', 'github.com'];
+    const supportedDomains = ['youtube.com', 'telegra.ph', 'imgur.com', 'i.imgur.com', 'youtu.be', 'instagram.com', 'facebook.com', 'tiktok.com', 'drive.google.com', 'x.com', 'twitter.com', 'giftedtechnexus.co.ke', 'snapchat.com', 'likee.com', 'github.com'];
     const urlObj = new URL(text);
     const domain = urlObj.hostname.replace('www.', '');
 
