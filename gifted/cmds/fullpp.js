@@ -1,6 +1,6 @@
-import generateProfilePicture from '../generateProfilePicture.js'; // Import the generateProfilePicture function
+import generateProfilePicture from '../giftech.js'; // Import the generateProfilePicture function
 import { writeFile, unlink } from 'fs/promises';
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const setProfilePicture = async (m, gss) => {
   const botNumber = await gss.decodeJid(gss.user.id);
