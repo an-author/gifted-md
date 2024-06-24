@@ -8,15 +8,30 @@
   "success_url": "/",
   "stack": "container",
   "env": { 
-      "SESSION_ID": {
-      "description": "Put Your Session Id",
+    "SESSION_ID": {
+      "description": "Put Your Session Id. It must start with Gifted~",
       "required": true,
       "value": ""
     },
     "MODE": {
-      "description": "Put Mode either public or self",
+      "description": "Put Mode either public or private",
       "required": true,
       "value": "private"
+    },
+     "OWNER_NAME": {
+      "description": "Put the name of Bot Owner",
+      "required": false,
+      "value": "GIFTED TECH"
+    },
+    "OWNER_NUMBER": {
+      "description": "Put Bot Owner Numbers",
+      "required": false,
+      "value": "254110853827"
+    },
+     "WELCOME": {
+      "description": "Put true or false to enableand disable group welcoming and goodbye messages",
+      "required": false,
+      "value": "false"
     },
     "AUTO_READ_STATUS": {
       "description": "Put true if you want bot to view status",
@@ -43,15 +58,40 @@
       "required": false,
       "value": "true"
     },
+    "AUTO_DL": {
+      "description": "Put true if you need to download media by using link without cmd",
+      "required": false,
+      "value": "false"
+    },
     "AUTO_BLOCK": {
       "description": "Put true if you want bot to auto block only 212 numbers",
       "required": false,
       "value": "true"
     },
-    "REJECT_CALL": {
+    "AUTO_REACT": {
+      "description": "Put value to true or false",
+      "required": false,
+      "value": "false"
+    },
+     "HEROKU_APP_NAME": {
+      "description": "Put your heroku app name as entered above.",
+      "required": false,
+      "value": ""
+    },
+    "PREFIX": {
+      "description": "You can leave blank for bot to use multiple prefixes",
+      "required": false,
+      "value": "."
+    },
+     "DEPLOYMENT_PLATFORM": {
+      "description": "Leave the value to default unless otherwise. ",
+      "required": true,
+      "value": "heroku"
+    },
+    "AUTO_REJECT_CALLS": {
       "description": "Put true if you want to reject call",
       "required": false,
-      "value": "true"
+      "value": "false"
     }
     },
     "formation": {
