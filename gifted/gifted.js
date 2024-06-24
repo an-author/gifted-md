@@ -137,7 +137,7 @@ async function start() {
     // Setting public or self mode based on config
     if (config.MODE === 'public') {
         Matrix.public = true;
-    } else if (config.MODE === 'self') {
+    } else if (config.MODE === 'private') {
         Matrix.public = false;
     }
 
@@ -194,7 +194,7 @@ Matrix.ev.on('messages.upsert', async chatUpdate => {
 }
 
 start();
-app.get('/', (req, res) => {
+app.get('/gifted/', (req, res) => {
     res.send('GIFTED MD V5 IS LIVE!');
 });
 
