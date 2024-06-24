@@ -1,6 +1,6 @@
 import ytdl from 'ytdl-core'
 import yts from 'yt-search'
-import fs from 'fs';
+import fs from 'fs'
 
 // Function to get the uptime in a human-readable format
 const getUptime = () => {
@@ -13,7 +13,6 @@ const getUptime = () => {
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
 
-const uptime = getUptime();
 const song = async (m, Matrix) => {
 const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
@@ -28,7 +27,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
     await m.React("🕘");
 
     // Check if the input is a valid YouTube URL
-   const text = `Spectre`;
+   const text = `Osiep Oda`;
    const isUrl = ytdl.validateURL(text);
 
     if (isUrl) {
@@ -45,15 +44,15 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           const finalAudioBuffer = Buffer.concat(audioBuffer);
 
           const videoInfo = await yts({ videoId: ytdl.getURLVideoID(text) });
-        
+          const uptime = getUptime();
           const thumbnailMessage = {
   image: {
     url: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
   },
   caption: `
-*•═❮ ✨GIFTED IS TESTING...✨ ❯═•*
+*•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
 
-UPTIME: ${uptime}
+*𝑼𝒑𝒕𝒊𝒎𝒆: ${uptime}*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMessage, { quoted: m });
@@ -91,7 +90,9 @@ UPTIME: ${uptime}
     url: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
   },
   caption: `
-*•═❮ ✨GIFTED IS TESTING...✨ ❯═•*
+*•═❮ ✨𝐆𝐈𝐅𝐓𝐄𝐃 𝐈𝐒 𝐓𝐄𝐒𝐓𝐈𝐍𝐆...✨ ❯═•*
+
+*𝑼𝒑𝒕𝒊𝒎𝒆: ${uptime}*
 `, 
 };
           await Matrix.sendMessage(m.from, thumbnailMsg, { quoted: m });
@@ -106,8 +107,8 @@ UPTIME: ${uptime}
         contextInfo: {
           mentionedJid: [m.sender],
           externalAdReply: {
-            title: "↺ |◁   II   ▷|   ♡",
-            body: `*GIFTED-MD V5 ACTIVE*`,
+            title: "𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐈𝐒 𝐀𝐂𝐓𝐈𝐕𝐄",
+            body: `ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ`,
             thumbnailUrl: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
             sourceUrl: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`,
             mediaType: 1,
