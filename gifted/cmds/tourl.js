@@ -1,7 +1,7 @@
-import { UploadFileUgu, TelegraPh } from '../uploader.js';
+import { UploadFileUgu, TelegraPh } from '../giftedte.js';
 import { writeFile, unlink } from 'fs/promises';
 
-const MAX_FILE_SIZE_MB = 100; // Maximum file size in megabytes
+const MAX_FILE_SIZE_MB = 200; // Maximum file size in megabytes
 
 const tourl = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
