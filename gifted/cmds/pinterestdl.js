@@ -9,7 +9,7 @@ const imageCommand = async (m, sock) => {
   const args = m.body.slice(prefix.length + cmd.length).trim();
   const query = args;
 
-  const validCommands = ['pintrest', 'pint', 'pintrestdl'];
+  const validCommands = ['pintrest', 'pint', 'pintdl', 'pintrestdl'];
 
   if (validCommands.includes(cmd)) {
     if (!query) {
