@@ -72,8 +72,8 @@ const tempMailCommand = async (m, Matrix) => {
                             header: proto.Message.InteractiveMessage.Header.create({
                                 title: "*GIFTED-MD TEMPMAIL*",
                                 gifPlayback: true,
-                                subtitle: "",
-                                hasMediaAttachment: true
+                                subtitle: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ",
+                                hasMediaAttachment: false
                             }),
                             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                                 buttons
