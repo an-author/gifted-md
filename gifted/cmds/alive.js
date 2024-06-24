@@ -97,8 +97,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
           mentionedJid: [m.sender],
           externalAdReply: {
             title: "𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐕𝟓 𝐈𝐒 𝐀𝐂𝐓𝐈𝐕𝐄",
-            body: `ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ`,
-            body: `ᴛᴀᴘ ᴛᴏ ᴊᴏɪɴ ᴡᴀᴄʜᴀɴɴᴇʟ`,
+            body: `ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ \nᴛᴀᴘ ᴛᴏ ᴊᴏɪɴ ᴡᴀᴄʜᴀɴɴᴇʟ`,
             thumbnailUrl: `https://telegra.ph/file/ff599473b88fd6005d4af.jpg`,
             sourceUrl: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`,
             mediaType: 1,
