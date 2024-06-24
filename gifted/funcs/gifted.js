@@ -82,7 +82,7 @@ await handleAntilink(m, sock, logger, isBotAdmins, isAdmins, isCreator);
 
         for (const file of pluginFiles) {
             if (file.endsWith('.js')) {
-                const pluginModule = await import(path.join(__dirname, '..', 'plugin', file));
+                const pluginModule = await import(path.join(__dirname, '..', 'cmds', file));
                 const loadPlugins = pluginModule.default;
                 await loadPlugins(m, sock);
             }
