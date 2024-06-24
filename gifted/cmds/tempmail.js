@@ -64,13 +64,13 @@ const tempMailCommand = async (m, Matrix) => {
                         },
                         interactiveMessage: proto.Message.InteractiveMessage.create({
                             body: proto.Message.InteractiveMessage.Body.create({
-                                text: `ɢᴇɴᴇʀᴀᴛᴇᴅ ᴛᴇᴍᴘᴏʀᴀᴛʏ ᴇᴍᴀɪʟ: ${tempEmail}`
+                                text: `*ɢᴇɴᴇʀᴀᴛᴇᴅ ᴇᴍᴀɪʟ:*\n ${tempEmail}`
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
                                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
-                                title: "*GIFTED-MD TEMPMAIL*",
+                                title: "*𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐓𝐄𝐌𝐏𝐌𝐀𝐈𝐋 𝐒𝐘𝐒𝐓𝐄𝐌*",
                                 gifPlayback: true,
                                 subtitle: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ",
                                 hasMediaAttachment: false
@@ -113,10 +113,10 @@ const tempMailCommand = async (m, Matrix) => {
             let buttons = [];
 
             if (inboxData.messages && inboxData.messages.length > 0) {
-                inboxMessages = 'Inbox Messages:\n\n';
+                inboxMessages = '*ɪɴʙᴏx ᴍᴇssᴀɢᴇs:*\n\n';
                 inboxData.messages.forEach((msg, index) => {
                     const message = JSON.parse(msg.message);
-                    inboxMessages += `${index + 1}. From: ${msg.sender}\nSubject: ${msg.subject}\nDate: ${new Date(message.date).toLocaleString()}\nMessage: ${message.body}\n\n`;
+                    inboxMessages += `*From:* ${msg.sender}\n*Subject:* ${msg.subject}\n*Date:* ${new Date(message.date).toLocaleString()}\n*Message:* ${message.body}\n\n`;
 
                     const emailBody = message.textBody || ''; // Using message.textBody from the parsed message
                     const otpMatch = emailBody.match(/\b\d{4,6}\b/); // Simple regex to find 4-6 digit codes
@@ -158,7 +158,7 @@ const tempMailCommand = async (m, Matrix) => {
                                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
-                                title: "",
+                                title: "𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐌𝐏𝐌𝐀𝐈𝐋 𝐈𝐍𝐁𝐎𝐗",
                                 gifPlayback: true,
                                 subtitle: "",
                                 hasMediaAttachment: false
