@@ -57,7 +57,7 @@ const serverStatusCommand = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  if (['alive', 'test', 'uptime', 'runtime'].includes(cmd)) {
+  if (['uptime', 'runtime'].includes(cmd)) {
     const uptime = getUptime();
     const platform = getPlatformName();
 
