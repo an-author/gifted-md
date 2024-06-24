@@ -13,9 +13,9 @@ import fs from 'fs';
 import pino from 'pino';
 import path from 'path';
 import PhoneNumber from 'awesome-phonenumber';
-import config from '../config.cjs';
-import { writeExifImg, writeExifVid } from '../lib/exif.cjs';
-import { getBuffer, getSizeMedia } from '../lib/myfunc.cjs'
+import config from '../set.cjs';
+import { writeExifImg, writeExifVid } from '../gift/exif.cjs';
+import { getBuffer, getSizeMedia } from '../gift/myfunc.cjs'
 import baileys from "@whiskeysockets/baileys";
 const proto = baileys.proto;
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
@@ -205,7 +205,7 @@ function serialize(m, sock, logger) {
     let type = '', mimetype = mime, pathFile = filename
     if (options.asDocument) type = 'document'
     if (options.asSticker || /webp/.test(mime)) {
-      let { writeExif } = require('./lib/exif')
+      let { writeExif } = require('./gift/exif')
       let media = { mimetype: mime, data }
       pathFile = await writeExif(media, { packname: options.packname ? options.packname : global.packname, author: options.author ? options.author : global.author, categories: options.categories ? options.categories : [] })
       await fs.promises.unlink(filename)
