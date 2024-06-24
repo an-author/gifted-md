@@ -11,7 +11,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
 
    if (validCommands.includes(cmd)) {
   
-  const text = ['.alive2 Spectre by Alan Walker'];
+  const text = ['Spectre'];
    try {
     await m.React("🕘");
 
