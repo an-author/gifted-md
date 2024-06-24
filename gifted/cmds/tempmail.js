@@ -70,10 +70,10 @@ const tempMailCommand = async (m, Matrix) => {
                                 text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*"
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
-                                title: "GIFTED-MD TEMPMAIL",
+                                title: "*GIFTED-MD TEMPMAIL*",
                                 gifPlayback: true,
                                 subtitle: "",
-                                hasMediaAttachment: false
+                                hasMediaAttachment: true
                             }),
                             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                                 buttons
