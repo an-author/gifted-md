@@ -1,8 +1,8 @@
-import { serialize, decodeJid } from '../../lib/Serializer.js';
+import { serialize, decodeJid } from '../../gift/serialize.js';
 import path from 'path';
 import fs from 'fs/promises';
-import config from '../../config.cjs';
-import { smsg } from '../../lib/myfunc.cjs';
+import config from '../../set.cjs';
+import { smsg } from '../../gift/myfunc.cjs';
 import { handleAntilink } from './antilink.js';
 
 
