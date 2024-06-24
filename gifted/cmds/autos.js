@@ -16,11 +16,11 @@ const anticallCommand = async (m, Matrix) => {
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_STATUS_SEEN = true;
-      responseMessage = "AUTO STATUS SEEN has been Enabled.";
+      config.AUTO_READ_STATUS = true;
+      responseMessage = "Status Auto View Has Been Enabled.";
     } else if (text === 'off') {
-      config.AUTO_STATUS_SEEN = false;
-      responseMessage = "AUTO STATUS SEEN has been Disabled.";
+      config.AUTO_READ_STATUS = false;
+      responseMessage = "Status Auto View Has Been Disabled.";
     } else {
       responseMessage = `Usage:\n- *${prefix + cmd} ON:* Enable AUTO STATUS VIEW\n- *${prefix + cmd} off:* Disable AUTO STATUS SEEN`;
     }
