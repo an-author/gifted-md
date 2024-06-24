@@ -125,7 +125,7 @@ async function start() {
             return msg?.message;
         }
         return {
-            conversation: "Hello World",
+            conversation: "GIFTED MD V5 IS ACTIVE",
         };
     }
 
