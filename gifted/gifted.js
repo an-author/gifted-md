@@ -14,8 +14,8 @@ import moment from 'moment-timezone';
 import axios from 'axios';
 import fetch from 'node-fetch';
 import * as os from 'os';
-import config from '../config.cjs';  
-import pkg from '../lib/autoreact.cjs';
+import config from '../set.cjs';  
+import pkg from '../gift/areact.cjs';
 const { emojis, doReact } = pkg;
 
 const sessionName = "session";
@@ -94,7 +94,7 @@ async function start() {
                 return msg.message || undefined;
             }
             return {
-                conversation: "Hello World"
+                conversation: "GIFTED MD V5 IS ACTIVE"
             };
         },
         markOnlineOnConnect: true,
@@ -195,7 +195,7 @@ Matrix.ev.on('messages.upsert', async chatUpdate => {
 
 start();
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('GIFTED MD V5 IS LIVE!');
 });
 
 app.listen(PORT, () => {
