@@ -5,7 +5,7 @@ const demote = async (m, gss) => {
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    const validCommands = ['demote', 'unadmin'];
+    const validCommands = ['demote', 'unadmin', 'dismiss'];
 
     if (!validCommands.includes(cmd)) return;
 
