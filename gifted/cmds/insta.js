@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 
-const apiBaseUrl = 'https://aiodownloader.onrender.com/download?url=';
+const apiBaseUrl = 'https://instagramdownloader.apinepdev.workers.dev/?url=';
 
 const instaDownload = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
