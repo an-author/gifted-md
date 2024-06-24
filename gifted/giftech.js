@@ -13,7 +13,7 @@ const generateProfilePictureWithWatermark = async (buffer) => {
     const cropped = jimp.crop(0, 0, min, max);
 
     // Ensure the watermark path is correct
-    const watermarkPath = path.resolve(__dirname, './img/watermart.png');
+    const watermarkPath = path.resolve(__dirname, './img/gift.png');
 
     // Check if watermark file exists
     try {
