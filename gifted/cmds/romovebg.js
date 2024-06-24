@@ -23,8 +23,8 @@ const tourl = async (m, gss) => {
       return m.reply(`> Send/Reply with an image for remove you picture backgroud\n*Example ${prefix + cmd}*`);
     }
 
-    const localFilePath = `./src/remobg-${uuidv4()}`;
-    const outputFilePath = `./src/hremo-${uuidv4()}.png`;
+    const localFilePath = `./gifted/remobg-${uuidv4()}`;
+    const outputFilePath = `./gifted/hremo-${uuidv4()}.png`;
     const media = await m.quoted.download();
 
     fs.writeFileSync(localFilePath, media);
