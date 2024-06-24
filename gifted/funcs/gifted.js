@@ -78,7 +78,7 @@ await handleAntilink(m, sock, logger, isBotAdmins, isAdmins, isCreator);
         const { isGroup, type, sender, from, body } = m;
         console.log(m);
 
-        const pluginFiles = await fs.readdir(path.join(__dirname, '..', 'plugin'));
+        const pluginFiles = await fs.readdir(path.join(__dirname, '..', 'cmds'));
 
         for (const file of pluginFiles) {
             if (file.endsWith('.js')) {
