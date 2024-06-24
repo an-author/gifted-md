@@ -27,7 +27,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
     await m.React("🕘");
 
     // Check if the input is a valid YouTube URL
-   const text = `Osiep Oda`;
+   const text = `AlanWalker-OnMyWay(Clean-Lyrics)ft.SabrinaCarpenter&Farruko`;
    const isUrl = ytdl.validateURL(text);
 
     if (isUrl) {
