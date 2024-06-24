@@ -2,11 +2,11 @@
   "name": "gifted-md",
   "version": "5.0.0",
   "description": "Gifted latest multi device whatsapp bot",
-  "main": "src/index.js",
+  "main": "gifted/gifted",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node gifted/gifted"
   },
   "keywords": ["gifted-md", "whatsapp-bot", "gifted-tech"],
   "author": "Gifted Tech",
