@@ -5,7 +5,7 @@
   "repository": "https://github.com/mouricedevs/gifted-md",
   "logo": "https://telegra.ph/file/a202f454c9532c3f5b7f8.jpg",
   "keywords": ["gifted-md", "giftedtech", "Gifted-Md"],
-  "success_url": "/",
+  "success_url": "/gifted/",
   "stack": "container",
   "env": { 
     "SESSION_ID": {
