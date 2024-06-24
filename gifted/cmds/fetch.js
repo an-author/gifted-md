@@ -23,7 +23,7 @@ const fetchData = async (m, Matrix) => {
 
       const contentType = res.headers.get('content-type');
       if (!/text|json/.test(contentType)) {
-        await Matrix.sendMedia(m.from, url, 'file', '> Api Fetched From Gifted-Md', m);
+        await Matrix.sendMedia(m.from, url, 'file', '> > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*', m);
         return;
       }
 
