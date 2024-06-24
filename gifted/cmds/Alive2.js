@@ -11,12 +11,12 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
 
    if (validCommands.includes(cmd)) {
   
-  const text = ['Spectre'];
    try {
     await m.React("🕘");
 
     // Check if the input is a valid YouTube URL
-    const isUrl = ytdl.validateURL(text);
+   const {text} = "Spectre";
+   const isUrl = ytdl.validateURL(text);
 
     if (isUrl) {
       // If it's a URL, directly use ytdl-core
