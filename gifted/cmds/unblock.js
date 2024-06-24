@@ -1,4 +1,4 @@
-import config from '../../config.cjs';
+import config from '../../set.cjs';
 
 const unblock = async (m, gss) => {
   try {
