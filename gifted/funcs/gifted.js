@@ -53,7 +53,7 @@ const Handler = async (chatUpdate, sock, logger, store) => {
         const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
         const text = m.body.slice(prefix.length + cmd.length).trim();
 
-        if (m.key && m.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_SEEN) {
+        if (m.key && m.key.remoteJid === 'status@broadcast' && config.AUTO_READ_STATUS) {
             await sock.readMessages([m.key]);
         }
 
