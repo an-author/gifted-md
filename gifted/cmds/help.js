@@ -106,7 +106,7 @@ const test = async (m, Matrix) => {
               text: "> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓* \n> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./src/gifted.jpg')}, { upload: Matrix.waUploadToServer})), 
+                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./gifted/img/gifted.jpg')}, { upload: Matrix.waUploadToServer})), 
                   title: ``,
                   gifPlayback: true,
                   subtitle: "",
@@ -347,7 +347,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -414,7 +414,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -482,7 +482,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -540,7 +540,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -607,7 +607,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -671,7 +671,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -727,7 +727,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -786,7 +786,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -846,7 +846,7 @@ ${readmore}
             }
         };
        let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
@@ -889,7 +889,7 @@ ${readmore}
 > *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
 `
      await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/gifted.jpg'), 
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
   caption: str, 
   contextInfo: {
     mentionedJid: [m.sender], 
