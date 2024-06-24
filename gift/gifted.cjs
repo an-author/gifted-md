@@ -104,7 +104,7 @@ exports.getTime = (format, date) => {
 	if (date) {
 		return moment(date).locale('id').format(format)
 	} else {
-		return moment.tz('Asia/Kolkata').locale('id').format(format)
+		return moment.tz('Africa/Nairobi').locale('id').format(format)
 	}
 }
 
