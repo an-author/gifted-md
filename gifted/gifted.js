@@ -45,10 +45,10 @@ const store = makeInMemoryStore({
 // Baileys Connection Option
 async function start() {
     if (!config.SESSION_ID) {
-        useQR = true;
+        useQR = false;
         isSessionPutted = false;
     } else {
-        useQR = true;
+        useQR = false;
         isSessionPutted = true;
     }
 
