@@ -8,7 +8,7 @@ const instaDownload = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['insta', 'ig', 'igdl', 'instadl'];
+  const validCommands = ['insta', 'ig', 'igdl', 'instagram', 'instadl'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide an Instagram URL.');
