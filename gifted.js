@@ -4,7 +4,7 @@ const {
 const giftke = require('path')
 
 function startGifted() {
-   let giftek = [giftke.join(__dirname, 'gifted/gifted'), ...process.argv.slice(2)]
+   let giftek = [giftke.join(__dirname, './gifted/gifted'), ...process.argv.slice(2)]
    console.log([process.argv[0], ...giftek].join('\n'))
    let gift = spawn(process.argv[0], giftek, {
          stdio: ['inherit', 'inherit', 'inherit', 'ipc']
