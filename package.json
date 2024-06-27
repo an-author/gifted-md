@@ -65,20 +65,4 @@
     "uuid": "^9.0.1",
     "yt-search": "^2.11.0",
     "ytdl-core": "^4.11.5"
-   },
-   "directories": {
-             "lib": "gift",
-             "assets": "gifted/img"
-   },
-   "devDependencies": {
-             "pino": "^7.0.5"
-   },
-   "repository": {
-             "type": "git",
-             "url": "git+https://github.com/mouricedevs/gifted-md.git"
-   },
-   "bugs": {
-             "url": "https://github.com/mouricedevs/gifted-md/issues"
-   },
-   "homepage": "https://github.com/mouricedevs/gifted-md#readme"
-}
+   }
