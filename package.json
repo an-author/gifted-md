@@ -6,7 +6,7 @@
   "type": "module",
   "engines" : { "node": "v18.16.0", "npm": "9.5.1" },
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name gifted",
+    "start": "pm2 start gifted.js --deep-monitoring --attach --name gifted",
     "stop": "pm2 stop gifted",
     "restart": "pm2 restart gifted"
   },
