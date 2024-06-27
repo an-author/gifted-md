@@ -1,2 +1,2 @@
-const { startGifted } = require('./gifted/gifted')
+const { startGifted } = require('./gifted/gifted.js')
 startGifted()
