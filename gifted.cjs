@@ -1,2 +1,2 @@
-const { startGifted } = require('./gifted/gifted.js')
+import startGifted from './gifted/gifted.js',
 startGifted()
