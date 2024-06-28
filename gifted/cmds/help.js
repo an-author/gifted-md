@@ -131,7 +131,7 @@ const test = async (m, Matrix) => {
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "𝐉𝐎𝐈𝐍 𝐖𝐀𝐂𝐇𝐀𝐍𝐍𝐄𝐋",
+                    display_text: "𝐅𝐎𝐋𝐋𝐎𝐖 𝐂𝐇𝐀𝐍𝐍𝐄𝐋",
                     url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
                   })
                 },
@@ -190,6 +190,12 @@ const test = async (m, Matrix) => {
                         "title":"𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Search Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"𝐋𝐎𝐆𝐎 𝐌𝐄𝐍𝐔",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ʟᴏɢᴏ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "id":"Logo Menu"
                       },
                       {
                         "header":"",
@@ -415,7 +421,7 @@ ${readmore}
 ┃◇ ${prefix}ɢɪᴛʜᴜʙsᴛᴀʟᴋ
 ╰━━━━━━━━━━━━━━━⊷
 
-╭━❍ *Logo* ❍⊷
+╭━❍ *ʟᴏɢᴏ* ❍⊷
 ┃◇ ᴄᴏᴍɪɴɢ sᴏᴏɴ, sᴛᴀʏ ᴘᴜᴛ!
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
