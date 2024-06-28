@@ -27,35 +27,35 @@ const alive = async (m, Matrix) => {
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "OWNER",
+            display_text: "BOT OWNER",
             id: `.owner`
           })
         },
        {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "REPO",
+            display_text: "BOT SCRIPT",
             id: `.repo`
           })
         },
        {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "MENU",
+            display_text: "MAIN MENU",
             id: `.menu`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "TEST",
+            display_text: "TEST MSG",
             id: `.test`
           })
         },
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "SPEED",
+            display_text: "BOT SPEED",
             id: `.ping`
           })
         }
