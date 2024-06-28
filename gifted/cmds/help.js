@@ -151,7 +151,7 @@ const test = async (m, Matrix) => {
                       },
                       {
                         "header":"",
-                        "title":"⬇𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
+                        "title":"𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
                       },
@@ -245,106 +245,135 @@ const test = async (m, Matrix) => {
 
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔*
 ${readmore}
+╭━❍ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ* ❍⊷
+┃◇ ${prefix}ᴀᴘᴋ
+┃◇ ${prefix}ᴀᴘᴘ
+┃◇ ${prefix}ғʙ
+┃◇ ${prefix}ᴀᴜᴛᴏᴅʟ
+┃◇ ${prefix}ғʙᴅʟ
+┃◇ ${prefix}ғᴀᴄᴇʙᴏᴏᴋ
+┃◇ ${prefix}ᴍᴇᴅɪᴀғɪʀᴇ
+┃◇ ${prefix}ᴍғɪʀᴇᴅʟ
+┃◇ ${prefix}ᴍғɪʀᴇ
+┃◇ ${prefix}ᴘɪɴᴛ
+┃◇ ${prefix}ᴘɪɴᴛᴅʟ
+┃◇ ${prefix}ᴘɪɴᴛᴇʀᴇsᴛ
+┃◇ ${prefix}ɢɪᴛᴄʟᴏɴᴇ
+┃◇ ${prefix}ɢᴅʀɪᴠᴇ
+┃◇ ${prefix}ɪɴsᴛᴀ
+┃◇ ${prefix}ɪɢᴅʟ
+┃◇ ${prefix}ɪɴsᴛᴀᴅʟ
+┃◇ ${prefix}ɪɢ
+┃◇ ${prefix}ʏᴛᴍᴘ3
+┃◇ ${prefix}ʏᴛᴍᴘ4
+┃◇ ${prefix}ᴘʟᴀʏ
+┃◇ ${prefix}sᴏɴɢ
+┃◇ ${prefix}ᴠɪᴅᴇᴏ
+┃◇ ${prefix}ʏᴛᴍᴘ3ᴅᴏᴄ
+┃◇ ${prefix}ʏᴛᴍᴘ4ᴅᴏᴄ
+┃◇ ${prefix}ᴛɪᴋᴛᴏᴋ
+┃◇ ${prefix}ᴛɪᴋᴛᴏᴋᴅʟ
+┃◇ ${prefix}ᴛɪᴋᴅʟ
+╰━━━━━━━━━━━━━━━⊷
+
 ╭━❍ *ᴄᴏɴᴠᴇʀᴛᴇʀ* ❍⊷
-┃◇ ${prefix}𝙰𝚃𝚃𝙿
-┃◇ ${prefix}𝙰𝚃𝚃𝙿2
-┃◇ ${prefix}𝙰𝚃𝚃𝙿3
-┃◇ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
-┃◇ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
+┃◇ ${prefix}ᴀᴛᴛᴘ
+┃◇ ${prefix}ᴀᴛᴛᴘ2
+┃◇ ${prefix}ᴀᴛᴛᴘ3
+┃◇ ${prefix}ᴇɴᴄᴏᴅᴇ
+┃◇ ${prefix}ᴇʙɪɴᴀʀʏ
+┃◇ ${prefix}ᴅᴇᴄᴏᴅᴇ
+┃◇ ${prefix}ᴅᴇʙɪɴᴀʀʏ
 ┃◇ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
-┃◇ ${prefix}𝙼𝙿3
+┃◇ ${prefix}ᴍᴘ3
+┃◇ ${prefix}ᴛᴏᴍᴘ3
 ╰━━━━━━━━━━━━━━━⊷
-
 ╭━❍ *ᴀɪ* ❍⊷
-┃◇ ${prefix}𝙰𝚒
-┃◇ ${prefix}𝙱𝚞𝚐
-┃◇ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
-┃◇ ${prefix}𝙶𝚙𝚝
-┃◇ ${prefix}𝙳𝚊𝚕𝚕𝚎
-┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
-┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒 
-╰━━━━━━━━━━━━━━━⊷
-
-╭━❍ *ᴛᴏᴏʟs* ❍⊷
-┃◇ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
-┃◇ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
-┃◇ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
-┃◇ ${prefix}𝚃𝚛𝚝
-┃◇ ${prefix}𝚃𝚝𝚜
+┃◇ ${prefix}ᴀɪ
+┃◇ ${prefix}ʙᴜɢ
+┃◇ ${prefix}ʀᴇᴘᴏʀᴛ
+┃◇ ${prefix}ɢᴘᴛ
+┃◇ ${prefix}ᴅᴀʟʟᴇ
+┃◇ ${prefix}ʀᴇᴍɪɴɪ
+┃◇ ${prefix}ɢᴇᴍɪɴɪ
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *ɢʀᴏᴜᴘ* ❍⊷
-┃◇ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
-┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
-┃◇ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
-┃◇ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
-┃◇ ${prefix}𝙶𝚛𝚘𝚞𝚙
-┃◇ ${prefix}𝙶𝚌𝚜𝚎𝚝𝚝𝚒𝚗𝚐
-┃◇ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
-┃◇ ${prefix}𝙰𝚍𝚍
-┃◇ ${prefix}𝙺𝚒𝚌𝚔
-┃◇ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
-┃◇ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
-┃◇ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
-┃◇ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
-┃◇ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
+┃◇ ${prefix}ɪɴᴠɪᴛᴇ
+┃◇ ${prefix}ʟɪɴᴋɢᴄ
+┃◇ ${prefix}sᴇᴛᴘᴘɢᴄ
+┃◇ ${prefix}sᴇᴛɴᴀᴍᴇ
+┃◇ ${prefix}sᴇᴛᴅᴇsᴄ
+┃◇ ${prefix}ɢʀᴏᴜᴘ
+┃◇ ${prefix}ᴡᴇʟᴄᴏᴍᴇ
+┃◇ ${prefix}ᴀᴅᴅ
+┃◇ ${prefix}ᴋɪᴄᴋ
+┃◇ ${prefix}ʜɪᴅᴇᴛᴀɢ
+┃◇ ${prefix}ᴛᴀɢᴀʟʟ
+┃◇ ${prefix}ᴀɴᴛɪʟɪɴᴋ
+┃◇ ${prefix}ᴀɴᴛɪᴛᴏxɪᴄ
+┃◇ ${prefix}ᴘʀᴏᴍᴋᴛᴇ
+┃◇ ${prefix}ᴅᴇᴍᴏᴛᴇ
+┃◇ ${prefix}ɢᴇᴛʙɪᴏ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
-╭━❍ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ* ❍⊷
-┃◇ ${prefix}𝙰𝚙𝚔 
-┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
-┃◇ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
-┃◇ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
-┃◇ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
-┃◇ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
-┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊
-┃◇ ${prefix}𝚈𝚝𝚖𝚙3
-┃◇ ${prefix}𝚈𝚝𝚖𝚙4
-┃◇ ${prefix}𝙿𝚕𝚊𝚢
-┃◇ ${prefix}𝚂𝚘𝚗𝚐
-┃◇ ${prefix}𝚅𝚒𝚍𝚎𝚘
-┃◇ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
-┃◇ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
-┃◇ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
+╭━❍ *ᴛᴏᴏʟs* ❍⊷
+┃◇ ${prefix}ᴄᴀʟᴄ
+┃◇ ${prefix}ᴛᴇᴍᴘᴍᴀɪʟ
+┃◇ ${prefix}ᴄʜᴇᴄᴋᴍᴀɪʟ
+┃◇ ${prefix}ɪɴғᴏ
+┃◇ ${prefix}ᴛʀᴛ
+┃◇ ${prefix}ᴛᴛs
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *sᴇᴀʀᴄʜ* ❍⊷
-┃◇ ${prefix}𝙿𝚕𝚊𝚢
-┃◇ ${prefix}𝚈𝚝𝚜
-┃◇ ${prefix}𝙸𝚖𝚍𝚋
-┃◇ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
-┃◇ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
-┃◇ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
-┃◇ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
-┃◇ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
-┃◇ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
-┃◇ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
-┃◇ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
+┃◇ ${prefix}ᴘʟᴀʏ
+┃◇ ${prefix}sᴏɴɢ
+┃◇ ${prefix}ʏᴛs
+┃◇ ${prefix}ɪᴍᴅʙ
+┃◇ ${prefix}ᴍᴏᴠɪᴇ
+┃◇ ${prefix}ɪᴍᴀɢᴇ
+┃◇ ${prefix}ɢᴏᴏɢʟᴇ
+┃◇ ${prefix}ɪᴍɢ
+┃◇ ${prefix}ᴘɪɴᴛ
+┃◇ ${prefix}ᴘɪɴᴛᴇʀᴇsᴛ
+┃◇ ${prefix}ᴡᴀʟʟᴘᴀᴘᴇʀ
+┃◇ ${prefix}ᴡɪᴋɪᴍᴇᴅɪᴀ
+┃◇ ${prefix}ʏᴛs
+┃◇ ${prefix}ʀɪɴɢᴛᴏɴᴇ
+┃◇ ${prefix}ʟʏʀɪᴄs
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *ɢᴇɴᴇʀᴀʟ* ❍⊷
-┃◇ ${prefix}𝙿𝚒𝚗𝚐
-┃◇ ${prefix}𝙰𝚕𝚒𝚟𝚎
-┃◇ ${prefix}𝙾𝚠𝚗𝚎𝚛
-┃◇ ${prefix}𝙼𝚎𝚗𝚞
-┃◇ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
+┃◇ ${prefix}ᴘɪɴɢ
+┃◇ ${prefix}ᴛᴇsᴛ
+┃◇ ${prefix}ᴀʟɪᴠᴇ
+┃◇ ${prefix}ᴏᴡɴᴇʀ
+┃◇ ${prefix}ʀᴇᴘᴏ
+┃◇ ${prefix}ᴍᴇɴᴜ
+┃◇ ${prefix}ɪɴғᴏʙᴏᴛ
+┃◇ ${prefix}ᴀᴜᴛᴏᴅʟ
+┃◇ ${prefix}ɢᴇᴛᴘᴘ
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *ᴏᴡɴᴇʀ* ❍⊷
 ┃◇ ${prefix}ᴊᴏɪɴ
+┃◇ ${prefix}sᴇᴛᴘᴘʙᴏᴛ
+┃◇ ${prefix}ғᴜʟʟᴘᴘ
 ┃◇ ${prefix}ʟᴇᴀᴠᴇ
-┃◇ ${prefix}𝙱𝚕𝚘𝚌𝚔
-┃◇ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
-┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
-┃◇ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
-┃◇ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
-┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
-┃◇ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
-┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
-┃◇ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
+┃◇ ${prefix}ʙʟᴏᴄᴋ
+┃◇ ${prefix}ᴜɴʙʟᴏᴄᴋ
+┃◇ ${prefix}ʙᴄɢʀᴏᴜᴘ
+┃◇ ${prefix}ʙᴄᴀʟʟ
+┃◇ ${prefix}sᴇᴛᴘᴘ
+┃◇ ${prefix}ᴀɴᴛɪᴄᴀʟʟ
+┃◇ ${prefix}sᴇᴛsᴛᴀᴛᴜs
+┃◇ ${prefix}sᴇᴛɴᴀᴍᴇʙᴏᴛ
+┃◇ ${prefix}ᴀᴜᴛᴏᴛʏᴘɪɴɢ
+┃◇ ${prefix}ᴏɴʟɪɴᴇ
+┃◇ ${prefix}ᴀʟᴡᴀʏsᴏɴʟɪɴᴇ
+┃◇ ${prefix}ᴀᴜᴛᴏʀᴇᴀᴅ
+┃◇ ${prefix}ᴀᴜᴛᴏsᴠɪᴇᴡ
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *ʀᴇᴀᴄᴛɪᴏɴs* ❍⊷
@@ -384,6 +413,10 @@ ${readmore}
 ┃◇ ${prefix}ɢɪᴛsᴛᴀʟᴋ
 ┃◇ ${prefix}ɢɪᴛʜᴜʙ
 ┃◇ ${prefix}ɢɪᴛʜᴜʙsᴛᴀʟᴋ
+╰━━━━━━━━━━━━━━━⊷
+
+╭━❍ *Logo* ❍⊷
+┃◇ ᴄᴏᴍɪɴɢ sᴏᴏɴ, sᴛᴀʏ ᴘᴜᴛ!
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
