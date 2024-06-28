@@ -131,7 +131,7 @@ const test = async (m, Matrix) => {
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "𝐉𝐎𝐈𝐍 𝐂𝐇𝐀𝐍𝐍𝐄𝐋",
+                    display_text: "𝐉𝐎𝐈𝐍 𝐖𝐀𝐂𝐇𝐀𝐍𝐍𝐄𝐋",
                     url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
                   })
                 },
@@ -591,7 +591,7 @@ ${readmore}
 ┃◇ ${prefix}ᴀʟɪᴠᴇ
 ┃◇ ${prefix}ᴏᴡɴᴇʀ
 ┃◇ ${prefix}ʀᴇᴘᴏ
-┃◇ ${prefix}ᴍᴇɴʜ
+┃◇ ${prefix}ᴍᴇɴᴜ
 ┃◇ ${prefix}ɪɴғᴏʙᴏᴛ
 ┃◇ ${prefix}ᴀᴜᴛᴏᴅʟ
 ┃◇ ${prefix}ɢᴇᴛᴘᴘ
@@ -962,6 +962,60 @@ ${readmore}
   quoted: fgg
 });
    }
+
+     if (selectedId == "Logo Menu") {
+     const str =`
+> *${pushwish}* _${m.pushName}_
+╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
+┃❍ *ᴍᴏᴅᴇ:* _${mode}_
+┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴜsᴇʀ:* _${m.pushName}_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
+┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
+┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
+╰═════════════════⊷
+
+> *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐋𝐎𝐆𝐎  𝐌𝐄𝐍𝐔*
+${readmore}
+╭━━━━━━━━━━━━━━━⊷
+┃◇ ᴄᴏᴍɪɴɢ sᴏᴏɴ, sᴛᴀʏ ᴘᴜᴛ!
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: false,
+  }
+}, {
+  quoted: fgg
+});
+     }
    
    if (selectedId == "Ai Menu") {
      const str =`
@@ -985,9 +1039,8 @@ ${readmore}
 ┃◇ ${prefix}ʙᴜɢ
 ┃◇ ${prefix}ʀᴇᴘᴏʀᴛ
 ┃◇ ${prefix}ɢᴘᴛ
-┃◇ ${prefix}ɢᴘᴛ4
 ┃◇ ${prefix}ᴅᴀʟʟᴇ
-┃◇ ${prefix}ʀᴇᴍɪɴᴊ
+┃◇ ${prefix}ʀᴇᴍɪɴɪ
 ┃◇ ${prefix}ɢᴇᴍɪɴɪ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
