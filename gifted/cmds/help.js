@@ -114,6 +114,26 @@ const test = async (m, Matrix) => {
                 }),
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
               buttons: [
+                 {
+                  name: "quick_reply",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ",
+                    id: ".owner"
+                  })
+                },
+                {
+                  name: "cta_url",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "ᴠɪsɪᴛ & ғᴏʀᴋ ʀᴇᴘᴏ",
+                    url: `https://github.com/mouricedevs/gifted-md/fork`
+                  })
+                },
+                {
+                  name: "cta_url",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ",
+                    url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
+                  },
                 {
                   "name": "single_select",
                   "buttonParamsJson": `{"title":"🕳 𝐓𝐀𝐏 𝐓𝐎 𝐎𝐏𝐄𝐍 𝐌𝐄𝐍𝐔 🕳",
