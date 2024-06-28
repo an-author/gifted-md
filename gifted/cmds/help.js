@@ -133,7 +133,8 @@ const test = async (m, Matrix) => {
                   buttonParamsJson: JSON.stringify({
                     display_text: "ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ",
                     url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
-                  },
+                  })
+                },
                 {
                   "name": "single_select",
                   "buttonParamsJson": `{"title":"🕳 𝐓𝐀𝐏 𝐓𝐎 𝐎𝐏𝐄𝐍 𝐌𝐄𝐍𝐔 🕳",
