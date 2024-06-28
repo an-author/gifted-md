@@ -10,20 +10,34 @@ const alive = async (m, Matrix) => {
   
   const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
-    if (['alive2', 'uptime2', 'runtime2'].includes(cmd)) {
+    if (['uptime'].includes(cmd)) {
 
-  const uptimeMessage = `*𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃* Status Overview*
-_________________________________________
-
-*📆 ${days} Day*
-*🕰️ ${hours} Hour*
-*⏳ ${minutes} Minute*
-*⏲️ ${seconds} Second*
-_________________________________________
+  const uptimeMessage = `
+*GIFTED MD IS RUNNING!!*
+╭═════════════════⊷
+┃❍ *${days} Days*
+┃❍ *${hours} Hours*
+┃❍ *${minutes} Minutes*
+┃❍ *${seconds} Seconds*
+╰═════════════════⊷
 `;
 
   const buttons = [
         {
+          "name": "quick_reply",
+          "buttonParamsJson": JSON.stringify({
+            display_text: "OWNER",
+            id: `.owner`
+          })
+        },
+       {
+          "name": "quick_reply",
+          "buttonParamsJson": JSON.stringify({
+            display_text: "REPO",
+            id: `.repo`
+          })
+        },
+       {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
             display_text: "MENU",
@@ -33,7 +47,14 @@ _________________________________________
         {
           "name": "quick_reply",
           "buttonParamsJson": JSON.stringify({
-            display_text: "PING",
+            display_text: "TEST",
+            id: `.test`
+          })
+        },
+        {
+          "name": "quick_reply",
+          "buttonParamsJson": JSON.stringify({
+            display_text: "SPEED",
             id: `.ping`
           })
         }
