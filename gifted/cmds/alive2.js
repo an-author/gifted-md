@@ -14,12 +14,12 @@ const alive = async (m, Matrix) => {
 
   const uptimeMessage = `
 *GIFTED MD IS RUNNING!!*
-*BOT STATUS:*
+*BOT UPTIME INFO:*
 *╭═════════════════⊷*
-*┃❍ ${days} Days*
-*┃❍ ${hours} Hours*
-*┃❍ ${minutes} Minutes*
-*┃❍ ${seconds} Seconds*
+*┃❍ ${days} Day(s)*
+*┃❍ ${hours} Hour(s)*
+*┃❍ ${minutes} Minute(s)*
+*┃❍ ${seconds} Second(s)*
 *╰═════════════════⊷*
 `;
 
