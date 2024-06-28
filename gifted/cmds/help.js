@@ -76,7 +76,7 @@ const test = async (m, Matrix) => {
   const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '.';
         const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
         const mode = process.env.MODE;
-        const validCommands = ['menu', 'listmenu', 'allmenu', 'botmenu', 'help', 'list'];
+        const validCommands = ['menu', 'menus', 'listmenu', 'allmenu', 'botmenu', 'help', 'list'];
 
   if (validCommands.includes(cmd)) {
     let msg = generateWAMessageFromContent(m.from, {
@@ -117,21 +117,21 @@ const test = async (m, Matrix) => {
                  {
                   name: "quick_reply",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ",
+                    display_text: "𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐎𝐖𝐍𝐄𝐑",
                     id: ".owner"
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "ᴠɪsɪᴛ & ғᴏʀᴋ ʀᴇᴘᴏ",
+                    display_text: "𝐕𝐈𝐒𝐈𝐓 & 𝐅𝐎𝐑𝐊 𝐑𝐄𝐏𝐎",
                     url: `https://github.com/mouricedevs/gifted-md/fork`
                   })
                 },
                 {
                   name: "cta_url",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ",
+                    display_text: "𝐉𝐎𝐈𝐍 𝐂𝐇𝐀𝐍𝐍𝐄𝐋",
                     url: `https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l`
                   })
                 },
@@ -140,66 +140,72 @@ const test = async (m, Matrix) => {
                   "buttonParamsJson": `{"title":"🕳 𝐓𝐀𝐏 𝐓𝐎 𝐎𝐏𝐄𝐍 𝐌𝐄𝐍𝐔 🕳",
                  "sections":
                    [{
-                    "title":"🛸 𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔𝐒 𝐋𝐈𝐒𝐓",
-                    "highlight_label":"💿 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
+                    "title":"🛸 𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔𝐒 𝐋𝐈𝐒𝐓 🛸",
+                    "highlight_label":"💿 𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇",
                     "rows":[
                       {
                        "header":"",
-                       "title":"🔰 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
+                       "title":"𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀʟʟ ᴍᴇɴᴜ",
                        "id":"All Menu"
                       },
                       {
                         "header":"",
-                        "title":"⬇️ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
+                        "title":"⬇𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Downloader Menu"
                       },
                       {
                         "header":"",
-                        "title":"👨‍👨‍👧‍👧𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔",
+                        "title":"𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ɢʀᴏᴜᴘ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Group Menu"
                       },
                       {
                         "header":"",
-                        "title":"👨‍🔧 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
+                        "title":"𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴛᴏᴏʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Tools Menu"
                       },
                       {
                         "header":"",
-                        "title":"🗿 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 𝐌𝐄𝐍𝐔",
+                        "title":"𝐆𝐄𝐍𝐄𝐑𝐀𝐋 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ɢᴇɴᴇʀᴀʟ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"General Menu"
                       },
                      {
                         "header":"",
-                        "title":"👨‍💻 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔",
+                        "title":"𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀᴡᴇsᴏᴍᴇ ᴏᴡɴᴇʀ ᴍᴇɴᴜ ᴄᴍᴅs",
                         "id":"Owner Menu"
                       },
                       {
                         "header":"",
-                        "title":"✨ 𝐀𝐈 𝐌𝐄𝐍𝐔",
+                        "title":"𝐀𝐈 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴀɪ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Ai Menu"
                       },
                       {
                         "header":"",
-                        "title":"🔍𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔",
+                        "title":"𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ sᴇᴀʀᴄʜ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Search Menu"
                       },
                       {
                         "header":"",
-                        "title":"🧚‍♂️ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔",
+                        "title":"𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ sᴛᴀʟᴋᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Stalker Menu"
                       },
                       {
                         "header":"",
-                        "title":"🥏 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔",
+                        "title":"𝐑𝐄𝐀𝐂𝐓𝐈𝐎𝐍𝐒 𝐌𝐄𝐍𝐔",
+                        "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ʀᴇᴀᴄᴛɪᴏɴs ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+                        "id":"Reactions Menu"
+                      },
+                      {
+                        "header":"",
+                        "title":"𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔",
                         "description":"sʜᴏᴡ ɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏɴᴠᴇʀᴛᴇʀ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
                         "id":"Converter Menu"
                       }
@@ -327,8 +333,8 @@ ${readmore}
 ╰━━━━━━━━━━━━━━━⊷
 
 ╭━❍ *ᴏᴡɴᴇʀ* ❍⊷
-┃◇ ${prefix}𝙹𝚘𝚒𝚗
-┃◇ ${prefix}𝙻𝚎𝚊𝚟𝚎
+┃◇ ${prefix}ᴊᴏɪɴ
+┃◇ ${prefix}ʟᴇᴀᴠᴇ
 ┃◇ ${prefix}𝙱𝚕𝚘𝚌𝚔
 ┃◇ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
 ┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
@@ -341,10 +347,43 @@ ${readmore}
 ┃◇ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
 ╰━━━━━━━━━━━━━━━⊷
 
+╭━❍ *ʀᴇᴀᴄᴛɪᴏɴs* ❍⊷
+┃◇ .ᴄʀʏ
+┃◇ .ᴡɪɴᴋ
+┃◇ .ᴋɪss
+┃◇ .ᴘᴏᴋᴇ
+┃◇ .ᴋɪᴄᴋ
+┃◇ .sʟᴀᴘ
+┃◇ .ʜᴜɢ
+┃◇ .sᴍɪʟᴇ
+┃◇ .ᴘᴀᴛ
+┃◇ .ᴡᴀᴠᴇ
+┃◇ .ʟɪᴄᴋ
+┃◇ .ᴀᴡᴏᴏ
+┃◇ .ʙɪᴛᴇ
+┃◇ .ʏᴇᴇᴛ
+┃◇ .ʙʟᴜsʜ
+┃◇ .ʙᴜʟʟʏ
+┃◇ .sᴍᴜɢ
+┃◇ .ʙᴏɴᴋ
+┃◇ .ᴅᴀɴᴄᴇ
+┃◇ .ʜᴀᴘᴘʏ
+┃◇ .sᴀᴅ
+┃◇ .ᴄʀʏɴɢᴇ
+┃◇ .ᴄᴜᴅᴅʟᴇ
+┃◇ .sʜɪɴᴏʙᴜ
+┃◇ .ʜᴀɴᴅʜᴏʟᴅ
+┃◇ .ɢʟᴏᴍᴘ
+┃◇ .ʜɪɢʜғɪᴠᴇ
+╰━━━━━━━━━━━━━━━⊷
+
 ╭━❍ *sᴛᴀʟᴋᴇʀ* ❍⊷
-┃◇ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
-┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
-┃◇ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
+┃◇ ${prefix}ᴛʀᴜᴇᴄᴀʟʟᴇʀ
+┃◇ ${prefix}ɪɢsᴛᴀʟᴋ
+┃◇ ${prefix}ɪɴsᴛᴀsᴛᴀʟᴋ
+┃◇ ${prefix}ɢɪᴛsᴛᴀʟᴋ
+┃◇ ${prefix}ɢɪᴛʜᴜʙ
+┃◇ ${prefix}ɢɪᴛʜᴜʙsᴛᴀʟᴋ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -397,21 +436,34 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙰𝚙𝚔
-┃◇ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
-┃◇ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
-┃◇ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
-┃◇ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
-┃◇ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
-┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊
-┃◇ ${prefix}𝚈𝚝𝚖𝚙3
-┃◇ ${prefix}𝚈𝚝𝚖𝚙4
-┃◇ ${prefix}𝙿𝚕𝚊𝚢
-┃◇ ${prefix}𝚂𝚘𝚗𝚐
-┃◇ ${prefix}𝚅𝚒𝚍𝚎𝚘
-┃◇ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
-┃◇ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
-┃◇ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
+┃◇ ${prefix}ᴀᴘᴋ
+┃◇ ${prefix}ᴀᴘᴘ
+┃◇ ${prefix}ғʙ
+┃◇ ${prefix}ᴀᴜᴛᴏᴅʟ
+┃◇ ${prefix}ғʙᴅʟ
+┃◇ ${prefix}ғᴀᴄᴇʙᴏᴏᴋ
+┃◇ ${prefix}ᴍᴇᴅɪᴀғɪʀᴇ
+┃◇ ${prefix}ᴍғɪʀᴇᴅʟ
+┃◇ ${prefix}ᴍғɪʀᴇ
+┃◇ ${prefix}ᴘɪɴᴛ
+┃◇ ${prefix}ᴘɪɴᴛᴅʟ
+┃◇ ${prefix}ᴘɪɴᴛᴇʀᴇsᴛ
+┃◇ ${prefix}ɢɪᴛᴄʟᴏɴᴇ
+┃◇ ${prefix}ɢᴅʀɪᴠᴇ
+┃◇ ${prefix}ɪɴsᴛᴀ
+┃◇ ${prefix}ɪɢᴅʟ
+┃◇ ${prefix}ɪɴsᴛᴀᴅʟ
+┃◇ ${prefix}ɪɢ
+┃◇ ${prefix}ʏᴛᴍᴘ3
+┃◇ ${prefix}ʏᴛᴍᴘ4
+┃◇ ${prefix}ᴘʟᴀʏ
+┃◇ ${prefix}sᴏɴɢ
+┃◇ ${prefix}ᴠɪᴅᴇᴏ
+┃◇ ${prefix}ʏᴛᴍᴘ3ᴅᴏᴄ
+┃◇ ${prefix}ʏᴛᴍᴘ4ᴅᴏᴄ
+┃◇ ${prefix}ᴛɪᴋᴛᴏᴋ
+┃◇ ${prefix}ᴛɪᴋᴛᴏᴋᴅʟ
+┃◇ ${prefix}ᴛɪᴋᴅʟ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -465,21 +517,22 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
-┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
-┃◇ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
-┃◇ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
-┃◇ ${prefix}𝙶𝚛𝚘𝚞𝚙
-┃◇ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
-┃◇ ${prefix}𝙰𝚍𝚍
-┃◇ ${prefix}𝙺𝚒𝚌𝚔
-┃◇ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
-┃◇ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
-┃◇ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
-┃◇ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
-┃◇ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
+┃◇ ${prefix}ɪɴᴠɪᴛᴇ
+┃◇ ${prefix}ʟɪɴᴋɢᴄ
+┃◇ ${prefix}sᴇᴛᴘᴘɢᴄ
+┃◇ ${prefix}sᴇᴛɴᴀᴍᴇ
+┃◇ ${prefix}sᴇᴛᴅᴇsᴄ
+┃◇ ${prefix}ɢʀᴏᴜᴘ
+┃◇ ${prefix}ᴡᴇʟᴄᴏᴍᴇ
+┃◇ ${prefix}ᴀᴅᴅ
+┃◇ ${prefix}ᴋɪᴄᴋ
+┃◇ ${prefix}ʜɪᴅᴇᴛᴀɢ
+┃◇ ${prefix}ᴛᴀɢᴀʟʟ
+┃◇ ${prefix}ᴀɴᴛɪʟɪɴᴋ
+┃◇ ${prefix}ᴀɴᴛɪᴛᴏxɪᴄ
+┃◇ ${prefix}ᴘʀᴏᴍᴋᴛᴇ
+┃◇ ${prefix}ᴅᴇᴍᴏᴛᴇ
+┃◇ ${prefix}ɢᴇᴛʙɪᴏ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -533,11 +586,15 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙿𝚒𝚗𝚐
-┃◇ ${prefix}𝙰𝚕𝚒𝚟𝚎
-┃◇ ${prefix}𝙾𝚠𝚗𝚎𝚛
-┃◇ ${prefix}𝙼𝚎𝚗𝚞
-┃◇ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
+┃◇ ${prefix}ᴘɪɴɢ
+┃◇ ${prefix}ᴛᴇsᴛ
+┃◇ ${prefix}ᴀʟɪᴠᴇ
+┃◇ ${prefix}ᴏᴡɴᴇʀ
+┃◇ ${prefix}ʀᴇᴘᴏ
+┃◇ ${prefix}ᴍᴇɴʜ
+┃◇ ${prefix}ɪɴғᴏʙᴏᴛ
+┃◇ ${prefix}ᴀᴜᴛᴏᴅʟ
+┃◇ ${prefix}ɢᴇᴛᴘᴘ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -591,20 +648,23 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙹𝚘𝚒𝚗
-┃◇ ${prefix}𝙻𝚎𝚊𝚟𝚎
-┃◇ ${prefix}𝙱𝚕𝚘𝚌𝚔
-┃◇ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
-┃◇ ${prefix}𝙱𝚌𝚐𝚛𝚘𝚞𝚙
-┃◇ ${prefix}𝙱𝚌𝚊𝚕𝚕
-┃◇ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
-┃◇ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
-┃◇ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
-┃◇ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
-┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
-┃◇ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
-┃◇ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
-┃◇ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
+┃◇ ${prefix}ᴊᴏɪɴ
+┃◇ ${prefix}sᴇᴛᴘᴘʙᴏᴛ
+┃◇ ${prefix}ғᴜʟʟᴘᴘ
+┃◇ ${prefix}ʟᴇᴀᴠᴇ
+┃◇ ${prefix}ʙʟᴏᴄᴋ
+┃◇ ${prefix}ᴜɴʙʟᴏᴄᴋ
+┃◇ ${prefix}ʙᴄɢʀᴏᴜᴘ
+┃◇ ${prefix}ʙᴄᴀʟʟ
+┃◇ ${prefix}sᴇᴛᴘᴘ
+┃◇ ${prefix}ᴀɴᴛɪᴄᴀʟʟ
+┃◇ ${prefix}sᴇᴛsᴛᴀᴛᴜs
+┃◇ ${prefix}sᴇᴛɴᴀᴍᴇʙᴏᴛ
+┃◇ ${prefix}ᴀᴜᴛᴏᴛʏᴘɪɴɢ
+┃◇ ${prefix}ᴏɴʟɪɴᴇ
+┃◇ ${prefix}ᴀʟᴡᴀʏsᴏɴʟɪɴᴇ
+┃◇ ${prefix}ᴀᴜᴛᴏʀᴇᴀᴅ
+┃◇ ${prefix}ᴀᴜᴛᴏsᴠɪᴇᴡ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -658,17 +718,21 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙿𝚕𝚊𝚢
-┃◇ ${prefix}𝚈𝚝𝚜
-┃◇ ${prefix}𝙸𝚖𝚍𝚋
-┃◇ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
-┃◇ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
-┃◇ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
-┃◇ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
-┃◇ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
-┃◇ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
-┃◇ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
-┃◇ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
+┃◇ ${prefix}ᴘʟᴀʏ
+┃◇ ${prefix}sᴏɴɢ
+┃◇ ${prefix}ʏᴛs
+┃◇ ${prefix}ɪᴍᴅʙ
+┃◇ ${prefix}ᴍᴏᴠɪᴇ
+┃◇ ${prefix}ɪᴍᴀɢᴇ
+┃◇ ${prefix}ɢᴏᴏɢʟᴇ
+┃◇ ${prefix}ɪᴍɢ
+┃◇ ${prefix}ᴘɪɴᴛ
+┃◇ ${prefix}ᴘɪɴᴛᴇʀᴇsᴛ
+┃◇ ${prefix}ᴡᴀʟʟᴘᴀᴘᴇʀ
+┃◇ ${prefix}ᴡɪᴋɪᴍᴇᴅɪᴀ
+┃◇ ${prefix}ʏᴛs
+┃◇ ${prefix}ʀɪɴɢᴛᴏɴᴇ
+┃◇ ${prefix}ʟʏʀɪᴄs
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -721,10 +785,10 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙽𝚘𝚠𝚊
-┃◇ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
-┃◇ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
-┃◇ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
+┃◇ ${prefix}ᴛʀᴜᴇᴄᴀʟʟᴇʀ
+┃◇ ${prefix}ɪɴsᴛᴀsᴛᴀʟᴋ
+┃◇ ${prefix}ɴᴏᴡᴀ
+┃◇ ${prefix}ɢɪᴛsᴛᴀʟᴋ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -759,6 +823,86 @@ ${readmore}
   quoted: fgg
 });
    }
+
+     if (selectedId == "Reactions Menu") {
+     const str =`
+> *${pushwish}* _${m.pushName}_
+╭══ *〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙* ═⊷
+┃❍ *ᴍᴏᴅᴇ:* _${mode}_
+┃❍ *ᴘʀᴇғɪx:* [ ${prefix} ]
+┃❍ *ᴏᴡɴᴇʀ:* _ɢɪғᴛᴇᴅ ᴛᴇᴄʜ_
+┃❍ *ᴜsᴇʀ:* _${m.pushName}_
+┃❍ *ᴠᴇʀꜱɪᴏɴ:* _5.0.0_      
+┃❍ *ᴅᴀᴛᴀʙᴀsᴇ:* _ᴄᵖᵃⁿᵉˡ_
+┃❍ *ᴛᴏᴛᴀʟ ʀᴀᴍ:* _${formatBytes(totalMemoryBytes)}_
+┃❍ *ғʀᴇᴇ ʀᴀᴍ:* _${formatBytes(freeMemoryBytes)}_
+┃❍ *ᴘʟᴀᴛғᴏʀᴍ:* _ᴡʜᴀᴛsᴀᴘᴘ_
+╰═════════════════⊷
+
+> *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐑𝐄𝐀𝐂𝐓𝐈𝐎𝐍𝐒 𝐌𝐄𝐍𝐔*
+${readmore}
+╭━❍ *ʀᴇᴀᴄᴛɪᴏɴs* ❍⊷
+┃◇ .ᴄʀʏ
+┃◇ .ᴡɪɴᴋ
+┃◇ .ᴋɪss
+┃◇ .ᴘᴏᴋᴇ
+┃◇ .ᴋɪᴄᴋ
+┃◇ .sʟᴀᴘ
+┃◇ .ʜᴜɢ
+┃◇ .sᴍɪʟᴇ
+┃◇ .ᴘᴀᴛ
+┃◇ .ᴡᴀᴠᴇ
+┃◇ .ʟɪᴄᴋ
+┃◇ .ᴀᴡᴏᴏ
+┃◇ .ʙɪᴛᴇ
+┃◇ .ʏᴇᴇᴛ
+┃◇ .ʙʟᴜsʜ
+┃◇ .ʙᴜʟʟʏ
+┃◇ .sᴍᴜɢ
+┃◇ .ʙᴏɴᴋ
+┃◇ .ᴅᴀɴᴄᴇ
+┃◇ .ʜᴀᴘᴘʏ
+┃◇ .sᴀᴅ
+┃◇ .ᴄʀʏɴɢᴇ
+┃◇ .ᴄᴜᴅᴅʟᴇ
+┃◇ .sʜɪɴᴏʙᴜ
+┃◇ .ʜᴀɴᴅʜᴏʟᴅ
+┃◇ .ɢʟᴏᴍᴘ
+┃◇ .ʜɪɢʜғɪᴠᴇ
+╰━━━━━━━━━━━━━━━⊷
+${readmore}
+> *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
+> *ᴍᴀᴅᴇ ʙʏ ɢɪғᴛᴇᴅ ᴛᴇᴄʜ*
+`;
+         let fgg = {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `𝐆𝐈𝐅𝐓𝐄𝐃 𝐓𝐄𝐂𝐇`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'MATRIX'\nitem1.TEL;waid=${
+                        m.sender.split("@")[0]
+                    }:${
+                        m.sender.split("@")[0]
+                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            }
+        };
+       let { key } = await Matrix.sendMessage(m.from, {
+  image: fs.readFileSync('./gifted/img/gifted.jpg'), 
+  caption: str, 
+  contextInfo: {
+    mentionedJid: [m.sender], 
+    forwardingScore: 9999,
+    isForwarded: false,
+  }
+}, {
+  quoted: fgg
+});
+     }
    
    if (selectedId == "Tools Menu") {
      const str =`
@@ -778,12 +922,12 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
-┃◇ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
-┃◇ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
-┃◇ ${prefix}𝙸𝚗𝚏𝚘
-┃◇ ${prefix}𝚃𝚛𝚝
-┃◇ ${prefix}𝚃𝚝𝚜
+┃◇ ${prefix}ᴄᴀʟᴄ
+┃◇ ${prefix}ᴛᴇᴍᴘᴍᴀɪʟ
+┃◇ ${prefix}ᴄʜᴇᴄᴋᴍᴀɪʟ
+┃◇ ${prefix}ɪɴғᴏ
+┃◇ ${prefix}ᴛʀᴛ
+┃◇ ${prefix}ᴛᴛs
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -837,13 +981,14 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐀𝐈 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙰𝚒
-┃◇ ${prefix}𝙱𝚞𝚐
-┃◇ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
-┃◇ ${prefix}𝙶𝚙𝚝
-┃◇ ${prefix}𝙳𝚊𝚕𝚕𝚎
-┃◇ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
-┃◇ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
+┃◇ ${prefix}ᴀɪ
+┃◇ ${prefix}ʙᴜɢ
+┃◇ ${prefix}ʀᴇᴘᴏʀᴛ
+┃◇ ${prefix}ɢᴘᴛ
+┃◇ ${prefix}ɢᴘᴛ4
+┃◇ ${prefix}ᴅᴀʟʟᴇ
+┃◇ ${prefix}ʀᴇᴍɪɴᴊ
+┃◇ ${prefix}ɢᴇᴍɪɴɪ
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
@@ -897,13 +1042,16 @@ ${readmore}
 > *𝐆𝐈𝐅𝐓𝐄𝐃-𝐌𝐃 𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐄𝐑 𝐌𝐄𝐍𝐔*
 ${readmore}
 ╭━━━━━━━━━━━━━━━⊷
-┃◇ ${prefix}𝙰𝚃𝚃𝙿
-┃◇ ${prefix}𝙰𝚃𝚃𝙿2
-┃◇ ${prefix}𝙰𝚃𝚃𝙿3
-┃◇ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
-┃◇ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
+┃◇ ${prefix}ᴀᴛᴛᴘ
+┃◇ ${prefix}ᴀᴛᴛᴘ2
+┃◇ ${prefix}ᴀᴛᴛᴘ3
+┃◇ ${prefix}ᴇɴᴄᴏᴅᴇ
+┃◇ ${prefix}ᴇʙɪɴᴀʀʏ
+┃◇ ${prefix}ᴅᴇᴄᴏᴅᴇ
+┃◇ ${prefix}ᴅᴇʙɪɴᴀʀʏ
 ┃◇ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
-┃◇ ${prefix}𝙼𝙿3
+┃◇ ${prefix}ᴍᴘ3
+┃◇ ${prefix}ᴛᴏᴍᴘ3
 ╰━━━━━━━━━━━━━━━⊷
 ${readmore}
 > *©𝟐𝟎𝟐𝟒 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 𝐕𝟓*
