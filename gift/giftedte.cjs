@@ -1,1 +1,138 @@
-const _0x18672c=_0x4d9c;(function(_0x30d750,_0x3018df){const _0x23f9cc=_0x4d9c,_0x4e2b2f=_0x30d750();while(!![]){try{const _0x2f1970=-parseInt(_0x23f9cc(0x156))/0x1*(-parseInt(_0x23f9cc(0x146))/0x2)+-parseInt(_0x23f9cc(0x15d))/0x3*(parseInt(_0x23f9cc(0x14e))/0x4)+-parseInt(_0x23f9cc(0x13b))/0x5*(-parseInt(_0x23f9cc(0x145))/0x6)+-parseInt(_0x23f9cc(0x154))/0x7+parseInt(_0x23f9cc(0x151))/0x8+parseInt(_0x23f9cc(0x162))/0x9*(parseInt(_0x23f9cc(0x147))/0xa)+-parseInt(_0x23f9cc(0x140))/0xb;if(_0x2f1970===_0x3018df)break;else _0x4e2b2f['push'](_0x4e2b2f['shift']());}catch(_0x2969d0){_0x4e2b2f['push'](_0x4e2b2f['shift']());}}}(_0x5c32,0xd6d8b));const fs=require('fs'),{tmpdir}=require('os'),Crypto=require(_0x18672c(0x138)),ff=require('fluent-ffmpeg'),webp=require('node-webpmux'),path=require('path');function _0x5c32(){const _0x1ddb33=['00:00:00','categories','save','crypto','author','writeFileSync','7338515xWSzIs','error','-loop','end','default','36171212OJPLAo','.mp4','webp','length','00:00:05','6GFCAvD','6436oeEtUn','195280DAIxjz','-ss','mimetype','-vcodec','addOutputOptions','concat','packname','8iyNmPu','-vf','libwebp','6938552jVfNvD','-an','readFileSync','150801rsPHQg','readUIntLE','71yTqESy','join','https://github.com/DikaArdnt/Hisoka-Morou','randomBytes','-preset','.jpg','toString','79593nNwtQN','test','.webp','exif','toFormat','774JEBsKb','utf-8','unlinkSync','Image','scale=\x27min(320,iw)\x27:min\x27(320,ih)\x27:force_original_aspect_ratio=decrease,fps=15,\x20pad=320:320:-1:-1:color=white@0.0,\x20split\x20[a][b];\x20[a]\x20palettegen=reserve_transparent=on:transparency_color=ffffff\x20[p];\x20[b][p]\x20paletteuse','from','stringify','data','writeUIntLE'];_0x5c32=function(){return _0x1ddb33;};return _0x5c32();}async function imageToWebp(_0x2c6a72){const _0x8f172a=_0x18672c,_0x194621=path[_0x8f172a(0x157)](tmpdir(),Crypto['randomBytes'](0x6)[_0x8f172a(0x155)](0x0,0x6)[_0x8f172a(0x15c)](0x24)+_0x8f172a(0x15f)),_0x468050=path[_0x8f172a(0x157)](tmpdir(),Crypto[_0x8f172a(0x159)](0x6)[_0x8f172a(0x155)](0x0,0x6)[_0x8f172a(0x15c)](0x24)+_0x8f172a(0x15b));fs[_0x8f172a(0x13a)](_0x468050,_0x2c6a72),await new Promise((_0x11855b,_0x8c9700)=>{const _0x192a6a=_0x8f172a;ff(_0x468050)['on'](_0x192a6a(0x13c),_0x8c9700)['on'](_0x192a6a(0x13e),()=>_0x11855b(!![]))[_0x192a6a(0x14b)]([_0x192a6a(0x14a),_0x192a6a(0x150),_0x192a6a(0x14f),_0x192a6a(0x166)])[_0x192a6a(0x161)](_0x192a6a(0x142))['save'](_0x194621);});const _0x3f0537=fs[_0x8f172a(0x153)](_0x194621);return fs['unlinkSync'](_0x194621),fs[_0x8f172a(0x164)](_0x468050),_0x3f0537;}async function videoToWebp(_0x4f1229){const _0x1ae094=_0x18672c,_0x2e379d=path['join'](tmpdir(),Crypto['randomBytes'](0x6)[_0x1ae094(0x155)](0x0,0x6)[_0x1ae094(0x15c)](0x24)+_0x1ae094(0x15f)),_0x1f5d29=path[_0x1ae094(0x157)](tmpdir(),Crypto[_0x1ae094(0x159)](0x6)[_0x1ae094(0x155)](0x0,0x6)['toString'](0x24)+_0x1ae094(0x141));fs[_0x1ae094(0x13a)](_0x1f5d29,_0x4f1229),await new Promise((_0x149d56,_0x3e20d4)=>{const _0x4793aa=_0x1ae094;ff(_0x1f5d29)['on'](_0x4793aa(0x13c),_0x3e20d4)['on'](_0x4793aa(0x13e),()=>_0x149d56(!![]))[_0x4793aa(0x14b)]([_0x4793aa(0x14a),_0x4793aa(0x150),_0x4793aa(0x14f),'scale=\x27min(320,iw)\x27:min\x27(320,ih)\x27:force_original_aspect_ratio=decrease,fps=15,\x20pad=320:320:-1:-1:color=white@0.0,\x20split\x20[a][b];\x20[a]\x20palettegen=reserve_transparent=on:transparency_color=ffffff\x20[p];\x20[b][p]\x20paletteuse',_0x4793aa(0x13d),'0',_0x4793aa(0x148),_0x4793aa(0x135),'-t',_0x4793aa(0x144),_0x4793aa(0x15a),_0x4793aa(0x13f),_0x4793aa(0x152),'-vsync','0'])['toFormat'](_0x4793aa(0x142))[_0x4793aa(0x137)](_0x2e379d);});const _0x2324cc=fs['readFileSync'](_0x2e379d);return fs[_0x1ae094(0x164)](_0x2e379d),fs[_0x1ae094(0x164)](_0x1f5d29),_0x2324cc;}async function writeExifImg(_0x5a0378,_0x4a3f53){const _0x574e54=_0x18672c;let _0x4b795e=await imageToWebp(_0x5a0378);const _0x23e297=path[_0x574e54(0x157)](tmpdir(),Crypto['randomBytes'](0x6)['readUIntLE'](0x0,0x6)[_0x574e54(0x15c)](0x24)+_0x574e54(0x15f)),_0x1fa02b=path[_0x574e54(0x157)](tmpdir(),Crypto[_0x574e54(0x159)](0x6)[_0x574e54(0x155)](0x0,0x6)[_0x574e54(0x15c)](0x24)+'.webp');fs[_0x574e54(0x13a)](_0x23e297,_0x4b795e);if(_0x4a3f53[_0x574e54(0x14d)]||_0x4a3f53[_0x574e54(0x139)]){const _0x47de56=new webp['Image'](),_0x26dd7c={'sticker-pack-id':_0x574e54(0x158),'sticker-pack-name':_0x4a3f53[_0x574e54(0x14d)],'sticker-pack-publisher':_0x4a3f53[_0x574e54(0x139)],'emojis':_0x4a3f53[_0x574e54(0x136)]?_0x4a3f53[_0x574e54(0x136)]:['']},_0xbe9390=Buffer[_0x574e54(0x167)]([0x49,0x49,0x2a,0x0,0x8,0x0,0x0,0x0,0x1,0x0,0x41,0x57,0x7,0x0,0x0,0x0,0x0,0x0,0x16,0x0,0x0,0x0]),_0x1f38cb=Buffer[_0x574e54(0x167)](JSON[_0x574e54(0x168)](_0x26dd7c),_0x574e54(0x163)),_0x20c4a8=Buffer[_0x574e54(0x14c)]([_0xbe9390,_0x1f38cb]);return _0x20c4a8[_0x574e54(0x134)](_0x1f38cb[_0x574e54(0x143)],0xe,0x4),await _0x47de56['load'](_0x23e297),fs[_0x574e54(0x164)](_0x23e297),_0x47de56[_0x574e54(0x160)]=_0x20c4a8,await _0x47de56[_0x574e54(0x137)](_0x1fa02b),_0x1fa02b;}}function _0x4d9c(_0xdaeb30,_0x383cbc){const _0x5c32bd=_0x5c32();return _0x4d9c=function(_0x4d9c56,_0xe6e81a){_0x4d9c56=_0x4d9c56-0x133;let _0x249901=_0x5c32bd[_0x4d9c56];return _0x249901;},_0x4d9c(_0xdaeb30,_0x383cbc);}async function writeExifVid(_0x29dcd9,_0x150cf8){const _0x189ab9=_0x18672c;let _0x2ee9e4=await videoToWebp(_0x29dcd9);const _0x5c66bb=path[_0x189ab9(0x157)](tmpdir(),Crypto[_0x189ab9(0x159)](0x6)['readUIntLE'](0x0,0x6)['toString'](0x24)+_0x189ab9(0x15f)),_0x5152d0=path['join'](tmpdir(),Crypto[_0x189ab9(0x159)](0x6)[_0x189ab9(0x155)](0x0,0x6)[_0x189ab9(0x15c)](0x24)+_0x189ab9(0x15f));fs['writeFileSync'](_0x5c66bb,_0x2ee9e4);if(_0x150cf8['packname']||_0x150cf8['author']){const _0x255c9b=new webp[(_0x189ab9(0x165))](),_0x189996={'sticker-pack-id':'https://github.com/DikaArdnt/Hisoka-Morou','sticker-pack-name':_0x150cf8[_0x189ab9(0x14d)],'sticker-pack-publisher':_0x150cf8[_0x189ab9(0x139)],'emojis':_0x150cf8['categories']?_0x150cf8['categories']:['']},_0x5a54ff=Buffer['from']([0x49,0x49,0x2a,0x0,0x8,0x0,0x0,0x0,0x1,0x0,0x41,0x57,0x7,0x0,0x0,0x0,0x0,0x0,0x16,0x0,0x0,0x0]),_0x55d24f=Buffer['from'](JSON[_0x189ab9(0x168)](_0x189996),_0x189ab9(0x163)),_0x2397b8=Buffer[_0x189ab9(0x14c)]([_0x5a54ff,_0x55d24f]);return _0x2397b8[_0x189ab9(0x134)](_0x55d24f[_0x189ab9(0x143)],0xe,0x4),await _0x255c9b['load'](_0x5c66bb),fs['unlinkSync'](_0x5c66bb),_0x255c9b[_0x189ab9(0x160)]=_0x2397b8,await _0x255c9b[_0x189ab9(0x137)](_0x5152d0),_0x5152d0;}}async function writeExif(_0x51da14,_0x2fa0f2){const _0x305cf5=_0x18672c;let _0xf72851=/webp/[_0x305cf5(0x15e)](_0x51da14[_0x305cf5(0x149)])?_0x51da14[_0x305cf5(0x133)]:/image/['test'](_0x51da14[_0x305cf5(0x149)])?await imageToWebp(_0x51da14[_0x305cf5(0x133)]):/video/[_0x305cf5(0x15e)](_0x51da14[_0x305cf5(0x149)])?await videoToWebp(_0x51da14[_0x305cf5(0x133)]):'';const _0x258f3e=path[_0x305cf5(0x157)](tmpdir(),Crypto[_0x305cf5(0x159)](0x6)[_0x305cf5(0x155)](0x0,0x6)[_0x305cf5(0x15c)](0x24)+_0x305cf5(0x15f)),_0x36f06f=path[_0x305cf5(0x157)](tmpdir(),Crypto[_0x305cf5(0x159)](0x6)['readUIntLE'](0x0,0x6)[_0x305cf5(0x15c)](0x24)+_0x305cf5(0x15f));fs[_0x305cf5(0x13a)](_0x258f3e,_0xf72851);if(_0x2fa0f2[_0x305cf5(0x14d)]||_0x2fa0f2[_0x305cf5(0x139)]){const _0x8f3ec5=new webp[(_0x305cf5(0x165))](),_0x2a7419={'sticker-pack-id':_0x305cf5(0x158),'sticker-pack-name':_0x2fa0f2[_0x305cf5(0x14d)],'sticker-pack-publisher':_0x2fa0f2[_0x305cf5(0x139)],'emojis':_0x2fa0f2['categories']?_0x2fa0f2[_0x305cf5(0x136)]:['']},_0x12a2a8=Buffer['from']([0x49,0x49,0x2a,0x0,0x8,0x0,0x0,0x0,0x1,0x0,0x41,0x57,0x7,0x0,0x0,0x0,0x0,0x0,0x16,0x0,0x0,0x0]),_0xa499b9=Buffer[_0x305cf5(0x167)](JSON[_0x305cf5(0x168)](_0x2a7419),'utf-8'),_0x3832fb=Buffer[_0x305cf5(0x14c)]([_0x12a2a8,_0xa499b9]);return _0x3832fb[_0x305cf5(0x134)](_0xa499b9[_0x305cf5(0x143)],0xe,0x4),await _0x8f3ec5['load'](_0x258f3e),fs[_0x305cf5(0x164)](_0x258f3e),_0x8f3ec5[_0x305cf5(0x160)]=_0x3832fb,await _0x8f3ec5[_0x305cf5(0x137)](_0x36f06f),_0x36f06f;}}module['exports']={'imageToWebp':imageToWebp,'videoToWebp':videoToWebp,'writeExifImg':writeExifImg,'writeExifVid':writeExifVid,'writeExif':writeExif};
+const fs = require('fs')
+const { tmpdir } = require("os")
+const Crypto = require("crypto")
+const ff = require('fluent-ffmpeg')
+const webp = require("node-webpmux")
+const path = require("path")
+
+async function imageToWebp (media) {
+
+    const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.jpg`)
+
+    fs.writeFileSync(tmpFileIn, media)
+
+    await new Promise((resolve, reject) => {
+        ff(tmpFileIn)
+            .on("error", reject)
+            .on("end", () => resolve(true))
+            .addOutputOptions([
+                "-vcodec",
+                "libwebp",
+                "-vf",
+                "scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse"
+            ])
+            .toFormat("webp")
+            .save(tmpFileOut)
+    })
+
+    const buff = fs.readFileSync(tmpFileOut)
+    fs.unlinkSync(tmpFileOut)
+    fs.unlinkSync(tmpFileIn)
+    return buff
+}
+
+async function videoToWebp (media) {
+
+    const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.mp4`)
+
+    fs.writeFileSync(tmpFileIn, media)
+
+    await new Promise((resolve, reject) => {
+        ff(tmpFileIn)
+            .on("error", reject)
+            .on("end", () => resolve(true))
+            .addOutputOptions([
+                "-vcodec",
+                "libwebp",
+                "-vf",
+                "scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse",
+                "-loop",
+                "0",
+                "-ss",
+                "00:00:00",
+                "-t",
+                "00:00:05",
+                "-preset",
+                "default",
+                "-an",
+                "-vsync",
+                "0"
+            ])
+            .toFormat("webp")
+            .save(tmpFileOut)
+    })
+
+    const buff = fs.readFileSync(tmpFileOut)
+    fs.unlinkSync(tmpFileOut)
+    fs.unlinkSync(tmpFileIn)
+    return buff
+}
+
+async function writeExifImg (media, metadata) {
+    let wMedia = await imageToWebp(media)
+    const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    fs.writeFileSync(tmpFileIn, wMedia)
+
+    if (metadata.packname || metadata.author) {
+        const img = new webp.Image()
+        const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
+        const exifAttr = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00])
+        const jsonBuff = Buffer.from(JSON.stringify(json), "utf-8")
+        const exif = Buffer.concat([exifAttr, jsonBuff])
+        exif.writeUIntLE(jsonBuff.length, 14, 4)
+        await img.load(tmpFileIn)
+        fs.unlinkSync(tmpFileIn)
+        img.exif = exif
+        await img.save(tmpFileOut)
+        return tmpFileOut
+    }
+}
+
+async function writeExifVid (media, metadata) {
+    let wMedia = await videoToWebp(media)
+    const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    fs.writeFileSync(tmpFileIn, wMedia)
+
+    if (metadata.packname || metadata.author) {
+        const img = new webp.Image()
+        const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
+        const exifAttr = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00])
+        const jsonBuff = Buffer.from(JSON.stringify(json), "utf-8")
+        const exif = Buffer.concat([exifAttr, jsonBuff])
+        exif.writeUIntLE(jsonBuff.length, 14, 4)
+        await img.load(tmpFileIn)
+        fs.unlinkSync(tmpFileIn)
+        img.exif = exif
+        await img.save(tmpFileOut)
+        return tmpFileOut
+    }
+}
+
+async function writeExif (media, metadata) {
+    let wMedia = /webp/.test(media.mimetype) ? media.data : /image/.test(media.mimetype) ? await imageToWebp(media.data) : /video/.test(media.mimetype) ? await videoToWebp(media.data) : ""
+    const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    fs.writeFileSync(tmpFileIn, wMedia)
+
+    if (metadata.packname || metadata.author) {
+        const img = new webp.Image()
+        const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
+        const exifAttr = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00])
+        const jsonBuff = Buffer.from(JSON.stringify(json), "utf-8")
+        const exif = Buffer.concat([exifAttr, jsonBuff])
+        exif.writeUIntLE(jsonBuff.length, 14, 4)
+        await img.load(tmpFileIn)
+        fs.unlinkSync(tmpFileIn)
+        img.exif = exif
+        await img.save(tmpFileOut)
+        return tmpFileOut
+    }
+}
+
+module.exports = { imageToWebp, videoToWebp, writeExifImg, writeExifVid, writeExif }
+
+
