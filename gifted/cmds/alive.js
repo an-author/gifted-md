@@ -13,12 +13,11 @@ const alive = async (m, Matrix) => {
   
   const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
-    if (['uptime'].includes(cmd)) {
+    if (['alive'].includes(cmd)) {
 
   const uptimeMessage = `
 *GIFTED MD IS ALIVE!!*
-${readmore}
-*BOT UPTIME INFO:*
+*BOT UPTIME INFO:*${readmore}
 *╭═════════════════⊷*
 *┃❍  ${days} Day(s)*
 *┃❍  ${hours} Hour(s)*
