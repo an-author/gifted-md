@@ -1,3 +1,4 @@
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 
 const fs = require('fs')
 const path = require('path')
@@ -86,5 +87,5 @@ module.exports = {
   ffmpeg,
 }
 
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
                     
