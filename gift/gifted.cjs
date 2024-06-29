@@ -1,4 +1,4 @@
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 const { proto, delay, getContentType, areJidsSameUser, generateWAMessage } = require('@whiskeysockets/baileys')
 const fs = require('fs')
 const Crypto = require('crypto')
@@ -8,27 +8,27 @@ const { sizeFormatter } = require('human-readable')
 const util = require('util')
 const Jimp = require('jimp')
 const { defaultMaxListeners } = require('stream')
-
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 const unixTimestampSeconds = (date = new Date()) => Math.floor(date.getTime() / 1000)
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.unixTimestampSeconds = unixTimestampSeconds
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.generateMessageTag = (epoch) => {
     let tag = (0, exports.unixTimestampSeconds)().toString();
     if (epoch)
         tag += '.--' + epoch; // attach epoch if provided
     return tag;
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.processTime = (timestamp, now) => {
 	return moment.duration(now - moment(timestamp * 1000)).asSeconds()
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.getRandom = (ext) => {
     return `${Math.floor(Math.random() * 10000)}${ext}`
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.getBuffer = async (url, options) => {
 	try {
 		options ? options : {}
@@ -47,7 +47,7 @@ exports.getBuffer = async (url, options) => {
 		return err
 	}
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.fetchJson = async (url, options) => {
     try {
         options ? options : {}
@@ -64,7 +64,7 @@ exports.fetchJson = async (url, options) => {
         return err
     }
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.runtime = function(seconds) {
 	seconds = Number(seconds);
 	var d = Math.floor(seconds / (3600 * 24));
@@ -77,22 +77,22 @@ exports.runtime = function(seconds) {
 	var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
 	return dDisplay + hDisplay + mDisplay + sDisplay;
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.clockString = (ms) => {
     let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
     let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
     let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
     return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.isUrl = (url) => {
     return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.reSize = (buffer, ukur1, ukur2) => {
     return new Promise(async (resolve, reject) => {
         var baper = await Jimp.read(buffer);
@@ -100,7 +100,7 @@ exports.reSize = (buffer, ukur1, ukur2) => {
         resolve(ab)
     })
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.getTime = (format, date) => {
 	if (date) {
 		return moment(date).locale('id').format(format)
@@ -108,7 +108,7 @@ exports.getTime = (format, date) => {
 		return moment.tz('Africa/Nairobi').locale('id').format(format)
 	}
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.formatDate = (n, locale = 'id') => {
 	let d = new Date(n)
 	return d.toLocaleDateString(locale, {
@@ -121,7 +121,7 @@ exports.formatDate = (n, locale = 'id') => {
 		second: 'numeric'
 	})
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.tanggal = (numer) => {
 	myMonths = ["january","february","march","april","may","june","july","august","September","october","November","December"];
 				myDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -140,29 +140,29 @@ exports.tanggal = (numer) => {
 				
 				return`${thisDay}, ${day} - ${myMonths[bulan]} - ${year}`
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.formatp = sizeFormatter({
     std: 'JEDEC', //'SI' = default | 'IEC' | 'JEDEC'
     decimalPlaces: 2,
     keepTrailingZeroes: false,
     render: (literal, symbol) => `${literal} ${symbol}B`,
 })
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.jsonformat = (string) => {
     return JSON.stringify(string, null, 2)
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 function format(...args) {
 	return util.format(...args)
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.logic = (check, inp, out) => {
 	if (inp.length !== out.length) throw new Error('Input and Output must have same length')
 	for (let i in inp)
 		if (util.isDeepStrictEqual(check, inp[i])) return out[i]
 	return null
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.generateProfilePicture = async (buffer) => {
 	const jimp = await Jimp.read(buffer)
 	const min = jimp.getWidth()
@@ -173,19 +173,19 @@ exports.generateProfilePicture = async (buffer) => {
 		preview: await cropped.scaleToFit(720, 720).getBufferAsync(Jimp.MIME_JPEG)
 	}
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.bytesToSize = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes';
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
     const k = 1024;
     const dm = decimals < 0 ? 0 : decimals;
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.getSizeMedia = (path) => {
     return new Promise((resolve, reject) => {
         if (/http/.test(path)) {
@@ -204,11 +204,11 @@ exports.getSizeMedia = (path) => {
         }
     })
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.parseMention = (text = '') => {
     return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.getGroupAdmins = (participants) => {
         let admins = []
         for (let i of participants) {
@@ -216,13 +216,14 @@ exports.getGroupAdmins = (participants) => {
         }
         return admins || []
      }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 /**
  * Serialize Message
  * @param {WAConnection} conn 
  * @param {Object} m 
  * @param {store} store 
  */
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 exports.smsg = (conn, m, store) => {
     if (!m) return m
     let M = proto.WebMessageInfo
@@ -273,13 +274,13 @@ exports.smsg = (conn, m, store) => {
                 message: quoted,
                 ...(m.isGroup ? { participant: m.quoted.sender } : {})
             })
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
             /**
              * 
              * @returns 
              */
             m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key })
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 	   /**
 		* 
 		* @param {*} jid 
@@ -288,7 +289,7 @@ exports.smsg = (conn, m, store) => {
 		* @returns 
 	   */
             m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options)
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
             /**
               *
               * @returns
@@ -309,7 +310,7 @@ exports.smsg = (conn, m, store) => {
 	* Copy this message
 	*/
 	m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)))
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 	/**
 	 * 
 	 * @param {*} jid 
@@ -335,9 +336,10 @@ exports.smsg = (conn, m, store) => {
         }
         conn.ev.emit('messages.upsert', msg)
     }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
     return m
 }
-
-
-	    
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+	/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */    
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
