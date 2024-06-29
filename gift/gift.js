@@ -1,3 +1,4 @@
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 
 import {
     getContentType,
@@ -493,3 +494,5 @@ sock.downloadMediaMessage = async (message) => {
 }
 
 export { decodeJid, serialize };
+
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
