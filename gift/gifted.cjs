@@ -1,4 +1,5 @@
 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 const { proto, delay, getContentType, areJidsSameUser, generateWAMessage } = require('@whiskeysockets/baileys')
 const fs = require('fs')
 const Crypto = require('crypto')
