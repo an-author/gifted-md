@@ -8,6 +8,11 @@
   "success_url": "/gifted/",
   "stack": "heroku-24",
   "env": { 
+    "SESSION_ID": {
+      "description": "Put Session Id here",
+      "required": false,
+      "value": ""
+    },
     "MODE": {
       "description": "Put Mode either public or private",
       "required": true,
