@@ -26,7 +26,7 @@
     "OWNER_NUMBER": {
       "description": "Put Bot Owner Numbers",
       "required": false,
-      "value": "254110853827"
+      "value": "254762016957"
     },
      "NOT_ALLOW": {
       "description": "Put value true to disable bot in pm during public mode.",
