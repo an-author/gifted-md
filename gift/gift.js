@@ -21,7 +21,7 @@ import { getBuffer, getSizeMedia } from '../gift/gifted.cjs'
 import baileys from "@whiskeysockets/baileys";
 const proto = baileys.proto;
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
@@ -132,9 +132,9 @@ function serialize(m, sock, logger) {
         vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await sock.getName(i + "@s.whatsapp.net")}\nFN:${name}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nEND:VCARD`
       });
     }
-    sock.sendMessage(jid, { contacts: { displayName: `${list.length} Contact`, contacts: list }, ...opts }, { quoted });
+    sock.sendMessage(jid, { contacts: { displayName: `${list.length} Contacts`, contacts: list }, ...opts }, { quoted });
   };
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
   /**
    * 
@@ -269,7 +269,7 @@ sock.downloadAndSaveMediaMessage = async (message, filename, attachExtension = t
     await fs.promises.writeFile(trueFileName, buffer);
     return trueFileName;
 }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
 sock.downloadMediaMessage = async (message) => {
     let mime = (message.msg || message).mimetype || '';
     let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
@@ -281,7 +281,7 @@ sock.downloadMediaMessage = async (message) => {
     return buffer;
 }
 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
-       
+       /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
        /**
      * 
      * @param {*} jid 
@@ -347,10 +347,10 @@ sock.downloadMediaMessage = async (message) => {
 		else if (copy.key.remoteJid.includes('@broadcast')) sender = sender || copy.key.remoteJid
 		copy.key.remoteJid = jid
 		copy.key.fromMe = sender === sock.user.id
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
         return proto.WebMessageInfo.fromObject(copy)
     }
-
+/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
     if (m.key) {
         m.id = m.key.id;
         m.isSelf = m.key.fromMe;
@@ -460,11 +460,18 @@ sock.downloadMediaMessage = async (message) => {
     m.React = (emoji) => React(emoji);
 }
 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+// New getQuotedObj function
+    m.getQuotedObj = async () => {
+      if (!m.quoted) return null;
+      let qKey = m.message.extendedTextMessage.contextInfo.stanzaId;
+      let qMsg = store.loadMessage(m.from, qKey, sock);
+      return serialize(qMsg, sock, logger);
+    };
     /**
 	* Copy this message
 	*/
 	m.copy = () => exports.smsg(sock, M.fromObject(M.toObject(m)))
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+
 	/**
 	 * 
 	 * @param {*} jid 
