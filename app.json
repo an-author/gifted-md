@@ -5,14 +5,9 @@
   "repository": "https://github.com/mouricedevs/gifted-md",
   "logo": "https://telegra.ph/file/a202f454c9532c3f5b7f8.jpg",
   "keywords": ["gifted-md", "giftedtech", "Gifted-Md"],
-  "success_url": "/gifted/",
+  "success_url": "/",
   "stack": "heroku-24",
   "env": { 
-    "SESSION_ID": {
-      "description": "Put Session Id here",
-      "required": false,
-      "value": ""
-    },
     "MODE": {
       "description": "Put Mode either public or private",
       "required": true,
@@ -26,7 +21,7 @@
     "OWNER_NUMBER": {
       "description": "Put Bot Owner Numbers",
       "required": false,
-      "value": "254762016957"
+      "value": "254110853827"
     },
      "NOT_ALLOW": {
       "description": "Put value true to disable bot in pm during public mode.",
@@ -113,4 +108,3 @@
     {"url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"}
   ]
     }
-
