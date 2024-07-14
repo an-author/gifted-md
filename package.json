@@ -4,7 +4,7 @@
   "description": "Gifted latest multi device whatsapp bot",
   "main": "./gifted/gifted.js",
   "type": "module",
-  "engines" : { "node": "v20.15.0", "npm": "10.8.1" },
+  "engines" : { "node": "v20.15.0", "npm": "10.8.2" },
   "scripts": {
     "start": "pm2 start gifted/gifted.js --deep-monitoring --attach --name gifted",
     "stop": "pm2 stop gifted",
