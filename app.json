@@ -18,6 +18,11 @@
       "required": false,
       "value": "GIFTED TECH"
     },
+    "SESSION_ID": {
+      "description": "Your SESSION_ID,  Must start with Gifted~",
+      "required": false,
+      "value": ""
+    },
     "OWNER_NUMBER": {
       "description": "Put Bot Owner Numbers",
       "required": false,
