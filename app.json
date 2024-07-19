@@ -108,7 +108,6 @@
     "addons": [{ "plan": "heroku-postgresql:essential-0" }],
     "buildpacks": [
     {"url": "https://github.com/heroku/heroku-buildpack-nodejs#latest"},
-    {"url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"},
     {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"},
     {"url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"}
   ]
