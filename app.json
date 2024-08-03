@@ -18,15 +18,20 @@
       "required": false,
       "value": "GIFTED TECH"
     },
-    "SESSION_ID": {
-      "description": "Your SESSION_ID,  Must start with Gifted~",
-      "required": false,
-      "value": ""
-    },
     "OWNER_NUMBER": {
       "description": "Put Bot Owner Numbers",
       "required": false,
       "value": "254110853827"
+    },
+    "AUTO_STICKER": {
+      "description": "Put true/false to enable auto conversion of videos and photos as stickers",
+      "required": false,
+      "value": "false"
+    },
+    "SESSION_ID": {
+      "description": "Put your SESSION_ID.  Must start with Gifted~",
+      "required": false,
+      "value": ""
     },
      "NOT_ALLOW": {
       "description": "Put value true to disable bot in pm during public mode.",
@@ -102,7 +107,7 @@
     "formation": {
                 "web": {
                         "quantity": 1,
-                        "size": "Standard-2X"
+                        "size": "Standard-1X"
                 }
         },
     "addons": [{ "plan": "heroku-postgresql:essential-0" }],
@@ -111,4 +116,4 @@
     {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"},
     {"url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"}
   ]
-    }
+  }
